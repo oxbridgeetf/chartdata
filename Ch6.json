@@ -1,0 +1,20 @@
+{
+	"Fig6_1": {
+"Labels": ["T(-1)","T(0)"],
+"Securities": [24,27],
+"Cash": [1,-2]
+
+},
+	"Fig6_2": {
+"Labels": ["T(-1)","T(0)"],
+"Securities": [24,27],
+"Cash": [1,1]
+
+},
+	"Fig6_3": {
+"Labels": ["T(-1)","T(0)"],
+"Securities": [24,27],
+"Cash": [0,0]
+
+}
+}
