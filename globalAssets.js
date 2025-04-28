@@ -9,8 +9,29 @@ const formatFunctions = {
     Dec0: value => value.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
     Dec2: value => value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
     Dec4: value => value.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 }),
-};
 
+    // SpecialDate function
+    SpecialDate: value => {
+        if (!value) return "";  // Return empty if no value
+
+        if (value.includes("/")) {
+            // Parse the date and convert it to Mmm Dth (st/rd/th)
+            const date = new Date(value);
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'short' });
+            
+            let suffix = 'th';
+            if (day === 1 || day === 21 || day === 31) suffix = 'st';
+            if (day === 2 || day === 22) suffix = 'nd';
+            if (day === 3 || day === 23) suffix = 'rd';
+
+            return `${month} ${day}${suffix}`;
+        } else {
+            // Return text if no "/" is found
+            return value;
+        }
+    }
+};
 
 // --- Global Table Definitions ---
 const tableDefinitions = {
@@ -35,7 +56,31 @@ const tableDefinitions = {
             { title: "Index Value", field: "IndexValue", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
-    // more tables can go here later
+    IndexHeader: {
+        tableOptions: {   // <<< 🎯 per-table Tabulator options here
+            layout: "fitColumns", 
+            columnDefaults: {
+                headerSort: false,
+                formatterParams: {
+                    style: "font-size: 12px;"
+                }
+            }
+        },
+        columns: [
+            { title: "", field: "Col1", formatter: cell => formatFunctions.Text(cell.getValue()) }, // No header for Col1
+            { title: "", field: "Col2", formatter: (cell, rowIndex) => {
+                // Apply different formatting based on row index
+                if (rowIndex === 0) {
+                    return formatFunctions.Text(cell.getValue()); // Row 1: plain text
+                } else if (rowIndex === 1) {
+                    return formatFunctions.SpecialDate(cell.getValue()); // Row 2: SpecialDate
+                } else if (rowIndex === 2) {
+                    return formatFunctions.Dec4(cell.getValue()); // Row 3: Dec4
+                }
+                return cell.getValue(); // Default case (though this shouldn't be hit)
+            }}
+        ]
+    },
 };
 
 // --- Global loadAssets Function ---
