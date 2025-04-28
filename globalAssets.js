@@ -66,7 +66,7 @@ function loadAssets(callback) {
 }
 
 // --- Global initFormattedTable Function ---
-function initFormattedTable(containerName, tableType, data) {
+function initFormattedTable(containerName, tableType, dataOrUrl) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -76,17 +76,35 @@ function initFormattedTable(containerName, tableType, data) {
 
     container.innerHTML = "";
 
-    const tableInfo = tableDefinitions[tableType];  // <<< Now it finds it correctly
+    const tableInfo = tableDefinitions[tableType];
     if (!tableInfo) {
         console.error(`Table type '${tableType}' not defined.`);
         return;
     }
 
-   const table = new Tabulator(container, {
-    data: data,
-    columns: tableInfo.columns,
-    ...(tableInfo.tableOptions || {}) // <<< ✅ nicely inject if exists
-    });
+    const tableOptions = {
+        columns: tableInfo.columns,
+        layout: "fitDataStretch",
+        ...(tableInfo.tableOptions || {})
+    };
 
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".csv")) {
+        // If passed a URL to a CSV
+        tableOptions.ajaxURL = dataOrUrl;
+        tableOptions.ajaxConfig = "GET";
+        tableOptions.ajaxContentType = "text/csv";  // Important for Dropbox-style links
+        tableOptions.ajaxResponse = function(url, params, response) {
+            // Tabulator can parse CSV automatically if you just return the raw CSV string
+            return response; 
+        };
+        tableOptions.dataLoader = true; // Show spinner while loading
+        tableOptions.dataLoaderLoading = "Loading table...";
+    } else {
+        // Passed a normal JS array
+        tableOptions.data = dataOrUrl;
+    }
+
+    const table = new Tabulator(container, tableOptions);
 }
+
 
