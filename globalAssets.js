@@ -14,12 +14,15 @@ const formatFunctions = {
 // --- Global Table Definitions ---
 const tableDefinitions = {
     IOF: {
-        columnDefaults: {
-            headerSort: false,   // already disabling sorting
-            hozAlign: "center",  // optional: horizontal center
-            headerHozAlign: "center",
-            formatterParams: {
-                style: "font-size: 14px;" // <<< 🎯 custom inline style for all cells
+        tableOptions: {   // <<< 🎯 per-table Tabulator options here
+            layout: "fitColumns", 
+            columnDefaults: {
+                headerSort: false,
+                //hozAlign: "center",
+                //headerHozAlign: "center",
+                formatterParams: {
+                    style: "font-size: 12px;"
+                }
             }
         },
         columns: [
@@ -31,7 +34,9 @@ const tableDefinitions = {
             { title: "Index Value", field: "indexValue", formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
+    // more tables can go here later
 };
+
 
 
 // --- Global loadAssets Function ---
@@ -77,10 +82,11 @@ function initFormattedTable(containerName, tableType, data) {
         return;
     }
 
-    const table = new Tabulator(container, {
-        data: data,
-        columns: tableInfo.columns,
-        layout: "fitDataStretch",
+   const table = new Tabulator(container, {
+    data: data,
+    columns: tableInfo.columns,
+    ...(tableInfo.tableOptions || {}) // <<< ✅ nicely inject if exists
     });
+
 }
 
