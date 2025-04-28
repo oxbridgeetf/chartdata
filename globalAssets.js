@@ -110,6 +110,30 @@ const tableDefinitions = {
 
 };
 
+// Kill Chart.js and Tabulator cleanly
+function destroyChartsAndTables() {
+    // 1. Destroy Chart.js instance if it exists
+    if (window.chartInstance && typeof window.chartInstance.destroy === 'function') {
+        window.chartInstance.destroy();
+        window.chartInstance = null;
+    }
+
+    // 2. Destroy Tabulator instance if it exists
+    if (window.currentTabulatorTable && typeof window.currentTabulatorTable.destroy === 'function') {
+        window.currentTabulatorTable.destroy();
+        window.currentTabulatorTable = null;
+    }
+
+    // 3. Remove the div that holds the canvas (for Chart.js)
+    var chartDiv = document.querySelector(".chart-view");
+    if (chartDiv && chartDiv.parentNode) {
+        chartDiv.parentNode.removeChild(chartDiv);
+    }
+
+    console.log("All charts and tables destroyed.");
+}
+
+
 // --- Global loadAssets Function ---
 function loadAssets(callback) {
     // Load Montserrat font
