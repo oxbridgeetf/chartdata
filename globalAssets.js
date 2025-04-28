@@ -67,8 +67,8 @@ const tableDefinitions = {
             }
         },
         columns: [
-            { title: "", field: "Col1", formatter: cell => formatFunctions.Text(cell.getValue()) }, // No header for Col1
-            { title: "", field: "Col2", formatter: (cell, rowIndex) => {
+            { title: "", field: "Col1", headerSort: false,formatter: cell => formatFunctions.Text(cell.getValue()) }, // No header for Col1
+            { title: "", field: "Col2", headerSort: false, formatter: (cell, rowIndex) => {
                 // Apply different formatting based on row index
                 if (rowIndex === 0) {
                     return formatFunctions.Text(cell.getValue()); // Row 1: plain text
