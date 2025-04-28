@@ -67,9 +67,20 @@ function loadAssets(callback) {
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
+    console.log("Fetching data from URL:", url);  // Log the URL being fetched
+
     fetch(url)
         .then(response => response.json())  // Get the JSON data
         .then(jsonData => {
+            console.log("Data fetched successfully:", jsonData);  // Log the fetched data
+
+            // Check if the fetched data is an array and log it
+            if (Array.isArray(jsonData)) {
+                console.log("JSON data is an array with length:", jsonData.length);
+            } else {
+                console.error("Fetched data is not an array:", jsonData);
+            }
+
             // Now that we have the data, initialize the Tabulator table in the correct container
             new Tabulator(`[data-acc-text='${containerName}']`, {
                 data: jsonData,  // Use the JSON data
@@ -77,8 +88,11 @@ function loadData(url, containerName, columns) {
                 columns: columns  // Use the provided columns definition
             });
         })
-        .catch(error => console.error('Error fetching the JSON file:', error));
+        .catch(error => {
+            console.error('Error fetching the JSON file:', error);
+        });
 }
+
 
 // --- Global initFormattedTable Function ---
 // Your existing initFormattedTable function
