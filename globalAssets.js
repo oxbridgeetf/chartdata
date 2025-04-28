@@ -72,7 +72,7 @@ function initFormattedTable(containerName, tableType, data) {
     const table = new Tabulator(container, {
         data: data,
         columns: tableInfo.columns,
-        layout: "fitColumns",
+        layout: "fitDataStretch",
     });
 }
 
