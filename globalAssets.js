@@ -53,26 +53,28 @@ function loadAssets(callback) {
 }
 
 // --- Global initFormattedTable function ---
-function initFormattedTable(containerId, templateName, data) {
-    const template = tableTemplates[templateName];
-    if (!template) {
-        console.error(`Template "${templateName}" not found.`);
+function initFormattedTable(containerName, tableType, data) {
+    // Build the full selector automatically
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
     }
 
-    new Tabulator(containerId, {
+    // Clear any previous table if reusing container
+    container.innerHTML = "";
+
+    const tableInfo = tableDefinitions[tableType];
+    if (!tableInfo) {
+        console.error(`Table type '${tableType}' not defined.`);
+        return;
+    }
+
+    const table = new Tabulator(container, {
         data: data,
+        columns: tableInfo.columns,
         layout: "fitColumns",
-        columns: template.columns.map(col => ({
-            title: col.title,
-            field: col.field,
-            formatter: function(cell) {
-                const formatterFunc = formatFunctions[col.formatter];
-                if (formatterFunc) {
-                    return formatterFunc(cell.getValue());
-                }
-                return cell.getValue();
-            }
-        }))
     });
 }
+
