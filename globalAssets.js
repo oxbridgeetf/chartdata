@@ -91,13 +91,13 @@ const tableDefinitions = {
     },
     "Cal": {
     columns: [
-        { title: "Sun", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Mon", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Tues", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Wed", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Thurs", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Fri", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "Sat", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
+        { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
     ],
     tableOptions: {
         layout: "fitDataStretch",
