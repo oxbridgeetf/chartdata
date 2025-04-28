@@ -166,17 +166,14 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
     }
 
     const tableOptions = {
-        columns: tableInfo.columns,
-        layout: "fitDataStretch",  // Your layout
-        ...(tableInfo.tableOptions || {})
+        ...tableInfo.tableOptions,  // 🔥 FIRST bring in your full table options
+        columns: tableInfo.columns, // 🔥 THEN specify columns
     };
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        // If passed a URL to a JSON, use the custom loadData function
-        loadData(dataOrUrl, containerName, tableInfo.columns);  // Call the new loadData function
+        loadData(dataOrUrl, containerName, tableInfo.columns);  
     } else {
-        // If dataOrUrl is an array, it's normal JS array data
         tableOptions.data = dataOrUrl;
-        const table = new Tabulator(container, tableOptions);  // Create the table
+        const table = new Tabulator(container, tableOptions);  
     }
 }
