@@ -184,6 +184,12 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
         return;
     }
 
+    // 🛑 Destroy any existing Tabulator table first
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
     container.innerHTML = "";  // Clear any existing content
 
     const tableInfo = tableDefinitions[tableType];
@@ -202,5 +208,6 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
     } else {
         tableOptions.data = dataOrUrl;
         const table = new Tabulator(container, tableOptions);  
+        container._tabulatorTable = table;  // ✅ Save the table for later destruction
     }
 }
