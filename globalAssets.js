@@ -11,22 +11,22 @@ const formatFunctions = {
     Dec4: value => value.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 }),
 };
 
-// --- Global Table Templates ---
-const tableTemplates = {
+// --- Global Table Definitions ---
+const tableDefinitions = {   // <<< 🔥 This should be tableDefinitions, not tableTemplates
     IOF: {
         columns: [
-            { title: "ID", field: "id", formatter: "Text" },
-            { title: "Ticker", field: "ticker", formatter: "Text" },
-            { title: "Base Price", field: "basePrice", formatter: "Dollar2" },
-            { title: "Weight", field: "weight", formatter: "Perc2" },
-            { title: "Index Shares", field: "indexShares", formatter: "Dec4" },
-            { title: "Index Value", field: "indexValue", formatter: "Dec4" }
+            { title: "ID", field: "id", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Ticker", field: "ticker", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Base Price", field: "basePrice", formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
+            { title: "Weight", field: "weight", formatter: cell => formatFunctions.Perc2(cell.getValue()) },
+            { title: "Index Shares", field: "indexShares", formatter: cell => formatFunctions.Dec4(cell.getValue()) },
+            { title: "Index Value", field: "indexValue", formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
     // More templates can be added here
 };
 
-// --- Global loadAssets function ---
+// --- Global loadAssets Function ---
 function loadAssets(callback) {
     // Load Montserrat font
     const fontLink = document.createElement('link');
@@ -52,9 +52,8 @@ function loadAssets(callback) {
     document.body.appendChild(tabulatorScript);
 }
 
-// --- Global initFormattedTable function ---
+// --- Global initFormattedTable Function ---
 function initFormattedTable(containerName, tableType, data) {
-    // Build the full selector automatically
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -62,10 +61,9 @@ function initFormattedTable(containerName, tableType, data) {
         return;
     }
 
-    // Clear any previous table if reusing container
     container.innerHTML = "";
 
-    const tableInfo = tableDefinitions[tableType];
+    const tableInfo = tableDefinitions[tableType];  // <<< Now it finds it correctly
     if (!tableInfo) {
         console.error(`Table type '${tableType}' not defined.`);
         return;
