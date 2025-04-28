@@ -66,6 +66,7 @@ function loadAssets(callback) {
 }
 
 // --- Global initFormattedTable Function ---
+// Your existing initFormattedTable function
 function initFormattedTable(containerName, tableType, dataOrUrl) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -74,7 +75,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
         return;
     }
 
-    container.innerHTML = "";
+    container.innerHTML = "";  // Clear any existing content
 
     const tableInfo = tableDefinitions[tableType];
     if (!tableInfo) {
@@ -84,27 +85,46 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
 
     const tableOptions = {
         columns: tableInfo.columns,
-        layout: "fitDataStretch",
+        layout: "fitDataStretch",  // Your layout
         ...(tableInfo.tableOptions || {})
     };
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".csv")) {
-        // If passed a URL to a CSV
-        tableOptions.ajaxURL = dataOrUrl;
-        tableOptions.ajaxConfig = "GET";
-        tableOptions.ajaxContentType = "text/csv";  // Important for Dropbox-style links
-        tableOptions.ajaxResponse = function(url, params, response) {
-            // Tabulator can parse CSV automatically if you just return the raw CSV string
-            return response; 
-        };
-        tableOptions.dataLoader = true; // Show spinner while loading
-        tableOptions.dataLoaderLoading = "Loading table...";
+        // If passed a URL to a CSV, use the custom loadCSVData function
+        loadCSVData(dataOrUrl, containerName, tableInfo.columns);  // Call the new loadCSVData function
     } else {
-        // Passed a normal JS array
+        // If dataOrUrl is an array, it's normal JS array data
         tableOptions.data = dataOrUrl;
+        const table = new Tabulator(container, tableOptions);  // Create the table
     }
-
-    const table = new Tabulator(container, tableOptions);
 }
+
+// Function to load CSV data and initialize Tabulator table
+function loadCSVData(url, containerName, columns) {
+    fetch(url)
+        .then(response => response.text())  // Get the CSV as text
+        .then(csvText => {
+            // Process CSV text into an array of objects
+            let rows = csvText.split("\n");
+            let headers = rows[0].split(",").map(header => header.trim());
+            let tableData = rows.slice(1).map(row => {
+                let values = row.split(",");
+                let obj = {};
+                headers.forEach((header, index) => {
+                    obj[header] = values[index];
+                });
+                return obj;
+            });
+
+            // Now that we have the data, initialize the Tabulator table in the correct container
+            new Tabulator(`[data-acc-text='${containerName}']`, {
+                data: tableData,  // Use the processed data
+                layout: "fitColumns",  // Fit the columns
+                columns: columns  // Use the provided columns definition
+            });
+        })
+        .catch(error => console.error('Error fetching the CSV file:', error));
+}
+
 
 
