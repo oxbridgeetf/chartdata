@@ -1,0 +1,130 @@
+[
+    {
+        "Date": "1/11/2021",
+        "NAV": 24.87,
+        "IndexLevel": 99.25,
+        "NAVReturn": "",
+        "IndexReturn": "",
+        "Difference": ""
+    },
+    {
+        "Date": "1/12/2021",
+        "NAV": 25.0,
+        "IndexLevel": 99.78,
+        "NAVReturn": "0.529%",
+        "IndexReturn": "0.531%",
+        "Difference": "0.002%"
+    },
+    {
+        "Date": "1/13/2021",
+        "NAV": 25.29,
+        "IndexLevel": 100.93,
+        "NAVReturn": "1.156%",
+        "IndexReturn": "1.159%",
+        "Difference": "0.003%"
+    },
+    {
+        "Date": "1/14/2021",
+        "NAV": 25.09,
+        "IndexLevel": 100.16,
+        "NAVReturn": "-0.766%",
+        "IndexReturn": "-0.765%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/15/2021",
+        "NAV": 24.99,
+        "IndexLevel": 99.73,
+        "NAVReturn": "-0.426%",
+        "IndexReturn": "-0.424%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/19/2021",
+        "NAV": 25.32,
+        "IndexLevel": 101.07,
+        "NAVReturn": "1.338%",
+        "IndexReturn": "1.343%",
+        "Difference": "0.006%"
+    },
+    {
+        "Date": "1/20/2021",
+        "NAV": 25.3,
+        "IndexLevel": 100.98,
+        "NAVReturn": "-0.096%",
+        "IndexReturn": "-0.094%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/21/2021",
+        "NAV": 25.3,
+        "IndexLevel": 101.0,
+        "NAVReturn": "0.024%",
+        "IndexReturn": "0.025%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/22/2021",
+        "NAV": 25.33,
+        "IndexLevel": 101.11,
+        "NAVReturn": "0.104%",
+        "IndexReturn": "0.105%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/25/2021",
+        "NAV": 25.32,
+        "IndexLevel": 101.08,
+        "NAVReturn": "-0.038%",
+        "IndexReturn": "-0.034%",
+        "Difference": "0.004%"
+    },
+    {
+        "Date": "1/26/2021",
+        "NAV": 25.28,
+        "IndexLevel": 100.93,
+        "NAVReturn": "-0.150%",
+        "IndexReturn": "-0.149%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/27/2021",
+        "NAV": 25.39,
+        "IndexLevel": 101.35,
+        "NAVReturn": "0.418%",
+        "IndexReturn": "0.420%",
+        "Difference": "0.002%"
+    },
+    {
+        "Date": "1/28/2021",
+        "NAV": 25.34,
+        "IndexLevel": 101.17,
+        "NAVReturn": "-0.175%",
+        "IndexReturn": "-0.174%",
+        "Difference": "0.001%"
+    },
+    {
+        "Date": "1/29/2021",
+        "NAV": 25.38,
+        "IndexLevel": 101.34,
+        "NAVReturn": "0.159%",
+        "IndexReturn": "0.160%",
+        "Difference": "0.002%"
+    },
+    {
+        "Date": "Total Return",
+        "NAV": "2.075%",
+        "IndexLevel": "2.104%",
+        "NAVReturn": "",
+        "IndexReturn": "Annual SD",
+        "Difference": "0.021%"
+    },
+    {
+        "Date": "Underperformance",
+        "NAV": "",
+        "IndexLevel": "0.028%",
+        "NAVReturn": "",
+        "IndexReturn": "Mean-Zero SD",
+        "Difference": "0.000%"
+    }
+]

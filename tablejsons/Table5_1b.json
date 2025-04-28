@@ -1,0 +1,156 @@
+[
+    {
+        "Ticker": "CASH",
+        "Shares": "(-2249.52)",
+        "LocalPrice": "$1.00",
+        "MarketValue": "(-2249.52)",
+        "PortfolioWeight": "-0.02%"
+    },
+    {
+        "Ticker": "Accrued",
+        "Shares": 16868.9,
+        "LocalPrice": "$1.00",
+        "MarketValue": 16868.9,
+        "PortfolioWeight": "0.17%"
+    },
+    {
+        "Ticker": "AABA",
+        "Shares": 6049.0,
+        "LocalPrice": "$80.81",
+        "MarketValue": 488844.28,
+        "PortfolioWeight": "4.81%"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Shares": 6982.0,
+        "LocalPrice": "$73.91",
+        "MarketValue": 516057.92,
+        "PortfolioWeight": "5.08%"
+    },
+    {
+        "Ticker": "AAWL",
+        "Shares": 8201.0,
+        "LocalPrice": "$60.21",
+        "MarketValue": 493781.63,
+        "PortfolioWeight": "4.86%"
+    },
+    {
+        "Ticker": "ACBU",
+        "Shares": 7929.0,
+        "LocalPrice": "$64.58",
+        "MarketValue": 512050.67,
+        "PortfolioWeight": "5.04%"
+    },
+    {
+        "Ticker": "ACGN",
+        "Shares": 13160.0,
+        "LocalPrice": "$43.97",
+        "MarketValue": 578618.18,
+        "PortfolioWeight": "5.70%"
+    },
+    {
+        "Ticker": "ACOP",
+        "Shares": 5470.0,
+        "LocalPrice": "$90.92",
+        "MarketValue": 497332.76,
+        "PortfolioWeight": "4.90%"
+    },
+    {
+        "Ticker": "ADXK",
+        "Shares": 17455.0,
+        "LocalPrice": "$28.77",
+        "MarketValue": 502203.51,
+        "PortfolioWeight": "4.95%"
+    },
+    {
+        "Ticker": "ADZI",
+        "Shares": 15515.0,
+        "LocalPrice": "$30.24",
+        "MarketValue": 469111.78,
+        "PortfolioWeight": "4.62%"
+    },
+    {
+        "Ticker": "AFOJ",
+        "Shares": 26182.0,
+        "LocalPrice": "$16.16",
+        "MarketValue": 423014.5,
+        "PortfolioWeight": "4.17%"
+    },
+    {
+        "Ticker": "AGFZ",
+        "Shares": 9485.0,
+        "LocalPrice": "$53.52",
+        "MarketValue": 507651.02,
+        "PortfolioWeight": "5.00%"
+    },
+    {
+        "Ticker": "AHBP",
+        "Shares": 7617.0,
+        "LocalPrice": "$75.26",
+        "MarketValue": 573262.53,
+        "PortfolioWeight": "5.65%"
+    },
+    {
+        "Ticker": "AHGG",
+        "Shares": 8520.0,
+        "LocalPrice": "$58.40",
+        "MarketValue": 497606.99,
+        "PortfolioWeight": "4.90%"
+    },
+    {
+        "Ticker": "AHJQ",
+        "Shares": 7296.0,
+        "LocalPrice": "$66.27",
+        "MarketValue": 483538.19,
+        "PortfolioWeight": "4.76%"
+    },
+    {
+        "Ticker": "AIAD",
+        "Shares": 16757.0,
+        "LocalPrice": "$31.56",
+        "MarketValue": 528780.71,
+        "PortfolioWeight": "5.21%"
+    },
+    {
+        "Ticker": "AKMW",
+        "Shares": 8593.0,
+        "LocalPrice": "$55.83",
+        "MarketValue": 479779.78,
+        "PortfolioWeight": "4.73%"
+    },
+    {
+        "Ticker": "AKRY",
+        "Shares": 5264.0,
+        "LocalPrice": "$83.73",
+        "MarketValue": 440729.18,
+        "PortfolioWeight": "4.34%"
+    },
+    {
+        "Ticker": "AKXI",
+        "Shares": 26598.0,
+        "LocalPrice": "$17.23",
+        "MarketValue": 458225.89,
+        "PortfolioWeight": "4.51%"
+    },
+    {
+        "Ticker": "AKZO",
+        "Shares": 7317.0,
+        "LocalPrice": "$75.79",
+        "MarketValue": 554530.48,
+        "PortfolioWeight": "5.46%"
+    },
+    {
+        "Ticker": "ALTO",
+        "Shares": 6130.0,
+        "LocalPrice": "$84.74",
+        "MarketValue": 519446.99,
+        "PortfolioWeight": "5.12%"
+    },
+    {
+        "Ticker": "AMGP",
+        "Shares": 38083.0,
+        "LocalPrice": "$16.13",
+        "MarketValue": 614160.56,
+        "PortfolioWeight": "6.05%"
+    }
+]

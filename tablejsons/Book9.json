@@ -1,0 +1,87 @@
+[
+    {
+        "Ticker\n": "TQQQ",
+        "Name\n": "ProShares Ultrapro QQQ",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "SH",
+        "Name\n": "ProShares Short S&P 500",
+        "Leverage Amount\n": -1.0
+    },
+    {
+        "Ticker\n": "QLD",
+        "Name\n": "ProShares Ultra QQQ",
+        "Leverage Amount\n": 2.0
+    },
+    {
+        "Ticker\n": "SSO",
+        "Name\n": "ProShares Ultra S&P 500",
+        "Leverage Amount\n": 2.0
+    },
+    {
+        "Ticker\n": "TECL",
+        "Name\n": "Direxion Daily Tech Bull 3X",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "UCO",
+        "Name\n": "ProShares Ultra Bloomberg Crude Oil",
+        "Leverage Amount\n": 2.0
+    },
+    {
+        "Ticker\n": "FAS",
+        "Name\n": "Direxion Daily Financials Bull 3X",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "SPXL",
+        "Name\n": "Direxion Dly S&P 500 Bull 3X",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "SOXL",
+        "Name\n": "Direxion Daily Semiconductors Bull 3X",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "UPRO",
+        "Name\n": "ProShares Ultrapro S&P 500",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "SDS",
+        "Name\n": "ProShares Ultrashort S&P 500",
+        "Leverage Amount\n": -2.0
+    },
+    {
+        "Ticker\n": "TNA",
+        "Name\n": "Direxion Daily Small Cap Bull 3X",
+        "Leverage Amount\n": 3.0
+    },
+    {
+        "Ticker\n": "NUGT",
+        "Name\n": "Direxion Daily Gold Miners I",
+        "Leverage Amount\n": 2.0
+    },
+    {
+        "Ticker\n": "SPXU",
+        "Name\n": "ProShares Ultrapro Short S&P 500",
+        "Leverage Amount\n": -3.0
+    },
+    {
+        "Ticker\n": "SQQQ",
+        "Name\n": "ProShares Ultrapro Short QQQ",
+        "Leverage Amount\n": -3.0
+    },
+    {
+        "Ticker\n": "UVXY",
+        "Name\n": "ProShares Ultra Vix ST Futures",
+        "Leverage Amount\n": 1.5
+    },
+    {
+        "Ticker\n": "SVXY",
+        "Name\n": "ProShares Short Vix ST Futures",
+        "Leverage Amount\n": -0.5
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "Col1": "Eligible Universe",
+        "Col2": "Randomly-generated tickers starting with the letters A or B"
+    },
+    {
+        "Col1": "Selection",
+        "Col2": "Largest 20 tickers by market cap beginning with the letter A"
+    },
+    {
+        "Col1": "Weighting",
+        "Col2": "Equal-Weighting as of close of the Calculation Day"
+    },
+    {
+        "Col1": "Timing",
+        "Col2": "Index Base Date: December 31st of Year 0"
+    },
+    {
+        "Col1": "",
+        "Col2": "Index Inception Date: December 31st of Year 0"
+    },
+    {
+        "Col1": "",
+        "Col2": "No index levels will be published on index holidays"
+    },
+    {
+        "Col1": "",
+        "Col2": "Calculation Day: Last business day of the calendar quarter"
+    },
+    {
+        "Col1": "",
+        "Col2": "Rebalance Day: Fifth business day of the calendar quarter"
+    },
+    {
+        "Col1": "",
+        "Col2": "(Index constituent weights will be converted to share counts)"
+    },
+    {
+        "Col1": "",
+        "Col2": "Share counts will remain constant into Rebalance Day unless Corporate Action"
+    },
+    {
+        "Col1": "",
+        "Col2": "(This means weights will float)"
+    },
+    {
+        "Col1": "Corporate Actions",
+        "Col2": "Acquisition will result in the removal of that name from the index on the close"
+    },
+    {
+        "Col1": "",
+        "Col2": "prior to delisting and weight will be redistributed across all assets"
+    },
+    {
+        "Col1": "",
+        "Col2": "Income redistributed across constituents on the close prior to ex-date"
+    },
+    {
+        "Col1": "Force Majeure and Index Committee",
+        "Col2": "Oxbridge ETF Academy"
+    },
+    {
+        "Col1": "Sources",
+        "Col2": "Oxbridge ETF Academy"
+    }
+]

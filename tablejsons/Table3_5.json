@@ -1,0 +1,50 @@
+[
+    {
+        "Ticker": "AABA",
+        "ExDate": "April 1st",
+        "Type": "Split",
+        "Acquiror": "NA",
+        "AcqType": "NA",
+        "Ratio": 2.0,
+        "Cash": 0.0,
+        "SubPrice": 0.0,
+        "AnnDate": "March 24th",
+        "PercCash": 0.0
+    },
+    {
+        "Ticker": "AAQZ",
+        "ExDate": "April 19th",
+        "Type": "Split",
+        "Acquiror": "NA",
+        "AcqType": "NA",
+        "Ratio": 3.0,
+        "Cash": 0.0,
+        "SubPrice": 0.0,
+        "AnnDate": "April 13th",
+        "PercCash": 0.0
+    },
+    {
+        "Ticker": "AFOJ",
+        "ExDate": "April 29th",
+        "Type": "Rights",
+        "Acquiror": "NA",
+        "AcqType": "NA",
+        "Ratio": 0.4,
+        "Cash": 0.0,
+        "SubPrice": 15.0,
+        "AnnDate": "April 26th",
+        "PercCash": 0.0
+    },
+    {
+        "Ticker": "AABA",
+        "ExDate": "May 6th",
+        "Type": "Acquisition",
+        "Acquiror": "AAQZ",
+        "AcqType": "Stock",
+        "Ratio": 1.27,
+        "Cash": 24.53,
+        "SubPrice": 0.0,
+        "AnnDate": "April 29th",
+        "PercCash": 0.5
+    }
+]

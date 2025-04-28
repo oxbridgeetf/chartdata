@@ -1,0 +1,30 @@
+[
+    {
+        "Col1": "Launch Date:",
+        "Col2": "1/11/2021"
+    },
+    {
+        "Col1": "Number of Units:",
+        "Col2": 8.0
+    },
+    {
+        "Col1": "NAV Construction:",
+        "Col2": "Floating"
+    },
+    {
+        "Col1": "T(-1) NAV",
+        "Col2": "$25.00 "
+    },
+    {
+        "Col1": "Underlying Index",
+        "Col2": "SWA Index"
+    },
+    {
+        "Col1": "Fee",
+        "Col2": "50bps"
+    },
+    {
+        "Col1": "PCF Construction",
+        "Col2": "Index-Based"
+    }
+]

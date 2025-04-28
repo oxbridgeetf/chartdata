@@ -1,0 +1,222 @@
+[
+    {
+        "Ticker": " AABA",
+        "IndexShares": 0.1044,
+        "IndexTrade": -0.0175,
+        "MktShares": 17974.0,
+        "ADV": 221000.0,
+        "BuySell": "Sell",
+        "PercADV": "8.13%",
+        "MI": "0.14%"
+    },
+    {
+        "Ticker": " AAQZ",
+        "IndexShares": 0.079,
+        "IndexTrade": 0.0087,
+        "MktShares": 8957.0,
+        "ADV": 478000.0,
+        "BuySell": "Buy",
+        "PercADV": "1.87%",
+        "MI": "0.07%"
+    },
+    {
+        "Ticker": " AAWL",
+        "IndexShares": 0.0,
+        "IndexTrade": -0.0826,
+        "MktShares": 84783.0,
+        "ADV": 986000.0,
+        "BuySell": "Sell",
+        "PercADV": "8.60%",
+        "MI": "0.15%"
+    },
+    {
+        "Ticker": " AAXX",
+        "IndexShares": 0.1548,
+        "IndexTrade": 0.1548,
+        "MktShares": 158902.0,
+        "ADV": 342000.0,
+        "BuySell": "Buy",
+        "PercADV": "46.46%",
+        "MI": "0.34%"
+    },
+    {
+        "Ticker": " ACBU",
+        "IndexShares": 0.0609,
+        "IndexTrade": -0.019,
+        "MktShares": 19511.0,
+        "ADV": 819000.0,
+        "BuySell": "Sell",
+        "PercADV": "2.38%",
+        "MI": "0.08%"
+    },
+    {
+        "Ticker": " ACGN",
+        "IndexShares": 0.1247,
+        "IndexTrade": -0.0079,
+        "MktShares": 8089.0,
+        "ADV": 507000.0,
+        "BuySell": "Sell",
+        "PercADV": "1.60%",
+        "MI": "0.06%"
+    },
+    {
+        "Ticker": " ACOP",
+        "IndexShares": 0.0535,
+        "IndexTrade": -0.0016,
+        "MktShares": 1620.0,
+        "ADV": 346000.0,
+        "BuySell": "Sell",
+        "PercADV": "0.47%",
+        "MI": "0.03%"
+    },
+    {
+        "Ticker": " ADXK",
+        "IndexShares": 0.2067,
+        "IndexTrade": 0.0309,
+        "MktShares": 31688.0,
+        "ADV": 374000.0,
+        "BuySell": "Buy",
+        "PercADV": "8.47%",
+        "MI": "0.15%"
+    },
+    {
+        "Ticker": " ADZI",
+        "IndexShares": 0.1552,
+        "IndexTrade": -0.0011,
+        "MktShares": 1109.0,
+        "ADV": 287000.0,
+        "BuySell": "Sell",
+        "PercADV": "0.39%",
+        "MI": "0.03%"
+    },
+    {
+        "Ticker": " AFOJ",
+        "IndexShares": 0.2373,
+        "IndexTrade": -0.0264,
+        "MktShares": 27058.0,
+        "ADV": 475000.0,
+        "BuySell": "Sell",
+        "PercADV": "5.70%",
+        "MI": "0.12%"
+    },
+    {
+        "Ticker": " AGFZ",
+        "IndexShares": 0.1114,
+        "IndexTrade": 0.0159,
+        "MktShares": 16332.0,
+        "ADV": 177000.0,
+        "BuySell": "Buy",
+        "PercADV": "9.23%",
+        "MI": "0.15%"
+    },
+    {
+        "Ticker": " AHBP",
+        "IndexShares": 0.0669,
+        "IndexTrade": -0.0098,
+        "MktShares": 10039.0,
+        "ADV": 883000.0,
+        "BuySell": "Sell",
+        "PercADV": "1.14%",
+        "MI": "0.05%"
+    },
+    {
+        "Ticker": " AHGG",
+        "IndexShares": 0.0907,
+        "IndexTrade": 0.0048,
+        "MktShares": 4968.0,
+        "ADV": 444000.0,
+        "BuySell": "Buy",
+        "PercADV": "1.12%",
+        "MI": "0.05%"
+    },
+    {
+        "Ticker": " AHJQ",
+        "IndexShares": 0.0727,
+        "IndexTrade": -0.0008,
+        "MktShares": 851.0,
+        "ADV": 645000.0,
+        "BuySell": "Sell",
+        "PercADV": "0.13%",
+        "MI": "0.02%"
+    },
+    {
+        "Ticker": " AIAD",
+        "IndexShares": 0.1764,
+        "IndexTrade": 0.0076,
+        "MktShares": 7832.0,
+        "ADV": 759000.0,
+        "BuySell": "Buy",
+        "PercADV": "1.03%",
+        "MI": "0.05%"
+    },
+    {
+        "Ticker": " AKEK",
+        "IndexShares": 0.0509,
+        "IndexTrade": 0.0509,
+        "MktShares": 52254.0,
+        "ADV": 732000.0,
+        "BuySell": "Buy",
+        "PercADV": "7.14%",
+        "MI": "0.13%"
+    },
+    {
+        "Ticker": " AKMW",
+        "IndexShares": 0.0,
+        "IndexTrade": -0.0865,
+        "MktShares": 88842.0,
+        "ADV": 341000.0,
+        "BuySell": "Sell",
+        "PercADV": "26.05%",
+        "MI": "0.26%"
+    },
+    {
+        "Ticker": " AKRY",
+        "IndexShares": 0.0679,
+        "IndexTrade": 0.0149,
+        "MktShares": 15254.0,
+        "ADV": 128000.0,
+        "BuySell": "Buy",
+        "PercADV": "11.92%",
+        "MI": "0.17%"
+    },
+    {
+        "Ticker": " AKXI",
+        "IndexShares": 0.2994,
+        "IndexTrade": 0.0315,
+        "MktShares": 32365.0,
+        "ADV": 809000.0,
+        "BuySell": "Buy",
+        "PercADV": "4.00%",
+        "MI": "0.10%"
+    },
+    {
+        "Ticker": " AKZO",
+        "IndexShares": 0.0642,
+        "IndexTrade": -0.0095,
+        "MktShares": 9793.0,
+        "ADV": 610000.0,
+        "BuySell": "Sell",
+        "PercADV": "1.61%",
+        "MI": "0.06%"
+    },
+    {
+        "Ticker": " ALTO",
+        "IndexShares": 0.0484,
+        "IndexTrade": -0.0133,
+        "MktShares": 13662.0,
+        "ADV": 210000.0,
+        "BuySell": "Sell",
+        "PercADV": "6.51%",
+        "MI": "0.13%"
+    },
+    {
+        "Ticker": " AMGP",
+        "IndexShares": 0.394,
+        "IndexTrade": 0.0104,
+        "MktShares": 10717.0,
+        "ADV": 847000.0,
+        "BuySell": "Buy",
+        "PercADV": "1.27%",
+        "MI": "0.06%"
+    }
+]

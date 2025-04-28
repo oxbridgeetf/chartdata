@@ -1,0 +1,92 @@
+[
+    {
+        "Rank1": 1.0,
+        "Ticker1": "ACBU",
+        "MarketCap1": " $60,025,484,770 ",
+        "Blank": " ",
+        "Rank2": 11.0,
+        "Ticker2": "AAQZ",
+        "MarketCap2": " $40,323,822,566 "
+    },
+    {
+        "Rank1": 2.0,
+        "Ticker1": "AABA",
+        "MarketCap1": " $54,503,589,693 ",
+        "Blank": " ",
+        "Rank2": 12.0,
+        "Ticker2": "AHGG",
+        "MarketCap2": " $40,298,875,597 "
+    },
+    {
+        "Rank1": 3.0,
+        "Ticker1": "AHBP",
+        "MarketCap1": " $50,311,476,754 ",
+        "Blank": " ",
+        "Rank2": 13.0,
+        "Ticker2": "AGFZ",
+        "MarketCap2": " $39,672,315,391 "
+    },
+    {
+        "Rank1": 4.0,
+        "Ticker1": "ACOP",
+        "MarketCap1": " $48,571,897,597 ",
+        "Blank": " ",
+        "Rank2": 14.0,
+        "Ticker2": "ADXK",
+        "MarketCap2": " $39,627,488,113 "
+    },
+    {
+        "Rank1": 5.0,
+        "Ticker1": "ACGN",
+        "MarketCap1": " $48,321,577,044 ",
+        "Blank": " ",
+        "Rank2": 15.0,
+        "Ticker2": "AIAD",
+        "MarketCap2": " $39,014,253,031 "
+    },
+    {
+        "Rank1": 6.0,
+        "Ticker1": "ALTO",
+        "MarketCap1": " $46,056,620,488 ",
+        "Blank": " ",
+        "Rank2": 16.0,
+        "Ticker2": "AKZO",
+        "MarketCap2": " $38,506,773,892 "
+    },
+    {
+        "Rank1": 7.0,
+        "Ticker1": "AFOJ",
+        "MarketCap1": " $45,777,963,714 ",
+        "Blank": " ",
+        "Rank2": 17.0,
+        "Ticker2": "AKEK",
+        "MarketCap2": " $36,822,094,536 "
+    },
+    {
+        "Rank1": 8.0,
+        "Ticker1": "AHJQ",
+        "MarketCap1": " $45,442,987,850 ",
+        "Blank": " ",
+        "Rank2": 18.0,
+        "Ticker2": "AKXI",
+        "MarketCap2": " $36,112,831,524 "
+    },
+    {
+        "Rank1": 9.0,
+        "Ticker1": "AMGP",
+        "MarketCap1": " $44,240,541,992 ",
+        "Blank": " ",
+        "Rank2": 19.0,
+        "Ticker2": "AKRY",
+        "MarketCap2": " $34,714,371,527 "
+    },
+    {
+        "Rank1": 10.0,
+        "Ticker1": "ADZI",
+        "MarketCap1": " $42,177,957,869 ",
+        "Blank": " ",
+        "Rank2": 20.0,
+        "Ticker2": "AAXX",
+        "MarketCap2": " $33,226,243,093 "
+    }
+]

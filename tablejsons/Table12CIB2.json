@@ -1,0 +1,67 @@
+[
+    {
+        "Col1": "ETF",
+        "Col2": "Equal Weight",
+        "Col3": ""
+    },
+    {
+        "Col1": "Number of Stocks",
+        "Col2": 100.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "NAV",
+        "Col2": 25.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "Shares O/S",
+        "Col2": 1000000.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "Total NAV",
+        "Col2": 25000000.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "CU Shares",
+        "Col2": 100000.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "NAV per CU",
+        "Col2": 2500000.0,
+        "Col3": ""
+    },
+    {
+        "Col1": "",
+        "Col2": "",
+        "Col3": ""
+    },
+    {
+        "Col1": "Stocks with Losses",
+        "Col2": "Position",
+        "Col3": "Unrealized Losses"
+    },
+    {
+        "Col1": "A",
+        "Col2": 200000.0,
+        "Col3": -62500.0
+    },
+    {
+        "Col1": "B",
+        "Col2": 200000.0,
+        "Col3": -62500.0
+    },
+    {
+        "Col1": "C",
+        "Col2": 200000.0,
+        "Col3": -62500.0
+    },
+    {
+        "Col1": "D",
+        "Col2": 200000.0,
+        "Col3": -62500.0
+    }
+]

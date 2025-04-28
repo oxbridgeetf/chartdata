@@ -1,0 +1,26 @@
+[
+    {
+        "Col1": "Index",
+        "Col2": "SWA Index",
+        "Col3": "Index",
+        "Col4": "SWA Index",
+        "Col5": "Index",
+        "Col6": "SWA Index"
+    },
+    {
+        "Col1": "Date",
+        "Col2": "4/8/2021",
+        "Col3": "Date",
+        "Col4": "4/8/2021",
+        "Col5": "Date",
+        "Col6": "4/8/2021"
+    },
+    {
+        "Col1": "Index Level",
+        "Col2": 97.4188,
+        "Col3": "PF Level",
+        "Col4": 96.7529,
+        "Col5": "Index Level",
+        "Col6": 97.4188
+    }
+]

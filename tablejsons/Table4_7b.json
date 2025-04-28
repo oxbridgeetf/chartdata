@@ -1,0 +1,200 @@
+[
+    {
+        "Ticker1": " AABA",
+        "IS1": 0.1219,
+        "Ticker2": " AABA",
+        "IS2": 0.1036,
+        "Ticker3": " AABA",
+        "IS3": 0.1044,
+        "Trade": -0.0175
+    },
+    {
+        "Ticker1": " AAQZ",
+        "IS1": 0.0703,
+        "Ticker2": " AAQZ",
+        "IS2": 0.0785,
+        "Ticker3": " AAQZ",
+        "IS3": 0.079,
+        "Trade": 0.0087
+    },
+    {
+        "Ticker1": " AAWL",
+        "IS1": 0.0826,
+        "Ticker2": " AAWL",
+        "IS2": 0.0,
+        "Ticker3": " AAWL",
+        "IS3": 0.0,
+        "Trade": -0.0826
+    },
+    {
+        "Ticker1": " AAXX",
+        "IS1": 0.0,
+        "Ticker2": " AAXX",
+        "IS2": 0.1537,
+        "Ticker3": " AAXX",
+        "IS3": 0.1548,
+        "Trade": 0.1548
+    },
+    {
+        "Ticker1": " ACBU",
+        "IS1": 0.0799,
+        "Ticker2": " ACBU",
+        "IS2": 0.0604,
+        "Ticker3": " ACBU",
+        "IS3": 0.0609,
+        "Trade": -0.019
+    },
+    {
+        "Ticker1": " ACGN",
+        "IS1": 0.1325,
+        "Ticker2": " ACGN",
+        "IS2": 0.1238,
+        "Ticker3": " ACGN",
+        "IS3": 0.1247,
+        "Trade": -0.0079
+    },
+    {
+        "Ticker1": " ACOP",
+        "IS1": 0.0551,
+        "Ticker2": " ACOP",
+        "IS2": 0.0532,
+        "Ticker3": " ACOP",
+        "IS3": 0.0535,
+        "Trade": -0.0016
+    },
+    {
+        "Ticker1": " ADXK",
+        "IS1": 0.1758,
+        "Ticker2": " ADXK",
+        "IS2": 0.2053,
+        "Ticker3": " ADXK",
+        "IS3": 0.2067,
+        "Trade": 0.0309
+    },
+    {
+        "Ticker1": " ADZI",
+        "IS1": 0.1563,
+        "Ticker2": " ADZI",
+        "IS2": 0.1541,
+        "Ticker3": " ADZI",
+        "IS3": 0.1552,
+        "Trade": -0.0011
+    },
+    {
+        "Ticker1": " AFOJ",
+        "IS1": 0.2637,
+        "Ticker2": " AFOJ",
+        "IS2": 0.2357,
+        "Ticker3": " AFOJ",
+        "IS3": 0.2373,
+        "Trade": -0.0264
+    },
+    {
+        "Ticker1": " AGFZ",
+        "IS1": 0.0955,
+        "Ticker2": " AGFZ",
+        "IS2": 0.1107,
+        "Ticker3": " AGFZ",
+        "IS3": 0.1114,
+        "Trade": 0.0159
+    },
+    {
+        "Ticker1": " AHBP",
+        "IS1": 0.0767,
+        "Ticker2": " AHBP",
+        "IS2": 0.0665,
+        "Ticker3": " AHBP",
+        "IS3": 0.0669,
+        "Trade": -0.0098
+    },
+    {
+        "Ticker1": " AHGG",
+        "IS1": 0.0858,
+        "Ticker2": " AHGG",
+        "IS2": 0.09,
+        "Ticker3": " AHGG",
+        "IS3": 0.0907,
+        "Trade": 0.0048
+    },
+    {
+        "Ticker1": " AHJQ",
+        "IS1": 0.0735,
+        "Ticker2": " AHJQ",
+        "IS2": 0.0722,
+        "Ticker3": " AHJQ",
+        "IS3": 0.0727,
+        "Trade": -0.0008
+    },
+    {
+        "Ticker1": " AIAD",
+        "IS1": 0.1688,
+        "Ticker2": " AIAD",
+        "IS2": 0.1752,
+        "Ticker3": " AIAD",
+        "IS3": 0.1764,
+        "Trade": 0.0076
+    },
+    {
+        "Ticker1": " AKEK",
+        "IS1": 0.0,
+        "Ticker2": " AKEK",
+        "IS2": 0.0506,
+        "Ticker3": " AKEK",
+        "IS3": 0.0509,
+        "Trade": 0.0509
+    },
+    {
+        "Ticker1": " AKMW",
+        "IS1": 0.0865,
+        "Ticker2": " AKMW",
+        "IS2": 0.0,
+        "Ticker3": " AKMW",
+        "IS3": 0.0,
+        "Trade": -0.0865
+    },
+    {
+        "Ticker1": " AKRY",
+        "IS1": 0.053,
+        "Ticker2": " AKRY",
+        "IS2": 0.0674,
+        "Ticker3": " AKRY",
+        "IS3": 0.0679,
+        "Trade": 0.0149
+    },
+    {
+        "Ticker1": " AKXI",
+        "IS1": 0.2679,
+        "Ticker2": " AKXI",
+        "IS2": 0.2974,
+        "Ticker3": " AKXI",
+        "IS3": 0.2994,
+        "Trade": 0.0315
+    },
+    {
+        "Ticker1": " AKZO",
+        "IS1": 0.0737,
+        "Ticker2": " AKZO",
+        "IS2": 0.0637,
+        "Ticker3": " AKZO",
+        "IS3": 0.0642,
+        "Trade": -0.0095
+    },
+    {
+        "Ticker1": " ALTO",
+        "IS1": 0.0617,
+        "Ticker2": " ALTO",
+        "IS2": 0.0481,
+        "Ticker3": " ALTO",
+        "IS3": 0.0484,
+        "Trade": -0.0133
+    },
+    {
+        "Ticker1": " AMGP",
+        "IS1": 0.3836,
+        "Ticker2": " AMGP",
+        "IS2": 0.3913,
+        "Ticker3": " AMGP",
+        "IS3": 0.394,
+        "Trade": 0.0104
+    }
+]

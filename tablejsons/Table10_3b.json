@@ -1,0 +1,56 @@
+[
+    {
+        "ID": "US1001",
+        "Ticker": " AABA",
+        "Shares": 759.0,
+        "BasePrice": "$95.67",
+        "BaseMV": "$72,613.43",
+        "Weight": "5.7449%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1003",
+        "Ticker": " AAQZ",
+        "Shares": 876.0,
+        "BasePrice": "$72.48",
+        "BaseMV": "$63,491.89",
+        "Weight": "5.0232%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1004",
+        "Ticker": " AAWL",
+        "Shares": 1029.0,
+        "BasePrice": "$57.58",
+        "BaseMV": "$59,246.41",
+        "Weight": "4.6873%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1009",
+        "Ticker": " ACBU",
+        "Shares": 995.0,
+        "BasePrice": "$76.04",
+        "BaseMV": "$75,657.39",
+        "Weight": "5.9857%",
+        "CIL": " Y"
+    },
+    {
+        "ID": "US1010",
+        "Ticker": " ACGN",
+        "Shares": 1652.0,
+        "BasePrice": "$38.43",
+        "BaseMV": "$63,488.05",
+        "Weight": "5.0229%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1012",
+        "Ticker": " ACOP",
+        "Shares": 686.0,
+        "BasePrice": "$103.91",
+        "BaseMV": "$71,278.90",
+        "Weight": "5.6393%",
+        "CIL": " N"
+    }
+]

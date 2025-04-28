@@ -1,0 +1,22 @@
+[
+    {
+        "Col1": "Index",
+        "Col2": "SWA Portfolio"
+    },
+    {
+        "Col1": "Date",
+        "Col2": "January 29th"
+    },
+    {
+        "Col1": "NAV",
+        "Col2": "$25.38"
+    },
+    {
+        "Col1": "Shares OS",
+        "Col2": 400000.0
+    },
+    {
+        "Col1": "AUM",
+        "Col2": 10153350.0
+    }
+]

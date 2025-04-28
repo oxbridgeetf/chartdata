@@ -1,0 +1,164 @@
+[
+    {
+        "Lot": "AAQZ1011",
+        "Shares": 83.0,
+        "Basis": 16.59,
+        "Price": 40.44,
+        "Unrealized": 1979.98,
+        "BFB": 0.59,
+        "Basket": -83.0
+    },
+    {
+        "Lot": "AAQZ1008",
+        "Shares": 66.0,
+        "Basis": 18.58,
+        "Price": 40.44,
+        "Unrealized": 1443.14,
+        "BFB": 0.54,
+        "Basket": -66.0
+    },
+    {
+        "Lot": "AAQZ1009",
+        "Shares": 14095.0,
+        "Basis": 18.81,
+        "Price": 40.44,
+        "Unrealized": 304909.42,
+        "BFB": 0.53,
+        "Basket": -11732.0
+    },
+    {
+        "Lot": "AAQZ1010",
+        "Shares": 123.0,
+        "Basis": 19.0,
+        "Price": 40.44,
+        "Unrealized": 2637.1,
+        "BFB": 0.53,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAQZ1006",
+        "Shares": 2553.0,
+        "Basis": 20.74,
+        "Price": 40.44,
+        "Unrealized": 50307.49,
+        "BFB": 0.49,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAQZ1007",
+        "Shares": 90.0,
+        "Basis": 20.74,
+        "Price": 40.44,
+        "Unrealized": 1773.47,
+        "BFB": 0.49,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAQZ1001",
+        "Shares": 7491.0,
+        "Basis": 22.41,
+        "Price": 40.44,
+        "Unrealized": 135093.1,
+        "BFB": 0.45,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAQZ1012",
+        "Shares": 55.0,
+        "Basis": 23.6,
+        "Price": 40.44,
+        "Unrealized": 926.56,
+        "BFB": 0.42,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "ACGN1005",
+        "Shares": 33.0,
+        "Basis": 33.27,
+        "Price": 56.91,
+        "Unrealized": 779.98,
+        "BFB": 0.42,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "ACBU1001",
+        "Shares": 6001.0,
+        "Basis": 61.58,
+        "Price": 102.93,
+        "Unrealized": 248090.33,
+        "BFB": 0.4,
+        "Basket": -1208.0
+    },
+    {
+        "Lot": "AAXX1004",
+        "Shares": 418.0,
+        "Basis": 27.2,
+        "Price": 41.27,
+        "Unrealized": 5881.52,
+        "BFB": 0.34,
+        "Basket": -418.0
+    },
+    {
+        "Lot": "ACBU1014",
+        "Shares": 14.0,
+        "Basis": 68.04,
+        "Price": 102.93,
+        "Unrealized": 488.33,
+        "BFB": 0.34,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAXX1002",
+        "Shares": 11.0,
+        "Basis": 27.97,
+        "Price": 41.27,
+        "Unrealized": 146.25,
+        "BFB": 0.32,
+        "Basket": -11.0
+    },
+    {
+        "Lot": "AAXX1003",
+        "Shares": 42.0,
+        "Basis": 28.22,
+        "Price": 41.27,
+        "Unrealized": 547.8,
+        "BFB": 0.32,
+        "Basket": -42.0
+    },
+    {
+        "Lot": "AAQZ1013",
+        "Shares": 56.0,
+        "Basis": 27.75,
+        "Price": 40.44,
+        "Unrealized": 710.85,
+        "BFB": 0.31,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "ACGN1002",
+        "Shares": 40.0,
+        "Basis": 39.6,
+        "Price": 56.91,
+        "Unrealized": 692.13,
+        "BFB": 0.3,
+        "Basket": 0.0
+    },
+    {
+        "Lot": "AAXX1001",
+        "Shares": 13339.0,
+        "Basis": 29.35,
+        "Price": 41.27,
+        "Unrealized": 158970.17,
+        "BFB": 0.29,
+        "Basket": -1608.0
+    },
+    {
+        "Lot": "ACGN1001",
+        "Shares": 9735.0,
+        "Basis": 40.95,
+        "Price": 56.91,
+        "Unrealized": 155355.24,
+        "BFB": 0.28,
+        "Basket": 0.0
+    }
+]

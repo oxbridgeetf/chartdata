@@ -1,0 +1,182 @@
+[
+    {
+        "ID": "US1001",
+        "Ticker": " AABA",
+        "Shares": 757.0,
+        " BasePrice ": " $79.88 ",
+        " BaseMV ": " $60,468.21 ",
+        "Weight": "4.77%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1003",
+        "Ticker": " AAQZ",
+        "Shares": 874.0,
+        " BasePrice ": " $73.91 ",
+        " BaseMV ": " $64,599.63 ",
+        "Weight": "5.09%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1004",
+        "Ticker": " AAWL",
+        "Shares": 1027.0,
+        " BasePrice ": " $60.21 ",
+        " BaseMV ": " $61,835.60 ",
+        "Weight": "4.87%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1009",
+        "Ticker": " ACBU",
+        "Shares": 993.0,
+        " BasePrice ": " $64.58 ",
+        " BaseMV ": " $64,127.42 ",
+        "Weight": "5.05%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1010",
+        "Ticker": " ACGN",
+        "Shares": 1648.0,
+        " BasePrice ": " $43.97 ",
+        " BaseMV ": " $72,459.18 ",
+        "Weight": "5.71%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1012",
+        "Ticker": " ACOP",
+        "Shares": 685.0,
+        " BasePrice ": " $90.92 ",
+        " BaseMV ": " $62,280.25 ",
+        "Weight": "4.91%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1018",
+        "Ticker": " ADXK",
+        "Shares": 2186.0,
+        " BasePrice ": " $28.77 ",
+        " BaseMV ": " $62,894.12 ",
+        "Weight": "4.96%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1019",
+        "Ticker": " ADZI",
+        "Shares": 1943.0,
+        " BasePrice ": " $30.24 ",
+        " BaseMV ": " $58,748.58 ",
+        "Weight": "4.63%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1024",
+        "Ticker": " AFOJ",
+        "Shares": 3279.0,
+        " BasePrice ": " $16.16 ",
+        " BaseMV ": " $52,977.79 ",
+        "Weight": "4.18%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1026",
+        "Ticker": " AGFZ",
+        "Shares": 1188.0,
+        " BasePrice ": " $53.52 ",
+        " BaseMV ": " $63,583.49 ",
+        "Weight": "5.01%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1028",
+        "Ticker": " AHBP",
+        "Shares": 954.0,
+        " BasePrice ": " $75.26 ",
+        " BaseMV ": " $71,798.93 ",
+        "Weight": "5.66%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1029",
+        "Ticker": " AHGG",
+        "Shares": 1067.0,
+        " BasePrice ": " $58.40 ",
+        " BaseMV ": " $62,317.68 ",
+        "Weight": "4.91%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1030",
+        "Ticker": " AHJQ",
+        "Shares": 913.0,
+        " BasePrice ": " $66.27 ",
+        " BaseMV ": " $60,508.55 ",
+        "Weight": "4.77%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1033",
+        "Ticker": " AIAD",
+        "Shares": 2098.0,
+        " BasePrice ": " $31.56 ",
+        " BaseMV ": " $66,204.09 ",
+        "Weight": "5.22%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1040",
+        "Ticker": " AKMW",
+        "Shares": 1076.0,
+        " BasePrice ": " $55.83 ",
+        " BaseMV ": " $60,077.16 ",
+        "Weight": "4.74%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1042",
+        "Ticker": " AKRY",
+        "Shares": 659.0,
+        " BasePrice ": " $83.73 ",
+        " BaseMV ": " $55,174.87 ",
+        "Weight": "4.35%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1045",
+        "Ticker": " AKXI",
+        "Shares": 3331.0,
+        " BasePrice ": " $17.23 ",
+        " BaseMV ": " $57,385.91 ",
+        "Weight": "4.52%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1046",
+        "Ticker": " AKZO",
+        "Shares": 916.0,
+        " BasePrice ": " $75.79 ",
+        " BaseMV ": " $69,420.52 ",
+        "Weight": "5.47%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1049",
+        "Ticker": " ALTO",
+        "Shares": 767.0,
+        " BasePrice ": " $84.74 ",
+        " BaseMV ": " $64,994.43 ",
+        "Weight": "5.12%",
+        "CIL": " N"
+    },
+    {
+        "ID": "US1050",
+        "Ticker": " AMGP",
+        "Shares": 4769.0,
+        " BasePrice ": " $16.13 ",
+        " BaseMV ": " $76,909.16 ",
+        "Weight": "6.06%",
+        "CIL": " N"
+    }
+]

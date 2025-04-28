@@ -1,0 +1,92 @@
+[
+    {
+        "Lot": "AAQZ1013",
+        "Shares": 56.0,
+        "Basis": 27.75,
+        "Price": 40.44,
+        "Unrealized": 710.85,
+        "TradeLot": 56.0,
+        "Realized": 710.85
+    },
+    {
+        "Lot": "AAQZ1012",
+        "Shares": 55.0,
+        "Basis": 23.6,
+        "Price": 40.44,
+        "Unrealized": 926.56,
+        "TradeLot": 55.0,
+        "Realized": 926.56
+    },
+    {
+        "Lot": "AAQZ1001",
+        "Shares": 7491.0,
+        "Basis": 22.41,
+        "Price": 40.44,
+        "Unrealized": 135093.1,
+        "TradeLot": 7491.0,
+        "Realized": 135093.1
+    },
+    {
+        "Lot": "AAQZ1006",
+        "Shares": 2553.0,
+        "Basis": 20.74,
+        "Price": 40.44,
+        "Unrealized": 50307.49,
+        "TradeLot": 1199.0,
+        "Realized": 23626.59
+    },
+    {
+        "Lot": "AAQZ1007",
+        "Shares": 90.0,
+        "Basis": 20.74,
+        "Price": 40.44,
+        "Unrealized": 1773.47,
+        "TradeLot": 0.0,
+        "Realized": 0.0
+    },
+    {
+        "Lot": "AAQZ1010",
+        "Shares": 123.0,
+        "Basis": 19.0,
+        "Price": 40.44,
+        "Unrealized": 2637.1,
+        "TradeLot": 0.0,
+        "Realized": 0.0
+    },
+    {
+        "Lot": "AAQZ1009",
+        "Shares": 14095.0,
+        "Basis": 18.81,
+        "Price": 40.44,
+        "Unrealized": 304909.42,
+        "TradeLot": 0.0,
+        "Realized": 0.0
+    },
+    {
+        "Lot": "AAQZ1008",
+        "Shares": 66.0,
+        "Basis": 18.58,
+        "Price": 40.44,
+        "Unrealized": 1443.14,
+        "TradeLot": 0.0,
+        "Realized": 0.0
+    },
+    {
+        "Lot": "AAQZ1011",
+        "Shares": 83.0,
+        "Basis": 16.59,
+        "Price": 40.44,
+        "Unrealized": 1979.98,
+        "TradeLot": 0.0,
+        "Realized": 0.0
+    },
+    {
+        "Lot": "Total",
+        "Shares": 24612.0,
+        "Basis": "",
+        "Price": "",
+        "Unrealized": 499781.11,
+        "TradeLot": 8801.0,
+        "Realized": 160357.0947
+    }
+]

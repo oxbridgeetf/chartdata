@@ -1,0 +1,142 @@
+[
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1008",
+        "Shares": 66.0,
+        "Price": 40.44,
+        "Cumulative": 2669.04
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1009",
+        "Shares": 11732.0,
+        "Price": 40.44,
+        "Cumulative": 477111.12
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1011",
+        "Shares": 83.0,
+        "Price": 40.44,
+        "Cumulative": 480467.64
+    },
+    {
+        "Ticker": "AAXX",
+        "Lot": "AAXX1001",
+        "Shares": 1608.0,
+        "Price": 41.27,
+        "Cumulative": 546829.8
+    },
+    {
+        "Ticker": "AAXX",
+        "Lot": "AAXX1002",
+        "Shares": 11.0,
+        "Price": 41.27,
+        "Cumulative": 547283.77
+    },
+    {
+        "Ticker": "AAXX",
+        "Lot": "AAXX1003",
+        "Shares": 42.0,
+        "Price": 41.27,
+        "Cumulative": 549017.11
+    },
+    {
+        "Ticker": "AAXX",
+        "Lot": "AAXX1004",
+        "Shares": 418.0,
+        "Price": 41.27,
+        "Cumulative": 566267.97
+    },
+    {
+        "Ticker": "ACBU",
+        "Lot": "ACBU1001",
+        "Shares": 1208.0,
+        "Price": 102.93,
+        "Cumulative": 690607.41
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1001",
+        "Shares": 1077.0,
+        "Price": 36.09,
+        "Cumulative": 729476.34
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1005",
+        "Shares": 44.0,
+        "Price": 36.09,
+        "Cumulative": 731064.3
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1006",
+        "Shares": 3030.0,
+        "Price": 36.09,
+        "Cumulative": 840417.0
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1007",
+        "Shares": 79.0,
+        "Price": 36.09,
+        "Cumulative": 843268.11
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1008",
+        "Shares": 57.0,
+        "Price": 36.09,
+        "Cumulative": 845325.24
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1009",
+        "Shares": 557.0,
+        "Price": 36.09,
+        "Cumulative": 865427.37
+    },
+    {
+        "Ticker": "ADXK",
+        "Lot": "ADXK1012",
+        "Shares": 45.0,
+        "Price": 36.09,
+        "Cumulative": 867051.42
+    },
+    {
+        "Ticker": "ADZI",
+        "Lot": "ADZI1009",
+        "Shares": 35.0,
+        "Price": 34.5,
+        "Cumulative": 868258.92
+    },
+    {
+        "Ticker": "ADZI",
+        "Lot": "ADZI1010",
+        "Shares": 4401.0,
+        "Price": 34.5,
+        "Cumulative": 1020093.42
+    },
+    {
+        "Ticker": "ADZI",
+        "Lot": "ADZI1011",
+        "Shares": 1.0,
+        "Price": 34.5,
+        "Cumulative": 1020127.92
+    },
+    {
+        "Ticker": "\u2026",
+        "Lot": "\u2026",
+        "Shares": "\u2026",
+        "Price": "\u2026",
+        "Cumulative": "\u2026"
+    },
+    {
+        "Ticker": "CASH",
+        "Lot": "CASH1000",
+        "Shares": 14.79,
+        "Price": 1.0,
+        "Cumulative": 1598609.5
+    }
+]

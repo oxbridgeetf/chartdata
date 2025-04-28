@@ -1,0 +1,156 @@
+[
+    {
+        "ID": "CASH",
+        "Ticker": " CASH",
+        "PortfolioWeight": "0.13%",
+        "IndexWeight": "0.00%",
+        "OU": "0.13%"
+    },
+    {
+        "ID": "Accrued",
+        "Ticker": " Accrued",
+        "PortfolioWeight": "0.07%",
+        "IndexWeight": "0.00%",
+        "OU": "0.07%"
+    },
+    {
+        "ID": "US1001",
+        "Ticker": " AABA",
+        "PortfolioWeight": "5.88%",
+        "IndexWeight": "5.88%",
+        "OU": "0.00%"
+    },
+    {
+        "ID": "US1003",
+        "Ticker": " AAQZ",
+        "PortfolioWeight": "4.46%",
+        "IndexWeight": "4.48%",
+        "OU": "-0.02%"
+    },
+    {
+        "ID": "US1004",
+        "Ticker": " AAWL",
+        "PortfolioWeight": "4.40%",
+        "IndexWeight": "4.44%",
+        "OU": "-0.04%"
+    },
+    {
+        "ID": "US1009",
+        "Ticker": " ACBU",
+        "PortfolioWeight": "6.61%",
+        "IndexWeight": "6.61%",
+        "OU": "0.01%"
+    },
+    {
+        "ID": "US1010",
+        "Ticker": " ACGN",
+        "PortfolioWeight": "5.33%",
+        "IndexWeight": "5.35%",
+        "OU": "-0.03%"
+    },
+    {
+        "ID": "US1012",
+        "Ticker": " ACOP",
+        "PortfolioWeight": "5.17%",
+        "IndexWeight": "5.18%",
+        "OU": "-0.01%"
+    },
+    {
+        "ID": "US1018",
+        "Ticker": " ADXK",
+        "PortfolioWeight": "4.28%",
+        "IndexWeight": "4.28%",
+        "OU": "0.00%"
+    },
+    {
+        "ID": "US1019",
+        "Ticker": " ADZI",
+        "PortfolioWeight": "5.06%",
+        "IndexWeight": "5.07%",
+        "OU": "-0.01%"
+    },
+    {
+        "ID": "US1024",
+        "Ticker": " AFOJ",
+        "PortfolioWeight": "5.57%",
+        "IndexWeight": "5.59%",
+        "OU": "-0.02%"
+    },
+    {
+        "ID": "US1026",
+        "Ticker": " AGFZ",
+        "PortfolioWeight": "4.29%",
+        "IndexWeight": "4.32%",
+        "OU": "-0.03%"
+    },
+    {
+        "ID": "US1028",
+        "Ticker": " AHBP",
+        "PortfolioWeight": "5.79%",
+        "IndexWeight": "5.77%",
+        "OU": "0.02%"
+    },
+    {
+        "ID": "US1029",
+        "Ticker": " AHGG",
+        "PortfolioWeight": "4.77%",
+        "IndexWeight": "4.77%",
+        "OU": "0.01%"
+    },
+    {
+        "ID": "US1030",
+        "Ticker": " AHJQ",
+        "PortfolioWeight": "5.05%",
+        "IndexWeight": "5.09%",
+        "OU": "-0.04%"
+    },
+    {
+        "ID": "US1033",
+        "Ticker": " AIAD",
+        "PortfolioWeight": "4.79%",
+        "IndexWeight": "4.82%",
+        "OU": "-0.03%"
+    },
+    {
+        "ID": "US1040",
+        "Ticker": " AKMW",
+        "PortfolioWeight": "2.79%",
+        "IndexWeight": "2.81%",
+        "OU": "-0.02%"
+    },
+    {
+        "ID": "US1042",
+        "Ticker": " AKRY",
+        "PortfolioWeight": "3.93%",
+        "IndexWeight": "3.93%",
+        "OU": "0.00%"
+    },
+    {
+        "ID": "US1045",
+        "Ticker": " AKXI",
+        "PortfolioWeight": "4.49%",
+        "IndexWeight": "4.50%",
+        "OU": "-0.02%"
+    },
+    {
+        "ID": "US1046",
+        "Ticker": " AKZO",
+        "PortfolioWeight": "5.80%",
+        "IndexWeight": "5.78%",
+        "OU": "0.02%"
+    },
+    {
+        "ID": "US1049",
+        "Ticker": " ALTO",
+        "PortfolioWeight": "6.44%",
+        "IndexWeight": "6.42%",
+        "OU": "0.02%"
+    },
+    {
+        "ID": "US1050",
+        "Ticker": " AMGP",
+        "PortfolioWeight": "4.89%",
+        "IndexWeight": "4.90%",
+        "OU": "-0.01%"
+    }
+]

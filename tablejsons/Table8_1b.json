@@ -1,0 +1,156 @@
+[
+    {
+        "Ticker": " AABA",
+        "IS": 0.1044,
+        "IndexTrade": -0.01751,
+        "ClosingPrice": " $42.22 ",
+        "ChangeWeight": "-0.76%"
+    },
+    {
+        "Ticker": " AAQZ",
+        "IS": 0.079,
+        "IndexTrade": 0.00873,
+        "ClosingPrice": " $62.20 ",
+        "ChangeWeight": "0.56%"
+    },
+    {
+        "Ticker": " AAWL",
+        "IS": 0.0,
+        "IndexTrade": -0.0826,
+        "ClosingPrice": " $56.90 ",
+        "ChangeWeight": "-4.82%"
+    },
+    {
+        "Ticker": " AAXX",
+        "IS": 0.1548,
+        "IndexTrade": 0.1548,
+        "ClosingPrice": " $29.35 ",
+        "ChangeWeight": "4.66%"
+    },
+    {
+        "Ticker": " ACBU",
+        "IS": 0.0609,
+        "IndexTrade": -0.01901,
+        "ClosingPrice": " $88.24 ",
+        "ChangeWeight": "-1.72%"
+    },
+    {
+        "Ticker": " ACGN",
+        "IS": 0.1247,
+        "IndexTrade": -0.00788,
+        "ClosingPrice": " $38.15 ",
+        "ChangeWeight": "-0.31%"
+    },
+    {
+        "Ticker": " ACOP",
+        "IS": 0.0535,
+        "IndexTrade": -0.00158,
+        "ClosingPrice": " $84.52 ",
+        "ChangeWeight": "-0.14%"
+    },
+    {
+        "Ticker": " ADXK",
+        "IS": 0.2067,
+        "IndexTrade": 0.03087,
+        "ClosingPrice": " $24.89 ",
+        "ChangeWeight": "0.79%"
+    },
+    {
+        "Ticker": " ADZI",
+        "IS": 0.1552,
+        "IndexTrade": -0.00108,
+        "ClosingPrice": " $29.65 ",
+        "ChangeWeight": "-0.03%"
+    },
+    {
+        "Ticker": " AFOJ",
+        "IS": 0.2373,
+        "IndexTrade": -0.02636,
+        "ClosingPrice": " $20.92 ",
+        "ChangeWeight": "-0.57%"
+    },
+    {
+        "Ticker": " AGFZ",
+        "IS": 0.1114,
+        "IndexTrade": 0.01591,
+        "ClosingPrice": " $47.20 ",
+        "ChangeWeight": "0.77%"
+    },
+    {
+        "Ticker": " AHBP",
+        "IS": 0.0669,
+        "IndexTrade": -0.00978,
+        "ClosingPrice": " $70.16 ",
+        "ChangeWeight": "-0.70%"
+    },
+    {
+        "Ticker": " AHGG",
+        "IS": 0.0907,
+        "IndexTrade": 0.00484,
+        "ClosingPrice": " $57.94 ",
+        "ChangeWeight": "0.29%"
+    },
+    {
+        "Ticker": " AHJQ",
+        "IS": 0.0727,
+        "IndexTrade": -0.00083,
+        "ClosingPrice": " $69.32 ",
+        "ChangeWeight": "-0.06%"
+    },
+    {
+        "Ticker": " AIAD",
+        "IS": 0.1764,
+        "IndexTrade": 0.00763,
+        "ClosingPrice": " $27.65 ",
+        "ChangeWeight": "0.22%"
+    },
+    {
+        "Ticker": " AKEK",
+        "IS": 0.0509,
+        "IndexTrade": 0.05091,
+        "ClosingPrice": " $95.35 ",
+        "ChangeWeight": "4.98%"
+    },
+    {
+        "Ticker": " AKMW",
+        "IS": 0.0,
+        "IndexTrade": -0.08655,
+        "ClosingPrice": " $31.11 ",
+        "ChangeWeight": "-2.76%"
+    },
+    {
+        "Ticker": " AKRY",
+        "IS": 0.0679,
+        "IndexTrade": 0.01486,
+        "ClosingPrice": " $72.47 ",
+        "ChangeWeight": "1.11%"
+    },
+    {
+        "Ticker": " AKXI",
+        "IS": 0.2994,
+        "IndexTrade": 0.03153,
+        "ClosingPrice": " $15.89 ",
+        "ChangeWeight": "0.51%"
+    },
+    {
+        "Ticker": " AKZO",
+        "IS": 0.0642,
+        "IndexTrade": -0.00954,
+        "ClosingPrice": " $74.32 ",
+        "ChangeWeight": "-0.73%"
+    },
+    {
+        "Ticker": " ALTO",
+        "IS": 0.0484,
+        "IndexTrade": -0.01331,
+        "ClosingPrice": " $103.41 ",
+        "ChangeWeight": "-1.41%"
+    },
+    {
+        "Ticker": " AMGP",
+        "IS": 0.394,
+        "IndexTrade": 0.01044,
+        "ClosingPrice": " $12.09 ",
+        "ChangeWeight": "0.13%"
+    }
+]

@@ -1,0 +1,227 @@
+[
+    {
+        "Ticker": "AABD",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 5339.0,
+        "Redeem": 0.0,
+        "TotalTrade": 5339.0,
+        "Target": 5339.0
+    },
+    {
+        "Ticker": "AAQZ",
+        "Held": 24612.0,
+        "Create": 3080.0,
+        "Market": 0.0,
+        "Redeem": -11881.0,
+        "TotalTrade": -8801.0,
+        "Target": 15811.0
+    },
+    {
+        "Ticker": "AAXX",
+        "Held": 13952.0,
+        "Create": 1746.0,
+        "Market": -13619.0,
+        "Redeem": -2079.0,
+        "TotalTrade": -13952.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "ACBU",
+        "Held": 6596.0,
+        "Create": 825.0,
+        "Market": 0.0,
+        "Redeem": -1208.0,
+        "TotalTrade": -383.0,
+        "Target": 6213.0
+    },
+    {
+        "Ticker": "ACGN",
+        "Held": 9910.0,
+        "Create": 1240.0,
+        "Market": 87.0,
+        "Redeem": 0.0,
+        "TotalTrade": 1327.0,
+        "Target": 11237.0
+    },
+    {
+        "Ticker": "ACOP",
+        "Held": 5168.0,
+        "Create": 646.0,
+        "Market": 560.0,
+        "Redeem": 0.0,
+        "TotalTrade": 1206.0,
+        "Target": 6374.0
+    },
+    {
+        "Ticker": "ADPQ",
+        "Held": 7639.0,
+        "Create": 956.0,
+        "Market": -8595.0,
+        "Redeem": 0.0,
+        "TotalTrade": -7639.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "ADXK",
+        "Held": 20093.0,
+        "Create": 2514.0,
+        "Market": 0.0,
+        "Redeem": -4889.0,
+        "TotalTrade": -2375.0,
+        "Target": 17718.0
+    },
+    {
+        "Ticker": "ADZI",
+        "Held": 20418.0,
+        "Create": 2555.0,
+        "Market": 0.0,
+        "Redeem": -4437.0,
+        "TotalTrade": -1882.0,
+        "Target": 18536.0
+    },
+    {
+        "Ticker": "AFDA",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 7153.0,
+        "Redeem": 0.0,
+        "TotalTrade": 7153.0,
+        "Target": 7153.0
+    },
+    {
+        "Ticker": "AFOJ",
+        "Held": 24146.0,
+        "Create": 3022.0,
+        "Market": 0.0,
+        "Redeem": -5228.0,
+        "TotalTrade": -2206.0,
+        "Target": 21940.0
+    },
+    {
+        "Ticker": "AGFZ",
+        "Held": 12145.0,
+        "Create": 1520.0,
+        "Market": -13665.0,
+        "Redeem": 0.0,
+        "TotalTrade": -12145.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "AHBP",
+        "Held": 5698.0,
+        "Create": 713.0,
+        "Market": 0.0,
+        "Redeem": -191.0,
+        "TotalTrade": 522.0,
+        "Target": 6220.0
+    },
+    {
+        "Ticker": "AHGG",
+        "Held": 8676.0,
+        "Create": 1085.0,
+        "Market": 811.0,
+        "Redeem": 0.0,
+        "TotalTrade": 1896.0,
+        "Target": 10572.0
+    },
+    {
+        "Ticker": "AHJQ",
+        "Held": 6263.0,
+        "Create": 783.0,
+        "Market": -588.0,
+        "Redeem": -129.0,
+        "TotalTrade": 66.0,
+        "Target": 6329.0
+    },
+    {
+        "Ticker": "AHOR",
+        "Held": 17237.0,
+        "Create": 2157.0,
+        "Market": -19394.0,
+        "Redeem": 0.0,
+        "TotalTrade": -17237.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "AIAD",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 19967.0,
+        "Redeem": 0.0,
+        "TotalTrade": 19967.0,
+        "Target": 19967.0
+    },
+    {
+        "Ticker": "AIYO",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 5371.0,
+        "Redeem": 0.0,
+        "TotalTrade": 5371.0,
+        "Target": 5371.0
+    },
+    {
+        "Ticker": "AJBH",
+        "Held": 37622.0,
+        "Create": 4709.0,
+        "Market": -2564.0,
+        "Redeem": 0.0,
+        "TotalTrade": 2145.0,
+        "Target": 39767.0
+    },
+    {
+        "Ticker": "AKEK",
+        "Held": 4289.0,
+        "Create": 536.0,
+        "Market": 0.0,
+        "Redeem": -654.0,
+        "TotalTrade": -118.0,
+        "Target": 4171.0
+    },
+    {
+        "Ticker": "AKXI",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 31833.0,
+        "Redeem": 0.0,
+        "TotalTrade": 31833.0,
+        "Target": 31833.0
+    },
+    {
+        "Ticker": "AKZO",
+        "Held": 7654.0,
+        "Create": 958.0,
+        "Market": 0.0,
+        "Redeem": -2688.0,
+        "TotalTrade": -1730.0,
+        "Target": 5924.0
+    },
+    {
+        "Ticker": "ALFN",
+        "Held": 4409.0,
+        "Create": 551.0,
+        "Market": 14.0,
+        "Redeem": 0.0,
+        "TotalTrade": 565.0,
+        "Target": 4974.0
+    },
+    {
+        "Ticker": "ALTO",
+        "Held": 5493.0,
+        "Create": 687.0,
+        "Market": -6180.0,
+        "Redeem": 0.0,
+        "TotalTrade": -5493.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "AMGP",
+        "Held": 43315.0,
+        "Create": 5421.0,
+        "Market": -6742.0,
+        "Redeem": -196.0,
+        "TotalTrade": -1517.0,
+        "Target": 41798.0
+    }
+]

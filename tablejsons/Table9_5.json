@@ -1,0 +1,46 @@
+[
+    {
+        "Col1": "Cost Basis for Existing Shares in ACOP1001",
+        "Col2": "$91.6644"
+    },
+    {
+        "Col1": "Number of Existing Shares in ACOP1001",
+        "Col2": 5330.0
+    },
+    {
+        "Col1": "Shares to Buy on 4/15/2021",
+        "Col2": 14.0
+    },
+    {
+        "Col1": "Purchase Price on 4/15/2021",
+        "Col2": "$84.9401"
+    },
+    {
+        "Col1": "Shares Sold on 4/8/2021 (in Wash Sale Window)",
+        "Col2": 147.0
+    },
+    {
+        "Col1": "Proportion of Shares Sold",
+        "Col2": "9.5%"
+    },
+    {
+        "Col1": "Losses on Shares Sold on 4/8/2021",
+        "Col2": " $(901.08)"
+    },
+    {
+        "Col1": "Losses to Revert Back to Basis",
+        "Col2": " $(85.82)"
+    },
+    {
+        "Col1": "New Share Count for ACOP1001",
+        "Col2": 5344.0
+    },
+    {
+        "Col1": "New Basis for ACOP1001",
+        "Col2": "$91.6628"
+    },
+    {
+        "Col1": "New Basis without Wash Sale (Weighted Average Basis)",
+        "Col2": "$91.6468"
+    }
+]

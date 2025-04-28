@@ -1,0 +1,26 @@
+[
+    {
+        "Col1": "Price of HDR (Last Close)",
+        "Col2": " $14.68 "
+    },
+    {
+        "Col1": "Conversion Post Deal-Close",
+        "Col2": " $13.53 "
+    },
+    {
+        "Col1": "Loss in Dollars Relative to Last Close",
+        "Col2": " $1.15 "
+    },
+    {
+        "Col1": "Loss in % Relative to Last Close",
+        "Col2": "-7.83%"
+    },
+    {
+        "Col1": "Weight in Index",
+        "Col2": "5.00%"
+    },
+    {
+        "Col1": "Underperformance to Index",
+        "Col2": "-0.39%"
+    }
+]

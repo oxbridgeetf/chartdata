@@ -1,0 +1,42 @@
+[
+    {
+        "Col1": "Fund",
+        "Col2": "SWA ETF"
+    },
+    {
+        "Col1": "Start Date",
+        "Col2": "1/11/2021"
+    },
+    {
+        "Col1": "End Date",
+        "Col2": "3/31/2021"
+    },
+    {
+        "Col1": "Index Return",
+        "Col2": "-1.5600%"
+    },
+    {
+        "Col1": "Fees",
+        "Col2": "-0.1113%"
+    },
+    {
+        "Col1": "Transaction Costs",
+        "Col2": "-0.0003%"
+    },
+    {
+        "Col1": "Misallocation",
+        "Col2": "0.0027%"
+    },
+    {
+        "Col1": "Cash Drag",
+        "Col2": "0.0016%"
+    },
+    {
+        "Col1": "Linearity/Rounding",
+        "Col2": "-0.0001%"
+    },
+    {
+        "Col1": "NAV Return",
+        "Col2": "-1.6673%"
+    }
+]

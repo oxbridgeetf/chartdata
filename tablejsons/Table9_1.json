@@ -1,0 +1,128 @@
+[
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1001",
+        " Shares ": " 10,341 ",
+        " Basis ": " $40.82 ",
+        "BasisDate": "1/11/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(24,153.32)"
+    },
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1002",
+        " Shares ": 34.0,
+        " Basis ": " $39.42 ",
+        "BasisDate": "1/14/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(31.96)"
+    },
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1003",
+        " Shares ": 30.0,
+        " Basis ": " $40.02 ",
+        "BasisDate": "2/3/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(46.27)"
+    },
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1004",
+        " Shares ": 26.0,
+        " Basis ": " $43.24 ",
+        "BasisDate": "2/22/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(123.68)"
+    },
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1006",
+        " Shares ": 14.0,
+        " Basis ": " $42.23 ",
+        "BasisDate": "4/9/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(52.56)"
+    },
+    {
+        "Ticker": "AABA",
+        "Lot": "AABA1007",
+        " Shares ": 28.0,
+        " Basis ": " $39.33 ",
+        "BasisDate": "4/15/2021",
+        " Price ": " $38.48 ",
+        " Unrealized ": " $(23.69)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1001",
+        " Shares ": " 6,960 ",
+        " Basis ": " $67.31 ",
+        "BasisDate": "1/11/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(88,314.63)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1002",
+        " Shares ": 22.0,
+        " Basis ": " $67.88 ",
+        "BasisDate": "1/14/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(291.84)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1003",
+        " Shares ": 17.0,
+        " Basis ": " $71.24 ",
+        "BasisDate": "2/3/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(282.51)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1004",
+        " Shares ": 14.0,
+        " Basis ": " $68.40 ",
+        "BasisDate": "2/22/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(192.90)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1005",
+        " Shares ": 18.0,
+        " Basis ": " $72.49 ",
+        "BasisDate": "3/24/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(321.77)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1006",
+        " Shares ": 851.0,
+        " Basis ": " $62.21 ",
+        "BasisDate": "4/8/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(6,464.30)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1007",
+        " Shares ": 30.0,
+        " Basis ": " $62.21 ",
+        "BasisDate": "4/9/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(227.88)"
+    },
+    {
+        "Ticker": "AAQZ",
+        "Lot": "AAQZ1008",
+        " Shares ": 22.0,
+        " Basis ": " $55.73 ",
+        "BasisDate": "4/15/2021",
+        " Price ": " $54.62 ",
+        " Unrealized ": " $(24.53)"
+    }
+]

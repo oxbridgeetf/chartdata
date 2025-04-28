@@ -1,0 +1,34 @@
+[
+    {
+        "Col1": "Index Shares of AKRY",
+        "Col2": 0.0524
+    },
+    {
+        "Col1": "Dividends Per Share",
+        "Col2": "$1.5492"
+    },
+    {
+        "Col1": "Dividends in Index Points",
+        "Col2": 0.0812
+    },
+    {
+        "Col1": "Index Level",
+        "Col2": 100.9317
+    },
+    {
+        "Col1": "Alpha",
+        "Col2": 0.0008
+    },
+    {
+        "Col1": "Multiplier",
+        "Col2": 1.0008
+    },
+    {
+        "Col1": "Close Shares of AABA",
+        "Col2": 0.0603
+    },
+    {
+        "Col1": "Open Shares of AABA (Close Shares x Multiplier)",
+        "Col2": 0.0604
+    }
+]

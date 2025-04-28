@@ -1,0 +1,26 @@
+[
+    {
+        "Col1,Col2,,Col3,Col4": "NAV, 25.38 ,,NAV, 25.36 "
+    },
+    {
+        "Col1,Col2,,Col3,Col4": "Shares in CU,50000,,Shares in CU,50000"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": "NAV per CU,1269168.37,,NAV per CU,1267955.80"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": "MV Close,1266234.84,,MV Close,1265076.66"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": "Expected Cash,2933.53,,Actual Cash,2879.13"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": ",,,Diff in CU,1212.57"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": ",,,Diff in MV,1158.18"
+    },
+    {
+        "Col1,Col2,,Col3,Col4": ",,,Diff in Cash, 54.39"
+    }
+]

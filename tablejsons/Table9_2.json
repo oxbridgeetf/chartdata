@@ -1,0 +1,32 @@
+[
+    {
+        "Ticker": "ACBU",
+        "Lot": "ACBU1001",
+        " Shares ": " 6,068 ",
+        " Basis ": " $61.58 ",
+        "BasisDate": "1/11/2021",
+        " Price ": " $87.14 ",
+        " Unrealized ": " $155,088.55 ",
+        " PerShare ": " $25.56 "
+    },
+    {
+        "Ticker": "ACBU",
+        "Lot": "ACBU1006",
+        " Shares ": 23.0,
+        " Basis ": " $88.25 ",
+        "BasisDate": "4/9/2021",
+        " Price ": " $87.14 ",
+        " Unrealized ": " $(25.45)",
+        " PerShare ": " $(1.11)"
+    },
+    {
+        "Ticker": "ACBU",
+        "Lot": "ACBU1007",
+        " Shares ": 17.0,
+        " Basis ": " $86.28 ",
+        "BasisDate": "4/15/2021",
+        " Price ": " $87.14 ",
+        " Unrealized ": " $14.65 ",
+        " PerShare ": " $0.86 "
+    }
+]
