@@ -27,12 +27,12 @@ const tableDefinitions = {
             }
         },
         columns: [
-            { title: "ID", field: "id", formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Ticker", field: "ticker", formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Base Price", field: "basePrice", formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
-            { title: "Weight", field: "weight", formatter: cell => formatFunctions.Perc2(cell.getValue()) },
-            { title: "Index Shares", field: "indexShares", formatter: cell => formatFunctions.Dec4(cell.getValue()) },
-            { title: "Index Value", field: "indexValue", formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+            { title: "ID", field: "ID", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Ticker", field: "Ticker", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Base Price", field: "BasePrice", formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
+            { title: "Weight", field: "Weight", formatter: cell => formatFunctions.Perc2(cell.getValue()) },
+            { title: "Index Shares", field: "IndexShares", formatter: cell => formatFunctions.Dec4(cell.getValue()) },
+            { title: "Index Value", field: "IndexValue", formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
     // more tables can go here later
