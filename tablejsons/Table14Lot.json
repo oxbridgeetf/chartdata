@@ -1,0 +1,42 @@
+[
+    {
+        "Col1": "ETF",
+        "Col2": "Equally-Weighted Basket of 100 Securities"
+    },
+    {
+        "Col1": "AUM",
+        "Col2": "$10M"
+    },
+    {
+        "Col1": "Target AUM per Security",
+        "Col2": "$100K"
+    },
+    {
+        "Col1": "Security A Price",
+        "Col2": "$80"
+    },
+    {
+        "Col1": "Required Shares of A",
+        "Col2": 1250.0
+    },
+    {
+        "Col1": "Minimum Lot Size",
+        "Col2": 100.0
+    },
+    {
+        "Col1": "Portfolio Holds",
+        "Col2": 1200.0
+    },
+    {
+        "Col1": "Misallocation (Shares)",
+        "Col2": 50.0
+    },
+    {
+        "Col1": "Misallocation (Value)",
+        "Col2": "$4K"
+    },
+    {
+        "Col1": "Misallocation (bps)",
+        "Col2": "4bps"
+    }
+]

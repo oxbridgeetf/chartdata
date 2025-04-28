@@ -1,0 +1,42 @@
+[
+    {
+        "Col1": "Security",
+        "Col2": "AAWL"
+    },
+    {
+        "Col1": "Exchange",
+        "Col2": "Toronto Stock Exchange"
+    },
+    {
+        "Col1": "Dividend",
+        "Col2": "1 CAD"
+    },
+    {
+        "Col1": "Ex-Date",
+        "Col2": "February 12th"
+    },
+    {
+        "Col1": "Exchange Rate at Ex-Date",
+        "Col2": 1.3
+    },
+    {
+        "Col1": "Shares ",
+        "Col2": 8000.0
+    },
+    {
+        "Col1": "Expected USD",
+        "Col2": 10400.0
+    },
+    {
+        "Col1": "Payment Date",
+        "Col2": "February 19th"
+    },
+    {
+        "Col1": "Exchange Rate on Payment Date",
+        "Col2": 1.2
+    },
+    {
+        "Col1": "Cash Received in USD",
+        "Col2": 9600.0
+    }
+]

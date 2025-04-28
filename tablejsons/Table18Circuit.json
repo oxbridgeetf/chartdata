@@ -1,0 +1,20 @@
+[
+    {
+        "Level": "Level 1",
+        "Trigger": "7%",
+        "Impact": "15-minute Trading Pause",
+        "Window": "9:30am - 3:25pm"
+    },
+    {
+        "Level": "Level 2",
+        "Trigger": "13%",
+        "Impact": "15-minute Trading Pause",
+        "Window": "9:30am - 3:25pm"
+    },
+    {
+        "Level": "Level 3",
+        "Trigger": "20%",
+        "Impact": "Suspended Trading for Remainder of Day",
+        "Window": "9:30am - 4:00pm"
+    }
+]

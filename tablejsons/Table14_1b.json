@@ -1,0 +1,38 @@
+[
+    {
+        "ID": "US1001",
+        "Ticker": " AABA",
+        "Country": " US",
+        "LocalPrice": 81.6302,
+        "Currency": " USD",
+        "FX": 1.0,
+        "BasePrice": 81.6302,
+        "Weight": 0.049521,
+        "IndexShare": 0.0602,
+        "IndexValue": 4.9149
+    },
+    {
+        "ID": "US1003",
+        "Ticker": " AAQZ",
+        "Country": " JP",
+        "LocalPrice": 7706.6515,
+        "Currency": " JPY",
+        "FX": 114.5,
+        "BasePrice": 67.307,
+        "Weight": 0.047127,
+        "IndexShare": 0.0695,
+        "IndexValue": 4.6772
+    },
+    {
+        "ID": "US1004",
+        "Ticker": " AAWL",
+        "Country": " CA",
+        "LocalPrice": 76.2036583,
+        "Currency": " CAD",
+        "FX": 1.3115,
+        "BasePrice": 58.1042,
+        "Weight": 0.047784,
+        "IndexShare": 0.0816,
+        "IndexValue": 4.7425
+    }
+]

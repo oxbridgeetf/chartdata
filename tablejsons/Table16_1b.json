@@ -1,0 +1,26 @@
+[
+    {
+        "Col1": "Security Identifiers"
+    },
+    {
+        "Col1": "Country and Currency"
+    },
+    {
+        "Col1": "Amount Outstanding (of the Issue)"
+    },
+    {
+        "Col1": "Maturity and Coupon"
+    },
+    {
+        "Col1": "Price: Clean, Dirty, Accrued Interest"
+    },
+    {
+        "Col1": "Yield: YTM, YTC, YTW"
+    },
+    {
+        "Col1": "Duration, Convexity and Other Metrics"
+    },
+    {
+        "Col1": "Seniority and Rating (for Rated Instruments)"
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "Leverage": "2X",
+        "Swaps": "Counterparty Agrees to 2X",
+        "Futures": "2X Capital Long Futures"
+    },
+    {
+        "Leverage": "-X",
+        "Swaps": "Counterparty Agrees to -X",
+        "Futures": "X Capital Short Futures"
+    }
+]

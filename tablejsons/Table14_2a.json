@@ -1,0 +1,44 @@
+[
+    {
+        "Col1": "Trade Date",
+        "Col2": "January 11th",
+        "Col3": "Actual CIL",
+        "Col4": 0.0
+    },
+    {
+        "Col1": "Settlement",
+        "Col2": "T+2",
+        "Col3": "Actual Cash",
+        "Col4": 1250000.0
+    },
+    {
+        "Col1": "Creation Unit",
+        "Col2": 50000.0,
+        "Col3": "Base Market Value",
+        "Col4": 1188850.92
+    },
+    {
+        "Col1": "NAV",
+        "Col2": 25.0,
+        "Col3": "Basket Shares",
+        "Col4": 29900.0
+    },
+    {
+        "Col1": "NAV Per CU",
+        "Col2": 1250000.0,
+        "Col3": "Estimated CIL",
+        "Col4": 0.0
+    },
+    {
+        "Col1": "Shares O/S",
+        "Col2": 400000.0,
+        "Col3": "Estimated Cash",
+        "Col4": 61149.08
+    },
+    {
+        "Col1": "Total Net Assets",
+        "Col2": 10000000.0,
+        "Col3": "Estimated Dividend",
+        "Col4": 0.0
+    }
+]

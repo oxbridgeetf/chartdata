@@ -1,0 +1,16 @@
+[
+    {
+        "Leverage": "2X",
+        "Pos": "Buy",
+        "Neg": "Sell",
+        "PosBuy": "20%",
+        "PosSell": "-20%"
+    },
+    {
+        "Leverage": "-X",
+        "Pos": "Buy",
+        "Neg": "Sell",
+        "PosBuy": "20%",
+        "PosSell": "-20%"
+    }
+]

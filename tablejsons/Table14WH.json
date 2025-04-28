@@ -1,0 +1,42 @@
+[
+    {
+        "Country": "Australia",
+        "WH": 0.3
+    },
+    {
+        "Country": "Canada",
+        "WH": 0.25
+    },
+    {
+        "Country": "China",
+        "WH": 0.1
+    },
+    {
+        "Country": "France",
+        "WH": 0.28
+    },
+    {
+        "Country": "Germany",
+        "WH": 0.2638
+    },
+    {
+        "Country": "India",
+        "WH": 0.2
+    },
+    {
+        "Country": "Japan",
+        "WH": 0.1532
+    },
+    {
+        "Country": "Mexico",
+        "WH": 0.1
+    },
+    {
+        "Country": "Philippines",
+        "WH": 0.3
+    },
+    {
+        "Country": "South Africa",
+        "WH": 0.2
+    }
+]

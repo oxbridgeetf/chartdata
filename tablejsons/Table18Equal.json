@@ -1,0 +1,14 @@
+[
+    {
+        "Col1": "ETF Weighting",
+        "Col2": "Equal"
+    },
+    {
+        "Col1": "Number of Securities",
+        "Col2": 25.0
+    },
+    {
+        "Col1": "Correlations",
+        "Col2": "High"
+    }
+]
