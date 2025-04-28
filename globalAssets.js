@@ -12,19 +12,27 @@ const formatFunctions = {
 };
 
 // --- Global Table Definitions ---
-const tableDefinitions = {   // <<< 🔥 This should be tableDefinitions, not tableTemplates
+const tableDefinitions = {
     IOF: {
+        columnDefaults: {
+            headerSort: false,   // already disabling sorting
+            hozAlign: "center",  // optional: horizontal center
+            headerHozAlign: "center",
+            formatterParams: {
+                style: "font-size: 14px;" // <<< 🎯 custom inline style for all cells
+            }
+        },
         columns: [
-            { title: "ID", field: "id", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Ticker", field: "ticker", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Base Price", field: "basePrice", headerSort: false, formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
-            { title: "Weight", field: "weight", headerSort: false, formatter: cell => formatFunctions.Perc2(cell.getValue()) },
-            { title: "Index Shares", field: "indexShares", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) },
-            { title: "Index Value", field: "indexValue", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+            { title: "ID", field: "id", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Ticker", field: "ticker", formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Base Price", field: "basePrice", formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
+            { title: "Weight", field: "weight", formatter: cell => formatFunctions.Perc2(cell.getValue()) },
+            { title: "Index Shares", field: "indexShares", formatter: cell => formatFunctions.Dec4(cell.getValue()) },
+            { title: "Index Value", field: "indexValue", formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
-    // More templates can be added here
 };
+
 
 // --- Global loadAssets Function ---
 function loadAssets(callback) {
