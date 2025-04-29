@@ -50,7 +50,7 @@ const tableDefinitions = {};  // Placeholder for dynamic content
     }
 
     // Load table specifications (including IOF, IndexHeader, etc.)
-    loadScript("tableSpecs.js").then(() => {
+    loadScript("https://oxbridgeetf.github.io/chartdata/tableSpecs.js").then(() => {
         console.log("tableSpecs.js loaded successfully.");
     }).catch(err => {
         console.error("Failed to load tableSpecs.js:", err);
