@@ -44,7 +44,6 @@ const tableDefinitions = {
             }}
         ]
     },
-    ,
     "Cal": {
     columns: [
         { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
