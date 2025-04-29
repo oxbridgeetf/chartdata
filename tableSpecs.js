@@ -6,7 +6,7 @@ function calFormatter(cell) {
     return Math.round(value);
 }
 
-const tableDefinitions = {
+window.tableDefinitions = {
     IOF: {
         tableOptions: {
             layout: "fitColumns", 
