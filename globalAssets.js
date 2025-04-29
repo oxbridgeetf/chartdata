@@ -234,12 +234,18 @@ function loadData(url, containerName, columns) {
 
             console.log("Cleaned Data (trimmed):", cleanedData);  // Log the cleaned data
 
-            // Now that we have the cleaned data, initialize the Tabulator table in the correct container
-            new Tabulator(`[data-acc-text='${containerName}']`, {
+            // Initialize the Tabulator table with the cleaned data
+            const table = new Tabulator(`[data-acc-text='${containerName}']`, {
                 data: cleanedData,  // Use the cleaned data
                 layout: "fitColumns",  // Fit the columns
-                columns: columns  // Use the provided columns definition
+                columns: columns,  // Use the provided columns definition
             });
+
+            // Save the Tabulator instance to the container
+            const container = document.querySelector(`[data-acc-text='${containerName}']`);
+            if (container) {
+                container._tabulatorTable = table;  // Save the table instance
+            }
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
