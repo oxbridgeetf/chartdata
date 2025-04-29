@@ -134,7 +134,7 @@ const colorPalette = {
 
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
-console.log(window.colorPalette);
+
 
 // Kill Chart.js and Tabulator cleanly
 function destroyChartsAndTables() {
@@ -293,7 +293,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
         console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
     }
-
+    console.log(window.colorPalette);
     // 🛑 Destroy any existing Tabulator table first
     if (container._tabulatorTable) {
         container._tabulatorTable.destroy();
