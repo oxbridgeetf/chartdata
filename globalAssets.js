@@ -134,7 +134,7 @@ const colorPalette = {
 
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
-
+console.log(window.colorPalette);
 
 // Kill Chart.js and Tabulator cleanly
 function destroyChartsAndTables() {
