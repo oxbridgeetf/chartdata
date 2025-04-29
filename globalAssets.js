@@ -133,6 +133,49 @@ function loadAssets(callback) {
     document.body.appendChild(tabulatorScript);
 }
 
+// --- Global loadData Function ---
+// Function to load data (either CSV or JSON) and initialize Tabulator table
+function loadData(url, containerName, columns) {
+    fetch(url)
+        .then(response => response.json())  // Get the JSON data
+        .then(jsonData => {
+            // Log the number of fields in the first record
+            const fieldCount = Object.keys(jsonData[0] || {}).length;
+            console.log("Number of fields in the first record:", fieldCount);
+
+            // Clean the data by trimming to only the number of fields found in the first record
+            const cleanedData = jsonData.map(item => {
+                // Get the first `fieldCount` keys from the item
+                const trimmedItem = Object.keys(item)
+                    .slice(0, fieldCount)  // Get only the first `fieldCount` keys
+                    .reduce((result, key) => {
+                        result[key] = item[key];  // Add each of those keys and values to the result
+                        return result;
+                    }, {});
+
+                return trimmedItem;
+            });
+
+            console.log("Cleaned Data (trimmed):", cleanedData);  // Log the cleaned data
+
+            // Initialize the Tabulator table with the cleaned data
+            const table = new Tabulator(`[data-acc-text='${containerName}']`, {
+                data: cleanedData,  // Use the cleaned data
+                layout: "fitColumns",  // Fit the columns
+                columns: columns,  // Use the provided columns definition
+            });
+
+            // Save the Tabulator instance to the container
+            const container = document.querySelector(`[data-acc-text='${containerName}']`);
+            if (container) {
+                container._tabulatorTable = table;  // Save the table instance
+            }
+        })
+        .catch(error => console.error('Error fetching the JSON file:', error));
+}
+
+
+
 // --- Global initFormattedTable Function ---
 function initFormattedTable(containerName, tableType, dataOrUrl) {
     const selector = `[data-acc-text='${containerName}']`;
