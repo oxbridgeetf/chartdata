@@ -133,6 +133,55 @@ function destroyChartsAndTables() {
     console.log("All charts and tables destroyed.");
 }
 
+function highlightRow(table, rowIndex, color, duration = null) {
+    const rowComponent = table.getRows()[rowIndex];
+    if (!rowComponent) return;
+
+    rowComponent.getElement().style.transition = "background-color 0.5s ease";
+    rowComponent.getElement().style.backgroundColor = color;
+
+    if (duration) {
+        setTimeout(() => {
+            rowComponent.getElement().style.backgroundColor = "";
+        }, duration);
+    }
+}
+
+function highlightColumn(table, fieldName, color, duration = null) {
+    table.getRows().forEach(row => {
+        const cell = row.getCell(fieldName);
+        if (cell) {
+            const el = cell.getElement();
+            el.style.transition = "background-color 0.5s ease";
+            el.style.backgroundColor = color;
+
+            if (duration) {
+                setTimeout(() => {
+                    el.style.backgroundColor = "";
+                }, duration);
+            }
+        }
+    });
+}
+
+function highlightCell(table, rowIndex, fieldName, color, duration = null) {
+    const rowComponent = table.getRows()[rowIndex];
+    if (!rowComponent) return;
+
+    const cell = rowComponent.getCell(fieldName);
+    if (cell) {
+        const el = cell.getElement();
+        el.style.transition = "background-color 0.5s ease";
+        el.style.backgroundColor = color;
+
+        if (duration) {
+            setTimeout(() => {
+                el.style.backgroundColor = "";
+            }, duration);
+        }
+    }
+}
+
 
 // --- Global loadAssets Function ---
 function loadAssets(callback) {
