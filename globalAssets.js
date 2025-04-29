@@ -501,3 +501,4 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
         container._tabulatorTable = table;  // ✅ Save the table for later destruction
     }
 }
+*/
