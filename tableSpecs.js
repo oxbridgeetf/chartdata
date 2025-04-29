@@ -62,4 +62,4 @@ const tableDefinitions = {
         }
     }
       // Additional table specifications go here, as needed
-};
+}
