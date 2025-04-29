@@ -110,6 +110,23 @@ const tableDefinitions = {
 
 };
 
+// globalAssets.js
+
+// Define color palette for consistent use
+const colorPalette = {
+    highlightYellow: "#FFFF00",   // Yellow for highlighting
+    highlightGreen: "#90EE90",    // Light green for success
+    highlightRed: "#FF6347",      // Red for errors
+    highlightBlue: "#ADD8E6",     // Light blue for informational highlights
+    highlightPurple: "#D8BFD8",   // Light purple for soft highlights
+    highlightOrange: "#FFA500",   // Orange for attention-grabbing highlights
+    // Add any other colors you need
+};
+
+// Export the color palette so it's available globally
+window.colorPalette = colorPalette;
+
+
 // Kill Chart.js and Tabulator cleanly
 function destroyChartsAndTables() {
     // 1. Destroy Chart.js instance if it exists
@@ -133,12 +150,14 @@ function destroyChartsAndTables() {
     console.log("All charts and tables destroyed.");
 }
 
-function highlightRow(table, rowIndex, color, duration = null) {
+function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const rowComponent = table.getRows()[rowIndex];
     if (!rowComponent) return;
 
+    const highlightColor = window.colorPalette[color] || window.colorPalette.highlightYellow;  // Default to 'highlightYellow' if color is invalid
+    
     rowComponent.getElement().style.transition = "background-color 0.5s ease";
-    rowComponent.getElement().style.backgroundColor = color;
+    rowComponent.getElement().style.backgroundColor = highlightColor;
 
     if (duration) {
         setTimeout(() => {
@@ -147,13 +166,15 @@ function highlightRow(table, rowIndex, color, duration = null) {
     }
 }
 
-function highlightColumn(table, fieldName, color, duration = null) {
+function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
+    const highlightColor = window.colorPalette[color] || window.colorPalette.highlightYellow;  // Default to 'highlightYellow' if color is invalid
+    
     table.getRows().forEach(row => {
         const cell = row.getCell(fieldName);
         if (cell) {
             const el = cell.getElement();
             el.style.transition = "background-color 0.5s ease";
-            el.style.backgroundColor = color;
+            el.style.backgroundColor = highlightColor;
 
             if (duration) {
                 setTimeout(() => {
@@ -164,15 +185,16 @@ function highlightColumn(table, fieldName, color, duration = null) {
     });
 }
 
-function highlightCell(table, rowIndex, fieldName, color, duration = null) {
+function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const rowComponent = table.getRows()[rowIndex];
     if (!rowComponent) return;
 
     const cell = rowComponent.getCell(fieldName);
     if (cell) {
+        const highlightColor = window.colorPalette[color] || window.colorPalette.highlightYellow;  // Default to 'highlightYellow' if color is invalid
         const el = cell.getElement();
         el.style.transition = "background-color 0.5s ease";
-        el.style.backgroundColor = color;
+        el.style.backgroundColor = highlightColor;
 
         if (duration) {
             setTimeout(() => {
