@@ -120,6 +120,15 @@ const colorPalette = {
     highlightBlue: "#ADD8E6",     // Light blue for informational highlights
     highlightPurple: "#D8BFD8",   // Light purple for soft highlights
     highlightOrange: "#FFA500",   // Orange for attention-grabbing highlights
+    Oxford: 'rgb(16,29,62)',
+    Cadet: 'rgb(155,184,193)',
+    Cinnabar: 'rgb(236, 74, 39)',
+    Robin: 'rgb(52,192,206)',
+    Persian: 'rgb(198,62,48)',
+    Columbia: 'rgb(2203,216,221)',
+    Alabaster: 'rgb(229,230,217)',
+    Tea: 'rgb(221,232,185)'
+
     // Add any other colors you need
 };
 
