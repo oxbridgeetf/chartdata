@@ -144,11 +144,15 @@ function destroyChartsAndTables() {
         window.chartInstance = null;
     }
 
-    // 2. Destroy Tabulator instance if it exists
-    if (window.currentTabulatorTable && typeof window.currentTabulatorTable.destroy === 'function') {
-        window.currentTabulatorTable.destroy();
-        window.currentTabulatorTable = null;
-    }
+    // 2. Destroy all Tabulator tables stored in containers with _tabulatorTable
+    const containers = document.querySelectorAll('[data-acc-text]');
+    containers.forEach(container => {
+        if (container._tabulatorTable && typeof container._tabulatorTable.destroy === 'function') {
+            container._tabulatorTable.destroy();
+            container._tabulatorTable = null;
+        }
+        container.innerHTML = ""; // Clean up the container
+    });
 
     // 3. Remove the div that holds the canvas (for Chart.js)
     var chartDiv = document.querySelector(".chart-view");
@@ -156,8 +160,9 @@ function destroyChartsAndTables() {
         chartDiv.parentNode.removeChild(chartDiv);
     }
 
-    console.log("All charts and tables destroyed.");
+    console.log("All charts and all Tabulator tables destroyed.");
 }
+
 
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const rowComponent = table.getRows()[rowIndex];
