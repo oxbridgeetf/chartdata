@@ -35,7 +35,7 @@ const formatFunctions = {
 
 // --- Global Table Definitions ---
 // This will be dynamically loaded
-const tableDefinitions = {};  // Placeholder for dynamic content
+//const tableDefinitions = {};  // Placeholder for dynamic content
 
 // --- Global Assets Loading ---
 (function() {
