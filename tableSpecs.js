@@ -1,3 +1,11 @@
+function calFormatter(cell) {
+    const value = cell.getValue();
+    if (value === "") {
+        return "";
+    }
+    return Math.round(value);
+}
+
 const tableDefinitions = {
     IOF: {
         tableOptions: {
