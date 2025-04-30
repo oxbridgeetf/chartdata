@@ -155,19 +155,19 @@ function loadData(url, containerName, columns) {
 
             console.log("Cleaned Data (trimmed):", cleanedData);
 
-            const table = new Tabulator(`[data-acc-text='${containerName}']`, {
-                data: cleanedData,
-                layout: "fitColumns",
-                columns: columns,
-            });
-
-            // Ensure the table container uses the actual size of rect1, rect2, etc.
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
             if (container) {
-                // Dynamically set width and height based on container size (rect1, rect2, etc.)
+                // Explicitly set container width and height based on actual container size
                 const rect = container.getBoundingClientRect();
                 container.style.width = `${rect.width}px`;
                 container.style.height = `${rect.height}px`;
+
+                const table = new Tabulator(container, {
+                    data: cleanedData,
+                    layout: "fitColumns",
+                    columns: columns,
+                });
+
                 container._tabulatorTable = table;
             }
 
@@ -176,14 +176,13 @@ function loadData(url, containerName, columns) {
                 const rect = container.getBoundingClientRect();
                 container.style.width = `${rect.width}px`;
                 container.style.height = `${rect.height}px`;
-                if (table && typeof table.redraw === "function") {
-                    table.redraw(true);
+                if (container._tabulatorTable && typeof container._tabulatorTable.redraw === "function") {
+                    container._tabulatorTable.redraw(true);
                 }
             });
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
-
 
 // --- Global initFormattedTable Function ---
 // Function to initialize formatted tables
@@ -214,6 +213,11 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         columns: tableInfo.columns,
     };
 
+    // Ensure the container is properly sized
+    const rect = container.getBoundingClientRect();
+    container.style.width = `${rect.width}px`;
+    container.style.height = `${rect.height}px`;
+
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, tableInfo.columns);  
     } else {
@@ -224,11 +228,6 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
             table._col2FormatArray = col2FormatArray;
         }
-
-        // Ensure the container uses the actual size of rect1, rect2, etc.
-        const rect = container.getBoundingClientRect();
-        container.style.width = `${rect.width}px`;
-        container.style.height = `${rect.height}px`;
 
         // Add resize event listener to handle dynamic resizing
         window.addEventListener("resize", () => {
