@@ -140,44 +140,48 @@ function loadData(url, containerName, columns) {
     fetch(url)
         .then(response => response.json())  // Get the JSON data
         .then(jsonData => {
-            // Log the number of fields in the first record
             const fieldCount = Object.keys(jsonData[0] || {}).length;
             console.log("Number of fields in the first record:", fieldCount);
 
-            // Clean the data by trimming to only the number of fields found in the first record
             const cleanedData = jsonData.map(item => {
-                // Get the first `fieldCount` keys from the item
                 const trimmedItem = Object.keys(item)
-                    .slice(0, fieldCount)  // Get only the first `fieldCount` keys
+                    .slice(0, fieldCount)
                     .reduce((result, key) => {
-                        result[key] = item[key];  // Add each of those keys and values to the result
+                        result[key] = item[key];
                         return result;
                     }, {});
-
                 return trimmedItem;
             });
 
-            console.log("Cleaned Data (trimmed):", cleanedData);  // Log the cleaned data
+            console.log("Cleaned Data (trimmed):", cleanedData);
 
-            // Initialize the Tabulator table with the cleaned data
             const table = new Tabulator(`[data-acc-text='${containerName}']`, {
-                data: cleanedData,  // Use the cleaned data
-                layout: "fitColumns",  // Fit the columns
-                columns: columns,  // Use the provided columns definition
+                data: cleanedData,
+                layout: "fitColumns",
+                columns: columns,
             });
 
-            // Save the Tabulator instance to the container
+            // Ensure the table container is 100% width/height
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
             if (container) {
-                container._tabulatorTable = table;  // Save the table instance
+                container.style.width = "100%";
+                container.style.height = "100%";
+                container._tabulatorTable = table;  // Save the Tabulator instance
             }
+
+            // Add resize event listener to handle dynamic resizing
+            window.addEventListener("resize", () => {
+                if (table && typeof table.redraw === "function") {
+                    table.redraw(true);
+                }
+            });
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
 
 
-
 // --- Global initFormattedTable Function ---
+// Function to initialize formatted tables
 function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -215,6 +219,17 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
             table._col2FormatArray = col2FormatArray;
         }
+
+        // Ensure the container is 100% width/height for responsive scaling
+        container.style.width = "100%";
+        container.style.height = "100%";
+
+        // Add resize event listener to handle dynamic resizing
+        window.addEventListener("resize", () => {
+            if (table && typeof table.redraw === "function") {
+                table.redraw(true);
+            }
+        });
 
         container._tabulatorTable = table;
     }
