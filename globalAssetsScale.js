@@ -157,51 +157,35 @@ function loadData(url, containerName, columns) {
                 return;
             }
 
-            // Set container dimensions explicitly before rendering
+            // Get accurate bounding box dimensions
             const rect = container.getBoundingClientRect();
-            container.style.width = `${rect.width}px`;
-            container.style.height = `${rect.height}px`;
+            const containerHeight = rect.height;
+            const containerWidth = rect.width;
 
-            // Calculate rowHeight
+            // Apply dimensions to the container element
+            container.style.width = `${containerWidth}px`;
+            container.style.height = `${containerHeight}px`;
+
+            // Calculate row height before rendering
             const numberOfRows = cleanedData.length;
-            let rowHeight = 30; // Default
+            let rowHeight = 30; // Safe default
             if (numberOfRows > 0) {
-                rowHeight = Math.floor(rect.height / numberOfRows);
-                rowHeight = Math.max(20, Math.min(60, rowHeight)); // Clamp for sanity
+                rowHeight = Math.floor(containerHeight / numberOfRows);
+                rowHeight = Math.max(20, Math.min(60, rowHeight)); // Clamp
             }
-            console.log("Calculated rowHeight:", rowHeight);
 
-            // Initialize Tabulator
+            console.log(`Calculated rowHeight: ${rowHeight}px for ${numberOfRows} rows`);
+
+            // Initialize Tabulator only once, with all final dimensions
             const table = new Tabulator(container, {
                 data: cleanedData,
                 layout: "fitColumns",
                 columns: columns,
                 rowHeight: rowHeight,
-                height: rect.height,  // Total table height
+                height: containerHeight,
             });
 
             container._tabulatorTable = table;
-
-            // Defer redraw slightly to avoid timing glitches
-            setTimeout(() => {
-                if (table && typeof table.redraw === "function") {
-                    table.redraw();
-                }
-            }, 200);
-
-            // Attach resize handler (only once per container)
-            const resizeHandler = () => {
-                const rect = container.getBoundingClientRect();
-                container.style.width = `${rect.width}px`;
-                container.style.height = `${rect.height}px`;
-                if (container._tabulatorTable && typeof container._tabulatorTable.redraw === "function") {
-                    container._tabulatorTable.redraw();
-                }
-            };
-
-            // Store and attach
-            container._tabulatorResizeHandler = resizeHandler;
-            window.addEventListener("resize", resizeHandler);
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
