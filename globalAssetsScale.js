@@ -185,7 +185,7 @@ function loadData(url, containerName, columns) {
     movableColumns: true,               // Allow users to move columns
     resizableRows: false,               // Disable row resizing for layout consistency
 
-    tableBuilt: function () {
+    renderComplete: function () {
         console.log("✅ Table has been built.");
         console.log("Final Table Options:", this.options);
         console.log("📏 Calculated Row Height:", rowHeight);
