@@ -107,6 +107,54 @@ window.tableDefinitions = {
       formatterParams: { style: "font-size: 12px; padding: 0; margin: 0;" }
     }
   }
+},
+JustText5: {
+  columns: Array.from({ length: 5 }, (_, i) => ({
+    field: `Col${i + 1}`,
+    headerSort: false,
+    formatter: cell => formatFunctions.Text(cell.getValue())
+  })),
+  tableOptions: {
+    layout: "fitDataStretch",
+    rowFormatter: row => {
+      const el = row.getElement();
+      el.style.height = "18px";
+      el.style.lineHeight = "1.2";
+      el.style.fontSize = "12px";
+      el.style.padding = "0";
+      el.style.margin = "0";
+    },
+    columnDefaults: {
+      headerSort: false,
+      resizable: false,
+      formatterParams: { style: "font-size: 12px;" },
+      title: ""
+    }
+  }
+},
+JustText2: {
+  columns: Array.from({ length: 2 }, (_, i) => ({
+    field: `Col${i + 1}`,
+    headerSort: false,
+    formatter: cell => formatFunctions.Text(cell.getValue())
+  })),
+  tableOptions: {
+    layout: "fitDataStretch",
+    rowFormatter: row => {
+      const el = row.getElement();
+      el.style.height = "18px";
+      el.style.lineHeight = "1.2";
+      el.style.fontSize = "12px";
+      el.style.padding = "0";
+      el.style.margin = "0";
+    },
+    columnDefaults: {
+      headerSort: false,
+      resizable: false,
+      formatterParams: { style: "font-size: 12px;" },
+      title: ""
+    }
+  }
 }
 
 
