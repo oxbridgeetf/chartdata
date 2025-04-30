@@ -136,6 +136,8 @@ function loadAssets(callback) {
 // Function to load data (either CSV or JSON) and initialize Tabulator table
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
+// --- Global loadData Function ---
+// Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
         .then(response => response.json())  // Get the JSON data
@@ -162,27 +164,24 @@ function loadData(url, containerName, columns) {
                 container.style.width = `${rect.width}px`;
                 container.style.height = `${rect.height}px`;
 
-                // Create a new Tabulator table
+                // Calculate row height dynamically based on the available container height and number of rows
+                const numberOfRows = cleanedData.length;
+                console.log("Number of Rows:", numberOfRows); // Debugging
+                let rowHeight = 0;
+                if (numberOfRows > 0) {
+                    const availableHeight = rect.height; // Container's available height
+                    rowHeight = 22;//Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
+                    console.log("Calculated Row Height:", rowHeight); // Debugging
+                }
+
+                // Initialize the Tabulator table
                 const table = new Tabulator(container, {
                     data: cleanedData,
                     layout: "fitColumns",
                     columns: columns,
+                    rowHeight: Math.max(20, rowHeight), // Ensure the row height is at least 20px
+                    height: rect.height, // Set the total height of the table
                 });
-
-                // Calculate row height dynamically based on the available container height and number of rows
-                const numberOfRows = cleanedData.length;
-                console.log("Number of Rows:", numberOfRows); // Debugging
-                if (numberOfRows > 0) {
-                    const availableHeight = rect.height; // Container's available height
-                    const rowHeight = 22; //Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
-                    console.log("Calculated Row Height:", rowHeight); // Debugging
-
-                    // Set the row height, ensure it's at least 20px
-                    table.setOptions({ 
-                        rowHeight: Math.max(20, rowHeight),
-                        height: availableHeight // Set the total height of the table
-                    });
-                }
 
                 container._tabulatorTable = table;
             }
