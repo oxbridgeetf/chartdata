@@ -185,20 +185,18 @@ function loadData(url, containerName, columns) {
     movableColumns: true,               // Allow users to move columns
     resizableRows: false,               // Disable row resizing for layout consistency
 
-    renderComplete: function () {
-        console.log("✅ Table has been built.");
-        console.log("Final Table Options:", this.options);
-        console.log("📏 Calculated Row Height:", rowHeight);
-        console.log("📄 Number of Rows Provided:", cleanedData.length);
-        console.log("👁️ Number of Displayed Rows:", this.rowManager.getDisplayRows().length);
-        console.log("📐 Actual Table Height in DOM:", this.element.offsetHeight);
-        console.log("🧱 Container Offset Height:", container.offsetHeight);
-        console.log("🧱 Container Scroll Height:", container.scrollHeight);
-        console.log("🧱 Container Client Height:", container.clientHeight);
-        console.log("🧾 Rendered Row Data:", this.rowManager.getDisplayRows().map(r => r.getData()));
-    }
+    
 });
-
+table.on("renderComplete", function () {
+    console.log("✅ Table rendering complete.");
+    console.log("Final Table Options:", this.options);
+    console.log("📏 Row Height Option:", this.options.rowHeight);
+    console.log("📄 Rows in Data:", cleanedData.length);
+    console.log("👁️ Rows Displayed:", this.rowManager.getDisplayRows().length);
+    console.log("📐 Table DOM Height:", this.element.offsetHeight);
+    console.log("🧱 Container offsetHeight:", container.offsetHeight);
+    console.log("🧾 Rendered Row Data:", this.rowManager.getDisplayRows().map(r => r.getData()));
+});
 
                 container._tabulatorTable = table;
             } else {
