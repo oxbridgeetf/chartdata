@@ -181,8 +181,8 @@ function loadData(url, containerName, columns) {
                 data: cleanedData,
                 layout: "fitColumns",
                 columns: columns,
-                rowHeight: 20,//rowHeight,
-                height: 180,//containerHeight,
+                rowHeight: "20px",//rowHeight,
+                height: "180px",//containerHeight,
             });
 
             container._tabulatorTable = table;
