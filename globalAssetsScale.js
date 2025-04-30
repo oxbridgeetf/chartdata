@@ -161,16 +161,21 @@ function loadData(url, containerName, columns) {
                 columns: columns,
             });
 
-            // Ensure the table container is 100% width/height
+            // Ensure the table container uses the actual size of rect1, rect2, etc.
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
             if (container) {
-                container.style.width = "100%";
-                container.style.height = "100%";
-                container._tabulatorTable = table;  // Save the Tabulator instance
+                // Dynamically set width and height based on container size (rect1, rect2, etc.)
+                const rect = container.getBoundingClientRect();
+                container.style.width = `${rect.width}px`;
+                container.style.height = `${rect.height}px`;
+                container._tabulatorTable = table;
             }
 
             // Add resize event listener to handle dynamic resizing
             window.addEventListener("resize", () => {
+                const rect = container.getBoundingClientRect();
+                container.style.width = `${rect.width}px`;
+                container.style.height = `${rect.height}px`;
                 if (table && typeof table.redraw === "function") {
                     table.redraw(true);
                 }
@@ -220,12 +225,16 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
             table._col2FormatArray = col2FormatArray;
         }
 
-        // Ensure the container is 100% width/height for responsive scaling
-        container.style.width = "100%";
-        container.style.height = "100%";
+        // Ensure the container uses the actual size of rect1, rect2, etc.
+        const rect = container.getBoundingClientRect();
+        container.style.width = `${rect.width}px`;
+        container.style.height = `${rect.height}px`;
 
         // Add resize event listener to handle dynamic resizing
         window.addEventListener("resize", () => {
+            const rect = container.getBoundingClientRect();
+            container.style.width = `${rect.width}px`;
+            container.style.height = `${rect.height}px`;
             if (table && typeof table.redraw === "function") {
                 table.redraw(true);
             }
