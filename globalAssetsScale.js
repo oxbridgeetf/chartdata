@@ -186,6 +186,8 @@ function loadData(url, containerName, columns) {
 
 // --- Global initFormattedTable Function ---
 // Function to initialize formatted tables
+// --- Global initFormattedTable Function ---
+// Function to initialize formatted tables
 function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -213,11 +215,6 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         columns: tableInfo.columns,
     };
 
-    // Ensure the container is properly sized
-    const rect = container.getBoundingClientRect();
-    container.style.width = `${rect.width}px`;
-    container.style.height = `${rect.height}px`;
-
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, tableInfo.columns);  
     } else {
@@ -229,16 +226,44 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
             table._col2FormatArray = col2FormatArray;
         }
 
-        // Add resize event listener to handle dynamic resizing
-        window.addEventListener("resize", () => {
+        // Ensure the container uses the actual size of rect1, rect2, etc.
+        const rect = container.getBoundingClientRect();
+        container.style.width = `${rect.width}px`;
+        container.style.height = `${rect.height}px`;
+
+        // Manually trigger a redraw of the table to ensure proper sizing
+        setTimeout(() => {
+            if (table && typeof table.redraw === "function") {
+                table.redraw(true);
+            }
+        }, 100); // Delay to ensure DOM has been updated
+
+        // Add resize event listener specifically for this table's container
+        const resizeHandler = () => {
             const rect = container.getBoundingClientRect();
             container.style.width = `${rect.width}px`;
             container.style.height = `${rect.height}px`;
             if (table && typeof table.redraw === "function") {
                 table.redraw(true);
             }
-        });
+        };
 
+        // Attach the resize listener to the specific container
+        window.addEventListener("resize", resizeHandler);
+
+        // Clean up the event listener when the table is destroyed
+        container._tabulatorResizeHandler = resizeHandler;
         container._tabulatorTable = table;
+    }
+}
+
+// To destroy and clean up the resize handler when the table is removed
+function destroyTable(containerName) {
+    const container = document.querySelector(`[data-acc-text='${containerName}']`);
+    if (container && container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container.removeEventListener("resize", container._tabulatorResizeHandler);
+        container._tabulatorResizeHandler = null;
+        container._tabulatorTable = null;
     }
 }
