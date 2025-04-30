@@ -73,9 +73,9 @@ window.tableDefinitions = {
     tableOptions: {
         layout: "fitDataStretch",
         rowFormatter: function(row) {
-            row.getElement().style.height = "25px";  // Adjust this to fit your rect height and row count
+            row.getElement().style.height = "18px";  // Adjust this to fit your rect height and row count
             row.getElement().style.lineHeight = "1";
-            row.getElement().style.fontSize = "12px";
+            row.getElement().style.fontSize = "14px";
             row.getElement().style.padding = "0";
             row.getElement().style.margin = "0";
         },
