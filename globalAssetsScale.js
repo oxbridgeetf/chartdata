@@ -175,14 +175,14 @@ function loadData(url, containerName, columns) {
             }
 
             console.log(`Calculated rowHeight: ${rowHeight}px for ${numberOfRows} rows`);
-
+            container.style.height = "180px";
             // Initialize Tabulator only once, with all final dimensions
             const table = new Tabulator(container, {
                 data: cleanedData,
                 layout: "fitColumns",
                 columns: columns,
-                rowHeight: rowHeight,
-                height: containerHeight,
+                rowHeight: 20,//rowHeight,
+                height: 180,//containerHeight,
             });
 
             container._tabulatorTable = table;
