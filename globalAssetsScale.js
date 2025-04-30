@@ -134,7 +134,7 @@ function loadAssets(callback) {
 // Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
-        .then(response => response.json())
+        .then(response => response.json())  // Get the JSON data
         .then(jsonData => {
             const fieldCount = Object.keys(jsonData[0] || {}).length;
             console.log("Number of fields in the first record:", fieldCount);
@@ -152,40 +152,39 @@ function loadData(url, containerName, columns) {
             console.log("Cleaned Data (trimmed):", cleanedData);
 
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
-            if (!container) {
-                console.error(`Container '${containerName}' not found.`);
-                return;
+            if (container) {
+                // Get the container's bounding box
+                const rect = container.getBoundingClientRect();
+                console.log(`Container Rect:`, rect);
+
+                // Check the height of the container
+                container.style.height = `${rect.height}px`; // Setting it to the actual height
+
+                // Calculate row height based on available height
+                const numberOfRows = cleanedData.length;
+                console.log("Number of Rows:", numberOfRows);
+
+                let rowHeight = 0;
+                if (numberOfRows > 0) {
+                    const availableHeight = rect.height;
+                    rowHeight = Math.floor(availableHeight / numberOfRows);
+                }
+
+                console.log(`Calculated rowHeight: ${rowHeight}px for ${numberOfRows} rows`);
+
+                // Initialize the Tabulator table
+                const table = new Tabulator(container, {
+                    data: cleanedData,
+                    layout: "fitColumns",
+                    columns: columns,
+                    rowHeight: Math.max(20, rowHeight), // Ensure minimum row height of 20px
+                    height: rect.height, // Set the total height of the table
+                });
+
+                container._tabulatorTable = table;
+            } else {
+                console.error("Container not found.");
             }
-
-            // Get accurate bounding box dimensions
-            const rect = container.getBoundingClientRect();
-            const containerHeight = rect.height;
-            const containerWidth = rect.width;
-
-            // Apply dimensions to the container element
-            container.style.width = `${containerWidth}px`;
-            container.style.height = `${containerHeight}px`;
-
-            // Calculate row height before rendering
-            const numberOfRows = cleanedData.length;
-            let rowHeight = 30; // Safe default
-            if (numberOfRows > 0) {
-                rowHeight = Math.floor(containerHeight / numberOfRows);
-                rowHeight = Math.max(20, Math.min(60, rowHeight)); // Clamp
-            }
-
-            console.log(`Calculated rowHeight: ${rowHeight}px for ${numberOfRows} rows`);
-            container.style.height = "180px";
-            // Initialize Tabulator only once, with all final dimensions
-            const table = new Tabulator(container, {
-                data: cleanedData,
-                layout: "fitColumns",
-                columns: columns,
-                rowHeight: "20px",//rowHeight,
-                height: "180px",//containerHeight,
-            });
-
-            container._tabulatorTable = table;
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
