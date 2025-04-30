@@ -153,14 +153,11 @@ function loadData(url, containerName, columns) {
 
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
             if (container) {
-                // Get the container's bounding box
                 const rect = container.getBoundingClientRect();
                 console.log(`Container Rect:`, rect);
 
-                // Check the height of the container
-                container.style.height = `${rect.height}px`; // Setting it to the actual height
+                container.style.height = `${rect.height}px`; // Ensuring container has the correct height
 
-                // Calculate row height based on available height
                 const numberOfRows = cleanedData.length;
                 console.log("Number of Rows:", numberOfRows);
 
@@ -172,13 +169,22 @@ function loadData(url, containerName, columns) {
 
                 console.log(`Calculated rowHeight: ${rowHeight}px for ${numberOfRows} rows`);
 
-                // Initialize the Tabulator table
+                // If rowHeight is too small (less than 20px), default to 20px
+                rowHeight = Math.max(20, rowHeight);
+                console.log(`Adjusted Row Height: ${rowHeight}px`);
+
+                // Initialize Tabulator table with updated height and row height
                 const table = new Tabulator(container, {
                     data: cleanedData,
                     layout: "fitColumns",
                     columns: columns,
-                    rowHeight: Math.max(20, rowHeight), // Ensure minimum row height of 20px
-                    height: rect.height, // Set the total height of the table
+                    rowHeight: rowHeight,  // Updated row height
+                    height: rect.height,  // Set the total height of the table to match the container height
+                    minHeight: rect.height, // Ensure it takes up at least the container height
+                    maxHeight: rect.height, // Prevent overflow if the data is larger
+                    resizableRows: true,  // Allow resizing of rows (in case the height is too small)
+                    pagination: false,  // Disable pagination to make sure all rows are shown at once
+                    movableColumns: true, // Allow columns to be moved for flexibility
                 });
 
                 container._tabulatorTable = table;
