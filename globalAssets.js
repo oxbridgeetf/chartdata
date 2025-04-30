@@ -2,6 +2,7 @@
 const formatFunctions = {
     Dollar2: value => "$" + value.toFixed(2),
     Dollar0: value => "$" + value.toFixed(0),
+    Dollar4: value => "$" + value.toFixed(4),
     Perc0: value => (value * 100).toFixed(0) + "%",
     Perc2: value => (value * 100).toFixed(2) + "%",
     Perc4: value => (value * 100).toFixed(4) + "%",
