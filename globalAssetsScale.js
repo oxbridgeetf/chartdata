@@ -170,7 +170,7 @@ function loadData(url, containerName, columns) {
                 let rowHeight = 0;
                 if (numberOfRows > 0) {
                     const availableHeight = rect.height; // Container's available height
-                    rowHeight = 22;//Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
+                    rowHeight = Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
                     console.log("Calculated Row Height:", rowHeight); // Debugging
                 }
 
