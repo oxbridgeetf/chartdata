@@ -51,22 +51,25 @@ window.tableDefinitions = {
         ]
     },
     "Cal": {
-        columns: [
-            { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
-        ],
-        tableOptions: {
-            layout: "fitDataStretch",
-            columnDefaults: {
-                headerSort: false,
-                resizable: false
-            }
+    columns: [
+        { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
+    ],
+    tableOptions: {
+        layout: "fitDataStretch",
+        height: "170px",         // Ensures room for all 7 rows
+        rowHeight: 24,           // Set the row height explicitly
+        columnDefaults: {
+            headerSort: false,
+            resizable: false
         }
-    }  // Make sure there's no trailing comma here
+    }
+}
+  // Make sure there's no trailing comma here
 };
 
