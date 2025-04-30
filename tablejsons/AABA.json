@@ -1,10 +1,10 @@
 [
   {
     "Col1": "Shares of AABA in Index",
-    "Col2": 0.0603
+    "Col2": "0.0603"
   },
   {
     "Col1": "Shares of AABA in $1B Portfolio",
-    "Col2": 597433
+    "Col2": "597,433"
   }
 ]
