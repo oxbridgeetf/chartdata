@@ -132,15 +132,9 @@ function loadAssets(callback) {
 
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
-// --- Global loadData Function ---
-// Function to load data (either CSV or JSON) and initialize Tabulator table
-// --- Global loadData Function ---
-// Function to load data (either CSV or JSON) and initialize Tabulator table
-// --- Global loadData Function ---
-// Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
-        .then(response => response.json())  // Get the JSON data
+        .then(response => response.json())
         .then(jsonData => {
             const fieldCount = Object.keys(jsonData[0] || {}).length;
             console.log("Number of fields in the first record:", fieldCount);
@@ -158,46 +152,60 @@ function loadData(url, containerName, columns) {
             console.log("Cleaned Data (trimmed):", cleanedData);
 
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
-            if (container) {
-                // Explicitly set container width and height based on actual container size
-                const rect = container.getBoundingClientRect();
-                container.style.width = `${rect.width}px`;
-                container.style.height = `${rect.height}px`;
-
-                // Calculate row height dynamically based on the available container height and number of rows
-                const numberOfRows = cleanedData.length;
-                console.log("Number of Rows:", numberOfRows); // Debugging
-                let rowHeight = 0;
-                if (numberOfRows > 0) {
-                    const availableHeight = rect.height; // Container's available height
-                    rowHeight = Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
-                    console.log("Calculated Row Height:", rowHeight); // Debugging
-                }
-
-                // Initialize the Tabulator table
-                const table = new Tabulator(container, {
-                    data: cleanedData,
-                    layout: "fitColumns",
-                    columns: columns,
-                    rowHeight: Math.max(20, rowHeight), // Ensure the row height is at least 20px
-                    height: rect.height, // Set the total height of the table
-                });
-                console.log("Calculated Row Height2:", rowHeight);
-                container._tabulatorTable = table;
+            if (!container) {
+                console.error(`Container '${containerName}' not found.`);
+                return;
             }
 
-            // Add resize event listener to handle dynamic resizing
-            window.addEventListener("resize", () => {
+            // Set container dimensions explicitly before rendering
+            const rect = container.getBoundingClientRect();
+            container.style.width = `${rect.width}px`;
+            container.style.height = `${rect.height}px`;
+
+            // Calculate rowHeight
+            const numberOfRows = cleanedData.length;
+            let rowHeight = 30; // Default
+            if (numberOfRows > 0) {
+                rowHeight = Math.floor(rect.height / numberOfRows);
+                rowHeight = Math.max(20, Math.min(60, rowHeight)); // Clamp for sanity
+            }
+            console.log("Calculated rowHeight:", rowHeight);
+
+            // Initialize Tabulator
+            const table = new Tabulator(container, {
+                data: cleanedData,
+                layout: "fitColumns",
+                columns: columns,
+                rowHeight: rowHeight,
+                height: rect.height,  // Total table height
+            });
+
+            container._tabulatorTable = table;
+
+            // Defer redraw slightly to avoid timing glitches
+            setTimeout(() => {
+                if (table && typeof table.redraw === "function") {
+                    table.redraw();
+                }
+            }, 200);
+
+            // Attach resize handler (only once per container)
+            const resizeHandler = () => {
                 const rect = container.getBoundingClientRect();
                 container.style.width = `${rect.width}px`;
                 container.style.height = `${rect.height}px`;
                 if (container._tabulatorTable && typeof container._tabulatorTable.redraw === "function") {
-                    container._tabulatorTable.redraw(true);
+                    container._tabulatorTable.redraw();
                 }
-            });
+            };
+
+            // Store and attach
+            container._tabulatorResizeHandler = resizeHandler;
+            window.addEventListener("resize", resizeHandler);
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
+
 
 
 // --- Global initFormattedTable Function ---
