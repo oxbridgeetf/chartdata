@@ -177,7 +177,7 @@ function loadData(url, containerName, columns) {
 
 
 // --- Global initFormattedTable Function ---
-function initFormattedTable(containerName, tableType, dataOrUrl) {
+function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -200,16 +200,22 @@ function initFormattedTable(containerName, tableType, dataOrUrl) {
     }
 
     const tableOptions = {
-        ...tableInfo.tableOptions,  // 🔥 FIRST bring in your full table options
-        columns: tableInfo.columns, // 🔥 THEN specify columns
+        ...tableInfo.tableOptions,
+        columns: tableInfo.columns,
     };
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, tableInfo.columns);  
     } else {
         tableOptions.data = dataOrUrl;
-        const table = new Tabulator(container, tableOptions);  
-        container._tabulatorTable = table;  // ✅ Save the table for later destruction
+        const table = new Tabulator(container, tableOptions);
+
+        // ✅ Inject the format array if specified and this is TwoColCustom
+        if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
+            table._col2FormatArray = col2FormatArray;
+        }
+
+        container._tabulatorTable = table;
     }
 }
 
