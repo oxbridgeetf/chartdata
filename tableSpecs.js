@@ -62,24 +62,30 @@ window.tableDefinitions = {
     },
     "Cal": {
     columns: [
-        { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true } },
-        { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  },
-        { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  },
-        { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  },
-        { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  },
-        { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  },
-        { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter, formatterParams: { allowHtml: true }  }
+        { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
+        { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
     ],
     tableOptions: {
         layout: "fitDataStretch",
-        height: "170px",         // Ensures room for all 7 rows
-        rowHeight: 20,           // Set the row height explicitly
+        rowFormatter: function(row) {
+            row.getElement().style.height = "25px";  // Adjust this to fit your rect height and row count
+            row.getElement().style.lineHeight = "1";
+            row.getElement().style.fontSize = "12px";
+            row.getElement().style.padding = "0";
+            row.getElement().style.margin = "0";
+        },
         columnDefaults: {
             headerSort: false,
             resizable: false
         }
     }
 }
+
   // Make sure there's no trailing comma here
 };
 
