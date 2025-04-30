@@ -1,10 +1,9 @@
 function calFormatter(cell) {
     const value = cell.getValue();
-    if (value === "") {
-        return "";
-    }
-    return `<span style="font-size:14px; line-height:1; padding:0; margin:0;">${Math.round(value)}</span>`;
+    if (value === "") return "";
+    return `<span style="font-size:12px; line-height:1; padding:0; margin:0; display:inline-block;">${Math.round(value)}</span>`;
 }
+
 
 
 window.tableDefinitions = {
