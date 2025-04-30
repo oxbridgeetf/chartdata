@@ -58,6 +58,36 @@ window.tableDefinitions = {
             { title: "Index Value", field: "IndexValue", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
+    TwoColCustom: {
+    tableOptions: {
+        layout: "fitColumns",
+        columnDefaults: {
+            headerSort: false,
+            formatterParams: { style: "font-size: 12px;" }
+        }
+    },
+    columns: [
+        {
+            title: "",
+            field: "Col1",
+            headerSort: false,
+            formatter: cell => formatFunctions.Text(cell.getValue())
+        },
+        {
+            title: "",
+            field: "Col2",
+            headerSort: false,
+            formatter: (cell) => {
+                const rowIndex = cell.getRow().getPosition(true);
+                const formatMap = cell.getTable()._col2FormatArray;
+                const formatType = formatMap?.[rowIndex] || "Text";
+                const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
+                return formatterFn(cell.getValue());
+            }
+        }
+    ]
+},
+
     IndexHeader: {
         tableOptions: {
             layout: "fitColumns", 
