@@ -34,10 +34,6 @@ const formatFunctions = {
     }
 };
 
-// --- Global Table Definitions ---
-// This will be dynamically loaded
-
-
 // --- Global Assets Loading ---
 (function() {
     function loadScript(src) {
@@ -186,8 +182,6 @@ function loadData(url, containerName, columns) {
 
 // --- Global initFormattedTable Function ---
 // Function to initialize formatted tables
-// --- Global initFormattedTable Function ---
-// Function to initialize formatted tables
 function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -231,6 +225,14 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         container.style.width = `${rect.width}px`;
         container.style.height = `${rect.height}px`;
 
+        // Calculate row height dynamically based on the available container height and number of rows
+        const numberOfRows = tableOptions.data.length;
+        if (numberOfRows > 0) {
+            const availableHeight = rect.height; // Container's available height
+            const rowHeight = availableHeight / numberOfRows; // Divide by the number of rows
+            table.setOptions({ rowHeight: Math.max(20, rowHeight) }); // Set the row height, ensure it's at least 20px
+        }
+
         // Manually trigger a redraw of the table to ensure proper sizing
         setTimeout(() => {
             if (table && typeof table.redraw === "function") {
@@ -252,18 +254,13 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         window.addEventListener("resize", resizeHandler);
 
         // Clean up the event listener when the table is destroyed
-        container._tabulatorResizeHandler = resizeHandler;
-        container._tabulatorTable = table;
+        container._resizeHandler = resizeHandler;
     }
 }
 
-// To destroy and clean up the resize handler when the table is removed
-function destroyTable(containerName) {
-    const container = document.querySelector(`[data-acc-text='${containerName}']`);
-    if (container && container._tabulatorTable) {
-        container._tabulatorTable.destroy();
-        container.removeEventListener("resize", container._tabulatorResizeHandler);
-        container._tabulatorResizeHandler = null;
-        container._tabulatorTable = null;
+// Additional cleanup when the window is unloaded
+window.addEventListener("unload", function() {
+    if (window._resizeHandler) {
+        window.removeEventListener("resize", window._resizeHandler);
     }
-}
+});
