@@ -172,6 +172,11 @@ function loadData(url, containerName, columns) {
                 // If rowHeight is too small (less than 20px), default to 20px
                 rowHeight = Math.max(20, rowHeight);
                 console.log(`Adjusted Row Height: ${rowHeight}px`);
+container.style.overflow = "visible";
+if (container.parentElement) {
+    container.parentElement.style.overflow = "visible";
+}
+container.style.border = "2px solid red";  // helps you *see* its real size
 
                 // Initialize Tabulator table with updated height and row height
                const table = new Tabulator(container, {
@@ -181,6 +186,8 @@ function loadData(url, containerName, columns) {
     rowHeight: rowHeight,               // Dynamically calculated row height
     height: rect.height,                // Match the container height exactly
     maxHeight: rect.height,             // Prevent overflow beyond the container
+    virtualDom: false,           // <== this disables lazy-rendering
+    renderVertical: "basic",      // <== forces full render
     pagination: false,                  // Disable pagination so all rows are visible
     movableColumns: true,               // Allow users to move columns
     resizableRows: false,               // Disable row resizing for layout consistency
