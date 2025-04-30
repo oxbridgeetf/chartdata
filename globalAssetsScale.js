@@ -132,6 +132,8 @@ function loadAssets(callback) {
 
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
+// --- Global loadData Function ---
+// Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
         .then(response => response.json())  // Get the JSON data
@@ -158,11 +160,24 @@ function loadData(url, containerName, columns) {
                 container.style.width = `${rect.width}px`;
                 container.style.height = `${rect.height}px`;
 
+                // Create a new Tabulator table
                 const table = new Tabulator(container, {
                     data: cleanedData,
                     layout: "fitColumns",
                     columns: columns,
                 });
+
+                // Calculate row height dynamically based on the available container height and number of rows
+                const numberOfRows = cleanedData.length;
+                console.log("Number of Rows:", numberOfRows); // Debugging
+                if (numberOfRows > 0) {
+                    const availableHeight = rect.height; // Container's available height
+                    const rowHeight = availableHeight / numberOfRows; // Divide by the number of rows
+                    console.log("Calculated Row Height:", rowHeight); // Debugging
+
+                    // Set the row height, ensure it's at least 20px
+                    table.setOptions({ rowHeight: Math.max(20, rowHeight) });
+                }
 
                 container._tabulatorTable = table;
             }
@@ -179,6 +194,7 @@ function loadData(url, containerName, columns) {
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
+
 
 // --- Global initFormattedTable Function ---
 // Function to initialize formatted tables
