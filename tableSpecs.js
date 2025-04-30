@@ -1,20 +1,18 @@
 function calFormatter(cell) {
     const value = cell.getValue();
-    if (value === "") return "";
+    if (value === "") return "";  // If no value, return empty string to avoid rendering
+
     return `<span style="
-  font-size:12px;
-  line-height:12px;
-  height:12px;
-  display:inline-block;
-  padding:0;
-  margin:0;
-  overflow:hidden;
-  vertical-align:middle;
-">${Math.round(value)}</span>`;
-
+        font-size:12px;
+        line-height:18px;  // Adjusted line-height to match row height
+        height:18px;  // Set fixed height
+        display:inline-block;
+        padding:0;
+        margin:0;
+        overflow:hidden;  // Prevent any overflow of content
+        vertical-align:middle;  // Align the content vertically
+    ">${Math.round(value)}</span>`;
 }
-
-
 
 window.tableDefinitions = {
     IOF: {
@@ -61,31 +59,30 @@ window.tableDefinitions = {
         ]
     },
     "Cal": {
-    columns: [
-        { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
-        { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
-    ],
-    tableOptions: {
-        layout: "fitDataStretch",
-        rowFormatter: function(row) {
-            row.getElement().style.height = "18px";  // Adjust this to fit your rect height and row count
-            row.getElement().style.lineHeight = "1";
-            row.getElement().style.fontSize = "14px";
-            row.getElement().style.padding = "0";
-            row.getElement().style.margin = "0";
-        },
-        columnDefaults: {
-            headerSort: false,
-            resizable: false
+        columns: [
+            { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
+            { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
+        ],
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: function(row) {
+                row.getElement().style.height = "18px";  // Adjust this to fit your rect height and row count
+                row.getElement().style.lineHeight = "1";
+                row.getElement().style.fontSize = "14px";
+                row.getElement().style.padding = "0";
+                row.getElement().style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false
+            }
         }
     }
-}
 
   // Make sure there's no trailing comma here
 };
-
