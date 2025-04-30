@@ -118,7 +118,7 @@ function loadAssets(callback) {
 
     // Load Tabulator CSS
     const tabulatorCSS = document.createElement('link');
-    tabulatorCSS.href = "https://dl.dropbox.com/scl/fi/p7d4q6ytsj3fa6v67x6dg/tabulator-smw.css?rlkey=zobvcfxxdh622appw44ralt2b&st=9kkzb2ve&dl=0";
+    tabulatorCSS.href = "https://dl.dropbox.com/scl/fi/uqsuqdgvq4mwkq7hk82jg/tabulator-smw-scale.css?rlkey=8og692zpth7g4v5rb3wftmzw6&st=9uakunqi&dl=0";
     tabulatorCSS.rel = "stylesheet";
     document.head.appendChild(tabulatorCSS);
 
