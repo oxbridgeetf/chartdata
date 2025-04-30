@@ -182,6 +182,7 @@ function loadData(url, containerName, columns) {
 
 // --- Global initFormattedTable Function ---
 // Function to initialize formatted tables
+// --- Global initFormattedTable Function ---
 function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -225,12 +226,18 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         container.style.width = `${rect.width}px`;
         container.style.height = `${rect.height}px`;
 
+        console.log("Container Size (width x height):", rect.width, rect.height); // Debugging
+
         // Calculate row height dynamically based on the available container height and number of rows
         const numberOfRows = tableOptions.data.length;
+        console.log("Number of Rows:", numberOfRows); // Debugging
         if (numberOfRows > 0) {
             const availableHeight = rect.height; // Container's available height
             const rowHeight = availableHeight / numberOfRows; // Divide by the number of rows
-            table.setOptions({ rowHeight: Math.max(20, rowHeight) }); // Set the row height, ensure it's at least 20px
+            console.log("Calculated Row Height:", rowHeight); // Debugging
+
+            // Set the row height, ensure it's at least 20px
+            table.setOptions({ rowHeight: Math.max(20, rowHeight) });
         }
 
         // Manually trigger a redraw of the table to ensure proper sizing
