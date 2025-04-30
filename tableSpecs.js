@@ -3,7 +3,7 @@ function calFormatter(cell) {
     if (value === "") {
         return "";
     }
-    return `<span style="font-size:12px; line-height:1; padding:0; margin:0;">${Math.round(value)}</span>`;
+    return `<span style="font-size:14px; line-height:1; padding:0; margin:0;">${Math.round(value)}</span>`;
 }
 
 
@@ -64,7 +64,7 @@ window.tableDefinitions = {
     tableOptions: {
         layout: "fitDataStretch",
         height: "170px",         // Ensures room for all 7 rows
-        rowHeight: 24,           // Set the row height explicitly
+        rowHeight: 20,           // Set the row height explicitly
         columnDefaults: {
             headerSort: false,
             resizable: false
