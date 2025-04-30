@@ -3,8 +3,9 @@ function calFormatter(cell) {
     if (value === "") {
         return "";
     }
-    return Math.round(value);
+    return `<span style="font-size:12px; line-height:1; padding:0; margin:0;">${Math.round(value)}</span>`;
 }
+
 
 window.tableDefinitions = {
     IOF: {
