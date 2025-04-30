@@ -59,7 +59,7 @@ window.tableDefinitions = {
             }}
         ]
     },
-    "Cal": {
+    Cal: {
         columns: [
             { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
             { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
@@ -85,7 +85,30 @@ window.tableDefinitions = {
                 resizable: false
             }
         }
+    },
+    MarketCap: {
+  columns: [
+    { title: "Ticker", field: "Ticker", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+    { title: "Market Cap", field: "MC", headerSort: false, hozAlign: "right", formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
+  ],
+  tableOptions: {
+    layout: "fitDataStretch",
+    rowFormatter: row => {
+      const el = row.getElement();
+      el.style.height = "18px";
+      el.style.lineHeight = "1";
+      el.style.fontSize = "12px";
+      el.style.padding = "0";
+      el.style.margin = "0";
+    },
+    columnDefaults: {
+      headerSort: false,
+      resizable: false,
+      formatterParams: { style: "font-size: 12px; padding: 0; margin: 0;" }
     }
+  }
+}
+
 
   // Make sure there's no trailing comma here
 };
