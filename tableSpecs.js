@@ -4,13 +4,14 @@ function calFormatter(cell) {
 
     return `<span style="
         font-size:12px;
-        line-height:18px;  // Adjusted line-height to match row height
-        height:18px;  // Set fixed height
+        line-height:18px;  // Adjusted to ensure vertical centering
+        height:18px;  // Ensures content fits within the row height
         display:inline-block;
         padding:0;
         margin:0;
-        overflow:hidden;  // Prevent any overflow of content
-        vertical-align:middle;  // Align the content vertically
+        overflow:hidden;  // Prevent content from overflowing the cell
+        vertical-align:middle;  // Vertically align the content in the middle of the row
+        text-align:center;  // Center the text horizontally
     ">${Math.round(value)}</span>`;
 }
 
@@ -71,11 +72,13 @@ window.tableDefinitions = {
         tableOptions: {
             layout: "fitDataStretch",
             rowFormatter: function(row) {
-                row.getElement().style.height = "18px";  // Adjust this to fit your rect height and row count
-                row.getElement().style.lineHeight = "1";
-                row.getElement().style.fontSize = "14px";
-                row.getElement().style.padding = "0";
-                row.getElement().style.margin = "0";
+                // Set a fixed row height and apply spacing
+                row.getElement().style.height = "18px";  // Row height
+                row.getElement().style.lineHeight = "18px";  // Ensure line-height matches row height
+                row.getElement().style.fontSize = "12px";  // Font size for clarity
+                row.getElement().style.padding = "0";  // Remove padding
+                row.getElement().style.margin = "0";  // Remove margin
+                row.getElement().style.textAlign = "center";  // Ensure text is centered horizontally
             },
             columnDefaults: {
                 headerSort: false,
