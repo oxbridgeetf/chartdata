@@ -134,6 +134,8 @@ function loadAssets(callback) {
 // Function to load data (either CSV or JSON) and initialize Tabulator table
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
+// --- Global loadData Function ---
+// Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
         .then(response => response.json())  // Get the JSON data
@@ -172,11 +174,14 @@ function loadData(url, containerName, columns) {
                 console.log("Number of Rows:", numberOfRows); // Debugging
                 if (numberOfRows > 0) {
                     const availableHeight = rect.height; // Container's available height
-                    const rowHeight = availableHeight / numberOfRows; // Divide by the number of rows
+                    const rowHeight = Math.floor(availableHeight / numberOfRows); // Ensure we use integer values
                     console.log("Calculated Row Height:", rowHeight); // Debugging
 
                     // Set the row height, ensure it's at least 20px
-                    table.setOptions({ rowHeight: Math.max(20, rowHeight) });
+                    table.setOptions({ 
+                        rowHeight: Math.max(20, rowHeight),
+                        height: availableHeight // Set the total height of the table
+                    });
                 }
 
                 container._tabulatorTable = table;
