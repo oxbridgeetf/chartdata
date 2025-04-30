@@ -174,18 +174,31 @@ function loadData(url, containerName, columns) {
                 console.log(`Adjusted Row Height: ${rowHeight}px`);
 
                 // Initialize Tabulator table with updated height and row height
-                const table = new Tabulator(container, {
-                    data: cleanedData,
-                    layout: "fitColumns",
-                    columns: columns,
-                    rowHeight: rowHeight,  // Updated row height
-                    height: rect.height,  // Set the total height of the table to match the container height
-                    minHeight: rect.height, // Ensure it takes up at least the container height
-                    maxHeight: rect.height, // Prevent overflow if the data is larger
-                    resizableRows: true,  // Allow resizing of rows (in case the height is too small)
-                    pagination: false,  // Disable pagination to make sure all rows are shown at once
-                    movableColumns: true, // Allow columns to be moved for flexibility
-                });
+               const table = new Tabulator(container, {
+    data: cleanedData,
+    layout: "fitColumns",
+    columns: columns,
+    rowHeight: rowHeight,               // Dynamically calculated row height
+    height: rect.height,                // Match the container height exactly
+    maxHeight: rect.height,             // Prevent overflow beyond the container
+    pagination: false,                  // Disable pagination so all rows are visible
+    movableColumns: true,               // Allow users to move columns
+    resizableRows: false,               // Disable row resizing for layout consistency
+
+    tableBuilt: function () {
+        console.log("✅ Table has been built.");
+        console.log("Final Table Options:", this.options);
+        console.log("📏 Calculated Row Height:", rowHeight);
+        console.log("📄 Number of Rows Provided:", cleanedData.length);
+        console.log("👁️ Number of Displayed Rows:", this.rowManager.getDisplayRows().length);
+        console.log("📐 Actual Table Height in DOM:", this.element.offsetHeight);
+        console.log("🧱 Container Offset Height:", container.offsetHeight);
+        console.log("🧱 Container Scroll Height:", container.scrollHeight);
+        console.log("🧱 Container Client Height:", container.clientHeight);
+        console.log("🧾 Rendered Row Data:", this.rowManager.getDisplayRows().map(r => r.getData()));
+    }
+});
+
 
                 container._tabulatorTable = table;
             } else {
