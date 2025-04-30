@@ -16,6 +16,29 @@ function calFormatter(cell) {
 }
 
 window.tableDefinitions = {
+    IOFInt: {
+        tableOptions: {
+            layout: "fitColumns", 
+            columnDefaults: {
+                headerSort: false,
+                formatterParams: {
+                    style: "font-size: 12px;"
+                }
+            }
+        },
+        columns: [
+            { title: "ID", field: "ID", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Ticker", field: "Ticker", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Country", field: "Country", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Local Price", field: "LocalPrice", headerSort: false, formatter: cell => formatFunctions.Dec2(cell.getValue()) },
+            { title: "Currency", field: "Currency", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "FX", field: "FX", headerSort: false, formatter: cell => formatFunctions.Dec2(cell.getValue()) },
+            { title: "Base Price", field: "BasePrice", headerSort: false, formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
+            { title: "Weight", field: "Weight", headerSort: false, formatter: cell => formatFunctions.Perc2(cell.getValue()) },
+            { title: "Index Shares", field: "IndexShares", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) },
+            { title: "Index Value", field: "IndexValue", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+        ]
+    },
     IOF: {
         tableOptions: {
             layout: "fitColumns", 
