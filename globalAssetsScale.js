@@ -182,7 +182,7 @@ function loadData(url, containerName, columns) {
                     rowHeight: Math.max(20, rowHeight), // Ensure the row height is at least 20px
                     height: rect.height, // Set the total height of the table
                 });
-
+                console.log("Calculated Row Height2:", rowHeight);
                 container._tabulatorTable = table;
             }
 
