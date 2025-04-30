@@ -1,7 +1,17 @@
 function calFormatter(cell) {
     const value = cell.getValue();
     if (value === "") return "";
-    return `<span style="font-size:12px; line-height:1; padding:0; margin:0; display:inline-block;">${Math.round(value)}</span>`;
+    return `<span style="
+  font-size:12px;
+  line-height:12px;
+  height:12px;
+  display:inline-block;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  vertical-align:middle;
+">${Math.round(value)}</span>`;
+
 }
 
 
