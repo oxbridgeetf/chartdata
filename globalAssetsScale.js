@@ -194,9 +194,7 @@ container.style.border = "2px solid red";  // helps you *see* its real size
 
     
 });
-container.querySelector(".tabulator").style.height = "100%";
-container.querySelector(".tabulator-tableholder").style.height = "100%";
-container.querySelector(".tabulator-table").style.height = "100%";
+
 table.on("renderComplete", function () {
     console.log("✅ Table rendering complete.");
     console.log("Final Table Options:", this.options);
