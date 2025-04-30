@@ -257,7 +257,13 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
             console.log("Calculated Row Height:", rowHeight); // Debugging
 
             // Set the row height, ensure it's at least 20px
-            table.setOptions({ rowHeight: Math.max(20, rowHeight) });
+            const table = new Tabulator(container, {
+                    data: cleanedData,
+                    layout: "fitColumns",
+                    columns: columns,
+                    rowHeight: Math.max(20, rowHeight), // Ensure the row height is at least 20px
+                    height: rect.height, // Set the total height of the table
+            });
         }
 
         // Manually trigger a redraw of the table to ensure proper sizing
