@@ -178,7 +178,7 @@ function loadData(url, containerName, columns) {
 
 
 // --- Global initFormattedTable Function ---
-function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null) {
+function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null, columnHeaders = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -186,13 +186,12 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         return;
     }
 
-    // 🛑 Destroy any existing Tabulator table first
     if (container._tabulatorTable) {
         container._tabulatorTable.destroy();
         container._tabulatorTable = null;
     }
 
-    container.innerHTML = "";  // Clear any existing content
+    container.innerHTML = "";
 
     const tableInfo = tableDefinitions[tableType];
     if (!tableInfo) {
@@ -200,18 +199,28 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         return;
     }
 
+    // Clone base columns so we don't mutate the original definition
+    let finalColumns = [...tableInfo.columns];
+
+    // ✳️ If MC2 and custom headers provided, replace titles
+    if (tableType === "MC2" && Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
+        finalColumns = finalColumns.map((col, idx) => ({
+            ...col,
+            title: columnHeaders[idx]
+        }));
+    }
+
     const tableOptions = {
         ...tableInfo.tableOptions,
-        columns: tableInfo.columns,
+        columns: finalColumns,
     };
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        loadData(dataOrUrl, containerName, tableInfo.columns);  
+        loadData(dataOrUrl, containerName, finalColumns);  
     } else {
         tableOptions.data = dataOrUrl;
         const table = new Tabulator(container, tableOptions);
 
-        // ✅ Inject the format array if specified and this is TwoColCustom
         if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
             table._col2FormatArray = col2FormatArray;
         }
@@ -219,7 +228,6 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         container._tabulatorTable = table;
     }
 }
-
 
 
 
