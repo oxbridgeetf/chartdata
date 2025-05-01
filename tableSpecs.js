@@ -74,7 +74,7 @@ window.tableDefinitions = {
             { title: "Unit Price", field: "Col3", headerSort: false, formatter: cell => formatFunctions.Dollar2(cell.getValue()) },
             { title: "Discount", field: "Col4", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
             { title: "Category", field: "Col5", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Total", field: "Col6", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+            { title: "Total", field: "Col6", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
         ]
 
     },
