@@ -142,39 +142,52 @@ function loadAssets(callback) {
 // Function to load data (either CSV or JSON) and initialize Tabulator table
 function loadData(url, containerName, columns) {
     fetch(url)
-        .then(response => response.json())  // Get the JSON data
+        .then(response => response.json())
         .then(jsonData => {
-            // Log the number of fields in the first record
             const fieldCount = Object.keys(jsonData[0] || {}).length;
             console.log("Number of fields in the first record:", fieldCount);
 
-            // Clean the data by trimming to only the number of fields found in the first record
             const cleanedData = jsonData.map(item => {
-                // Get the first `fieldCount` keys from the item
                 const trimmedItem = Object.keys(item)
-                    .slice(0, fieldCount)  // Get only the first `fieldCount` keys
+                    .slice(0, fieldCount)
                     .reduce((result, key) => {
-                        result[key] = item[key];  // Add each of those keys and values to the result
+                        result[key] = item[key];
                         return result;
                     }, {});
-
                 return trimmedItem;
             });
 
-            console.log("Cleaned Data (trimmed):", cleanedData);  // Log the cleaned data
+            console.log("Cleaned Data (trimmed):", cleanedData);
 
-            // Initialize the Tabulator table with the cleaned data
-            const table = new Tabulator(`[data-acc-text='${containerName}']`, {
-                data: cleanedData,  // Use the cleaned data
-                layout: "fitColumns",  // Fit the columns
-                columns: columns,  // Use the provided columns definition
-            });
-
-            // Save the Tabulator instance to the container
             const container = document.querySelector(`[data-acc-text='${containerName}']`);
-            if (container) {
-                container._tabulatorTable = table;  // Save the table instance
+            if (!container) {
+                console.error(`Container '${containerName}' not found.`);
+                return;
             }
+
+            // Retrieve the stored tableType
+            const tableType = container.dataset.tableType;
+
+            const tableInfo = tableDefinitions[tableType];
+            if (!tableInfo) {
+                console.error(`Table type '${tableType}' not defined.`);
+                return;
+            }
+
+            const tableOptions = {
+                ...tableInfo.tableOptions,
+                data: cleanedData,
+                columns: columns,
+            };
+
+            const table = new Tabulator(container, tableOptions);
+
+            // 💡 Add col2FormatArray support here for TwoColCustom
+            if (tableType === "TwoColCustom" && Array.isArray(container._col2FormatArray)) {
+                table._col2FormatArray = container._col2FormatArray;
+            }
+
+            container._tabulatorTable = table;
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
@@ -219,19 +232,23 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         columns: finalColumns,
     };
 
-    // ✅ Add col2FormatArray to tableOptions for TwoColCustom
-    if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
-        tableOptions._col2FormatArray = col2FormatArray;
-    }
+    // 🔹 Add this line to make tableType accessible in loadData
+    container.dataset.tableType = tableType;
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, finalColumns);  
     } else {
         tableOptions.data = dataOrUrl;
         const table = new Tabulator(container, tableOptions);
+
+        if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
+            table._col2FormatArray = col2FormatArray;
+        }
+
         container._tabulatorTable = table;
     }
 }
+
 
 
 
