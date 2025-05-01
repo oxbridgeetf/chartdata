@@ -92,7 +92,7 @@ window.tableDefinitions = {
     TwoColDec4: {
         columns: [
             { field: "Col1", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { field: "Col2", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+            { field: "Col2", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()), hozAlign: "right" }
         ],
         tableOptions: {
             layout: "fitDataStretch",
