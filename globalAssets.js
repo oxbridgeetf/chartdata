@@ -219,19 +219,20 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         columns: finalColumns,
     };
 
+    // ✅ Add col2FormatArray to tableOptions for TwoColCustom
+    if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
+        tableOptions._col2FormatArray = col2FormatArray;
+    }
+
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, finalColumns);  
     } else {
         tableOptions.data = dataOrUrl;
         const table = new Tabulator(container, tableOptions);
-
-        if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
-            table._col2FormatArray = col2FormatArray;
-        }
-
         container._tabulatorTable = table;
     }
 }
+
 
 
 
