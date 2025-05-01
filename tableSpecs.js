@@ -69,12 +69,12 @@ window.tableDefinitions = {
             }
         },
         columns: [
-            { title: "Quantity", field: "Quantity", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
-            { title: "Name", field: "Name", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Unit Price", field: "UnitPrice", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) },
-            { title: "Discount", field: "Discount", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
-            { title: "Category", field: "Category", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "Total", field: "Total", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
+            { title: "Quantity", field: "Col1", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
+            { title: "Name", field: "Col2", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Unit Price", field: "Col3", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) },
+            { title: "Discount", field: "Col4", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
+            { title: "Category", field: "Col5", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Total", field: "Col6", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
         ]
 
     },
