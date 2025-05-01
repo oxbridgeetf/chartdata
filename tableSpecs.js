@@ -1,17 +1,17 @@
-function calFormatter(cell) {
+const calFormatter = function(cell) {
     const value = cell.getValue();
     if (value === "") return "";  // If no value, return empty string to avoid rendering
 
     return `<span style="
-        font-size:12px;
-        line-height:18px;  // Adjusted to ensure vertical centering
-        height:18px;  // Ensures content fits within the row height
-        display:inline-block;
-        padding:0;
-        margin:0;
-        overflow:hidden;  // Prevent content from overflowing the cell
-        vertical-align:middle;  // Vertically align the content in the middle of the row
-        text-align:center;  // Center the text horizontally
+        font-size: 12px;
+        line-height: 18px;  // Adjusted to ensure vertical centering
+        height: 18px;  // Ensures content fits within the row height
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;  // Prevent content from overflowing the cell
+        vertical-align: middle;  // Vertically align the content in the middle of the row
+        text-align: center;  // Center the text horizontally
     ">${Math.round(value)}</span>`;
 }
 
@@ -20,10 +20,7 @@ window.tableDefinitions = {
         tableOptions: {
             layout: "fitColumns", 
             columnDefaults: {
-                headerSort: false,
-                formatterParams: {
-                    style: "font-size: 12px;"
-                }
+                headerSort: false
             }
         },
         columns: [
@@ -43,10 +40,7 @@ window.tableDefinitions = {
         tableOptions: {
             layout: "fitColumns", 
             columnDefaults: {
-                headerSort: false,
-                formatterParams: {
-                    style: "font-size: 12px;"
-                }
+                headerSort: false
             }
         },
         columns: [
@@ -62,10 +56,7 @@ window.tableDefinitions = {
         tableOptions: {
             layout: "fitColumns", 
             columnDefaults: {
-                headerSort: false,
-                formatterParams: {
-                    style: "font-size: 12px;"
-                }
+                headerSort: false
             }
         },
         columns: [
@@ -76,91 +67,71 @@ window.tableDefinitions = {
             { title: "Category", field: "Col5", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
             { title: "Total", field: "Col6", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
         ]
-
     },
     TwoColCustom: {
-    tableOptions: {
-        layout: "fitColumns",
-        columnDefaults: {
-            headerSort: false,
-            formatterParams: { style: "font-size: 12px;" }
-        }
-    },
-    columns: [
-        {
-            title: "",
-            field: "Col1",
-            headerSort: false,
-            formatter: cell => formatFunctions.Text(cell.getValue())
-        },
-        {
-            title: "",
-            field: "Col2",
-            headerSort: false,
-            formatter: (cell) => {
-                const rowIndex = cell.getRow().getPosition(true);
-                const formatMap = cell.getTable()._col2FormatArray;
-                const formatType = formatMap?.[rowIndex] || "Text";
-                const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
-                return formatterFn(cell.getValue());
-            }
-        }
-    ]
-},
-
-    TwoColDec4: {
-  columns: [
-    {
-      field: "Col1",
-      headerSort: false,
-      formatter: cell => formatFunctions.Text(cell.getValue()) // First column is just text
-    },
-    {
-      field: "Col2",
-      headerSort: false,
-      formatter: cell => formatFunctions.Dec4(cell.getValue()) // Second column is Dec4
-    }
-  ],
-  tableOptions: {
-    layout: "fitDataStretch",
-    rowFormatter: row => {
-      const el = row.getElement();
-      el.style.height = "18px";
-      el.style.lineHeight = "1.2";
-      el.style.fontSize = "12px";
-      el.style.padding = "0";
-      el.style.margin = "0";
-    },
-    columnDefaults: {
-      headerSort: false,
-      resizable: false,
-      formatterParams: { style: "font-size: 12px;" },
-      title: ""
-    }
-  }
-},
-IndexHeader: {
         tableOptions: {
-            layout: "fitColumns", 
+            layout: "fitColumns",
             columnDefaults: {
-                headerSort: false,
-                formatterParams: {
-                    style: "font-size: 12px;"
-                }
+                headerSort: false
             }
         },
         columns: [
             { title: "", field: "Col1", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-            { title: "", field: "Col2", headerSort: false, formatter: (cell, rowIndex) => {
-                if (rowIndex === 0) {
-                    return formatFunctions.Text(cell.getValue());
-                } else if (rowIndex === 1) {
-                    return formatFunctions.SpecialDate(cell.getValue());
-                } else if (rowIndex === 2) {
-                    return formatFunctions.Dec4(cell.getValue());
+            { 
+                title: "", field: "Col2", headerSort: false, 
+                formatter: (cell) => {
+                    const rowIndex = cell.getRow().getPosition(true);
+                    const formatMap = cell.getTable()._col2FormatArray;
+                    const formatType = formatMap?.[rowIndex] || "Text";
+                    const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
+                    return formatterFn(cell.getValue());
                 }
-                return cell.getValue();
-            }}
+            }
+        ]
+    },
+    TwoColDec4: {
+        columns: [
+            { field: "Col1", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { field: "Col2", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
+        ],
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: function(row) {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1.2";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false
+            }
+        }
+    },
+    IndexHeader: {
+        tableOptions: {
+            layout: "fitColumns", 
+            columnDefaults: {
+                headerSort: false
+            }
+        },
+        columns: [
+            { title: "", field: "Col1", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { 
+                title: "", field: "Col2", headerSort: false, 
+                formatter: (cell, rowIndex) => {
+                    if (rowIndex === 0) {
+                        return formatFunctions.Text(cell.getValue());
+                    } else if (rowIndex === 1) {
+                        return formatFunctions.SpecialDate(cell.getValue());
+                    } else if (rowIndex === 2) {
+                        return formatFunctions.Dec4(cell.getValue());
+                    }
+                    return cell.getValue();
+                }
+            }
         ]
     },
     Cal: {
@@ -176,13 +147,12 @@ IndexHeader: {
         tableOptions: {
             layout: "fitDataStretch",
             rowFormatter: function(row) {
-                // Set a fixed row height and apply spacing
-                row.getElement().style.height = "18px";  // Row height
-                row.getElement().style.lineHeight = "18px";  // Ensure line-height matches row height
-                row.getElement().style.fontSize = "12px";  // Font size for clarity
-                row.getElement().style.padding = "0";  // Remove padding
-                row.getElement().style.margin = "0";  // Remove margin
-                row.getElement().style.textAlign = "center";  // Ensure text is centered horizontally
+                row.getElement().style.height = "18px";
+                row.getElement().style.lineHeight = "18px";
+                row.getElement().style.fontSize = "12px";
+                row.getElement().style.padding = "0";
+                row.getElement().style.margin = "0";
+                row.getElement().style.textAlign = "center";
             },
             columnDefaults: {
                 headerSort: false,
@@ -191,76 +161,68 @@ IndexHeader: {
         }
     },
     MarketCap: {
-  columns: [
-    { title: "Ticker", field: "Ticker", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
-    { title: "Market Cap", field: "MC", headerSort: false, hozAlign: "right", formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
-  ],
-  tableOptions: {
-    layout: "fitDataStretch",
-    rowFormatter: row => {
-      const el = row.getElement();
-      el.style.height = "18px";
-      el.style.lineHeight = "1";
-      el.style.fontSize = "12px";
-      el.style.padding = "0";
-      el.style.margin = "0";
+        columns: [
+            { title: "Ticker", field: "Ticker", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Market Cap", field: "MC", headerSort: false, hozAlign: "right", formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
+        ],
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: row => {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false
+            }
+        }
     },
-    columnDefaults: {
-      headerSort: false,
-      resizable: false,
-      formatterParams: { style: "font-size: 12px; padding: 0; margin: 0;" }
-    }
-  }
-},
-JustText5: {
-  columns: Array.from({ length: 5 }, (_, i) => ({
-    field: `Col${i + 1}`,
-    headerSort: false,
-    formatter: cell => formatFunctions.Text(cell.getValue())
-  })),
-  tableOptions: {
-    layout: "fitDataStretch",
-    rowFormatter: row => {
-      const el = row.getElement();
-      el.style.height = "18px";
-      el.style.lineHeight = "1.2";
-      el.style.fontSize = "12px";
-      el.style.padding = "0";
-      el.style.margin = "0";
+    JustText5: {
+        columns: Array.from({ length: 5 }, (_, i) => ({
+            field: `Col${i + 1}`,
+            headerSort: false,
+            formatter: cell => formatFunctions.Text(cell.getValue())
+        })),
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: row => {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1.2";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false
+            }
+        }
     },
-    columnDefaults: {
-      headerSort: false,
-      resizable: false,
-      formatterParams: { style: "font-size: 12px;" },
-      title: ""
+    JustText2: {
+        columns: Array.from({ length: 2 }, (_, i) => ({
+            field: `Col${i + 1}`,
+            headerSort: false,
+            formatter: cell => formatFunctions.Text(cell.getValue())
+        })),
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: row => {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1.2";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false
+            }
+        }
     }
-  }
-},
-JustText2: {
-  columns: Array.from({ length: 2 }, (_, i) => ({
-    field: `Col${i + 1}`,
-    headerSort: false,
-    formatter: cell => formatFunctions.Text(cell.getValue())
-  })),
-  tableOptions: {
-    layout: "fitDataStretch",
-    rowFormatter: row => {
-      const el = row.getElement();
-      el.style.height = "18px";
-      el.style.lineHeight = "1.2";
-      el.style.fontSize = "12px";
-      el.style.padding = "0";
-      el.style.margin = "0";
-    },
-    columnDefaults: {
-      headerSort: false,
-      resizable: false,
-      formatterParams: { style: "font-size: 12px;" },
-      title: ""
-    }
-  }
-}
-
-
-  // Make sure there's no trailing comma here
 };
