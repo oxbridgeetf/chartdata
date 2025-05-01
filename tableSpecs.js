@@ -58,6 +58,26 @@ window.tableDefinitions = {
             { title: "Index Value", field: "IndexValue", headerSort: false, formatter: cell => formatFunctions.Dec4(cell.getValue()) }
         ]
     },
+    MC2: {
+        tableOptions: {
+            layout: "fitColumns", 
+            columnDefaults: {
+                headerSort: false,
+                formatterParams: {
+                    style: "font-size: 12px;"
+                }
+            }
+        },
+        columns: [
+            { title: "Quantity", field: "Quantity", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
+            { title: "Name", field: "Name", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Unit Price", field: "UnitPrice", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) },
+            { title: "Discount", field: "Discount", headerSort: false, formatter: cell => formatFunctions.Dec0(cell.getValue()) },
+            { title: "Category", field: "Category", headerSort: false, formatter: cell => formatFunctions.Text(cell.getValue()) },
+            { title: "Total", field: "Total", headerSort: false, formatter: cell => formatFunctions.Dollar0(cell.getValue()) }
+        ]
+
+    },
     TwoColCustom: {
     tableOptions: {
         layout: "fitColumns",
