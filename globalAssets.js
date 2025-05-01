@@ -1,7 +1,11 @@
 // --- Global Formatting Functions ---
 const formatFunctions = {
 Dollar2: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-Dollar0: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
+Dollar0: value => {
+    const formatted = "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    console.log(`Dollar0 formatted: input=${value}, output=${formatted}`);
+    return formatted;
+},
 Dollar4: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 4, maximumFractionDigits: 4 }),
     Perc0: value => (value * 100).toFixed(0) + "%",
     Perc2: value => (value * 100).toFixed(2) + "%",
