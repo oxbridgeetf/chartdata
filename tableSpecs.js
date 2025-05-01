@@ -108,7 +108,38 @@ window.tableDefinitions = {
     ]
 },
 
-    IndexHeader: {
+    TwoColDec4: {
+  columns: [
+    {
+      field: "Col1",
+      headerSort: false,
+      formatter: cell => formatFunctions.Text(cell.getValue()) // First column is just text
+    },
+    {
+      field: "Col2",
+      headerSort: false,
+      formatter: cell => formatFunctions.Dec4(cell.getValue()) // Second column is Dec4
+    }
+  ],
+  tableOptions: {
+    layout: "fitDataStretch",
+    rowFormatter: row => {
+      const el = row.getElement();
+      el.style.height = "18px";
+      el.style.lineHeight = "1.2";
+      el.style.fontSize = "12px";
+      el.style.padding = "0";
+      el.style.margin = "0";
+    },
+    columnDefaults: {
+      headerSort: false,
+      resizable: false,
+      formatterParams: { style: "font-size: 12px;" },
+      title: ""
+    }
+  }
+},
+IndexHeader: {
         tableOptions: {
             layout: "fitColumns", 
             columnDefaults: {
