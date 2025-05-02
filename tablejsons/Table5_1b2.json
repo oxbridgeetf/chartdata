@@ -1,0 +1,72 @@
+[
+    {
+        "Ticker": "AHBP",
+        "Shares": 7617.0,
+        "LocalPrice": "$75.26",
+        "MarketValue": 573262.53,
+        "PortfolioWeight": "5.65%"
+    },
+    {
+        "Ticker": "AHGG",
+        "Shares": 8520.0,
+        "LocalPrice": "$58.40",
+        "MarketValue": 497606.99,
+        "PortfolioWeight": "4.90%"
+    },
+    {
+        "Ticker": "AHJQ",
+        "Shares": 7296.0,
+        "LocalPrice": "$66.27",
+        "MarketValue": 483538.19,
+        "PortfolioWeight": "4.76%"
+    },
+    {
+        "Ticker": "AIAD",
+        "Shares": 16757.0,
+        "LocalPrice": "$31.56",
+        "MarketValue": 528780.71,
+        "PortfolioWeight": "5.21%"
+    },
+    {
+        "Ticker": "AKMW",
+        "Shares": 8593.0,
+        "LocalPrice": "$55.83",
+        "MarketValue": 479779.78,
+        "PortfolioWeight": "4.73%"
+    },
+    {
+        "Ticker": "AKRY",
+        "Shares": 5264.0,
+        "LocalPrice": "$83.73",
+        "MarketValue": 440729.18,
+        "PortfolioWeight": "4.34%"
+    },
+    {
+        "Ticker": "AKXI",
+        "Shares": 26598.0,
+        "LocalPrice": "$17.23",
+        "MarketValue": 458225.89,
+        "PortfolioWeight": "4.51%"
+    },
+    {
+        "Ticker": "AKZO",
+        "Shares": 7317.0,
+        "LocalPrice": "$75.79",
+        "MarketValue": 554530.48,
+        "PortfolioWeight": "5.46%"
+    },
+    {
+        "Ticker": "ALTO",
+        "Shares": 6130.0,
+        "LocalPrice": "$84.74",
+        "MarketValue": 519446.99,
+        "PortfolioWeight": "5.12%"
+    },
+    {
+        "Ticker": "AMGP",
+        "Shares": 38083.0,
+        "LocalPrice": "$16.13",
+        "MarketValue": 614160.56,
+        "PortfolioWeight": "6.05%"
+    }
+]
