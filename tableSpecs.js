@@ -189,7 +189,7 @@ window.tableDefinitions = {
             formatter: cell => formatFunctions.Text(cell.getValue())
         })),
         tableOptions: {
-            layout: "fitDataStretch",
+            layout: "fitColumns",
             rowFormatter: row => {
                 const el = row.getElement();
                 el.style.height = "18px";
