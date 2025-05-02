@@ -75,12 +75,5 @@
         "LocalPrice": "$16.16",
         "MarketValue": 423014.5,
         "PortfolioWeight": "4.17%"
-    },
-    {
-        "Ticker": "AGFZ",
-        "Shares": 9485.0,
-        "LocalPrice": "$53.52",
-        "MarketValue": 507651.02,
-        "PortfolioWeight": "5.00%"
     }
 ]
