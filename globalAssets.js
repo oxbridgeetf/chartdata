@@ -219,19 +219,23 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     // Clone base columns so we don't mutate the original definition
     let finalColumns = [...tableInfo.columns];
 
-    // ✳️ If MC2 and custom headers provided, replace titles
-    if ((tableType === "MC2" || tableType.startsWith("JustText")) && Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
-    finalColumns = finalColumns.map((col, idx) => ({
-        ...col,
-        title: columnHeaders[idx]
-    }));
+// ✳️ If MC2 and custom headers provided, replace titles
+if (
+  (tableType === "MC2" || tableType.startsWith("JustText")) &&
+  Array.isArray(columnHeaders) &&
+  columnHeaders.length === finalColumns.length
+) {
+  finalColumns = finalColumns.map((col, idx) => ({
+    ...col,
+    title: columnHeaders[idx],
+  }));
 }
 
+const tableOptions = {
+  ...tableInfo.tableOptions,
+  columns: finalColumns,
+};
 
-    const tableOptions = {
-        ...tableInfo.tableOptions,
-        columns: finalColumns,
-    };
 
     // 🔹 Add this line to make tableType accessible in loadData
     container.dataset.tableType = tableType;
