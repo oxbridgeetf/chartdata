@@ -1,79 +1,79 @@
 [
     {
-        "Ticker": "CASH",
-        "Shares": "(-2249.52)",
-        "LocalPrice": "$1.00",
-        "MarketValue": "(-2249.52)",
-        "PortfolioWeight": "-0.02%"
+        "Col1": "CASH",
+        "Col2": "(-2249.52)",
+        "Col3": "$1.00",
+        "Col4": "(-2249.52)",
+        "Col5": "-0.02%"
     },
     {
-        "Ticker": "Accrued",
-        "Shares": 16868.9,
-        "LocalPrice": "$1.00",
-        "MarketValue": 16868.9,
-        "PortfolioWeight": "0.17%"
+        "Col1": "Accrued",
+        "Col2": 16868.9,
+        "Col3": "$1.00",
+        "Col4": 16868.9,
+        "Col5": "0.17%"
     },
     {
-        "Ticker": "AABA",
-        "Shares": 6049.0,
-        "LocalPrice": "$80.81",
-        "MarketValue": 488844.28,
-        "PortfolioWeight": "4.81%"
+        "Col1": "AABA",
+        "Col2": 6049.0,
+        "Col3": "$80.81",
+        "Col4": 488844.28,
+        "Col5": "4.81%"
     },
     {
-        "Ticker": "AAQZ",
-        "Shares": 6982.0,
-        "LocalPrice": "$73.91",
-        "MarketValue": 516057.92,
-        "PortfolioWeight": "5.08%"
+        "Col1": "AAQZ",
+        "Col2": 6982.0,
+        "Col3": "$73.91",
+        "Col4": 516057.92,
+        "Col5": "5.08%"
     },
     {
-        "Ticker": "AAWL",
-        "Shares": 8201.0,
-        "LocalPrice": "$60.21",
-        "MarketValue": 493781.63,
-        "PortfolioWeight": "4.86%"
+        "Col1": "AAWL",
+        "Col2": 8201.0,
+        "Col3": "$60.21",
+        "Col4": 493781.63,
+        "Col5": "4.86%"
     },
     {
-        "Ticker": "ACBU",
-        "Shares": 7929.0,
-        "LocalPrice": "$64.58",
-        "MarketValue": 512050.67,
-        "PortfolioWeight": "5.04%"
+        "Col1": "ACBU",
+        "Col2": 7929.0,
+        "Col3": "$64.58",
+        "Col4": 512050.67,
+        "Col5": "5.04%"
     },
     {
-        "Ticker": "ACGN",
-        "Shares": 13160.0,
-        "LocalPrice": "$43.97",
-        "MarketValue": 578618.18,
-        "PortfolioWeight": "5.70%"
+        "Col1": "ACGN",
+        "Col2": 13160.0,
+        "Col3": "$43.97",
+        "Col4": 578618.18,
+        "Col5": "5.70%"
     },
     {
-        "Ticker": "ACOP",
-        "Shares": 5470.0,
-        "LocalPrice": "$90.92",
-        "MarketValue": 497332.76,
-        "PortfolioWeight": "4.90%"
+        "Col1": "ACOP",
+        "Col2": 5470.0,
+        "Col3": "$90.92",
+        "Col4": 497332.76,
+        "Col5": "4.90%"
     },
     {
-        "Ticker": "ADXK",
-        "Shares": 17455.0,
-        "LocalPrice": "$28.77",
-        "MarketValue": 502203.51,
-        "PortfolioWeight": "4.95%"
+        "Col1": "ADXK",
+        "Col2": 17455.0,
+        "Col3": "$28.77",
+        "Col4": 502203.51,
+        "Col5": "4.95%"
     },
     {
-        "Ticker": "ADZI",
-        "Shares": 15515.0,
-        "LocalPrice": "$30.24",
-        "MarketValue": 469111.78,
-        "PortfolioWeight": "4.62%"
+        "Col1": "ADZI",
+        "Col2": 15515.0,
+        "Col3": "$30.24",
+        "Col4": 469111.78,
+        "Col5": "4.62%"
     },
     {
-        "Ticker": "AFOJ",
-        "Shares": 26182.0,
-        "LocalPrice": "$16.16",
-        "MarketValue": 423014.5,
-        "PortfolioWeight": "4.17%"
+        "Col1": "AFOJ",
+        "Col2": 26182.0,
+        "Col3": "$16.16",
+        "Col4": 423014.5,
+        "Col5": "4.17%"
     }
 ]
