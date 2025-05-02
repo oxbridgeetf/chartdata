@@ -1,0 +1,10 @@
+[
+  { "Col1": "NAV", "Col2": 25.36 },
+  { "Col1": "Shares in CU", "Col2": 50000 },
+  { "Col1": "NAV per CU", "Col2": 1267955.80 },
+  { "Col1": "MV Close", "Col2": 1265076.66 },
+  { "Col1": "Actual Cash", "Col2": 2879.13 },
+  { "Col1": "Diff in CU", "Col2": 1212.57 },
+  { "Col1": "Diff in MV", "Col2": 1158.18 },
+  { "Col1": "Diff in Cash", "Col2": 54.39 }
+]
