@@ -183,6 +183,7 @@ window.tableDefinitions = {
     },
     JustText5: {
         columns: Array.from({ length: 5 }, (_, i) => ({
+            title: "",
             field: `Col${i + 1}`,
             headerSort: false,
             formatter: cell => formatFunctions.Text(cell.getValue())
@@ -205,6 +206,7 @@ window.tableDefinitions = {
     },
     JustText2: {
         columns: Array.from({ length: 2 }, (_, i) => ({
+            title: "",
             field: `Col${i + 1}`,
             headerSort: false,
             formatter: cell => formatFunctions.Text(cell.getValue())
