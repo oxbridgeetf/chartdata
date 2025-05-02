@@ -110,6 +110,94 @@ window.tableDefinitions = {
             }
         }
     },
+    PCFa: {
+        columns: [
+            { title: "ID", field: "ID", headerSort: false },
+            { title: "Ticker", field: "Ticker", headerSort: false },
+            { title: "Shares", field: "Shares", headerSort: false, formatter: "money", formatterParams: { symbol: "", thousand: ",", precision: 0 } },
+            { title: "Base Price", field: "BasePrice", headerSort: false },
+            { title: "Base MV", field: "BaseMV", headerSort: false, formatter: "money", formatterParams: { symbol: "$", thousand: ",", precision: 2 } },
+            { title: "Weight", field: "Weight", headerSort: false },
+            { title: "CIL", field: "CIL", headerSort: false }
+        ],
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: row => {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1.2";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false,
+            },
+        },
+    },
+
+    PCFb: {
+        columns: [
+            { title: "", field: "Col1", headerSort: false },
+            { 
+                title: "", 
+                field: "Col2", 
+                headerSort: false,
+                formatter: function(cell, formatterParams, onRendered) {
+                    var col1Value = cell.getRow().getData().Col1;  // Get the value of Col1 for the current row
+                    var col2Value = cell.getValue();
+                    
+                    // Format Col2 based on the value of Col1
+                    if (col1Value === "Shares O/S") {
+                        return Number(col2Value).toLocaleString();
+                    } else if (col1Value === "Creation Unit") {
+                        return Number(col2Value).toLocaleString();
+                    } else if (col1Value === "NAV") {
+                        return "$" + Number(col2Value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    } else if (col1Value === "NAV Per CU") {
+                        return "$" + Number(col2Value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    } else if (col1Value === "Total Net Assets") {
+                        return "$" + Number(col2Value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    } else {
+                        return col2Value;  // Default format if no match
+                    }
+                } 
+            },
+            { title: "", field: "Col3", headerSort: false },
+            { 
+                title: "", 
+                field: "Col4", 
+                headerSort: false,
+                formatter: function(cell, formatterParams, onRendered) {
+                    var col3Value = cell.getRow().getData().Col3;  // Get the value of Col1 for the current row
+                    var col4Value = cell.getValue();
+                    
+                    // Format Col2 based on the value of Col1
+                    if (col3Value === "Basket Shares") {
+                        return Number(col4Value).toLocaleString();
+                    } else {
+                        return "$" + Number(col4Value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    }
+                }
+            }
+        ],
+        tableOptions: {
+            layout: "fitDataStretch",
+            rowFormatter: row => {
+                const el = row.getElement();
+                el.style.height = "18px";
+                el.style.lineHeight = "1.2";
+                el.style.fontSize = "12px";
+                el.style.padding = "0";
+                el.style.margin = "0";
+            },
+            columnDefaults: {
+                headerSort: false,
+                resizable: false,
+            },
+        },
+    },
     IndexHeader: {
         tableOptions: {
             layout: "fitColumns", 
