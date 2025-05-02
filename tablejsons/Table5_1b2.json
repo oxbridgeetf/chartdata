@@ -1,5 +1,12 @@
 [
     {
+        "Ticker": "AGFZ",
+        "Shares": 9485.0,
+        "LocalPrice": "$53.52",
+        "MarketValue": 507651.02,
+        "PortfolioWeight": "5.00%"
+    },
+    {
         "Ticker": "AHBP",
         "Shares": 7617.0,
         "LocalPrice": "$75.26",
