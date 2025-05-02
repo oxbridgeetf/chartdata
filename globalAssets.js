@@ -220,12 +220,13 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     let finalColumns = [...tableInfo.columns];
 
     // ✳️ If MC2 and custom headers provided, replace titles
-    if (tableType === "MC2" || tableType.startsWith("JustText")) && Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
-        finalColumns = finalColumns.map((col, idx) => ({
-            ...col,
-            title: columnHeaders[idx]
-        }));
-    }
+    if ((tableType === "MC2" || tableType.startsWith("JustText")) && Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
+    finalColumns = finalColumns.map((col, idx) => ({
+        ...col,
+        title: columnHeaders[idx]
+    }));
+}
+
 
     const tableOptions = {
         ...tableInfo.tableOptions,
