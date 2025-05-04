@@ -1,7 +1,7 @@
 // --- Import Colors, Formats, and Shared Utilities ---
 import { formatFunctions, colorPalette } from './colorsAndFormats.js';
 import { loadAssets, destroyChartsAndTables } from './sharedUtils.js';
-
+window.loadAssets = loadAssets;
 loadAssets([
     { type: "font", src: "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" },
     { type: "stylesheet", src: "https://dl.dropbox.com/scl/fi/p7d4q6ytsj3fa6v67x6dg/tabulator-smw.css?rlkey=zobvcfxxdh622appw44ralt2b&st=9kkzb2ve&dl=0" },
