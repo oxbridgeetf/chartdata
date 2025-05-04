@@ -4,25 +4,71 @@ import { formatFunctions, colorPalette } from './colorsAndFormats.js';
 // --- Global Table Definitions ---
 // This will be dynamically loaded
 
-// --- Global Assets Loading ---
-(function() {
-    function loadScript(src) {
-        return new Promise(function(resolve, reject) {
-            const script = document.createElement('script');
-            script.src = src;
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-    }
+// --- Global Assets Loading Function ---
+function loadAssets(assets, callback) {
+    const promises = assets.map(asset => {
+        return new Promise((resolve, reject) => {
+            let element;
 
-    // Load table specifications (including IOF, IndexHeader, etc.)
-    loadScript("https://oxbridgeetf.github.io/chartdata/tableSpecs.js").then(() => {
-        console.log("tableSpecs.js loaded successfully.");
-    }).catch(err => {
-        console.error("Failed to load tableSpecs.js:", err);
+            if (asset.type === "script") {
+                // Create a script element
+                element = document.createElement('script');
+                element.src = asset.src;
+                element.async = asset.async || true;
+            } else if (asset.type === "stylesheet") {
+                // Create a link element for CSS
+                element = document.createElement('link');
+                element.href = asset.src;
+                element.rel = "stylesheet";
+            } else if (asset.type === "font") {
+                // Create a link element for fonts
+                element = document.createElement('link');
+                element.href = asset.src;
+                element.rel = "stylesheet";
+            } else {
+                console.error(`Unknown asset type: ${asset.type}`);
+                return reject(`Unknown asset type: ${asset.type}`);
+            }
+
+            // Attach event listeners
+            element.onload = () => {
+                console.log(`Loaded: ${asset.src}`);
+                resolve();
+            };
+            element.onerror = () => {
+                console.error(`Failed to load: ${asset.src}`);
+                reject(`Failed to load: ${asset.src}`);
+            };
+
+            // Append the element to the appropriate location
+            if (asset.type === "script") {
+                document.body.appendChild(element);
+            } else {
+                document.head.appendChild(element);
+            }
+        });
     });
-})();
+
+    // Wait for all assets to load, then execute the callback
+    Promise.all(promises)
+        .then(() => {
+            console.log("All assets loaded.");
+            if (typeof callback === "function") {
+                callback();
+            }
+        })
+        .catch(error => console.error("Error loading assets:", error));
+}
+
+// --- Usage Example ---
+loadAssets([
+    { type: "font", src: "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" },
+    { type: "stylesheet", src: "https://dl.dropbox.com/scl/fi/p7d4q6ytsj3fa6v67x6dg/tabulator-smw.css?rlkey=zobvcfxxdh622appw44ralt2b&st=9kkzb2ve&dl=0" },
+    { type: "script", src: "https://unpkg.com/tabulator-tables@5.3.4/dist/js/tabulator.min.js" },
+    { type: "script", src: "https://oxbridgeetf.github.io/chartdata/tableSpecs.js" }
+], () => {
+    console.log("All assets are ready to use.");
+});
 
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
@@ -52,32 +98,6 @@ function destroyChartsAndTables() {
     }
 
     console.log("All charts and all Tabulator tables destroyed.");
-}
-
-// --- Global loadAssets Function ---
-function loadAssets(callback) {
-    // Load Montserrat font
-    const fontLink = document.createElement('link');
-    fontLink.href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap";
-    fontLink.rel = "stylesheet";
-    document.head.appendChild(fontLink);
-
-    // Load Tabulator CSS
-    const tabulatorCSS = document.createElement('link');
-    tabulatorCSS.href = "https://dl.dropbox.com/scl/fi/p7d4q6ytsj3fa6v67x6dg/tabulator-smw.css?rlkey=zobvcfxxdh622appw44ralt2b&st=9kkzb2ve&dl=0";
-    tabulatorCSS.rel = "stylesheet";
-    document.head.appendChild(tabulatorCSS);
-
-    // Load Tabulator JS
-    const tabulatorScript = document.createElement('script');
-    tabulatorScript.src = "https://unpkg.com/tabulator-tables@5.3.4/dist/js/tabulator.min.js";
-    tabulatorScript.onload = function() {
-        console.log("Tabulator loaded.");
-        if (typeof callback === "function") {
-            callback();
-        }
-    };
-    document.body.appendChild(tabulatorScript);
 }
 
 // --- Global loadData Function ---
@@ -192,8 +212,3 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         container._tabulatorTable = table;
     }
 }
-
-
-
-
-
