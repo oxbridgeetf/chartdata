@@ -219,25 +219,37 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     // Clone base columns so we don't mutate the original definition
     let finalColumns = [...tableInfo.columns];
 
-// ✳️ If MC2 and custom headers provided, replace titles
-if (
-  (tableType === "MC2" || tableType.startsWith("JustText")) &&
-  Array.isArray(columnHeaders) &&
-  columnHeaders.length === finalColumns.length
-) {
-  finalColumns = finalColumns.map((col, idx) => ({
-    ...col,
-    title: columnHeaders[idx],
-  }));
-}
+    // Apply custom column headers if provided
+    if (
+        (tableType === "MC2" || tableType.startsWith("JustText")) &&
+        Array.isArray(columnHeaders) &&
+        columnHeaders.length === finalColumns.length
+    ) {
+        finalColumns = finalColumns.map((col, idx) => ({
+            ...col,
+            title: columnHeaders[idx],
+        }));
+    }
 
-const tableOptions = {
-  ...tableInfo.tableOptions,
-  columns: finalColumns,
-};
+    // Apply col2FormatArray to override column formatters
+    if (Array.isArray(col2FormatArray) && col2FormatArray.length === finalColumns.length) {
+        finalColumns = finalColumns.map((col, idx) => {
+            const formatType = col2FormatArray[idx];
+            if (formatType && formatFunctions[formatType]) {
+                return {
+                    ...col,
+                    formatter: formatFunctions[formatType],
+                };
+            }
+            return col; // Use default formatter if no override
+        });
+    }
 
+    const tableOptions = {
+        ...tableInfo.tableOptions,
+        columns: finalColumns,
+    };
 
-    // 🔹 Add this line to make tableType accessible in loadData
     container.dataset.tableType = tableType;
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
@@ -246,11 +258,11 @@ const tableOptions = {
         tableOptions.data = dataOrUrl;
         const table = new Tabulator(container, tableOptions);
 
-        if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
+        // Store col2FormatArray in the table for use in custom behavior
+        if (Array.isArray(col2FormatArray)) {
             table._col2FormatArray = col2FormatArray;
         }
 
         container._tabulatorTable = table;
     }
 }
-
