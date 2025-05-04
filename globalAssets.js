@@ -11,6 +11,7 @@ Dollar4: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionD
     Perc2: value => (value * 100).toFixed(2) + "%",
     Perc4: value => (value * 100).toFixed(4) + "%",
     Text: value => value ? value.toString() : "",  // Safely handle undefined or null values
+    TextTest: value => value + "*" ? value.toString() : "",
     Dec0: value => value.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
     Dec2: value => value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
     Dec4: value => value.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 }),
