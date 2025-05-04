@@ -69,7 +69,7 @@ function loadData(url, containerName, columns) {
 }
 
 // --- Global initFormattedTable Function ---
-function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null, columnHeaders = null) {
+function initFormattedTable(containerName, tableType, dataUrl, col2FormatArray = null, columnHeaders = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -113,16 +113,6 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     // 🔹 Add this line to make tableType accessible in loadData
     container.dataset.tableType = tableType;
 
-    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        loadData(dataOrUrl, containerName, finalColumns);  
-    } else {
-        tableOptions.data = dataOrUrl;
-        const table = new Tabulator(container, tableOptions);
-
-        if (tableType === "TwoColCustom" && Array.isArray(col2FormatArray)) {
-            table._col2FormatArray = col2FormatArray;
-        }
-
-        container._tabulatorTable = table;
-    }
+    // Always expect JSON URLs since all data is in JSON format
+    loadData(dataUrl, containerName, finalColumns);
 }
