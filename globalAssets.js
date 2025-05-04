@@ -1,66 +1,7 @@
-// --- Import Colors and Formats ---
+// --- Import Colors, Formats, and Shared Utilities ---
 import { formatFunctions, colorPalette } from './colorsAndFormats.js';
+import { loadAssets, destroyChartsAndTables } from './sharedUtils.js';
 
-// --- Global Table Definitions ---
-// This will be dynamically loaded
-
-// --- Global Assets Loading Function ---
-function loadAssets(assets, callback) {
-    const promises = assets.map(asset => {
-        return new Promise((resolve, reject) => {
-            let element;
-
-            if (asset.type === "script") {
-                // Create a script element
-                element = document.createElement('script');
-                element.src = asset.src;
-                element.async = asset.async || true;
-            } else if (asset.type === "stylesheet") {
-                // Create a link element for CSS
-                element = document.createElement('link');
-                element.href = asset.src;
-                element.rel = "stylesheet";
-            } else if (asset.type === "font") {
-                // Create a link element for fonts
-                element = document.createElement('link');
-                element.href = asset.src;
-                element.rel = "stylesheet";
-            } else {
-                console.error(`Unknown asset type: ${asset.type}`);
-                return reject(`Unknown asset type: ${asset.type}`);
-            }
-
-            // Attach event listeners
-            element.onload = () => {
-                console.log(`Loaded: ${asset.src}`);
-                resolve();
-            };
-            element.onerror = () => {
-                console.error(`Failed to load: ${asset.src}`);
-                reject(`Failed to load: ${asset.src}`);
-            };
-
-            // Append the element to the appropriate location
-            if (asset.type === "script") {
-                document.body.appendChild(element);
-            } else {
-                document.head.appendChild(element);
-            }
-        });
-    });
-
-    // Wait for all assets to load, then execute the callback
-    Promise.all(promises)
-        .then(() => {
-            console.log("All assets loaded.");
-            if (typeof callback === "function") {
-                callback();
-            }
-        })
-        .catch(error => console.error("Error loading assets:", error));
-}
-
-// --- Usage Example ---
 loadAssets([
     { type: "font", src: "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" },
     { type: "stylesheet", src: "https://dl.dropbox.com/scl/fi/p7d4q6ytsj3fa6v67x6dg/tabulator-smw.css?rlkey=zobvcfxxdh622appw44ralt2b&st=9kkzb2ve&dl=0" },
@@ -72,33 +13,6 @@ loadAssets([
 
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
-
-// Kill Chart.js and Tabulator cleanly
-function destroyChartsAndTables() {
-    // 1. Destroy Chart.js instance if it exists
-    if (window.chartInstance && typeof window.chartInstance.destroy === 'function') {
-        window.chartInstance.destroy();
-        window.chartInstance = null;
-    }
-
-    // 2. Destroy all Tabulator tables stored in containers with _tabulatorTable
-    const containers = document.querySelectorAll('[data-acc-text]');
-    containers.forEach(container => {
-        if (container._tabulatorTable && typeof container._tabulatorTable.destroy === 'function') {
-            container._tabulatorTable.destroy();
-            container._tabulatorTable = null;
-        }
-        container.innerHTML = ""; // Clean up the container
-    });
-
-    // 3. Remove the div that holds the canvas (for Chart.js)
-    var chartDiv = document.querySelector(".chart-view");
-    if (chartDiv && chartDiv.parentNode) {
-        chartDiv.parentNode.removeChild(chartDiv);
-    }
-
-    console.log("All charts and all Tabulator tables destroyed.");
-}
 
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
