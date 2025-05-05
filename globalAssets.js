@@ -268,11 +268,11 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     }
 }
 
-function buildGenericTable(containerName, jsonData, columnFormatVector = null, columnHeaderVector = null) {
+function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, columnHeaderVector = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
 
-    // Validate container
+    // Check if container exists
     if (!container) {
         console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
@@ -286,60 +286,79 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
 
     container.innerHTML = "";
 
-    // Validate and normalize jsonData
-    if (!Array.isArray(jsonData)) {
-        console.error("Invalid input: jsonData must be an array of objects.");
-        console.log("Received jsonData:", jsonData);
-        jsonData = []; // Default to an empty array
-    }
+    // Function to initialize the table once data is ready
+    function initializeTable(jsonData) {
+        // Determine the number of columns based on the first row of data
+        const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
 
-    // Determine the number of columns based on the first row of data
-    const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
+        // Default columnFormatVector to "Text" for all columns if not provided
+        const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
 
-    // Default columnFormatVector to "Text" for all columns if not provided
-    const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
+        // Default columnHeaderVector to empty strings for all columns if not provided
+        const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
 
-    // Default columnHeaderVector to empty strings for all columns if not provided
-    const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
+        // Validate input lengths
+        if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
+            console.error("Column format vector and column header vector must have the same length.");
+            return;
+        }
 
-    // Validate input lengths
-    if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
-        console.error("Column format vector and column header vector must have the same length.");
-        return;
-    }
-
-    // Build columns dynamically
-    const columns = effectiveColumnHeaderVector.map((header, index) => {
-        const formatType = effectiveColumnFormatVector[index];
-        const formatter = formatFunctions[formatType] || formatFunctions.Text; // Default to Text formatter if not found
-        return {
-            title: header,
-            field: `Col${index + 1}`, // Generic field names like Col1, Col2, etc.
-            formatter: formatter,
-            headerSort: false,
-        };
-    });
-
-    // Clean and format the data
-    const cleanedData = jsonData.map((row) => {
-        const formattedRow = {};
-        Object.keys(row).forEach((key, colIndex) => {
-            const columnKey = `Col${colIndex + 1}`;
-            formattedRow[columnKey] = row[key];
+        // Build columns dynamically
+        const columns = effectiveColumnHeaderVector.map((header, index) => {
+            const formatType = effectiveColumnFormatVector[index];
+            const formatter = formatFunctions[formatType] || formatFunctions.Text; // Default to Text formatter if not found
+            return {
+                title: header,
+                field: `Col${index + 1}`, // Generic field names like Col1, Col2, etc.
+                formatter: formatter,
+                headerSort: false,
+            };
         });
-        return formattedRow;
-    });
 
-    // Initialize the Tabulator table
-    const table = new Tabulator(container, {
-        data: cleanedData,
-        columns: columns,
-        layout: "fitColumns", // Adjust column layout to fit the table width
-        columnDefaults: {
-            headerSort: false, // Disable column sorting by default
-        },
-    });
+        // Clean and format the data
+        const cleanedData = jsonData.map((row) => {
+            const formattedRow = {};
+            Object.keys(row).forEach((key, colIndex) => {
+                const columnKey = `Col${colIndex + 1}`;
+                formattedRow[columnKey] = row[key];
+            });
+            return formattedRow;
+        });
 
-    // Store the table instance in the container for later reference
-    container._tabulatorTable = table;
+        // Initialize the Tabulator table
+        const table = new Tabulator(container, {
+            data: cleanedData,
+            columns: columns,
+            layout: "fitColumns", // Adjust column layout to fit the table width
+            columnDefaults: {
+                headerSort: false, // Disable column sorting by default
+            },
+        });
+
+        // Store the table instance in the container for later reference
+        container._tabulatorTable = table;
+    }
+
+    // Handle data input (either URL or direct JSON data)
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        // Fetch data from the URL
+        fetch(dataOrUrl)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch data from URL: ${dataOrUrl}`);
+                }
+                return response.json();
+            })
+            .then((jsonData) => {
+                initializeTable(jsonData);
+            })
+            .catch((error) => {
+                console.error("Error loading data:", error);
+            });
+    } else if (Array.isArray(dataOrUrl)) {
+        // Directly use the provided JSON data
+        initializeTable(dataOrUrl);
+    } else {
+        console.error("Invalid dataOrUrl. Must be a JSON array or a valid URL ending in '.json'.");
+    }
 }
