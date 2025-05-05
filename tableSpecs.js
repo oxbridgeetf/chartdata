@@ -82,7 +82,7 @@ window.tableDefinitions = {
                 formatter: (cell) => {
                     const rowIndex = cell.getRow().getPosition(true);
                     const formatMap = cell.getTable()._col2FormatArray;
-                    const formatType = formatMap?.[rowIndex+2] || "Text";
+                    const formatType = formatMap?.[rowIndex] || "Text";
                     const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
                     return formatterFn(cell.getValue());
                 }
