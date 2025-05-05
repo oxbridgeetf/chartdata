@@ -424,10 +424,17 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
     // Define format functions
     const formatFunctions = {
-        Text: (cell) => cell.getValue(), // Displays plain text
-        Dollar2: (cell) => {
-            const value = parseFloat(cell.getValue());
-            return isNaN(value) ? "$0.00" : `$${value.toFixed(2)}`; // Format as currency
+    Text: (cell) => cell.getValue(), // Displays plain text
+    Dollar2: (cell) => {
+        const value = parseFloat(cell.getValue());
+        return isNaN(value)
+            ? "$0.00"
+            : new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+              }).format(value);
         },
     };
 
