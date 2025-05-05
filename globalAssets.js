@@ -272,7 +272,7 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
 
-    // Check if container exists
+    // Validate container
     if (!container) {
         console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
@@ -289,6 +289,7 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
     // Validate and normalize jsonData
     if (!Array.isArray(jsonData)) {
         console.error("Invalid input: jsonData must be an array of objects.");
+        console.log("Received jsonData:", jsonData);
         jsonData = []; // Default to an empty array
     }
 
@@ -296,14 +297,10 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
     const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
 
     // Default columnFormatVector to "Text" for all columns if not provided
-    const effectiveColumnFormatVector = Array.isArray(columnFormatVector)
-        ? columnFormatVector
-        : Array(numColumns).fill("Text");
+    const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
 
     // Default columnHeaderVector to empty strings for all columns if not provided
-    const effectiveColumnHeaderVector = Array.isArray(columnHeaderVector)
-        ? columnHeaderVector
-        : Array(numColumns).fill("");
+    const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
 
     // Validate input lengths
     if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
