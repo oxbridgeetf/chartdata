@@ -324,42 +324,51 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         console.log("Using default column titles.");
     }
 
-    // Initialize the table
+    // Function to trim JSON data to match ColumnNames
+    const trimData = (data) => {
+        return data.map((row) => {
+            let trimmedRow = {};
+            ColumnNames.forEach((col) => {
+                if (col in row) {
+                    trimmedRow[col] = row[col];
+                }
+            });
+            return trimmedRow;
+        });
+    };
+
+    // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        loadDynamicData(dataOrUrl, containerName, finalColumns);
-    } else {
+        fetch(dataOrUrl)
+            .then((response) => response.json())
+            .then((jsonData) => {
+                // Trim the JSON data
+                const trimmedData = trimData(jsonData);
+                console.log("Trimmed Data:", trimmedData);
+
+                const tableOptions = {
+                    layout: "fitColumns",
+                    data: trimmedData,
+                    columns: finalColumns,
+                };
+
+                const table = new Tabulator(container, tableOptions);
+                container._tabulatorTable = table;
+            })
+            .catch((error) => console.error("Error fetching JSON file:", error));
+    } else if (Array.isArray(dataOrUrl)) {
+        const trimmedData = trimData(dataOrUrl);
+        console.log("Trimmed Data:", trimmedData);
+
         const tableOptions = {
             layout: "fitColumns",
-            data: dataOrUrl,
+            data: trimmedData,
             columns: finalColumns,
         };
 
         const table = new Tabulator(container, tableOptions);
-
         container._tabulatorTable = table;
+    } else {
+        console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
     }
-}
-
-function loadDynamicData(url, containerName, columns) {
-    fetch(url)
-        .then(response => response.json())
-        .then(jsonData => {
-            console.log("Dynamically loaded data:", jsonData);
-
-            const container = document.querySelector(`[data-acc-text='${containerName}']`);
-            if (!container) {
-                console.error(`Container '${containerName}' not found.`);
-                return;
-            }
-
-            const tableOptions = {
-                layout: "fitColumns",
-                data: jsonData,
-                columns: columns,
-            };
-
-            const table = new Tabulator(container, tableOptions);
-            container._tabulatorTable = table;
-        })
-        .catch(error => console.error('Error fetching the JSON file:', error));
 }
