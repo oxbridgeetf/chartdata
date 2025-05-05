@@ -336,7 +336,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
                 switch (formatType) {
                     case "Text":
                         // Ensure the value is a string
-                        processedRow[col] = value != null ? value.toString() : "";
+                        processedRow[col] = value != null ? String(value) : "";
                         break;
 
                     case "Dollar2":
@@ -347,8 +347,8 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
                         break;
 
                     default:
-                        // Pass through for other types or unrecognized formatters
-                        processedRow[col] = value;
+                        // Pass through other types or unrecognized formatters
+                        processedRow[col] = value != null ? value : null;
                         break;
                 }
             });
