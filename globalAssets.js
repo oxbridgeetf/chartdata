@@ -220,9 +220,8 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     // Clone base columns so we don't mutate the original definition
     let finalColumns = [...tableInfo.columns];
 
-    // Apply custom column headers if provided
-    if (
-        (tableType === "MC2" || tableType.startsWith("JustText")) &&
+     if (
+        (tableType === "MC2" || tableType.startsWith("JustText") || tableType === "TwoColCustom") &&
         Array.isArray(columnHeaders) &&
         columnHeaders.length === finalColumns.length
     ) {
