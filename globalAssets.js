@@ -327,7 +327,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
 }
 
 
-function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null) {
+function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, columnWidths = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -342,9 +342,14 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
     container.innerHTML = "";
 
-    // Ensure ColumnNames and FormatArray are arrays of equal length
+    // Ensure ColumnNames, FormatArray, and optionally columnWidths are arrays of equal length
     if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
         console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    if (columnWidths && (!Array.isArray(columnWidths) || columnWidths.length !== ColumnNames.length)) {
+        console.error("ColumnWidths must be an array of the same length as ColumnNames if provided.");
         return;
     }
 
@@ -352,15 +357,23 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
     let finalColumns = ColumnNames.map((colName, idx) => {
         const formatType = FormatArray[idx];
         const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
-        return {
+
+        const columnDef = {
             title: columnHeaders ? columnHeaders[idx] : colName, // Use custom headers if provided
             field: colName,
             formatter: formatterFn, // Apply the formatter
             headerSort: false, // Disable sorting by default
         };
+
+        // Add width if specified
+        if (columnWidths && columnWidths[idx]) {
+            columnDef.width = columnWidths[idx];
+        }
+
+        return columnDef;
     });
 
-    console.log("Final Columns with Formatters:", finalColumns);
+    console.log("Final Columns with Widths and Formatters:", finalColumns);
 
     // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
