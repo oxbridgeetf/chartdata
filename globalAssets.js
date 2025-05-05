@@ -271,6 +271,8 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
 function buildGenericTable(containerName, jsonData, columnFormatVector = null, columnHeaderVector = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
+
+    // Check if container exists
     if (!container) {
         console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
@@ -284,14 +286,24 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
 
     container.innerHTML = "";
 
+    // Validate and normalize jsonData
+    if (!Array.isArray(jsonData)) {
+        console.error("Invalid input: jsonData must be an array of objects.");
+        jsonData = []; // Default to an empty array
+    }
+
     // Determine the number of columns based on the first row of data
     const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
 
-    // Default column format vector to "Text" for all columns if not provided
-    const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
+    // Default columnFormatVector to "Text" for all columns if not provided
+    const effectiveColumnFormatVector = Array.isArray(columnFormatVector)
+        ? columnFormatVector
+        : Array(numColumns).fill("Text");
 
-    // Default column header vector to empty strings for all columns if not provided
-    const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
+    // Default columnHeaderVector to empty strings for all columns if not provided
+    const effectiveColumnHeaderVector = Array.isArray(columnHeaderVector)
+        ? columnHeaderVector
+        : Array(numColumns).fill("");
 
     // Validate input lengths
     if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
@@ -312,7 +324,7 @@ function buildGenericTable(containerName, jsonData, columnFormatVector = null, c
     });
 
     // Clean and format the data
-    const cleanedData = jsonData.map((row, rowIndex) => {
+    const cleanedData = jsonData.map((row) => {
         const formattedRow = {};
         Object.keys(row).forEach((key, colIndex) => {
             const columnKey = `Col${colIndex + 1}`;
