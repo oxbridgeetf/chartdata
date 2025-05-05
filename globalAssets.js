@@ -312,7 +312,8 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             headerSort: false, // Disable sorting by default
         };
     });
-
+    console.log("Columns: ", finalColumns);
+    
     // Apply custom column headers if provided
     if (Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
         console.log("Applying custom column headers:", columnHeaders);
