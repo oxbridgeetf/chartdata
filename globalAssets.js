@@ -280,7 +280,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
  * @param {Array|null} columnFormatVector - An optional array of formatters for each column. Defaults to "Text" for all columns.
  * @param {Array|null} columnHeaderVector - An optional array of column headers for each column. Defaults to empty strings for all columns.
  */
-function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null) {
+/*function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -393,6 +393,88 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             data: processedData,
             columns: finalColumns,
         };
+
+        const table = new Tabulator(container, tableOptions);
+        container._tabulatorTable = table;
+    } else {
+        console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
+    }
+}*/
+
+function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
+        return;
+    }
+
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
+    container.innerHTML = "";
+
+    // Ensure ColumnNames and FormatArray are arrays of equal length
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Validate FormatArray and fallback to "Text" for invalid types
+    const validatedFormatArray = FormatArray.map((format) =>
+        formatFunctions[format] ? format : "Text"
+    );
+
+    // Dynamically create column definitions
+    let finalColumns = ColumnNames.map((colName, idx) => ({
+        title: "", // Default title, overridden later if columnHeaders is provided
+        field: colName,
+        formatter: formatFunctions[validatedFormatArray[idx]], // Use validated formatter
+        headerSort: false, // Disable sorting by default
+    }));
+
+    console.log("Final Columns Before Customization:", finalColumns);
+
+    // Apply custom column headers if provided
+    if (Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
+        console.log("Applying custom column headers:", columnHeaders);
+        finalColumns = finalColumns.map((col, idx) => ({
+            ...col,
+            title: columnHeaders[idx],
+        }));
+    } else {
+        console.log("Using default column titles.");
+    }
+
+    console.log("Final Columns After Customization:", finalColumns);
+
+    // Prepare table options
+    const tableOptions = {
+        layout: "fitColumns",
+        columns: finalColumns,
+    };
+
+    // Process dataOrUrl
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        fetch(dataOrUrl)
+            .then((response) => response.json())
+            .then((jsonData) => {
+                console.log("Raw JSON Data:", jsonData);
+
+                // Set data directly without preprocessing
+                tableOptions.data = jsonData;
+
+                const table = new Tabulator(container, tableOptions);
+                container._tabulatorTable = table;
+            })
+            .catch((error) => console.error("Error fetching JSON file:", error));
+    } else if (Array.isArray(dataOrUrl)) {
+        console.log("Using supplied JSON data.");
+
+        // Set data directly without preprocessing
+        tableOptions.data = dataOrUrl;
 
         const table = new Tabulator(container, tableOptions);
         container._tabulatorTable = table;
