@@ -330,36 +330,37 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
     // Preprocess data to ensure text is treated as strings and numbers as numbers
     const preprocessData = (data, ColumnNames, FormatArray) => {
-        return data.map((row) => {
-            let processedRow = {};
+    return data.map((row) => {
+        let processedRow = {};
 
-            ColumnNames.forEach((col, idx) => {
-                const formatType = FormatArray[idx];
-                const value = row[col];
+        ColumnNames.forEach((col, idx) => {
+            const formatType = FormatArray[idx];
+            let value = row[col];
 
-                switch (formatType) {
-                    case "Text":
-                        // Ensure the value is a string
-                        processedRow[col] = value != null ? String(value) : "";
-                        break;
+            // Handle nested objects and arrays
+            if (typeof value === "object" && value !== null) {
+                value = JSON.stringify(value); // Convert objects to strings
+            }
 
-                    case "Dollar2":
-                    case "Dec0":
-                        // Ensure the value is a number
-                        const numericValue = parseFloat(value);
-                        processedRow[col] = isNaN(numericValue) ? 0 : numericValue;
-                        break;
+            switch (formatType) {
+                case "Text":
+                    processedRow[col] = value != null ? String(value) : "";
+                    break;
 
-                    default:
-                        // Pass through other types or unrecognized formatters
-                        processedRow[col] = value != null ? value : null;
-                        break;
-                }
-            });
+                case "Dollar2":
+                    const numericValue = parseFloat(value);
+                    processedRow[col] = isNaN(numericValue) ? 0 : numericValue;
+                    break;
 
-            return processedRow;
+                default:
+                    processedRow[col] = value != null ? value : null;
+                    break;
+            }
         });
-    };
+
+        return processedRow;
+    });
+};
 
     // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
