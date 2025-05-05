@@ -1,5 +1,5 @@
 // --- Global Formatting Functions ---
-const formatFunctions = {
+/*const formatFunctions = {
 Dollar2: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
 Dollar0: value => {
     const formatted = "$" + Number(value).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
@@ -37,6 +37,100 @@ Dollar4: value => "$" + Number(value).toLocaleString("en-US", { minimumFractionD
             return value;
         }
     }
+};*/
+
+const formatFunctions = {
+    Dollar2: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input; // Handle Tabulator cell or raw value
+        return "$" +
+            Number(value).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
+    },
+    Dollar0: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        const formatted =
+            "$" +
+            Number(value).toLocaleString("en-US", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            });
+        console.log(`Dollar0 formatted: input=${value}, output=${formatted}`);
+        return formatted;
+    },
+    Dollar4: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return "$" +
+            Number(value).toLocaleString("en-US", {
+                minimumFractionDigits: 4,
+                maximumFractionDigits: 4,
+            });
+    },
+    Perc0: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return (value * 100).toFixed(0) + "%";
+    },
+    Perc2: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return (value * 100).toFixed(2) + "%";
+    },
+    Perc4: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return (value * 100).toFixed(4) + "%";
+    },
+    Text: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return value ? value.toString() : ""; // Safely handle undefined or null values
+    },
+    TextTest: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return (value || "").toString() + "*"; // Safely handle undefined or null values
+    },
+    Dec0: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return value.toLocaleString(undefined, {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        });
+    },
+    Dec2: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return value.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+    },
+    Dec4: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        return value.toLocaleString(undefined, {
+            minimumFractionDigits: 4,
+            maximumFractionDigits: 4,
+        });
+    },
+
+    // SpecialDate function
+    SpecialDate: (input) => {
+        const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        if (!value) return ""; // Return empty if no value
+
+        if (value.includes("/")) {
+            // Parse the date and convert it to Mmm Dth (st/rd/th)
+            const date = new Date(value);
+            const day = date.getDate();
+            const month = date.toLocaleString("default", { month: "short" });
+
+            let suffix = "th";
+            if (day === 1 || day === 21 || day === 31) suffix = "st";
+            if (day === 2 || day === 22) suffix = "nd";
+            if (day === 3 || day === 23) suffix = "rd";
+
+            return `${month} ${day}${suffix}`;
+        } else {
+            // Return text if no "/" is found
+            return value;
+        }
+    },
 };
 
 // --- Global Table Definitions ---
