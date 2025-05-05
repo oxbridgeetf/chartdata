@@ -327,7 +327,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
 }
 
 
-function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, columnWidths = null) {
+function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -342,16 +342,19 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
     container.innerHTML = "";
 
-    // Ensure ColumnNames, FormatArray, and optionally columnWidths are arrays of equal length
+    // Ensure ColumnNames and FormatArray are arrays of equal length
     if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
         console.error("ColumnNames and FormatArray must be arrays of the same length.");
         return;
     }
 
-    if (columnWidths && (!Array.isArray(columnWidths) || columnWidths.length !== ColumnNames.length)) {
-        console.error("ColumnWidths must be an array of the same length as ColumnNames if provided.");
-        return;
-    }
+    // Determine total table width
+    const totalTableWidth = container.offsetWidth || 800; // Default to 800px if width cannot be determined
+
+    // Calculate widths
+    const remainingColumns = ColumnNames.length - 1;
+    const remainingWidth = totalTableWidth - (firstColumnWidth || 0);
+    const otherColumnWidth = remainingColumns > 0 ? Math.floor(remainingWidth / remainingColumns) : remainingWidth;
 
     // Dynamically create column definitions
     let finalColumns = ColumnNames.map((colName, idx) => {
@@ -365,15 +368,17 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             headerSort: false, // Disable sorting by default
         };
 
-        // Add width if specified
-        if (columnWidths && columnWidths[idx]) {
-            columnDef.width = columnWidths[idx];
+        // Set column width
+        if (idx === 0 && firstColumnWidth) {
+            columnDef.width = firstColumnWidth; // Set width for the first column
+        } else if (remainingColumns > 0) {
+            columnDef.width = otherColumnWidth; // Distribute width across remaining columns
         }
 
         return columnDef;
     });
 
-    console.log("Final Columns with Widths and Formatters:", finalColumns);
+    console.log("Final Columns with Calculated Widths:", finalColumns);
 
     // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
