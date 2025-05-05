@@ -327,7 +327,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
 }
 
 
-function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
+function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null, styleVector = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -345,6 +345,16 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
     // Ensure ColumnNames and FormatArray are arrays of equal length
     if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
         console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Validate styleVector
+    let rowHeight = null;
+    let textSize = null;
+    if (styleVector && Array.isArray(styleVector) && styleVector.length === 2) {
+        [rowHeight, textSize] = styleVector;
+    } else if (styleVector) {
+        console.error("styleVector must be a 2x1 array [rowHeight, textSize].");
         return;
     }
 
@@ -379,6 +389,20 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
     });
 
     console.log("Final Columns with Calculated Widths:", finalColumns);
+
+    // Apply row height and text size styles
+    if (rowHeight || textSize) {
+        const style = document.createElement("style");
+        style.textContent = `
+            [data-acc-text='${containerName}'] .tabulator-row {
+                height: ${rowHeight || "auto"}px; /* Apply row height */
+            }
+            [data-acc-text='${containerName}'] .tabulator-cell {
+                font-size: ${textSize || "inherit"}px; /* Apply text size */
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
