@@ -268,6 +268,14 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     }
 }
 
+/**
+ * Build a generic table from scratch in the specified container.
+ * 
+ * @param {string} containerName - The name of the container where the table will be rendered.
+ * @param {Array|String} dataOrUrl - The JSON data to populate the table or a URL to fetch the data from.
+ * @param {Array|null} columnFormatVector - An optional array of formatters for each column. Defaults to "Text" for all columns.
+ * @param {Array|null} columnHeaderVector - An optional array of column headers for each column. Defaults to empty strings for all columns.
+ */
 function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, columnHeaderVector = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
@@ -288,6 +296,12 @@ function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, 
 
     // Function to initialize the table once data is ready
     function initializeTable(jsonData) {
+        // Validate and normalize jsonData
+        if (!Array.isArray(jsonData)) {
+            console.error("Invalid input: jsonData must be an array of objects.");
+            jsonData = []; // Default to an empty array
+        }
+
         // Determine the number of columns based on the first row of data
         const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
 
@@ -310,7 +324,14 @@ function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, 
             return {
                 title: header,
                 field: `Col${index + 1}`, // Generic field names like Col1, Col2, etc.
-                formatter: formatter,
+                formatter: (cell) => {
+                    const cellValue = cell.getValue();
+                    if (typeof cellValue === "object" && cellValue !== null) {
+                        // If the value is an object, stringify it or extract a specific property
+                        return JSON.stringify(cellValue); // Or extract a property, e.g., cellValue.someProperty
+                    }
+                    return cellValue; // Return primitive value as-is
+                },
                 headerSort: false,
             };
         });
