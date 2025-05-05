@@ -141,7 +141,7 @@ function loadAssets(callback) {
 
 // --- Global loadData Function ---
 // Function to load data (either CSV or JSON) and initialize Tabulator table
-function loadData(url, containerName, columns) {
+function loadData(url, containerName, columns, col2FormatArray = null) {
     fetch(url)
         .then(response => response.json())
         .then(jsonData => {
@@ -183,16 +183,16 @@ function loadData(url, containerName, columns) {
 
             const table = new Tabulator(container, tableOptions);
 
-            // 💡 Add col2FormatArray support here for TwoColCustom
-            if (tableType === "TwoColCustom" && Array.isArray(container._col2FormatArray)) {
-                table._col2FormatArray = container._col2FormatArray;
+            // Handle col2FormatArray
+            if (tableType === "TwoColCustom") {
+                // Use col2FormatArray passed to loadData or stored in container
+                table._col2FormatArray = col2FormatArray || container._col2FormatArray || [];
             }
 
             container._tabulatorTable = table;
         })
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
-
 
 
 // --- Global initFormattedTable Function ---
