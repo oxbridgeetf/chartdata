@@ -313,6 +313,9 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         };
     });
     console.log("Columns: ", finalColumns);
+    console.log("IsArray: ", Array.isArray(columnHeaders));
+    console.log("columnHeaders.length: ", columnHeaders.length);
+    console.log("finalColumns.length: ", finalColumns.length);
     
     // Apply custom column headers if provided
     if (Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
