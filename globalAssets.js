@@ -422,17 +422,28 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         return;
     }
 
+    // Define format functions
+    const formatFunctions = {
+        Text: (cell) => cell.getValue(), // Displays plain text
+        Dollar2: (cell) => {
+            const value = parseFloat(cell.getValue());
+            return isNaN(value) ? "$0.00" : `$${value.toFixed(2)}`; // Format as currency
+        },
+    };
+
     // Dynamically create column definitions
     let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
         return {
             title: columnHeaders ? columnHeaders[idx] : colName, // Use custom headers if provided
             field: colName,
-            formatter: "plaintext", // Temporarily use Tabulator's built-in plaintext formatter
+            formatter: formatterFn, // Apply the formatter
             headerSort: false, // Disable sorting by default
         };
     });
 
-    console.log("Final Columns:", finalColumns);
+    console.log("Final Columns with Formatters:", finalColumns);
 
     // Process dataOrUrl
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
@@ -443,7 +454,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
                 const tableOptions = {
                     layout: "fitColumns",
-                    data: jsonData, // Use raw JSON data
+                    data: jsonData,
                     columns: finalColumns,
                 };
 
@@ -456,7 +467,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
         const tableOptions = {
             layout: "fitColumns",
-            data: dataOrUrl, // Use raw JSON data
+            data: dataOrUrl,
             columns: finalColumns,
         };
 
