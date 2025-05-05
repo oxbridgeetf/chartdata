@@ -268,7 +268,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     }
 }
 
-function buildGenericTable(containerName, jsonData, columnFormatVector, columnHeaderVector) {
+function buildGenericTable(containerName, jsonData, columnFormatVector = null, columnHeaderVector = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
@@ -284,15 +284,24 @@ function buildGenericTable(containerName, jsonData, columnFormatVector, columnHe
 
     container.innerHTML = "";
 
+    // Determine the number of columns based on the first row of data
+    const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
+
+    // Default column format vector to "Text" for all columns if not provided
+    const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
+
+    // Default column header vector to empty strings for all columns if not provided
+    const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
+
     // Validate input lengths
-    if (columnFormatVector.length !== columnHeaderVector.length) {
+    if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
         console.error("Column format vector and column header vector must have the same length.");
         return;
     }
 
     // Build columns dynamically
-    const columns = columnHeaderVector.map((header, index) => {
-        const formatType = columnFormatVector[index];
+    const columns = effectiveColumnHeaderVector.map((header, index) => {
+        const formatType = effectiveColumnFormatVector[index];
         const formatter = formatFunctions[formatType] || formatFunctions.Text; // Default to Text formatter if not found
         return {
             title: header,
