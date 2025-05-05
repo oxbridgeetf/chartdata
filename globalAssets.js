@@ -324,16 +324,36 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         console.log("Using default column titles.");
     }
 
-    // Function to trim JSON data to match ColumnNames
-    const trimData = (data) => {
+    // Preprocess data to ensure text is treated as strings and numbers as numbers
+    const preprocessData = (data, ColumnNames, FormatArray) => {
         return data.map((row) => {
-            let trimmedRow = {};
-            ColumnNames.forEach((col) => {
-                if (col in row) {
-                    trimmedRow[col] = row[col];
+            let processedRow = {};
+
+            ColumnNames.forEach((col, idx) => {
+                const formatType = FormatArray[idx];
+                const value = row[col];
+
+                switch (formatType) {
+                    case "Text":
+                        // Ensure the value is a string
+                        processedRow[col] = value != null ? value.toString() : "";
+                        break;
+
+                    case "Dollar2":
+                    case "Dec0":
+                        // Ensure the value is a number
+                        const numericValue = parseFloat(value);
+                        processedRow[col] = isNaN(numericValue) ? 0 : numericValue;
+                        break;
+
+                    default:
+                        // Pass through for other types or unrecognized formatters
+                        processedRow[col] = value;
+                        break;
                 }
             });
-            return trimmedRow;
+
+            return processedRow;
         });
     };
 
@@ -342,13 +362,15 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         fetch(dataOrUrl)
             .then((response) => response.json())
             .then((jsonData) => {
-                // Trim the JSON data
-                const trimmedData = trimData(jsonData);
-                console.log("Trimmed Data:", trimmedData);
+                console.log("Raw JSON Data:", jsonData);
+
+                // Preprocess the JSON data
+                const processedData = preprocessData(jsonData, ColumnNames, FormatArray);
+                console.log("Processed Data for Table:", processedData);
 
                 const tableOptions = {
                     layout: "fitColumns",
-                    data: trimmedData,
+                    data: processedData,
                     columns: finalColumns,
                 };
 
@@ -357,12 +379,13 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             })
             .catch((error) => console.error("Error fetching JSON file:", error));
     } else if (Array.isArray(dataOrUrl)) {
-        const trimmedData = trimData(dataOrUrl);
-        console.log("Trimmed Data:", trimmedData);
+        // Preprocess the supplied JSON data
+        const processedData = preprocessData(dataOrUrl, ColumnNames, FormatArray);
+        console.log("Processed Data for Table:", processedData);
 
         const tableOptions = {
             layout: "fitColumns",
-            data: trimmedData,
+            data: processedData,
             columns: finalColumns,
         };
 
