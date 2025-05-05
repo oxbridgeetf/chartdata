@@ -267,3 +267,61 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         container._tabulatorTable = table;
     }
 }
+
+function buildGenericTable(containerName, jsonData, columnFormatVector, columnHeaderVector) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
+        return;
+    }
+
+    // Destroy any existing table in the container
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
+    container.innerHTML = "";
+
+    // Validate input lengths
+    if (columnFormatVector.length !== columnHeaderVector.length) {
+        console.error("Column format vector and column header vector must have the same length.");
+        return;
+    }
+
+    // Build columns dynamically
+    const columns = columnHeaderVector.map((header, index) => {
+        const formatType = columnFormatVector[index];
+        const formatter = formatFunctions[formatType] || formatFunctions.Text; // Default to Text formatter if not found
+        return {
+            title: header,
+            field: `Col${index + 1}`, // Generic field names like Col1, Col2, etc.
+            formatter: formatter,
+            headerSort: false,
+        };
+    });
+
+    // Clean and format the data
+    const cleanedData = jsonData.map((row, rowIndex) => {
+        const formattedRow = {};
+        Object.keys(row).forEach((key, colIndex) => {
+            const columnKey = `Col${colIndex + 1}`;
+            formattedRow[columnKey] = row[key];
+        });
+        return formattedRow;
+    });
+
+    // Initialize the Tabulator table
+    const table = new Tabulator(container, {
+        data: cleanedData,
+        columns: columns,
+        layout: "fitColumns", // Adjust column layout to fit the table width
+        columnDefaults: {
+            headerSort: false, // Disable column sorting by default
+        },
+    });
+
+    // Store the table instance in the container for later reference
+    container._tabulatorTable = table;
+}
