@@ -422,20 +422,18 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         return;
     }
 
-    // Validate FormatArray and fallback to "Text" for invalid types
-    const validatedFormatArray = FormatArray.map((format) =>
-        formatFunctions[format] ? format : "Text"
-    );
-
     // Dynamically create column definitions
-    let finalColumns = ColumnNames.map((colName, idx) => ({
-        title: "", // Default title, overridden later if columnHeaders is provided
-        field: colName,
-        formatter: formatFunctions[validatedFormatArray[idx]], // Use validated formatter
-        headerSort: false, // Disable sorting by default
-    }));
-
-    console.log("Final Columns Before Customization:", finalColumns);
+    let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
+        return {
+            title: "", // Default title, overridden later if columnHeaders is provided
+            field: colName,
+            formatter: formatterFn,
+            headerSort: false, // Disable sorting by default
+        };
+    });
+    console.log("Initial Columns:", finalColumns);
 
     // Apply custom column headers if provided
     if (Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
@@ -450,10 +448,41 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
 
     console.log("Final Columns After Customization:", finalColumns);
 
-    // Prepare table options
-    const tableOptions = {
-        layout: "fitColumns",
-        columns: finalColumns,
+    // Preprocess data to ensure text is treated as strings and numbers as numbers
+    const preprocessData = (data, ColumnNames, FormatArray) => {
+        return data.map((row) => {
+            let processedRow = {};
+
+            ColumnNames.forEach((col, idx) => {
+                const formatType = FormatArray[idx];
+                let value = row[col];
+
+                // Handle nested objects and arrays
+                if (typeof value === "object" && value !== null) {
+                    console.warn(`Column '${col}' contains an object. Converting to string.`, value);
+                    value = JSON.stringify(value); // Convert objects to strings
+                }
+
+                // Apply type-specific formatting
+                switch (formatType) {
+                    case "Text":
+                        processedRow[col] = value != null ? String(value) : "";
+                        break;
+
+                    case "Dollar2":
+                        const numericValue = parseFloat(value);
+                        processedRow[col] = isNaN(numericValue) ? 0 : numericValue;
+                        break;
+
+                    default:
+                        processedRow[col] = value != null ? value : null;
+                        break;
+                }
+            });
+
+            console.log("Processed Row:", processedRow);
+            return processedRow;
+        });
     };
 
     // Process dataOrUrl
@@ -463,18 +492,31 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             .then((jsonData) => {
                 console.log("Raw JSON Data:", jsonData);
 
-                // Set data directly without preprocessing
-                tableOptions.data = jsonData;
+                // Preprocess the JSON data
+                const processedData = preprocessData(jsonData, ColumnNames, FormatArray);
+                console.log("Processed Data for Table:", processedData);
+
+                const tableOptions = {
+                    layout: "fitColumns",
+                    data: processedData,
+                    columns: finalColumns,
+                };
 
                 const table = new Tabulator(container, tableOptions);
                 container._tabulatorTable = table;
             })
             .catch((error) => console.error("Error fetching JSON file:", error));
     } else if (Array.isArray(dataOrUrl)) {
-        console.log("Using supplied JSON data.");
+        // Preprocess the supplied JSON data
+        console.log("Raw DataOrUrl Array:", dataOrUrl);
+        const processedData = preprocessData(dataOrUrl, ColumnNames, FormatArray);
+        console.log("Processed Data for Table:", processedData);
 
-        // Set data directly without preprocessing
-        tableOptions.data = dataOrUrl;
+        const tableOptions = {
+            layout: "fitColumns",
+            data: processedData,
+            columns: finalColumns,
+        };
 
         const table = new Tabulator(container, tableOptions);
         container._tabulatorTable = table;
