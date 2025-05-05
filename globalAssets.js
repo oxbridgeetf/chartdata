@@ -280,17 +280,14 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
  * @param {Array|null} columnFormatVector - An optional array of formatters for each column. Defaults to "Text" for all columns.
  * @param {Array|null} columnHeaderVector - An optional array of column headers for each column. Defaults to empty strings for all columns.
  */
-function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, columnHeaderVector = null) {
+function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null) {
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
-
-    // Check if container exists
     if (!container) {
         console.error(`Container with accessibility name '${containerName}' not found.`);
         return;
     }
 
-    // Destroy any existing table in the container
     if (container._tabulatorTable) {
         container._tabulatorTable.destroy();
         container._tabulatorTable = null;
@@ -298,92 +295,71 @@ function buildGenericTable(containerName, dataOrUrl, columnFormatVector = null, 
 
     container.innerHTML = "";
 
-    // Function to initialize the table once data is ready
-    function initializeTable(jsonData) {
-        // Validate and normalize jsonData
-        if (!Array.isArray(jsonData)) {
-            console.error("Invalid input: jsonData must be an array of objects.");
-            jsonData = []; // Default to an empty array
-        }
+    // Ensure ColumnNames and FormatArray are arrays of equal length
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
 
-        // Determine the number of columns based on the first row of data
-        const numColumns = jsonData.length > 0 ? Object.keys(jsonData[0]).length : 0;
+    // Dynamically create column definitions
+    let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
+        return {
+            title: "", // Default title, overridden later if columnHeaders is provided
+            field: colName,
+            formatter: formatterFn,
+            headerSort: false, // Disable sorting by default
+        };
+    });
 
-        // Default columnFormatVector to "Text" for all columns if not provided
-        const effectiveColumnFormatVector = columnFormatVector || Array(numColumns).fill("Text");
+    // Apply custom column headers if provided
+    if (Array.isArray(columnHeaders) && columnHeaders.length === finalColumns.length) {
+        console.log("Applying custom column headers:", columnHeaders);
+        finalColumns = finalColumns.map((col, idx) => ({
+            ...col,
+            title: columnHeaders[idx],
+        }));
+    } else {
+        console.log("Using default column titles.");
+    }
 
-        // Default columnHeaderVector to empty strings for all columns if not provided
-        const effectiveColumnHeaderVector = columnHeaderVector || Array(numColumns).fill("");
+    // Initialize the table
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        loadDynamicData(dataOrUrl, containerName, finalColumns);
+    } else {
+        const tableOptions = {
+            layout: "fitColumns",
+            data: dataOrUrl,
+            columns: finalColumns,
+        };
 
-        // Validate input lengths
-        if (effectiveColumnFormatVector.length !== effectiveColumnHeaderVector.length) {
-            console.error("Column format vector and column header vector must have the same length.");
-            return;
-        }
+        const table = new Tabulator(container, tableOptions);
 
-        // Build columns dynamically
-        const columns = effectiveColumnHeaderVector.map((header, index) => {
-            const formatType = effectiveColumnFormatVector[index];
-            const formatter = formatFunctions[formatType] || formatFunctions.Text; // Default to Text formatter if not found
-            return {
-                title: header,
-                field: `Col${index + 1}`, // Generic field names like Col1, Col2, etc.
-                formatter: (cell) => {
-                    const cellValue = cell.getValue();
-                    if (typeof cellValue === "object" && cellValue !== null) {
-                        // If the value is an object, stringify it or extract a specific property
-                        return JSON.stringify(cellValue); // Or extract a property, e.g., cellValue.someProperty
-                    }
-                    return cellValue; // Return primitive value as-is
-                },
-                headerSort: false,
-            };
-        });
-
-        // Clean and format the data
-        const cleanedData = jsonData.map((row) => {
-            const formattedRow = {};
-            Object.keys(row).forEach((key, colIndex) => {
-                const columnKey = `Col${colIndex + 1}`;
-                formattedRow[columnKey] = row[key];
-            });
-            return formattedRow;
-        });
-
-        // Initialize the Tabulator table
-        const table = new Tabulator(container, {
-            data: cleanedData,
-            columns: columns,
-            layout: "fitColumns", // Adjust column layout to fit the table width
-            columnDefaults: {
-                headerSort: false, // Disable column sorting by default
-            },
-        });
-
-        // Store the table instance in the container for later reference
         container._tabulatorTable = table;
     }
+}
 
-    // Handle data input (either URL or direct JSON data)
-    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        // Fetch data from the URL
-        fetch(dataOrUrl)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch data from URL: ${dataOrUrl}`);
-                }
-                return response.json();
-            })
-            .then((jsonData) => {
-                initializeTable(jsonData);
-            })
-            .catch((error) => {
-                console.error("Error loading data:", error);
-            });
-    } else if (Array.isArray(dataOrUrl)) {
-        // Directly use the provided JSON data
-        initializeTable(dataOrUrl);
-    } else {
-        console.error("Invalid dataOrUrl. Must be a JSON array or a valid URL ending in '.json'.");
-    }
+function loadDynamicData(url, containerName, columns) {
+    fetch(url)
+        .then(response => response.json())
+        .then(jsonData => {
+            console.log("Dynamically loaded data:", jsonData);
+
+            const container = document.querySelector(`[data-acc-text='${containerName}']`);
+            if (!container) {
+                console.error(`Container '${containerName}' not found.`);
+                return;
+            }
+
+            const tableOptions = {
+                layout: "fitColumns",
+                data: jsonData,
+                columns: columns,
+            };
+
+            const table = new Tabulator(container, tableOptions);
+            container._tabulatorTable = table;
+        })
+        .catch(error => console.error('Error fetching the JSON file:', error));
 }
