@@ -251,6 +251,10 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         columns: finalColumns,
     };
 
+    if (Array.isArray(col2FormatArray)) {
+        container._col2FormatArray = col2FormatArray;
+    }
+
     container.dataset.tableType = tableType;
 
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
