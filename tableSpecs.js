@@ -80,9 +80,9 @@ window.tableDefinitions = {
             { 
                 title: "", field: "Col2", headerSort: false, 
                 formatter: (cell) => {
-                    const rowIndex = cell.getRow().getPosition(false);
+                    const rowIndex = cell.getRow().getPosition(true);
                     const formatMap = cell.getTable()._col2FormatArray;
-                    const formatType = formatMap?.[rowIndex] || "Text";
+                    const formatType = formatMap?.[rowIndex-1] || "Text";
                     const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
                     return formatterFn(cell.getValue());
                 }
