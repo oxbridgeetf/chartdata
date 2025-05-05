@@ -295,7 +295,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
     }
 
     // Define format functions
-    const formatFunctions = {
+    /*const formatFunctions = {
     Text: (cell) => cell.getValue(), // Displays plain text
     Dollar2: (cell) => {
         const value = parseFloat(cell.getValue());
@@ -308,7 +308,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
                   maximumFractionDigits: 2,
               }).format(value);
         },
-    };
+    };*/
 
     // Dynamically create column definitions
     let finalColumns = ColumnNames.map((colName, idx) => {
