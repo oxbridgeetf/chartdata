@@ -225,6 +225,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
         Array.isArray(columnHeaders) &&
         columnHeaders.length === finalColumns.length
     ) {
+        console.log("Applying custom column headers:", columnHeaders);
         finalColumns = finalColumns.map((col, idx) => ({
             ...col,
             title: columnHeaders[idx],
@@ -255,7 +256,7 @@ function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray
     }
 
     container.dataset.tableType = tableType;
-
+    console.log("Final Columns Before Tabulator Initialization:", finalColumns);
     if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
         loadData(dataOrUrl, containerName, finalColumns);  
     } else {
