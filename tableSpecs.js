@@ -233,7 +233,7 @@ window.tableDefinitions = {
             { title: "", field: "Sat", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter }
         ],
         tableOptions: {
-            layout: "fitDataStretch",
+            layout: "fitColumns",
             rowFormatter: function(row) {
                 row.getElement().style.height = "18px";
                 row.getElement().style.lineHeight = "18px";
