@@ -224,13 +224,13 @@ window.tableDefinitions = {
     },
     Cal: {
         columns: [
-            { title: "", field: "Sun", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Mon", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Tues", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Wed", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Thurs", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Fri", headerSort: false, hozAlign: "center", formatter: calFormatter },
-            { title: "", field: "Sat", headerSort: false, hozAlign: "center", formatter: calFormatter }
+            { title: "", field: "Sun", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Mon", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Tues", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Wed", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Thurs", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Fri", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter },
+            { title: "", field: "Sat", headerSort: false, hozAlign: "center", widthGrow: 1, formatter: calFormatter }
         ],
         tableOptions: {
             layout: "fitDataStretch",
