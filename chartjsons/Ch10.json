@@ -1,0 +1,14 @@
+{
+	"Fig10_1": {
+"Labels": ["With Dividend","Ex-Dividend","Payment"],
+"Stock": [20,19,19],
+"Accrual": [0,1,0],
+"Cash": [0,0,1]
+},
+	"Fig10_3": {
+"Labels": ["With Distribution","Ex-Distribution","Payment"],
+"NAV": [25,23,23],
+"Cash": [0,2,0]
+
+}
+}

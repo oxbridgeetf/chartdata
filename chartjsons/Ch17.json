@@ -1,0 +1,35 @@
+{
+	"Fig17_1": {
+"Labels": ["Time of Purchase", "Year 1"],
+"Equity": [500,700],
+"BankLoan": [500,500]
+
+},
+	"Fig17_2": {
+"Labels": ["T","Pre-TX T+1","Post-TX T+1"],
+"Capital": [100,120,120],
+"Borrow": [100,100,100],
+"TX": [0,0,20]
+},
+	"Fig17_3": {
+"Labels": ["T","Pre-TX T+1","Post-TX T+1"],
+"Capital": [100,80,80],
+"Borrow": [100,100,80],
+"TX": [0,0,20]
+
+},
+	"Fig17_4": {
+"Labels": ["T","Pre-TX T+1","Post-TX T+1"],
+"Capital": [100,90,90],
+"Exposure": [-100,-110,-90],
+"TX": [0,0,20]
+
+},
+	"Fig17_5": {
+"Labels": ["T","Pre-TX T+1","Post-TX T+1"],
+"Capital": [100,110,110],
+"Exposure": [-100,-90,-110],
+"TX": [0,0,-20]
+
+}
+}
