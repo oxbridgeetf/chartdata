@@ -400,6 +400,9 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
             [data-acc-text='${containerName}'] .tabulator-cell {
                 font-size: ${textSize || "inherit"}px; /* Apply text size */
             }
+            [data-acc-text='${containerName}'] .tabulator-header .tabulator-col {
+                font-size: ${textSize || "inherit"}px; /* Apply header text size */
+            }
         `;
         document.head.appendChild(style);
     }
