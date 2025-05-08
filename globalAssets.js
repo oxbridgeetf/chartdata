@@ -396,7 +396,7 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
         style.textContent = `
             [data-acc-text='${containerName}'] .tabulator-row {
                 height: ${rowHeight || "auto"}px; /* Apply row height */
-                border-top: 1px solid #aaa; /* Add a top border to rows */
+                border-top: 2px solid #aaa; /* Add a top border to rows */
             }
             [data-acc-text='${containerName}'] .tabulator-cell {
                 font-size: ${textSize || "inherit"}px; /* Apply text size */
