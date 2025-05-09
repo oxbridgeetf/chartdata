@@ -699,8 +699,9 @@ function initResponsiveTable(containerName, dataOrUrl, ColumnNames, FormatArray,
     }
 }
 
-function updateTabulatorCell(containerSelector, rowIndex, field, newValue) {
-  const table = Tabulator.findTable(containerSelector)[0];
+function updateTabulatorCell(containerName, rowIndex, field, newValue) {
+   const containerSelector = `[data-acc-text='${containerName}']`;
+   const table = Tabulator.findTable(containerSelector)[0];
   if (!table) {
     console.error("Tabulator table not found in", containerSelector);
     return;
