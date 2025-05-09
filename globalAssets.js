@@ -37,6 +37,9 @@ const formatFunctions = {
     },
     Perc4: (input) => {
         const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        if (typeof value === "string") {
+        return value; // Return the string as-is
+    }
         return (value * 100).toFixed(4) + "%";
     },
     Text: (input) => {
