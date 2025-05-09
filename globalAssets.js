@@ -698,3 +698,19 @@ function initResponsiveTable(containerName, dataOrUrl, ColumnNames, FormatArray,
         console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
     }
 }
+
+function updateTabulatorCell(containerSelector, rowIndex, field, newValue) {
+  const table = Tabulator.findTable(containerSelector)[0];
+  if (!table) {
+    console.error("Tabulator table not found in", containerSelector);
+    return;
+  }
+
+  const rowComponent = table.getRows()[rowIndex];
+  if (!rowComponent) {
+    console.warn("Row not found at index:", rowIndex);
+    return;
+  }
+
+  rowComponent.update({ [field]: newValue });
+}
