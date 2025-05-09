@@ -565,3 +565,136 @@ function initDynamicFormattedTableWithRem(containerName, dataOrUrl, ColumnNames,
         console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
     }
 }
+
+function initResponsiveTable(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
+        return;
+    }
+
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
+    container.innerHTML = "";
+
+    // Ensure ColumnNames and FormatArray are arrays of equal length
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Create a container div for Tabulator
+    const tableContainer = document.createElement("div");
+    tableContainer.style.width = "100%";
+    tableContainer.style.height = "100%";
+    tableContainer.style.fontSize = "1rem"; // Initial rem-based font size
+    container.appendChild(tableContainer);
+
+    // Dynamically create column definitions
+    let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
+
+        const columnDef = {
+            title: columnHeaders ? columnHeaders[idx] : colName, // Use custom headers if provided
+            field: colName,
+            formatter: formatterFn, // Apply the formatter
+            headerSort: false, // Disable sorting by default
+        };
+
+        // Set column width
+        if (idx === 0 && firstColumnWidth) {
+            columnDef.width = firstColumnWidth; // Set width for the first column
+        }
+
+        return columnDef;
+    });
+
+    console.log("Final Columns with Calculated Widths:", finalColumns);
+
+    // Create style tag for Tabulator + rem styling
+    const style = document.createElement("style");
+    style.textContent = `
+        [data-acc-text='${containerName}'] .tabulator {
+            font-size: 1rem; /* Base font size */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-row {
+            height: auto; /* Adjust row height automatically */
+            border-top: 2px solid #aaa; /* Add a top border to rows */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-cell {
+            font-size: inherit; /* Inherit font size from container */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header .tabulator-col {
+            font-size: inherit; /* Inherit font size from container */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header {
+            border-bottom: none !important; /* Remove bottom border of the header */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Scale font-size and row height based on container dimensions
+    function scaleResponsive() {
+        const w = container.offsetWidth;
+        const h = container.offsetHeight;
+
+        // Dynamically calculate font size and row height
+        const remBase = Math.max(12, Math.min(20, w / 50)); // Scale font size between 12px and 20px
+        tableContainer.style.fontSize = remBase + "px";
+
+        // Optional: Adjust row height based on the container's height
+        const rowHeight = Math.max(30, Math.min(50, h / 15)); // Ensure row height is between 30px and 50px
+        style.textContent += `
+            [data-acc-text='${containerName}'] .tabulator .tabulator-row {
+                height: ${rowHeight}px;
+            }
+        `;
+    }
+
+    scaleResponsive();
+    window.addEventListener("resize", () => {
+        scaleResponsive();
+        if (container._tabulatorTable) container._tabulatorTable.redraw(true);
+    });
+
+    // Process dataOrUrl
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        fetch(dataOrUrl)
+            .then((response) => response.json())
+            .then((jsonData) => {
+                console.log("Raw JSON Data:", jsonData);
+
+                const tableOptions = {
+                    layout: "fitColumns",
+                    data: jsonData,
+                    columns: finalColumns,
+                };
+
+                const table = new Tabulator(tableContainer, tableOptions);
+                container._tabulatorTable = table;
+            })
+            .catch((error) => console.error("Error fetching JSON file:", error));
+    } else if (Array.isArray(dataOrUrl)) {
+        console.log("Raw DataOrUrl Array:", dataOrUrl);
+
+        const tableOptions = {
+            layout: "fitColumns",
+            data: dataOrUrl,
+            columns: finalColumns,
+        };
+
+        const table = new Tabulator(tableContainer, tableOptions);
+        container._tabulatorTable = table;
+    } else {
+        console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
+    }
+}
