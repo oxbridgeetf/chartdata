@@ -13,6 +13,6 @@
   {"Date": "Jan 27th", "NAV": 25.39, "IndexLevel": 101.35, "NAVReturn": 0.00418, "IndexReturn": 0.0042, "Difference": 0.00002},
   {"Date": "Jan 28th", "NAV": 25.34, "IndexLevel": 101.17, "NAVReturn": -0.00175, "IndexReturn": -0.00174, "Difference": 0.00001},
   {"Date": "Jan 29th", "NAV": 25.38, "IndexLevel": 101.34, "NAVReturn": 0.00159, "IndexReturn": 0.0016, "Difference": 0.00002},
-  {"Date": "Total Return", "NAV": 0.02075, "IndexLevel": 0.02104, "NAVReturn": null, "IndexReturn": null, "Difference": null},
-  {"Date": "Underperformance", "NAV": "", "IndexLevel": 0.00028, "NAVReturn": "", "IndexReturn": "Zero-Mean TE", "Difference": null}
+  {"Date": "Total Return", "NAV": 0.02075, "IndexLevel": 0.02104, "NAVReturn": null, "IndexReturn": "Annualized TE", "Difference": null},
+  {"Date": "Underperformance", "NAV": "", "IndexLevel": 0.00028, "NAVReturn": null, "IndexReturn": "Zero-Mean TE", "Difference": null}
 ]
