@@ -2,6 +2,9 @@
 const formatFunctions = {
     Dollar2: (input) => {
         const value = typeof input === "object" && input.getValue ? input.getValue() : input; // Handle Tabulator cell or raw value
+        if (typeof value === "string") {
+        return value; // Return the string as-is
+    }
         return "$" +
             Number(value).toLocaleString("en-US", {
                 minimumFractionDigits: 2,
@@ -59,6 +62,9 @@ const formatFunctions = {
     },
     Dec2: (input) => {
         const value = typeof input === "object" && input.getValue ? input.getValue() : input;
+        if (typeof value === "string") {
+        return value; // Return the string as-is
+    }
         return value.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
