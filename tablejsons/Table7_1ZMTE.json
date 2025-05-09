@@ -1,0 +1,18 @@
+[
+  {"Date": "Jan 11th", "NAV": 24.87, "IndexLevel": 99.25, "NAVReturn": "", "IndexReturn": "", "Difference": ""},
+  {"Date": "Jan 12th", "NAV": 25.00, "IndexLevel": 99.78, "NAVReturn": "0.521%", "IndexReturn": "0.531%", "Difference": "0.010%"},
+  {"Date": "Jan 13th", "NAV": 25.28, "IndexLevel": 100.93, "NAVReturn": "1.149%", "IndexReturn": "1.159%", "Difference": "0.010%"},
+  {"Date": "Jan 14th", "NAV": 25.09, "IndexLevel": 100.16, "NAVReturn": "-0.775%", "IndexReturn": "-0.765%", "Difference": "0.010%"},
+  {"Date": "Jan 15th", "NAV": 24.98, "IndexLevel": 99.73, "NAVReturn": "-0.434%", "IndexReturn": "-0.424%", "Difference": "0.010%"},
+  {"Date": "Jan 19th", "NAV": 25.31, "IndexLevel": 101.07, "NAVReturn": "1.333%", "IndexReturn": "1.343%", "Difference": "0.010%"},
+  {"Date": "Jan 20th", "NAV": 25.29, "IndexLevel": 100.98, "NAVReturn": "-0.104%", "IndexReturn": "-0.094%", "Difference": "0.010%"},
+  {"Date": "Jan 21st", "NAV": 25.29, "IndexLevel": 101.00, "NAVReturn": "0.015%", "IndexReturn": "0.025%", "Difference": "0.010%"},
+  {"Date": "Jan 22nd", "NAV": 25.31, "IndexLevel": 101.11, "NAVReturn": "0.095%", "IndexReturn": "0.105%", "Difference": "0.010%"},
+  {"Date": "Jan 25th", "NAV": 25.30, "IndexLevel": 101.08, "NAVReturn": "-0.044%", "IndexReturn": "-0.034%", "Difference": "0.010%"},
+  {"Date": "Jan 26th", "NAV": 25.26, "IndexLevel": 100.93, "NAVReturn": "-0.159%", "IndexReturn": "-0.149%", "Difference": "0.010%"},
+  {"Date": "Jan 27th", "NAV": 25.37, "IndexLevel": 101.35, "NAVReturn": "0.410%", "IndexReturn": "0.420%", "Difference": "0.010%"},
+  {"Date": "Jan 28th", "NAV": 25.32, "IndexLevel": 101.17, "NAVReturn": "-0.184%", "IndexReturn": "-0.174%", "Difference": "0.010%"},
+  {"Date": "Jan 29th", "NAV": 25.36, "IndexLevel": 101.34, "NAVReturn": "0.150%", "IndexReturn": "0.160%", "Difference": "0.010%"},
+  {"Date": "Total Return", "NAV": "1.971%", "IndexLevel": "2.104%", "NAVReturn": " ", "IndexReturn": "Annualized TE", "Difference": "0.000%"},
+  {"Date": "Underperformance", "NAV": " ", "IndexLevel": "0.132%", "NAVReturn": " ", "IndexReturn": "Zero-Mean TE", "Difference": "0.165%"}
+]
