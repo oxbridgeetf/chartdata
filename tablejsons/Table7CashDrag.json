@@ -1,0 +1,8 @@
+[
+  { "Col1": "Invested Amount", "Col2": "100%", "Col3": "99%" },
+  { "Col1": "Cash Amount", "Col2": "0%", "Col3": "1%" },
+  { "Col1": "Index Return", "Col2": "20 bps", "Col3": "20 bps" },
+  { "Col1": "Cash Return", "Col2": "—", "Col3": "1 bp" },
+  { "Col1": "Total Portfolio Return", "Col2": "20.00 bps", "Col3": "19.81 bps" },
+  { "Col1": "Performance Drag (bps)", "Col2": "0.00", "Col3": "-0.19" }
+]
