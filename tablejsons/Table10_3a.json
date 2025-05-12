@@ -1,51 +1,51 @@
 [
     {
         "Col1": "Trade Date",
-        "Col2": "3/1/2021",
-        "": "",
+        "Col2": "Mar 1st",
+        "Blank": "",
         "Col3": "Actual CIL",
-        "Col4": " $-   "
+        "Col4": "$0.00"
     },
     {
         "Col1": "Settlement",
         "Col2": "T+2",
-        "": "",
+        "Blank": "",
         "Col3": "Actual Cash",
-        "Col4": " $645.93 "
+        "Col4": "$645.93"
     },
     {
         "Col1": "Creation Unit",
-        "Col2": " 50,000 ",
-        "": "",
+        "Col2": "50,000",
+        "Blank": "",
         "Col3": "Base Market Value",
-        "Col4": " $1,188,308.04 "
+        "Col4": "$1,188,308.04"
     },
     {
         "Col1": "NAV",
-        "Col2": " $25.29 ",
-        "": "",
+        "Col2": "$25.29",
+        "Blank": "",
         "Col3": "Basket Shares",
-        "Col4": " 30,207 "
+        "Col4": "30,207"
     },
     {
         "Col1": "NAV Per CU",
-        "Col2": " $1,264,611.36 ",
-        "": "",
+        "Col2": "$1,264,611.36",
+        "Blank": "",
         "Col3": "Estimated CIL",
-        "Col4": " $-   "
+        "Col4": "$75,657.39"
     },
     {
         "Col1": "Shares O/S",
-        "Col2": " 400,000 ",
-        "": "",
+        "Col2": "400,000",
+        "Blank": "",
         "Col3": "Estimated Cash",
-        "Col4": " $76,303.32 "
+        "Col4": "$76,303.32"
     },
     {
         "Col1": "Total Net Assets",
-        "Col2": " $10,116,890.86 ",
-        "": "",
+        "Col2": "$10,116,890.86",
+        "Blank": "",
         "Col3": "Estimated Dividend",
-        "Col4": " $-   "
+        "Col4": "$0.00"
     }
 ]
