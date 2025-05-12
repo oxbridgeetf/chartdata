@@ -1,31 +1,31 @@
 [
     {
         "Col1": "Total Dividends Received",
-        "Col2": " $105,932.92 "
+        "Col2": "$105,932.92"
     },
     {
-        "Col1": "Total AUM 3/31/2021",
-        "Col2": " $9,781,054.75 "
+        "Col1": "Total AUM Mar 31st",
+        "Col2": "$9,781,054.75"
     },
     {
         "Col1": "Distribution as Percent of Fund",
         "Col2": "1.08%"
     },
     {
-        "Col1": "NAV 3/31/2021",
-        "Col2": " $24.45 "
+        "Col1": "NAV Mar 31st",
+        "Col2": "$24.45"
     },
     {
         "Col1": "Distribution Per Share",
-        "Col2": " $0.26 "
+        "Col2": "$0.26"
     },
     {
         "Col1": "Fees",
-        "Col2": " $10,885.71 "
+        "Col2": "$10,885.71"
     },
     {
         "Col1": "Net",
-        "Col2": " $95,047.21 "
+        "Col2": "$95,047.21"
     },
     {
         "Col1": "Net Distribution as Percent of Fund",
@@ -33,6 +33,6 @@
     },
     {
         "Col1": "Net Distribution Per Share",
-        "Col2": " $0.24 "
+        "Col2": "$0.24"
     }
 ]
