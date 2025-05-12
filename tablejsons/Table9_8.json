@@ -1,112 +1,112 @@
 [
-    {
-        "Ticker": "AKRY",
-        "Lot": "AKRY1001",
-        " Shares ": " 5,248 ",
-        " Basis ": " $103.81 ",
-        "BasisDate": "1/11/2021",
-        " Price ": " $70.19 ",
-        " Unrealized ": " $(176,438.14)",
-        " PositionValue ": " $368,373.75 ",
-        " BfB ": " $(0.48)"
-    },
-    {
-        "Ticker": "AKRY",
-        "Lot": "AKRY1002",
-        " Shares ": 16.0,
-        " Basis ": " $96.75 ",
-        "BasisDate": "1/14/2021",
-        " Price ": " $70.19 ",
-        " Unrealized ": " $(424.83)",
-        " PositionValue ": " $1,123.09 ",
-        " BfB ": " $(0.38)"
-    },
-    {
-        "Ticker": "AAQZ",
-        "Lot": "AAQZ1005",
-        " Shares ": 18.0,
-        " Basis ": " $72.49 ",
-        "BasisDate": "3/24/2021",
-        " Price ": " $54.62 ",
-        " Unrealized ": " $(321.77)",
-        " PositionValue ": " $983.13 ",
-        " BfB ": " $(0.33)"
-    },
-    {
-        "Ticker": "AGFZ",
-        "Lot": "AGFZ1004",
-        " Shares ": 20.0,
-        " Basis ": " $53.71 ",
-        "BasisDate": "2/22/2021",
-        " Price ": " $40.88 ",
-        " Unrealized ": " $(256.66)",
-        " PositionValue ": " $817.54 ",
-        " BfB ": " $(0.31)"
-    },
-    {
-        "Ticker": "AAQZ",
-        "Lot": "AAQZ1003",
-        " Shares ": 17.0,
-        " Basis ": " $71.24 ",
-        "BasisDate": "2/3/2021",
-        " Price ": " $54.62 ",
-        " Unrealized ": " $(282.51)",
-        " PositionValue ": " $928.51 ",
-        " BfB ": " $(0.30)"
-    },
-    {
-        "Ticker": "AGFZ",
-        "Lot": "AGFZ1003",
-        " Shares ": 23.0,
-        " Basis ": " $53.19 ",
-        "BasisDate": "2/3/2021",
-        " Price ": " $40.88 ",
-        " Unrealized ": " $(283.28)",
-        " PositionValue ": " $940.17 ",
-        " BfB ": " $(0.30)"
-    },
-    {
-        "Ticker": "AMGP",
-        "Lot": "AMGP1003",
-        " Shares ": 93.0,
-        " Basis ": " $15.82 ",
-        "BasisDate": "2/3/2021",
-        " Price ": " $12.17 ",
-        " Unrealized ": " $(338.95)",
-        " PositionValue ": " $1,132.26 ",
-        " BfB ": " $(0.30)"
-    },
-    {
-        "Ticker": "AGFZ",
-        "Lot": "AGFZ1002",
-        " Shares ": 29.0,
-        " Basis ": " $52.00 ",
-        "BasisDate": "1/14/2021",
-        " Price ": " $40.88 ",
-        " Unrealized ": " $(322.55)",
-        " PositionValue ": " $1,185.43 ",
-        " BfB ": " $(0.27)"
-    },
-    {
-        "Ticker": "AAQZ",
-        "Lot": "AAQZ1004",
-        " Shares ": 14.0,
-        " Basis ": " $68.40 ",
-        "BasisDate": "2/22/2021",
-        " Price ": " $54.62 ",
-        " Unrealized ": " $(192.90)",
-        " PositionValue ": " $764.65 ",
-        " BfB ": " $(0.25)"
-    },
-    {
-        "Ticker": "AGFZ",
-        "Lot": "AGFZ1001",
-        " Shares ": " 9,456 ",
-        " Basis ": " $51.10 ",
-        "BasisDate": "1/11/2021",
-        " Price ": " $40.88 ",
-        " Unrealized ": " $(96,661.98)",
-        " PositionValue ": " $386,532.74 ",
-        " BfB ": " $(0.25)"
-    }
+  {
+    "Ticker": "AKRY",
+    "Lot": "AKRY1001",
+    "Shares": 5248,
+    "Basis": 103.81,
+    "BasisDate": "Jan 11th",
+    "Price": 70.19,
+    "Unrealized": -176438.14,
+    "PositionValue": 368373.75,
+    "BfB": -0.48
+  },
+  {
+    "Ticker": "AKRY",
+    "Lot": "AKRY1002",
+    "Shares": 16,
+    "Basis": 96.75,
+    "BasisDate": "Jan 14th",
+    "Price": 70.19,
+    "Unrealized": -424.83,
+    "PositionValue": 1123.09,
+    "BfB": -0.38
+  },
+  {
+    "Ticker": "AAQZ",
+    "Lot": "AAQZ1005",
+    "Shares": 18,
+    "Basis": 72.49,
+    "BasisDate": "Mar 24th",
+    "Price": 54.62,
+    "Unrealized": -321.77,
+    "PositionValue": 983.13,
+    "BfB": -0.33
+  },
+  {
+    "Ticker": "AGFZ",
+    "Lot": "AGFZ1004",
+    "Shares": 20,
+    "Basis": 53.71,
+    "BasisDate": "Feb 22nd",
+    "Price": 40.88,
+    "Unrealized": -256.66,
+    "PositionValue": 817.54,
+    "BfB": -0.31
+  },
+  {
+    "Ticker": "AAQZ",
+    "Lot": "AAQZ1003",
+    "Shares": 17,
+    "Basis": 71.24,
+    "BasisDate": "Feb 3rd",
+    "Price": 54.62,
+    "Unrealized": -282.51,
+    "PositionValue": 928.51,
+    "BfB": -0.3
+  },
+  {
+    "Ticker": "AGFZ",
+    "Lot": "AGFZ1003",
+    "Shares": 23,
+    "Basis": 53.19,
+    "BasisDate": "Feb 3rd",
+    "Price": 40.88,
+    "Unrealized": -283.28,
+    "PositionValue": 940.17,
+    "BfB": -0.3
+  },
+  {
+    "Ticker": "AMGP",
+    "Lot": "AMGP1003",
+    "Shares": 93,
+    "Basis": 15.82,
+    "BasisDate": "Feb 3rd",
+    "Price": 12.17,
+    "Unrealized": -338.95,
+    "PositionValue": 1132.26,
+    "BfB": -0.3
+  },
+  {
+    "Ticker": "AGFZ",
+    "Lot": "AGFZ1002",
+    "Shares": 29,
+    "Basis": 52.0,
+    "BasisDate": "Jan 14th",
+    "Price": 40.88,
+    "Unrealized": -322.55,
+    "PositionValue": 1185.43,
+    "BfB": -0.27
+  },
+  {
+    "Ticker": "AAQZ",
+    "Lot": "AAQZ1004",
+    "Shares": 14,
+    "Basis": 68.4,
+    "BasisDate": "Feb 22nd",
+    "Price": 54.62,
+    "Unrealized": -192.9,
+    "PositionValue": 764.65,
+    "BfB": -0.25
+  },
+  {
+    "Ticker": "AGFZ",
+    "Lot": "AGFZ1001",
+    "Shares": 9456,
+    "Basis": 51.1,
+    "BasisDate": "Jan 11th",
+    "Price": 40.88,
+    "Unrealized": -96661.98,
+    "PositionValue": 386532.74,
+    "BfB": -0.25
+  }
 ]
