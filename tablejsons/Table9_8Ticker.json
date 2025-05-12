@@ -1,0 +1,22 @@
+[
+    {"Ticker": "AABA", "Shares": 157, "Unrealized": -681.02316},
+    {"Ticker": "AAQZ", "Shares": 953, "Unrealized": -74388.73204},
+    {"Ticker": "AAXX", "Shares": 15437, "Unrealized": 5522.47171},
+    {"Ticker": "ACBU", "Shares": 6108, "Unrealized": 155077.75013},
+    {"Ticker": "ACGN", "Shares": 12453, "Unrealized": -22179.28259},
+    {"Ticker": "ACOP", "Shares": 668, "Unrealized": -64807.44722},
+    {"Ticker": "ADXK", "Shares": 474, "Unrealized": -5000.563257},
+    {"Ticker": "ADZI", "Shares": 15500, "Unrealized": -1686.052807},
+    {"Ticker": "AFOJ", "Shares": 564, "Unrealized": 973.5100122},
+    {"Ticker": "AGFZ", "Shares": 6248, "Unrealized": -10783.53364},
+    {"Ticker": "AHBP", "Shares": 6718, "Unrealized": -16548.22853},
+    {"Ticker": "AHGG", "Shares": 1689, "Unrealized": 279.5514445},
+    {"Ticker": "AHJQ", "Shares": 7238, "Unrealized": -9265.712194},
+    {"Ticker": "AIAD", "Shares": 2128, "Unrealized": -86307.44324},
+    {"Ticker": "AKEK", "Shares": 7107, "Unrealized": 7663.510154},
+    {"Ticker": "AKRY", "Shares": 7936, "Unrealized": -178512.30557},
+    {"Ticker": "AKXI", "Shares": 7387, "Unrealized": -632.3350514},
+    {"Ticker": "AKZO", "Shares": 6640, "Unrealized": 7644.11638},
+    {"Ticker": "ALTO", "Shares": 4862, "Unrealized": 153469.83579},
+    {"Ticker": "AMGP", "Shares": 1238, "Unrealized": -95268.46339}
+]
