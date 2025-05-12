@@ -1,0 +1,6 @@
+[
+  { "Action": "Buy", "Date": "Jan 19th", "Shares": 100, "Price/Share": 100.00, "Total": 10010.00 },
+  { "Action": "Market Value ↑10%", "Date": "Jan 21st", "Shares": 100, "Price/Share": 110.00, "Total": 11000.00 },
+  { "Action": "Sell 50 Shares", "Date": "Jan 21st", "Shares": 50, "Price/Share": 110.00, "Total": 5490.00 },
+  { "Action": "Capital Gain", "Date": "", "Shares": 50, "Price/Share": "", "Total": 485.00 }
+]
