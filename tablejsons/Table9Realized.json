@@ -1,5 +1,4 @@
 [
-  { "Col1": "", "Col2": "Short Term", "Col3": "Long Term" },
   { "Col1": "Gains", "Col2": 100000, "Col3": 200000 },
   { "Col1": "Losses", "Col2": -150000, "Col3": -175000 },
   { "Col1": "Net", "Col2": -50000, "Col3": 25000 },
