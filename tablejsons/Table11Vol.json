@@ -1,0 +1,32 @@
+[
+  {
+    "Event": "Pre-announcement Price",
+    "Date": "March 30th",
+    "Details": "$96.00 per share"
+  },
+  {
+    "Event": "Deal Announcement",
+    "Date": "March 31st (AM)",
+    "Details": "$115.00 per share"
+  },
+  {
+    "Event": "Index Calculation",
+    "Date": "June 30th",
+    "Details": "Volatility Calculation"
+  },
+  {
+    "Event": "Board Approval Expected",
+    "Date": "July 9th",
+    "Details": "Approval Anticipated"
+  },
+  {
+    "Event": "Deal Closing Expected",
+    "Date": "July 12th",
+    "Details": "Final Transaction Date"
+  },
+  {
+    "Event": "Delisting Expected",
+    "Date": "July 13th",
+    "Details": "Stock to be Removed"
+  }
+]
