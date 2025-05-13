@@ -1,162 +1,162 @@
 [
-    {
-        "ID": "US1001",
-        "Ticker": " AABA",
-        " BasePrice ": 40.44,
-        "Weight": 0.0444,
-        "IndexShares": 0.1048,
-        "IndexValue": 4.2389
-    },
-    {
-        "ID": "US1003",
-        "Ticker": " AAQZ",
-        " BasePrice ": 18.18,
-        "Weight": 0.0453,
-        "IndexShares": 0.2382,
-        "IndexValue": 4.3314
-    },
-    {
-        "ID": "US1005",
-        "Ticker": " AAXX",
-        " BasePrice ": 28.57,
-        "Weight": 0.0465,
-        "IndexShares": 0.1555,
-        "IndexValue": 4.4422
-    },
-    {
-        "ID": "US1009",
-        "Ticker": " ACBU",
-        " BasePrice ": 78.37,
-        "Weight": 0.0501,
-        "IndexShares": 0.0611,
-        "IndexValue": 4.7907
-    },
-    {
-        "ID": "US1010",
-        "Ticker": " ACGN",
-        " BasePrice ": 37.58,
-        "Weight": 0.0492,
-        "IndexShares": 0.1252,
-        "IndexValue": 4.7061
-    },
-    {
-        "ID": "US1012",
-        "Ticker": " ACOP",
-        " BasePrice ": 84.02,
-        "Weight": 0.0473,
-        "IndexShares": 0.0538,
-        "IndexValue": 4.5169
-    },
-    {
-        "ID": "US1018",
-        "Ticker": " ADXK",
-        " BasePrice ": 25.34,
-        "Weight": 0.055,
-        "IndexShares": 0.2076,
-        "IndexValue": 5.2598
-    },
-    {
-        "ID": "US1019",
-        "Ticker": " ADZI",
-        " BasePrice ": 32.79,
-        "Weight": 0.0535,
-        "IndexShares": 0.1559,
-        "IndexValue": 5.1119
-    },
-    {
-        "ID": "US1024",
-        "Ticker": " AFOJ",
-        " BasePrice ": 19.93,
-        "Weight": 0.0546,
-        "IndexShares": 0.3338,
-        "IndexValue": 6.6521
-    },
-    {
-        "ID": "US1026",
-        "Ticker": " AGFZ",
-        " BasePrice ": 40.44,
-        "Weight": 0.0474,
-        "IndexShares": 0.112,
-        "IndexValue": 4.5276
-    },
-    {
-        "ID": "US1028",
-        "Ticker": " AHBP",
-        " BasePrice ": 66.56,
-        "Weight": 0.0468,
-        "IndexShares": 0.0672,
-        "IndexValue": 4.4755
-    },
-    {
-        "ID": "US1029",
-        "Ticker": " AHGG",
-        " BasePrice ": 55.7,
-        "Weight": 0.0531,
-        "IndexShares": 0.0911,
-        "IndexValue": 5.0721
-    },
-    {
-        "ID": "US1030",
-        "Ticker": " AHJQ",
-        " BasePrice ": 79.18,
-        "Weight": 0.0605,
-        "IndexShares": 0.073,
-        "IndexValue": 5.7786
-    },
-    {
-        "ID": "US1033",
-        "Ticker": " AIAD",
-        " BasePrice ": 25.29,
-        "Weight": 0.0469,
-        "IndexShares": 0.1772,
-        "IndexValue": 4.4808
-    },
-    {
-        "ID": "US1038",
-        "Ticker": " AKEK",
-        " BasePrice ": 88.48,
-        "Weight": 0.0473,
-        "IndexShares": 0.0511,
-        "IndexValue": 4.5245
-    },
-    {
-        "ID": "US1042",
-        "Ticker": " AKRY",
-        " BasePrice ": 67.58,
-        "Weight": 0.0482,
-        "IndexShares": 0.0682,
-        "IndexValue": 4.6079
-    },
-    {
-        "ID": "US1045",
-        "Ticker": " AKXI",
-        " BasePrice ": 15.54,
-        "Weight": 0.0489,
-        "IndexShares": 0.3008,
-        "IndexValue": 4.6744
-    },
-    {
-        "ID": "US1046",
-        "Ticker": " AKZO",
-        " BasePrice ": 76.11,
-        "Weight": 0.0513,
-        "IndexShares": 0.0644,
-        "IndexValue": 4.905
-    },
-    {
-        "ID": "US1049",
-        "Ticker": " ALTO",
-        " BasePrice ": 103.12,
-        "Weight": 0.0525,
-        "IndexShares": 0.0487,
-        "IndexValue": 5.0175
-    },
-    {
-        "ID": "US1050",
-        "Ticker": " AMGP",
-        " BasePrice ": 12.33,
-        "Weight": 0.0511,
-        "IndexShares": 0.3958,
-        "IndexValue": 4.8787
-    }
+  {
+    "ID": "US1001",
+    "Ticker": "AABA",
+    "BasePrice": 40.44,
+    "Weight": 0.0444,
+    "IndexShares": 0.1048,
+    "IndexValue": 4.2389
+  },
+  {
+    "ID": "US1003",
+    "Ticker": "AAQZ",
+    "BasePrice": 18.18,
+    "Weight": 0.0453,
+    "IndexShares": 0.2382,
+    "IndexValue": 4.3314
+  },
+  {
+    "ID": "US1005",
+    "Ticker": "AAXX",
+    "BasePrice": 28.57,
+    "Weight": 0.0465,
+    "IndexShares": 0.1555,
+    "IndexValue": 4.4422
+  },
+  {
+    "ID": "US1009",
+    "Ticker": "ACBU",
+    "BasePrice": 78.37,
+    "Weight": 0.0501,
+    "IndexShares": 0.0611,
+    "IndexValue": 4.7907
+  },
+  {
+    "ID": "US1010",
+    "Ticker": "ACGN",
+    "BasePrice": 37.58,
+    "Weight": 0.0492,
+    "IndexShares": 0.1252,
+    "IndexValue": 4.7061
+  },
+  {
+    "ID": "US1012",
+    "Ticker": "ACOP",
+    "BasePrice": 84.02,
+    "Weight": 0.0473,
+    "IndexShares": 0.0538,
+    "IndexValue": 4.5169
+  },
+  {
+    "ID": "US1018",
+    "Ticker": "ADXK",
+    "BasePrice": 25.34,
+    "Weight": 0.055,
+    "IndexShares": 0.2076,
+    "IndexValue": 5.2598
+  },
+  {
+    "ID": "US1019",
+    "Ticker": "ADZI",
+    "BasePrice": 32.79,
+    "Weight": 0.0535,
+    "IndexShares": 0.1559,
+    "IndexValue": 5.1119
+  },
+  {
+    "ID": "US1024",
+    "Ticker": "AFOJ",
+    "BasePrice": 19.93,
+    "Weight": 0.0546,
+    "IndexShares": 0.3338,
+    "IndexValue": 6.6521
+  },
+  {
+    "ID": "US1026",
+    "Ticker": "AGFZ",
+    "BasePrice": 40.44,
+    "Weight": 0.0474,
+    "IndexShares": 0.112,
+    "IndexValue": 4.5276
+  },
+  {
+    "ID": "US1028",
+    "Ticker": "AHBP",
+    "BasePrice": 66.56,
+    "Weight": 0.0468,
+    "IndexShares": 0.0672,
+    "IndexValue": 4.4755
+  },
+  {
+    "ID": "US1029",
+    "Ticker": "AHGG",
+    "BasePrice": 55.7,
+    "Weight": 0.0531,
+    "IndexShares": 0.0911,
+    "IndexValue": 5.0721
+  },
+  {
+    "ID": "US1030",
+    "Ticker": "AHJQ",
+    "BasePrice": 79.18,
+    "Weight": 0.0605,
+    "IndexShares": 0.073,
+    "IndexValue": 5.7786
+  },
+  {
+    "ID": "US1033",
+    "Ticker": "AIAD",
+    "BasePrice": 25.29,
+    "Weight": 0.0469,
+    "IndexShares": 0.1772,
+    "IndexValue": 4.4808
+  },
+  {
+    "ID": "US1038",
+    "Ticker": "AKEK",
+    "BasePrice": 88.48,
+    "Weight": 0.0473,
+    "IndexShares": 0.0511,
+    "IndexValue": 4.5245
+  },
+  {
+    "ID": "US1042",
+    "Ticker": "AKRY",
+    "BasePrice": 67.58,
+    "Weight": 0.0482,
+    "IndexShares": 0.0682,
+    "IndexValue": 4.6079
+  },
+  {
+    "ID": "US1045",
+    "Ticker": "AKXI",
+    "BasePrice": 15.54,
+    "Weight": 0.0489,
+    "IndexShares": 0.3008,
+    "IndexValue": 4.6744
+  },
+  {
+    "ID": "US1046",
+    "Ticker": "AKZO",
+    "BasePrice": 76.11,
+    "Weight": 0.0513,
+    "IndexShares": 0.0644,
+    "IndexValue": 4.905
+  },
+  {
+    "ID": "US1049",
+    "Ticker": "ALTO",
+    "BasePrice": 103.12,
+    "Weight": 0.0525,
+    "IndexShares": 0.0487,
+    "IndexValue": 5.0175
+  },
+  {
+    "ID": "US1050",
+    "Ticker": "AMGP",
+    "BasePrice": 12.33,
+    "Weight": 0.0511,
+    "IndexShares": 0.3958,
+    "IndexValue": 4.8787
+  }
 ]
