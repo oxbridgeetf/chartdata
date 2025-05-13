@@ -1,0 +1,30 @@
+[
+    {
+        "Units": 0,
+        "Change in Unrealized": 2481300,
+        "Change in Realized": 695570,
+        "Unrealized": 5658700,
+        "Realized": 99210
+    },
+    {
+        "Units": 1,
+        "Change in Unrealized": 2172200,
+        "Change in Realized": 362370,
+        "Unrealized": 5349600,
+        "Realized": -233990
+    },
+    {
+        "Units": 2,
+        "Change in Unrealized": 1817300,
+        "Change in Realized": 218910,
+        "Unrealized": 4994700,
+        "Realized": -377460
+    },
+    {
+        "Units": 3,
+        "Change in Unrealized": 1489000,
+        "Change in Realized": 106920,
+        "Unrealized": 4666400,
+        "Realized": -489450
+    }
+]
