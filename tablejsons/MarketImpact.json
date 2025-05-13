@@ -6,8 +6,8 @@
         "MktShares": 17974.0,
         "ADV": 221000.0,
         "BuySell": "Sell",
-        "PercADV": "8.13%",
-        "MI": "0.14%"
+        "PercADV": 0.0813,
+        "MI": 0.0014
     },
     {
         "Ticker": " AAQZ",
@@ -16,8 +16,8 @@
         "MktShares": 8957.0,
         "ADV": 478000.0,
         "BuySell": "Buy",
-        "PercADV": "1.87%",
-        "MI": "0.07%"
+        "PercADV": 0.0187,
+        "MI": 0.0007
     },
     {
         "Ticker": " AAWL",
@@ -26,8 +26,8 @@
         "MktShares": 84783.0,
         "ADV": 986000.0,
         "BuySell": "Sell",
-        "PercADV": "8.60%",
-        "MI": "0.15%"
+        "PercADV": 0.086,
+        "MI": 0.0015
     },
     {
         "Ticker": " AAXX",
@@ -36,8 +36,8 @@
         "MktShares": 158902.0,
         "ADV": 342000.0,
         "BuySell": "Buy",
-        "PercADV": "46.46%",
-        "MI": "0.34%"
+        "PercADV": 0.4646,
+        "MI": 0.0034
     },
     {
         "Ticker": " ACBU",
@@ -46,8 +46,8 @@
         "MktShares": 19511.0,
         "ADV": 819000.0,
         "BuySell": "Sell",
-        "PercADV": "2.38%",
-        "MI": "0.08%"
+        "PercADV": 0.0238,
+        "MI": 0.0008
     },
     {
         "Ticker": " ACGN",
@@ -56,8 +56,8 @@
         "MktShares": 8089.0,
         "ADV": 507000.0,
         "BuySell": "Sell",
-        "PercADV": "1.60%",
-        "MI": "0.06%"
+        "PercADV": 0.016,
+        "MI": 0.0006
     },
     {
         "Ticker": " ACOP",
@@ -66,8 +66,8 @@
         "MktShares": 1620.0,
         "ADV": 346000.0,
         "BuySell": "Sell",
-        "PercADV": "0.47%",
-        "MI": "0.03%"
+        "PercADV": 0.0047,
+        "MI": 0.0003
     },
     {
         "Ticker": " ADXK",
@@ -76,8 +76,8 @@
         "MktShares": 31688.0,
         "ADV": 374000.0,
         "BuySell": "Buy",
-        "PercADV": "8.47%",
-        "MI": "0.15%"
+        "PercADV": 0.0847,
+        "MI": 0.0015
     },
     {
         "Ticker": " ADZI",
@@ -86,8 +86,8 @@
         "MktShares": 1109.0,
         "ADV": 287000.0,
         "BuySell": "Sell",
-        "PercADV": "0.39%",
-        "MI": "0.03%"
+        "PercADV": 0.0039,
+        "MI": 0.0003
     },
     {
         "Ticker": " AFOJ",
@@ -96,8 +96,8 @@
         "MktShares": 27058.0,
         "ADV": 475000.0,
         "BuySell": "Sell",
-        "PercADV": "5.70%",
-        "MI": "0.12%"
+        "PercADV": 0.057,
+        "MI": 0.0012
     },
     {
         "Ticker": " AGFZ",
@@ -106,8 +106,8 @@
         "MktShares": 16332.0,
         "ADV": 177000.0,
         "BuySell": "Buy",
-        "PercADV": "9.23%",
-        "MI": "0.15%"
+        "PercADV": 0.0923,
+        "MI": 0.0015
     },
     {
         "Ticker": " AHBP",
@@ -116,8 +116,8 @@
         "MktShares": 10039.0,
         "ADV": 883000.0,
         "BuySell": "Sell",
-        "PercADV": "1.14%",
-        "MI": "0.05%"
+        "PercADV": 0.0114,
+        "MI": 0.0005
     },
     {
         "Ticker": " AHGG",
@@ -126,8 +126,8 @@
         "MktShares": 4968.0,
         "ADV": 444000.0,
         "BuySell": "Buy",
-        "PercADV": "1.12%",
-        "MI": "0.05%"
+        "PercADV": 0.0112,
+        "MI": 0.0005
     },
     {
         "Ticker": " AHJQ",
@@ -136,8 +136,8 @@
         "MktShares": 851.0,
         "ADV": 645000.0,
         "BuySell": "Sell",
-        "PercADV": "0.13%",
-        "MI": "0.02%"
+        "PercADV": 0.0013,
+        "MI": 0.0002
     },
     {
         "Ticker": " AIAD",
@@ -146,8 +146,8 @@
         "MktShares": 7832.0,
         "ADV": 759000.0,
         "BuySell": "Buy",
-        "PercADV": "1.03%",
-        "MI": "0.05%"
+        "PercADV": 0.0103,
+        "MI": 0.0005
     },
     {
         "Ticker": " AKEK",
@@ -156,8 +156,8 @@
         "MktShares": 52254.0,
         "ADV": 732000.0,
         "BuySell": "Buy",
-        "PercADV": "7.14%",
-        "MI": "0.13%"
+        "PercADV": 0.0714,
+        "MI": 0.0013
     },
     {
         "Ticker": " AKMW",
@@ -166,8 +166,8 @@
         "MktShares": 88842.0,
         "ADV": 341000.0,
         "BuySell": "Sell",
-        "PercADV": "26.05%",
-        "MI": "0.26%"
+        "PercADV": 0.2605,
+        "MI": 0.0026
     },
     {
         "Ticker": " AKRY",
@@ -176,8 +176,8 @@
         "MktShares": 15254.0,
         "ADV": 128000.0,
         "BuySell": "Buy",
-        "PercADV": "11.92%",
-        "MI": "0.17%"
+        "PercADV": 0.1192,
+        "MI": 0.0017
     },
     {
         "Ticker": " AKXI",
@@ -186,8 +186,8 @@
         "MktShares": 32365.0,
         "ADV": 809000.0,
         "BuySell": "Buy",
-        "PercADV": "4.00%",
-        "MI": "0.10%"
+        "PercADV": 0.04,
+        "MI": 0.001
     },
     {
         "Ticker": " AKZO",
@@ -196,8 +196,8 @@
         "MktShares": 9793.0,
         "ADV": 610000.0,
         "BuySell": "Sell",
-        "PercADV": "1.61%",
-        "MI": "0.06%"
+        "PercADV": 0.0161,
+        "MI": 0.0006
     },
     {
         "Ticker": " ALTO",
@@ -206,8 +206,8 @@
         "MktShares": 13662.0,
         "ADV": 210000.0,
         "BuySell": "Sell",
-        "PercADV": "6.51%",
-        "MI": "0.13%"
+        "PercADV": 0.0651,
+        "MI": 0.0013
     },
     {
         "Ticker": " AMGP",
@@ -216,7 +216,7 @@
         "MktShares": 10717.0,
         "ADV": 847000.0,
         "BuySell": "Buy",
-        "PercADV": "1.27%",
-        "MI": "0.06%"
+        "PercADV": 0.0127,
+        "MI": 0.0006
     }
 ]
