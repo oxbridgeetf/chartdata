@@ -13,31 +13,31 @@
     },
     {
         "Col1": "Creation Unit",
-        "Col2": 50000.0,
+        "Col2": "50,000",
         "Col3": "Base Market Value",
         "Col4": 1375000.0
     },
     {
         "Col1": "NAV",
-        "Col2": 50.0,
+        "Col2": "$50.00",
         "Col3": "Estimated Total Cash",
         "Col4": 1125000.0
     },
     {
         "Col1": "NAV Per CU",
-        "Col2": 2500000.0,
+        "Col2": "$2,500,000",
         "Col3": "Estimated CIL",
         "Col4": 590011.1718
     },
     {
         "Col1": "Shares O/S",
-        "Col2": 10000000.0,
+        "Col2": "10,000,000",
         "Col3": "Estimated Cash",
         "Col4": 534988.8283
     },
     {
         "Col1": "Total Net Assets",
-        "Col2": 500000000.0,
+        "Col2": "$500,000,000",
         "Col3": "Estimated Dividend",
         "Col4": 7346.0
     }
