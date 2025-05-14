@@ -9,7 +9,7 @@
     },
     {
         "Col1": "Shares",
-        "Col2": 8000.0
+        "Col2": "8,000"
     },
     {
         "Col1": "Dividend",
@@ -25,7 +25,7 @@
     },
     {
         "Col1": "Total Received",
-        "Col2": "6000 CAD"
+        "Col2": "6,000 CAD"
     },
     {
         "Col1": "If Index Withholding",
