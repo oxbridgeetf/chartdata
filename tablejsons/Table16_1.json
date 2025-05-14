@@ -1,50 +1,50 @@
 [
     {
         "Col1": "Date",
-        "Col2": "5/26/2020",
+        "Col2": "May 26th",
         "Col3": "",
         "Col4": ""
     },
     {
         "Col1": "Index Close",
-        "Col2": 2152.49,
+        "Col2": "2,152.49",
         "Col3": "",
         "Col4": ""
     },
     {
         "Col1": "Date Rebal",
-        "Col2": "4/30/2020",
+        "Col2": "April 30th",
         "Col3": "Average Yield To Maturity",
-        "Col4": 2.5714
+        "Col4": "2.5714%"
     },
     {
         "Col1": "Index Close Rebal",
-        "Col2": 2131.33,
+        "Col2": "2,131.33",
         "Col3": "Average Macaulay Duration to Maturity",
-        "Col4": 8.377
+        "Col4": "8.3770"
     },
     {
         "Col1": "Month to Date return",
         "Col2": "1.00%",
         "Col3": "Average Modified Duration to Maturity",
-        "Col4": 8.2536
+        "Col4": "8.2536"
     },
     {
         "Col1": "Daily Return",
         "Col2": "-0.0155%",
         "Col3": "Average DV01",
-        "Col4": 0.096
+        "Col4": "0.096"
     },
     {
         "Col1": "Index MV",
-        "Col2": " $6,558,210,000,000 ",
+        "Col2": "$6,558,210,000,000",
         "Col3": "Average Term",
-        "Col4": 11.9017
+        "Col4": "11.9017"
     },
     {
         "Col1": "Index Cash",
-        "Col2": " $18,971,070,086 ",
+        "Col2": "$18,971,070,086",
         "Col3": "Average Convexity",
-        "Col4": 1.2892
+        "Col4": "1.2892"
     }
 ]
