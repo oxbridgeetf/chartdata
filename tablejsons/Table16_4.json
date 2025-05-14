@@ -1,50 +1,50 @@
 [
-    {
-        "ID": "US1001B",
-        "Description": "AABA Corp",
-        "Shares": 20000.0,
-        "Original_Face": 20000000.0,
-        " Interest ": 37.34,
-        " BasePrice ": 99.42,
-        " BaseMV ": 1988400.0,
-        "Weight": 0.012,
-        "CIL": " N",
-        "Lot": 2000.0
-    },
-    {
-        "ID": "US1003B",
-        "Description": "AAQZ Corp",
-        "Shares": 18000.0,
-        "Original_Face": 18000000.0,
-        " Interest ": 42.02,
-        " BasePrice ": 104.31,
-        " BaseMV ": 1877580.0,
-        "Weight": 0.0083,
-        "CIL": " N",
-        "Lot": 2000.0
-    },
-    {
-        "ID": "US1004B",
-        "Description": "AAWL Corp",
-        "Shares": 22000.0,
-        "Original_Face": 22000000.0,
-        " Interest ": 13.41,
-        " BasePrice ": 102.23,
-        " BaseMV ": 2249060.0,
-        "Weight": 0.007,
-        "CIL": " N",
-        "Lot": 2000.0
-    },
-    {
-        "ID": "US1009B",
-        "Description": "ACBU Corp",
-        "Shares": 20000.0,
-        "Original_Face": 20000000.0,
-        " Interest ": 21.87,
-        " BasePrice ": 101.88,
-        " BaseMV ": 2037600.0,
-        "Weight": 0.0065,
-        "CIL": " N",
-        "Lot": 2000.0
-    }
+  {
+    "ID": "US1001B",
+    "Description": "AABA Corp",
+    "Shares": 20000.0,
+    "Original_Face": 20000000.0,
+    "Interest": 37.34,
+    "BasePrice": 99.42,
+    "BaseMV": 1988400.0,
+    "Weight": 0.012,
+    "CIL": "N",
+    "Lot": 2000.0
+  },
+  {
+    "ID": "US1003B",
+    "Description": "AAQZ Corp",
+    "Shares": 18000.0,
+    "Original_Face": 18000000.0,
+    "Interest": 42.02,
+    "BasePrice": 104.31,
+    "BaseMV": 1877580.0,
+    "Weight": 0.0083,
+    "CIL": "N",
+    "Lot": 2000.0
+  },
+  {
+    "ID": "US1004B",
+    "Description": "AAWL Corp",
+    "Shares": 22000.0,
+    "Original_Face": 22000000.0,
+    "Interest": 13.41,
+    "BasePrice": 102.23,
+    "BaseMV": 2249060.0,
+    "Weight": 0.007,
+    "CIL": "N",
+    "Lot": 2000.0
+  },
+  {
+    "ID": "US1009B",
+    "Description": "ACBU Corp",
+    "Shares": 20000.0,
+    "Original_Face": 20000000.0,
+    "Interest": 21.87,
+    "BasePrice": 101.88,
+    "BaseMV": 2037600.0,
+    "Weight": 0.0065,
+    "CIL": "N",
+    "Lot": 2000.0
+  }
 ]
