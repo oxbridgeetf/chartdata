@@ -17,15 +17,15 @@
     },
     {
         "Col1": "Exchange Rate at Ex-Date",
-        "Col2": 1.3
+        "Col2": "1.30"
     },
     {
         "Col1": "Shares ",
-        "Col2": 8000.0
+        "Col2": "8,000"
     },
     {
         "Col1": "Expected USD",
-        "Col2": 10400.0
+        "Col2": "$10,400"
     },
     {
         "Col1": "Payment Date",
@@ -33,10 +33,10 @@
     },
     {
         "Col1": "Exchange Rate on Payment Date",
-        "Col2": 1.2
+        "Col2": "1.20"
     },
     {
         "Col1": "Cash Received in USD",
-        "Col2": 9600.0
+        "Col2": "$9,600"
     }
 ]
