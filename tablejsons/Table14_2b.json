@@ -1,7 +1,7 @@
 [
     {
         "ID": "US1001",
-        "Ticker": " AABA",
+        "Ticker": "AABA",
         "Shares": 700.0,
         "LocalPrice": 85.93,
         "Currency": "USD",
@@ -13,7 +13,7 @@
     },
     {
         "ID": "US1003",
-        "Ticker": " AAQZ",
+        "Ticker": "AAQZ",
         "Shares": 800.0,
         "LocalPrice": 7903.0,
         "Currency": "JPY",
@@ -25,7 +25,7 @@
     },
     {
         "ID": "US1004",
-        "Ticker": " AAWL",
+        "Ticker": "AAWL",
         "Shares": 1000.0,
         "LocalPrice": 78.91,
         "Currency": "CAD",
