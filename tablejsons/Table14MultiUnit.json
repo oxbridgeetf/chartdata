@@ -5,19 +5,19 @@
     },
     {
         "Col1": "Number of Units",
-        "Col2": 10.0
+        "Col2": "10"
     },
     {
         "Col1": "Target Shares (Unconstrained) of AABA",
-        "Col2": 7540.0
+        "Col2": "7,540"
     },
     {
         "Col1": "Shares Per CU",
-        "Col2": 700.0
+        "Col2": "700"
     },
     {
         "Col1": "Shares in 10CU Create",
-        "Col2": 7000.0
+        "Col2": "7,000"
     },
     {
         "Col1": "PM Action",
@@ -25,6 +25,6 @@
     },
     {
         "Col1": "Final Sharecount",
-        "Col2": 7500.0
+        "Col2": "7,500"
     }
 ]
