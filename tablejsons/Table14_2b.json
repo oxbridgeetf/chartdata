@@ -9,7 +9,7 @@
         "BasePrice": 85.93,
         "BaseMV": 60151.2332,
         "Weight": 0.050596,
-        "CIL": " N"
+        "CIL": "N"
     },
     {
         "ID": "US1003",
@@ -21,7 +21,7 @@
         "BasePrice": 69.02,
         "BaseMV": 55216.9876,
         "Weight": 0.046446,
-        "CIL": " N"
+        "CIL": "N"
     },
     {
         "ID": "US1004",
@@ -33,10 +33,10 @@
         "BasePrice": 60.17,
         "BaseMV": 60169.6031,
         "Weight": 0.050612,
-        "CIL": " N"
+        "CIL": "N"
     },
     {
-        "ID": "\u2026",
+        "ID": "...",
         "Ticker": "",
         "Shares": "",
         "LocalPrice": "",
