@@ -1,42 +1,42 @@
 [
-    {
-        "ID": "US1001B",
-        "Description": "AABA Corp",
-        "Shares": 20000.0,
-        "Original_Face": 20000000.0,
-        " Interest ": 37.34,
-        " BasePrice ": 99.42,
-        " BaseMV ": 1988400.0,
-        "Lot": 2000.0
-    },
-    {
-        "ID": "US1002B",
-        "Description": "AABD Corp",
-        "Shares": 20000.0,
-        "Original_Face": 20000000.0,
-        " Interest ": 28.76,
-        " BasePrice ": 101.01,
-        " BaseMV ": 2020200.0,
-        "Lot": 2000.0
-    },
-    {
-        "ID": "US1006B",
-        "Description": "AABW Corp",
-        "Shares": 20000.0,
-        "Original_Face": 20000000.0,
-        " Interest ": 19.99,
-        " BasePrice ": 99.28,
-        " BaseMV ": 1985600.0,
-        "Lot": 2000.0
-    },
-    {
-        "ID": ". . .",
-        "Description": "",
-        "Shares": "",
-        "Original_Face": "",
-        " Interest ": "",
-        " BasePrice ": "",
-        " BaseMV ": "",
-        "Lot": ""
-    }
+  {
+    "ID": "US1001B",
+    "Description": "AABA Corp",
+    "Shares": 20000.0,
+    "Original_Face": 20000000.0,
+    "Interest": 37.34,
+    "BasePrice": 99.42,
+    "BaseMV": 1988400.0,
+    "Lot": 2000.0
+  },
+  {
+    "ID": "US1002B",
+    "Description": "AABD Corp",
+    "Shares": 20000.0,
+    "Original_Face": 20000000.0,
+    "Interest": 28.76,
+    "BasePrice": 101.01,
+    "BaseMV": 2020200.0,
+    "Lot": 2000.0
+  },
+  {
+    "ID": "US1006B",
+    "Description": "AABW Corp",
+    "Shares": 20000.0,
+    "Original_Face": 20000000.0,
+    "Interest": 19.99,
+    "BasePrice": 99.28,
+    "BaseMV": 1985600.0,
+    "Lot": 2000.0
+  },
+  {
+    "ID": "...",
+    "Description": "",
+    "Shares": "",
+    "Original_Face": "",
+    "Interest": "",
+    "BasePrice": "",
+    "BaseMV": "",
+    "Lot": ""
+  }
 ]
