@@ -194,23 +194,30 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-
+console.log("UPD2");
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
     const cellEl = cell.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
-console.log("UPDATE");
-    // Create overlay to fix visual offset issues
+
+    // Get computed padding so overlay doesn't overflow
+    const style = window.getComputedStyle(cellEl);
+    const paddingTop = parseFloat(style.paddingTop);
+    const paddingBottom = parseFloat(style.paddingBottom);
+    const paddingLeft = parseFloat(style.paddingLeft);
+    const paddingRight = parseFloat(style.paddingRight);
+
+    // Create a precise overlay
     const overlay = document.createElement("div");
     overlay.style.position = "absolute";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.right = "0";
-    overlay.style.bottom = "0";
+    overlay.style.top = `${paddingTop}px`;
+    overlay.style.left = `${paddingLeft}px`;
+    overlay.style.right = `${paddingRight}px`;
+    overlay.style.bottom = `${paddingBottom}px`;
     overlay.style.backgroundColor = colorVal;
     overlay.style.pointerEvents = "none";
-    overlay.style.zIndex = "1"; // sit above text
+    overlay.style.zIndex = "1";
     overlay.style.borderRadius = "2px";
 
     cellEl.style.position = "relative";
@@ -219,11 +226,12 @@ console.log("UPDATE");
     if (duration) {
         setTimeout(() => {
             if (overlay.parentNode) {
-                overlay.parentNode.removeChild(overlay);
+                overlay.remove();
             }
         }, duration);
     }
 }
+
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
