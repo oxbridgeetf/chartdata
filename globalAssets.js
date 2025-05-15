@@ -194,26 +194,33 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-console.log("New");
+
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
-    const el = cell.getElement();
+    const cellEl = cell.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+console.log("UPDATE");
+    // Create overlay to fix visual offset issues
+    const overlay = document.createElement("div");
+    overlay.style.position = "absolute";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.right = "0";
+    overlay.style.bottom = "0";
+    overlay.style.backgroundColor = colorVal;
+    overlay.style.pointerEvents = "none";
+    overlay.style.zIndex = "1"; // sit above text
+    overlay.style.borderRadius = "2px";
 
-    // Prevent visual overflow by ensuring box-sizing and overflow control
-    el.style.transition = "box-shadow 0.3s ease";
-    el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
-    el.style.overflow = "hidden";
-    el.style.boxSizing = "border-box"; // critical for containment
-    el.style.height = "100%"; // ensures it doesn’t exceed row height
+    cellEl.style.position = "relative";
+    cellEl.appendChild(overlay);
 
     if (duration) {
         setTimeout(() => {
-            el.style.boxShadow = "";
-            el.style.overflow = "";
-            el.style.boxSizing = "";
-            el.style.height = "";
+            if (overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+            }
         }, duration);
     }
 }
