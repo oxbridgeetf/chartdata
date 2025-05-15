@@ -194,26 +194,13 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-const cellEl1 = table.getRows()[0].getCell('Fri').getElement();
-const firstChildEl1 = cellEl1.firstElementChild;  // immediate child element node or null if none
-console.log(firstChildEl1);
-
     const cell = row.getCell(fieldName);
     if (!cell) return;
-
-    const cellEl = cell.getElement();
-    // Use first child as inner container, fallback to cellEl if none
-    const inner = cellEl.firstElementChild || cellEl;
-
+    const el = cell.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
-    inner.style.transition = "box-shadow 0.3s ease";
-    inner.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
-
-    if (duration) {
-        setTimeout(() => {
-            inner.style.boxShadow = "";
-        }, duration);
-    }
+    el.style.transition = "background-color 0.5s ease";
+    el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
+    if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
 }
 
 
