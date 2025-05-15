@@ -155,8 +155,24 @@ const colorPalette = {
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
 
-// --- Global Functions to Highlight Rows/Cols/Cells ---
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
+    const cells = row.getCells();
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+
+    cells.forEach(cell => {
+        const contentDiv = cell.getElement().querySelector('div');
+        if (contentDiv) {
+            contentDiv.style.transition = "background-color 0.5s ease";
+            contentDiv.style.backgroundColor = colorVal;
+            if (duration) setTimeout(() => contentDiv.style.backgroundColor = "", duration);
+        }
+    });
+}
+
+// --- Global Functions to Highlight Rows/Cols/Cells ---
+/*function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
     const el = row.getElement();
@@ -164,7 +180,7 @@ function highlightRow(table, rowIndex, color = 'highlightYellow', duration = nul
     el.style.transition = "background-color 0.5s ease";
     el.style.backgroundColor = colorVal;
     if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
-}
+}*/
 
 function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
