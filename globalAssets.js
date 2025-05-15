@@ -161,17 +161,24 @@ function highlightRow(table, rowIndex, color = 'highlightYellow', duration = nul
 
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
+    console.log(`Highlighting row ${rowIndex} with color ${colorVal}`);
+
     row.getCells().forEach(cell => {
         const el = cell.getElement();
-        el.style.transition = "box-shadow 0.3s ease, background-color 0.3s ease";
-        el.style.boxShadow = `inset 0 0 0 9999px ${colorVal}`;  // simulate full background
+        console.log('Highlighting cell element:', el);
+
+        // Apply background color with !important to override conflicting styles
+        el.style.setProperty('background-color', colorVal, 'important');
+        el.style.transition = "background-color 0.3s ease";
+
         if (duration) {
             setTimeout(() => {
-                el.style.boxShadow = "";
+                el.style.removeProperty('background-color');
             }, duration);
         }
     });
 }
+
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
