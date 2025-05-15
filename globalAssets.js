@@ -143,12 +143,15 @@ const colorPalette = {
     Oxford: 'rgb(16,29,62)',
     Cadet: 'rgb(155,184,193)',
     Cinnabar: 'rgb(236, 74, 39)',
+    CinnabarHalf: 'rgb(236, 74, 39, 0.5)',
     Robin: 'rgb(52,192,206)',
     RobinHalf: 'rgb(52,192,206, 0.5)',
     Persian: 'rgb(198,62,48)',
+    PersianHalf: 'rgb(198,62,48, 0.5)',
     Columbia: 'rgb(2203,216,221)',
     Alabaster: 'rgb(229,230,217)',
-    Tea: 'rgb(221,232,185)'
+    Tea: 'rgb(221,232,185)',
+    TeaHalf: 'rgb(221,232,185, 0.5)'
 
     // Add any other colors you need
 };
