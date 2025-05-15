@@ -158,39 +158,21 @@ window.colorPalette = colorPalette;
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-    console.log("Updated");
+console.log("Up");
+    const el = row.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
-    row.getCells().forEach(cell => {
-        const cellEl = cell.getElement();
+    // Apply inset box-shadow instead of backgroundColor
+    el.style.transition = "box-shadow 0.3s ease";
+    el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
 
-        // Check if we've already wrapped the content
-        let wrapper = cellEl.querySelector('.highlight-wrapper');
-        if (!wrapper) {
-            // Wrap cell content in a span
-            const span = document.createElement('span');
-            span.className = 'highlight-wrapper';
-            span.style.display = 'inline-block';
-            span.style.width = '100%';
-            span.style.padding = '2px 4px'; // Adjust as needed
-            span.innerHTML = cellEl.innerHTML;
-
-            cellEl.innerHTML = '';
-            cellEl.appendChild(span);
-            wrapper = span;
-        }
-
-        // Apply background color to the wrapper
-        wrapper.style.transition = 'background-color 0.3s ease';
-        wrapper.style.backgroundColor = colorVal;
-
-        if (duration) {
-            setTimeout(() => {
-                wrapper.style.backgroundColor = '';
-            }, duration);
-        }
-    });
+    if (duration) {
+        setTimeout(() => {
+            el.style.boxShadow = "";
+        }, duration);
+    }
 }
+
 
 
 
