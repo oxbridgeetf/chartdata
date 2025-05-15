@@ -207,7 +207,7 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     const paddingBottom = parseFloat(style.paddingBottom);
     const paddingLeft = parseFloat(style.paddingLeft);
     const paddingRight = parseFloat(style.paddingRight);
-console.log("Hybrid");
+console.log("Hybrid2");
     // Create a precise overlay
     const overlay = document.createElement("div");
     overlay.style.position = "absolute";
