@@ -158,18 +158,21 @@ window.colorPalette = colorPalette;
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-    const cells = row.getCells();
+
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
-    cells.forEach(cell => {
-        const contentDiv = cell.getElement().querySelector('div');
-        if (contentDiv) {
-            contentDiv.style.transition = "background-color 0.5s ease";
-            contentDiv.style.backgroundColor = colorVal;
-            if (duration) setTimeout(() => contentDiv.style.backgroundColor = "", duration);
+    row.getCells().forEach(cell => {
+        const el = cell.getElement();
+        el.style.transition = "box-shadow 0.3s ease, background-color 0.3s ease";
+        el.style.boxShadow = `inset 0 0 0 9999px ${colorVal}`;  // simulate full background
+        if (duration) {
+            setTimeout(() => {
+                el.style.boxShadow = "";
+            }, duration);
         }
     });
 }
+
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
 /*function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
