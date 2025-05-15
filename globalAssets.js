@@ -194,21 +194,25 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-
+console.log("Cell");
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
-    const el = cell.getElement();
+    const cellEl = cell.getElement();
+    const inner = cellEl.querySelector(".tabulator-cell-content");
+    if (!inner) return;
+
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
-    el.style.transition = "box-shadow 0.3s ease";
-    el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
+    inner.style.transition = "box-shadow 0.3s ease";
+    inner.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
 
     if (duration) {
         setTimeout(() => {
-            el.style.boxShadow = "";
+            inner.style.boxShadow = "";
         }, duration);
     }
 }
+
 
 
 
