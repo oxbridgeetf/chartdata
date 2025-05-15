@@ -211,7 +211,8 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     const paddingBottom = parseFloat(style.paddingBottom);
     const paddingLeft = parseFloat(style.paddingLeft);
     const paddingRight = parseFloat(style.paddingRight);
-console.log("Hybrid2");
+    console.log("HybridFade");
+
     // Create a precise overlay
     const overlay = document.createElement("div");
     overlay.style.position = "absolute";
@@ -224,6 +225,10 @@ console.log("Hybrid2");
     overlay.style.zIndex = "0";
     overlay.style.borderRadius = "0px";
 
+    // Add opacity and transition for smooth fade in/out
+    overlay.style.opacity = "0";
+    overlay.style.transition = "opacity 0.5s ease";
+
     cellEl.style.position = "relative";
     [...cellEl.children].forEach(child => {
         child.style.position = "relative";
@@ -231,14 +236,24 @@ console.log("Hybrid2");
     });
     cellEl.appendChild(overlay);
 
+    // Trigger fade-in
+    requestAnimationFrame(() => {
+        overlay.style.opacity = "1";
+    });
+
     if (duration) {
         setTimeout(() => {
-            if (overlay.parentNode) {
-                overlay.remove();
-            }
+            // fade out
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                if (overlay.parentNode) {
+                    overlay.remove();
+                }
+            }, 500); // match transition duration
         }, duration);
     }
 }
+
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
