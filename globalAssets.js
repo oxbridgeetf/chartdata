@@ -201,20 +201,20 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     const cellEl = cell.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
-    // Get padding values from computed styles
+    // Get computed padding so overlay doesn't overflow
     const style = window.getComputedStyle(cellEl);
     const paddingTop = parseFloat(style.paddingTop);
     const paddingBottom = parseFloat(style.paddingBottom);
     const paddingLeft = parseFloat(style.paddingLeft);
     const paddingRight = parseFloat(style.paddingRight);
-
-    // Create overlay
+console.log("Hybrid");
+    // Create a precise overlay
     const overlay = document.createElement("div");
     overlay.style.position = "absolute";
-    overlay.style.top = `${paddingTop}px`;
-    overlay.style.left = `${paddingLeft}px`;
-    overlay.style.height = `${cellEl.clientHeight - paddingTop - paddingBottom}px`;
-    overlay.style.width = `${cellEl.clientWidth - paddingLeft - paddingRight}px`;
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.right = `${paddingRight}px`;
+    overlay.style.bottom = `${paddingBottom}px`;
     overlay.style.backgroundColor = colorVal;
     overlay.style.pointerEvents = "none";
     overlay.style.zIndex = "1";
@@ -226,12 +226,11 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     if (duration) {
         setTimeout(() => {
             if (overlay.parentNode) {
-                overlay.parentNode.removeChild(overlay);
+                overlay.remove();
             }
         }, duration);
     }
 }
-
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
