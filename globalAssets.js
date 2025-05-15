@@ -155,6 +155,42 @@ const colorPalette = {
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
 
+// --- Global Functions to Highlight Rows/Cols/Cells ---
+function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
+    const el = row.getElement();
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+    el.style.transition = "background-color 0.5s ease";
+    el.style.backgroundColor = colorVal;
+    if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
+}
+
+function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+    table.getRows().forEach(row => {
+        const cell = row.getCell(fieldName);
+        if (cell) {
+            const el = cell.getElement();
+            el.style.transition = "background-color 0.5s ease";
+            el.style.backgroundColor = colorVal;
+            if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
+        }
+    });
+}
+
+function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
+    const cell = row.getCell(fieldName);
+    if (!cell) return;
+    const el = cell.getElement();
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+    el.style.transition = "background-color 0.5s ease";
+    el.style.backgroundColor = colorVal;
+    if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
+}
+
 // Kill Chart.js and Tabulator cleanly
 function destroyChartsAndTables() {
     // 1. Destroy Chart.js instance if it exists
