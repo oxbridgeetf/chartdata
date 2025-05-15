@@ -144,6 +144,7 @@ const colorPalette = {
     Cadet: 'rgb(155,184,193)',
     Cinnabar: 'rgb(236, 74, 39)',
     Robin: 'rgb(52,192,206)',
+    RobinHalf: 'rgb(52,192,206, 0.5)',
     Persian: 'rgb(198,62,48)',
     Columbia: 'rgb(2203,216,221)',
     Alabaster: 'rgb(229,230,217)',
