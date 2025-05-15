@@ -158,7 +158,7 @@ window.colorPalette = colorPalette;
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-console.log("Up");
+console.log("Up3");
     const el = row.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
@@ -173,6 +173,42 @@ console.log("Up");
     }
 }
 
+function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+
+    table.getRows().forEach(row => {
+        const cell = row.getCell(fieldName);
+        if (cell) {
+            const el = cell.getElement();
+            el.style.transition = "box-shadow 0.3s ease";
+            el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
+
+            if (duration) {
+                setTimeout(() => {
+                    el.style.boxShadow = "";
+                }, duration);
+            }
+        }
+    });
+}
+function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
+
+    const cell = row.getCell(fieldName);
+    if (!cell) return;
+
+    const el = cell.getElement();
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+    el.style.transition = "box-shadow 0.3s ease";
+    el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
+
+    if (duration) {
+        setTimeout(() => {
+            el.style.boxShadow = "";
+        }, duration);
+    }
+}
 
 
 
@@ -186,7 +222,7 @@ console.log("Up");
     el.style.transition = "background-color 0.5s ease";
     el.style.backgroundColor = colorVal;
     if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
-}*/
+}
 
 function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
@@ -211,7 +247,7 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     el.style.transition = "background-color 0.5s ease";
     el.style.backgroundColor = colorVal;
     if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
-}
+}*/
 
 // Kill Chart.js and Tabulator cleanly
 function destroyChartsAndTables() {
