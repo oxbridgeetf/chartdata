@@ -194,19 +194,29 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
+console.log("New");
     const cell = row.getCell(fieldName);
     if (!cell) return;
+
     const el = cell.getElement();
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
-    el.style.transition = "background-color 0.5s ease";
+
+    // Prevent visual overflow by ensuring box-sizing and overflow control
+    el.style.transition = "box-shadow 0.3s ease";
     el.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
-    if (duration) setTimeout(() => el.style.backgroundColor = "", duration);
+    el.style.overflow = "hidden";
+    el.style.boxSizing = "border-box"; // critical for containment
+    el.style.height = "100%"; // ensures it doesn’t exceed row height
+
+    if (duration) {
+        setTimeout(() => {
+            el.style.boxShadow = "";
+            el.style.overflow = "";
+            el.style.boxSizing = "";
+            el.style.height = "";
+        }, duration);
+    }
 }
-
-
-
-
-
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
