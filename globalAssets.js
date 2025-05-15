@@ -194,13 +194,17 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-console.log("Cell");
+console.log("Updated...");
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
+    // Correct: apply styling to the inner content
     const cellEl = cell.getElement();
     const inner = cellEl.querySelector(".tabulator-cell-content");
-    if (!inner) return;
+    if (!inner) {
+        console.warn("Inner content not found for cell", cellEl);
+        return;
+    }
 
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
     inner.style.transition = "box-shadow 0.3s ease";
@@ -212,6 +216,7 @@ console.log("Cell");
         }, duration);
     }
 }
+
 
 
 
