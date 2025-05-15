@@ -217,8 +217,8 @@ console.log("Hybrid");
     overlay.style.bottom = `${paddingBottom}px`;
     overlay.style.backgroundColor = colorVal;
     overlay.style.pointerEvents = "none";
-    overlay.style.zIndex = "1";
-    overlay.style.borderRadius = "2px";
+    overlay.style.zIndex = "0";
+    overlay.style.borderRadius = "0px";
 
     cellEl.style.position = "relative";
     cellEl.appendChild(overlay);
