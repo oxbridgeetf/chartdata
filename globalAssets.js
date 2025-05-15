@@ -221,6 +221,10 @@ console.log("Hybrid");
     overlay.style.borderRadius = "0px";
 
     cellEl.style.position = "relative";
+    [...cellEl.children].forEach(child => {
+        child.style.position = "relative";
+        child.style.zIndex = "1";
+    });
     cellEl.appendChild(overlay);
 
     if (duration) {
