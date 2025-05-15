@@ -194,7 +194,10 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-console.log("child");
+const cellEl1 = table.getRows()[0].getCell('Fri').getElement();
+const firstChildEl1 = cellEl1.firstElementChild;  // immediate child element node or null if none
+console.log(firstChildEl1);
+
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
