@@ -158,26 +158,40 @@ window.colorPalette = colorPalette;
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-
+    console.log("Updated");
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
 
-    console.log(`Highlighting row ${rowIndex} with color ${colorVal}`);
-
     row.getCells().forEach(cell => {
-        const el = cell.getElement();
-        console.log('Highlighting cell element:', el);
+        const cellEl = cell.getElement();
 
-        // Apply background color with !important to override conflicting styles
-        el.style.setProperty('background-color', colorVal, 'important');
-        el.style.transition = "background-color 0.3s ease";
+        // Check if we've already wrapped the content
+        let wrapper = cellEl.querySelector('.highlight-wrapper');
+        if (!wrapper) {
+            // Wrap cell content in a span
+            const span = document.createElement('span');
+            span.className = 'highlight-wrapper';
+            span.style.display = 'inline-block';
+            span.style.width = '100%';
+            span.style.padding = '2px 4px'; // Adjust as needed
+            span.innerHTML = cellEl.innerHTML;
+
+            cellEl.innerHTML = '';
+            cellEl.appendChild(span);
+            wrapper = span;
+        }
+
+        // Apply background color to the wrapper
+        wrapper.style.transition = 'background-color 0.3s ease';
+        wrapper.style.backgroundColor = colorVal;
 
         if (duration) {
             setTimeout(() => {
-                el.style.removeProperty('background-color');
+                wrapper.style.backgroundColor = '';
             }, duration);
         }
     });
 }
+
 
 
 
