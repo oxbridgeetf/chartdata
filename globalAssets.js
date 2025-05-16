@@ -625,24 +625,28 @@ function initDynamicFormattedTableWithRem(containerName, dataOrUrl, ColumnNames,
     container.appendChild(tableContainer);
 
     // Dynamically create column definitions
-    let finalColumns = ColumnNames.map((colName, idx) => {
-        const formatType = FormatArray[idx];
-        const formatterFn = formatFunctions[formatType] || formatFunctions.Text; // Default to 'Text' if format is not found
+    // Dynamically create column definitions
+let finalColumns = ColumnNames.map((colName, idx) => {
+    const formatType = FormatArray[idx];
+    const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
 
-        const columnDef = {
-            title: columnHeaders ? columnHeaders[idx] : colName, // Use custom headers if provided
-            field: colName,
-            formatter: formatterFn, // Apply the formatter
-            headerSort: false, // Disable sorting by default
-        };
+    const columnDef = {
+        title: columnHeaders ? columnHeaders[idx] : colName,
+        field: colName,
+        formatter: formatterFn,
+        headerSort: false,
+    };
 
-        // Set column width
-        if (idx === 0 && firstColumnWidth) {
-            columnDef.width = firstColumnWidth; // Set width for the first column
-        }
+    // Support both legacy single-number width and new array of widths
+    if (typeof firstColumnWidth === "number" && idx === 0) {
+        columnDef.width = firstColumnWidth;
+    } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
+        columnDef.width = firstColumnWidth[idx];
+    }
 
-        return columnDef;
-    });
+    return columnDef;
+});
+
 
     console.log("Final Columns with Calculated Widths:", finalColumns);
 
