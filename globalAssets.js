@@ -884,7 +884,7 @@ function initRemTable(...args) {
             ColumnNames,
             FormatArray,
             hdrs = null,
-            firstColumnWidth = null,
+            colWidthVector = null,
             styleVector = null,
             justifyVector = null
         ] = args;
@@ -895,7 +895,7 @@ function initRemTable(...args) {
             ColumnNames,
             FormatArray,
             hdrs,
-            firstColumnWidth,
+            colWidthVector,
             styleVector,
             justifyVector
         };
@@ -907,7 +907,7 @@ function initRemTable(...args) {
         ColumnNames,
         FormatArray,
         hdrs = null,
-        firstColumnWidth = null,
+        colWidthVector = null,
         styleVector = null,
         justifyVector = null
     } = config;
@@ -960,10 +960,10 @@ function initRemTable(...args) {
         };
     }
 
-    if (typeof firstColumnWidth === "number" && idx === 0) {
-        columnDef.width = firstColumnWidth;
-    } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
-        columnDef.width = firstColumnWidth[idx];
+    if (typeof colWidthVector === "number" && idx === 0) {
+        columnDef.width = colWidthVector;
+    } else if (Array.isArray(colWidthVector) && colWidthVector[idx] !== undefined) {
+        columnDef.width = colWidthVector[idx];
     }
 
     return columnDef;
