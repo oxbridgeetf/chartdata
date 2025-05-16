@@ -1021,7 +1021,7 @@ function initRemTable(...args) {
 
         const rowHeight = usableHeight / totalRowCount;
         const scalingFactor = 2;
-        const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor));
+        const remBase = Math.max(styleVector[1], Math.min(styleVector[0], rowHeight / scalingFactor));
 
         tableContainer.style.fontSize = `${remBase}px`;
 
