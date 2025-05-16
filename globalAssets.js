@@ -1021,10 +1021,10 @@ function initRemTable(...args) {
     });
 
     // Fetch data and initialize the table
-    fetch(dataUrl)
+    fetch(dataOrUrl)
         .then((response) => {
             if (!response.ok) {
-                throw new Error(`Failed to fetch data from ${dataUrl}: ${response.statusText}`);
+                throw new Error(`Failed to fetch data from ${dataOrUrl}: ${response.statusText}`);
             }
             return response.json();
         })
