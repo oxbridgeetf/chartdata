@@ -939,30 +939,36 @@ function initRemTable(...args) {
     const alignMap = { L: "left", C: "center", R: "right" };
 
     const finalColumns = ColumnNames.map((colName, idx) => {
-        const formatType = FormatArray[idx];
-        const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
+    const formatType = FormatArray[idx];
+    const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
 
-        const columnDef = {
-            title: columnHeaders ? columnHeaders[idx] : colName,
-            field: colName,
-            formatter: formatterFn,
-            headerSort: false,
+    const columnDef = {
+        title: columnHeaders ? columnHeaders[idx] : colName,
+        field: colName,
+        formatter: formatterFn,
+        headerSort: false,
+    };
+
+    if (justifyVector && justifyVector[idx]) {
+        const alignment = alignMap[justifyVector[idx]] || "left";
+        columnDef.hozAlign = alignment;
+
+        // Force header text-align via titleFormatter
+        const rawTitle = columnDef.title;
+        columnDef.titleFormatter = () => {
+            return `<div style="text-align: ${alignment}; width: 100%;">${rawTitle}</div>`;
         };
+    }
 
-        if (justifyVector && justifyVector[idx]) {
-            const alignment = alignMap[justifyVector[idx]] || "left";
-            columnDef.hozAlign = alignment;
-            columnDef.headerClass = `align-${alignment}`; // for header alignment via CSS
-        }
+    if (typeof firstColumnWidth === "number" && idx === 0) {
+        columnDef.width = firstColumnWidth;
+    } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
+        columnDef.width = firstColumnWidth[idx];
+    }
 
-        if (typeof firstColumnWidth === "number" && idx === 0) {
-            columnDef.width = firstColumnWidth;
-        } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
-            columnDef.width = firstColumnWidth[idx];
-        }
+    return columnDef;
+});
 
-        return columnDef;
-    });
 
     console.log("Final Columns with Calculated Widths:", finalColumns);
 
