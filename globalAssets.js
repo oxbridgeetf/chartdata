@@ -875,11 +875,9 @@ function updateTabulatorCell(containerName, rowIndex, field, newValue) {
 function initRemTable(...args) {
     let config;
 
-    // If called with a single object, assume it's the "Struct"
     if (args.length === 1 && typeof args[0] === 'object' && !Array.isArray(args[0])) {
         config = args[0];
     } else {
-        // Otherwise, use positional arguments (legacy style)
         const [
             containerName,
             dataOrUrl,
@@ -903,7 +901,6 @@ function initRemTable(...args) {
         };
     }
 
-    // Destructure the config object as usual
     const {
         containerName,
         dataOrUrl,
@@ -921,7 +918,6 @@ function initRemTable(...args) {
         return;
     }
 
-    // Destroy any existing Tabulator instance
     if (container._tabulatorTable) {
         container._tabulatorTable.destroy();
         container._tabulatorTable = null;
@@ -929,20 +925,19 @@ function initRemTable(...args) {
 
     container.innerHTML = "";
 
-    // Ensure ColumnNames and FormatArray are arrays of equal length
     if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
         console.error("ColumnNames and FormatArray must be arrays of the same length.");
         return;
     }
 
-    // Create a container div for Tabulator
     const tableContainer = document.createElement("div");
     tableContainer.style.width = "100%";
     tableContainer.style.height = "100%";
-    tableContainer.style.fontSize = "1rem"; // Initial rem-based font size
+    tableContainer.style.fontSize = "1rem";
     container.appendChild(tableContainer);
 
-    // Dynamically create column definitions
+    const alignMap = { L: "left", C: "center", R: "right" };
+
     const finalColumns = ColumnNames.map((colName, idx) => {
         const formatType = FormatArray[idx];
         const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
@@ -954,13 +949,12 @@ function initRemTable(...args) {
             headerSort: false,
         };
 
-        const alignMap = { L: "left", C: "center", R: "right" };
         if (justifyVector && justifyVector[idx]) {
             const alignment = alignMap[justifyVector[idx]] || "left";
-            columnDef.hozAlign = alignment; // aligns both header and cell
+            columnDef.hozAlign = alignment;
+            columnDef.headerClass = `align-${alignment}`; // for header alignment via CSS
         }
 
-        // Set column widths
         if (typeof firstColumnWidth === "number" && idx === 0) {
             columnDef.width = firstColumnWidth;
         } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
@@ -972,37 +966,46 @@ function initRemTable(...args) {
 
     console.log("Final Columns with Calculated Widths:", finalColumns);
 
-    // Create style tag for Tabulator + rem styling
     const style = document.createElement("style");
     style.textContent = `
         [data-acc-text='${containerName}'] .tabulator {
-            font-size: 1rem; /* Base font size */
+            font-size: 1rem;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-row {
-            height: auto; /* Adjust row height automatically */
-            border-top: 2px solid #aaa; /* Add a top border to rows */
+            height: auto;
+            border-top: 2px solid #aaa;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-cell {
-            font-size: inherit; /* Inherit font size from container */
+            font-size: inherit;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-header .tabulator-col {
-            font-size: inherit; /* Inherit font size from container */
+            font-size: inherit;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-header {
-            border-bottom: none !important; /* Remove bottom border of the header */
+            border-bottom: none !important;
+        }
+
+        /* Header alignment styles */
+        [data-acc-text='${containerName}'] .tabulator .tabulator-col.align-left .tabulator-col-title {
+            text-align: left;
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-col.align-center .tabulator-col-title {
+            text-align: center;
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-col.align-right .tabulator-col-title {
+            text-align: right;
         }
     `;
     document.head.appendChild(style);
 
-    // Scale font-size based on container dimensions and row count
     function scaleRem(totalRowCount) {
         const containerHeight = container.offsetHeight;
-
-        // Calculate available height for rows
         const computedStyle = getComputedStyle(container);
         const paddingTop = parseFloat(computedStyle.paddingTop) || 0;
         const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
@@ -1010,7 +1013,6 @@ function initRemTable(...args) {
         const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
         const usableHeight = containerHeight - (paddingTop + paddingBottom + borderTop + borderBottom);
 
-        // Calculate row height and remBase
         const rowHeight = usableHeight / totalRowCount;
         const scalingFactor = 2;
         const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor));
@@ -1020,8 +1022,7 @@ function initRemTable(...args) {
         console.log(`Container Height: ${containerHeight}, Usable Height: ${usableHeight}, Total Rows: ${totalRowCount}, Row Height: ${rowHeight}, Rem Base: ${remBase}`);
     }
 
-    // Add resize listener
-    let totalRowCount = 0; // Declare totalRowCount to be updated later
+    let totalRowCount = 0;
     window.addEventListener("resize", () => {
         if (totalRowCount > 0) {
             scaleRem(totalRowCount);
@@ -1029,7 +1030,6 @@ function initRemTable(...args) {
         }
     });
 
-    // Fetch data and initialize the table
     fetch(dataOrUrl)
         .then((response) => {
             if (!response.ok) {
@@ -1039,10 +1039,8 @@ function initRemTable(...args) {
         })
         .then((jsonData) => {
             console.log("Raw JSON Data:", jsonData);
+            totalRowCount = jsonData.length + 1;
 
-            totalRowCount = jsonData.length + 1; // Number of rows + 1 for the header row
-
-            // Initialize Tabulator table
             const tableOptions = {
                 layout: "fitColumns",
                 data: jsonData,
@@ -1052,7 +1050,6 @@ function initRemTable(...args) {
             const table = new Tabulator(tableContainer, tableOptions);
             container._tabulatorTable = table;
 
-            // Scale rem-based sizing based on the total number of rows
             scaleRem(totalRowCount);
         })
         .catch((error) => console.error("Error fetching JSON file:", error));
