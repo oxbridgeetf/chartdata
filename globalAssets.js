@@ -883,7 +883,7 @@ function initRemTable(...args) {
             dataOrUrl,
             ColumnNames,
             FormatArray,
-            columnHeaders = null,
+            hdrs = null,
             firstColumnWidth = null,
             styleVector = null,
             justifyVector = null
@@ -894,7 +894,7 @@ function initRemTable(...args) {
             dataOrUrl,
             ColumnNames,
             FormatArray,
-            columnHeaders,
+            hdrs,
             firstColumnWidth,
             styleVector,
             justifyVector
@@ -906,7 +906,7 @@ function initRemTable(...args) {
         dataOrUrl,
         ColumnNames,
         FormatArray,
-        columnHeaders = null,
+        hdrs = null,
         firstColumnWidth = null,
         styleVector = null,
         justifyVector = null
@@ -943,7 +943,7 @@ function initRemTable(...args) {
     const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
 
     const columnDef = {
-        title: columnHeaders ? columnHeaders[idx] : colName,
+        title: hdrs ? hdrs[idx] : colName,
         field: colName,
         formatter: formatterFn,
         headerSort: false,
