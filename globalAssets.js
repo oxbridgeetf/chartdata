@@ -887,7 +887,8 @@ function initRemTable(...args) {
             FormatArray,
             columnHeaders = null,
             firstColumnWidth = null,
-            styleVector = null
+            styleVector = null,
+            justifyVector = null
         ] = args;
 
         config = {
@@ -897,7 +898,8 @@ function initRemTable(...args) {
             FormatArray,
             columnHeaders,
             firstColumnWidth,
-            styleVector
+            styleVector,
+            justifyVector
         };
     }
 
@@ -909,7 +911,8 @@ function initRemTable(...args) {
         FormatArray,
         columnHeaders = null,
         firstColumnWidth = null,
-        styleVector = null
+        styleVector = null,
+        justifyVector = null
     } = config;
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
