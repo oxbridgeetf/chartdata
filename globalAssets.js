@@ -954,10 +954,12 @@ function initRemTable(...args) {
             headerSort: false,
         };
 
+        const alignMap = { L: "left", C: "center", R: "right" };
         if (justifyVector && justifyVector[idx]) {
-            const alignMap = { L: "left", C: "center", R: "right" };
-            columnDef.hozAlign = alignMap[justifyVector[idx]] || "left";
+            const alignment = alignMap[justifyVector[idx]] || "left";
+            columnDef.hozAlign = alignment; // aligns both header and cell
         }
+
         // Set column widths
         if (typeof firstColumnWidth === "number" && idx === 0) {
             columnDef.width = firstColumnWidth;
