@@ -880,6 +880,7 @@ function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHe
         return;
     }
 
+    // Destroy any existing Tabulator instance
     if (container._tabulatorTable) {
         container._tabulatorTable.destroy();
         container._tabulatorTable = null;
@@ -901,7 +902,7 @@ function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHe
     container.appendChild(tableContainer);
 
     // Dynamically create column definitions
-    let finalColumns = ColumnNames.map((colName, idx) => {
+    const finalColumns = ColumnNames.map((colName, idx) => {
         const formatType = FormatArray[idx];
         const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
 
@@ -912,7 +913,7 @@ function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHe
             headerSort: false,
         };
 
-        // Support both legacy single-number width and new array of widths
+        // Set column widths
         if (typeof firstColumnWidth === "number" && idx === 0) {
             columnDef.width = firstColumnWidth;
         } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
@@ -950,27 +951,38 @@ function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHe
     `;
     document.head.appendChild(style);
 
-    // Scale font-size based on container width and number of rows (dynamic rem scaling)
+    // Scale font-size based on container dimensions and row count
     function scaleRem(totalRowCount) {
         const containerHeight = container.offsetHeight;
-        const rowHeight = containerHeight / totalRowCount; // Calculate height per row
-        const scalingFactor = 1.5; // Adjust based on content-to-font-size ratio
-        const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor)); // Scale font size between 12px and 20px
-        tableContainer.style.fontSize = remBase + "px";
 
-        console.log(`Container Height: ${containerHeight}, Total Rows: ${totalRowCount}, Row Height: ${rowHeight}, Rem Base: ${remBase}`);
+        // Calculate available height for rows
+        const computedStyle = getComputedStyle(container);
+        const paddingTop = parseFloat(computedStyle.paddingTop) || 0;
+        const paddingBottom = parseFloat(computedStyle.paddingBottom) || 0;
+        const borderTop = parseFloat(computedStyle.borderTopWidth) || 0;
+        const borderBottom = parseFloat(computedStyle.borderBottomWidth) || 0;
+        const usableHeight = containerHeight - (paddingTop + paddingBottom + borderTop + borderBottom);
+
+        // Calculate row height and remBase
+        const rowHeight = usableHeight / totalRowCount;
+        const scalingFactor = 1.5;
+        const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor));
+
+        tableContainer.style.fontSize = `${remBase}px`;
+
+        console.log(`Container Height: ${containerHeight}, Usable Height: ${usableHeight}, Total Rows: ${totalRowCount}, Row Height: ${rowHeight}, Rem Base: ${remBase}`);
     }
 
-    // Add the resize listener outside the fetch block
+    // Add resize listener
     let totalRowCount = 0; // Declare totalRowCount to be updated later
     window.addEventListener("resize", () => {
         if (totalRowCount > 0) {
-            scaleRem(totalRowCount); // Use the previously calculated totalRowCount
+            scaleRem(totalRowCount);
             if (container._tabulatorTable) container._tabulatorTable.redraw(true);
         }
     });
 
-    // Load data only once and initialize the table
+    // Fetch data and initialize the table
     fetch(dataUrl)
         .then((response) => {
             if (!response.ok) {
