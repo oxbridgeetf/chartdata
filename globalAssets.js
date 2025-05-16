@@ -965,7 +965,7 @@ function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHe
 
         // Calculate row height and remBase
         const rowHeight = usableHeight / totalRowCount;
-        const scalingFactor = 1.5;
+        const scalingFactor = 2;
         const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor));
 
         tableContainer.style.fontSize = `${remBase}px`;
