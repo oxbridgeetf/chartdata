@@ -872,7 +872,45 @@ function updateTabulatorCell(containerName, rowIndex, field, newValue) {
   rowComponent.update({ [field]: newValue });
 }
 
-function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
+function initRemTable(...args) {
+    let config;
+
+    // If called with a single object, assume it's the "Struct"
+    if (args.length === 1 && typeof args[0] === 'object' && !Array.isArray(args[0])) {
+        config = args[0];
+    } else {
+        // Otherwise, use positional arguments (legacy style)
+        const [
+            containerName,
+            dataOrUrl,
+            ColumnNames,
+            FormatArray,
+            columnHeaders = null,
+            firstColumnWidth = null,
+            styleVector = null
+        ] = args;
+
+        config = {
+            containerName,
+            dataOrUrl,
+            ColumnNames,
+            FormatArray,
+            columnHeaders,
+            firstColumnWidth,
+            styleVector
+        };
+    }
+
+    // Destructure the config object as usual
+    const {
+        containerName,
+        dataOrUrl,
+        ColumnNames,
+        FormatArray,
+        columnHeaders = null,
+        firstColumnWidth = null,
+        styleVector = null
+    } = config;
     const selector = `[data-acc-text='${containerName}']`;
     const container = document.querySelector(selector);
     if (!container) {
