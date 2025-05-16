@@ -871,3 +871,130 @@ function updateTabulatorCell(containerName, rowIndex, field, newValue) {
 
   rowComponent.update({ [field]: newValue });
 }
+
+function initRemTable(containerName, dataUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
+        return;
+    }
+
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
+    container.innerHTML = "";
+
+    // Ensure ColumnNames and FormatArray are arrays of equal length
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Create a container div for Tabulator
+    const tableContainer = document.createElement("div");
+    tableContainer.style.width = "100%";
+    tableContainer.style.height = "100%";
+    tableContainer.style.fontSize = "1rem"; // Initial rem-based font size
+    container.appendChild(tableContainer);
+
+    // Dynamically create column definitions
+    let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
+
+        const columnDef = {
+            title: columnHeaders ? columnHeaders[idx] : colName,
+            field: colName,
+            formatter: formatterFn,
+            headerSort: false,
+        };
+
+        // Support both legacy single-number width and new array of widths
+        if (typeof firstColumnWidth === "number" && idx === 0) {
+            columnDef.width = firstColumnWidth;
+        } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
+            columnDef.width = firstColumnWidth[idx];
+        }
+
+        return columnDef;
+    });
+
+    console.log("Final Columns with Calculated Widths:", finalColumns);
+
+    // Create style tag for Tabulator + rem styling
+    const style = document.createElement("style");
+    style.textContent = `
+        [data-acc-text='${containerName}'] .tabulator {
+            font-size: 1rem; /* Base font size */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-row {
+            height: auto; /* Adjust row height automatically */
+            border-top: 2px solid #aaa; /* Add a top border to rows */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-cell {
+            font-size: inherit; /* Inherit font size from container */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header .tabulator-col {
+            font-size: inherit; /* Inherit font size from container */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header {
+            border-bottom: none !important; /* Remove bottom border of the header */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Scale font-size based on container width and number of rows (dynamic rem scaling)
+    function scaleRem(totalRowCount) {
+        const containerHeight = container.offsetHeight;
+        const rowHeight = containerHeight / totalRowCount; // Calculate height per row
+        const scalingFactor = 1.5; // Adjust based on content-to-font-size ratio
+        const remBase = Math.max(12, Math.min(20, rowHeight / scalingFactor)); // Scale font size between 12px and 20px
+        tableContainer.style.fontSize = remBase + "px";
+
+        console.log(`Container Height: ${containerHeight}, Total Rows: ${totalRowCount}, Row Height: ${rowHeight}, Rem Base: ${remBase}`);
+    }
+
+    // Add the resize listener outside the fetch block
+    let totalRowCount = 0; // Declare totalRowCount to be updated later
+    window.addEventListener("resize", () => {
+        if (totalRowCount > 0) {
+            scaleRem(totalRowCount); // Use the previously calculated totalRowCount
+            if (container._tabulatorTable) container._tabulatorTable.redraw(true);
+        }
+    });
+
+    // Load data only once and initialize the table
+    fetch(dataUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data from ${dataUrl}: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then((jsonData) => {
+            console.log("Raw JSON Data:", jsonData);
+
+            totalRowCount = jsonData.length + 1; // Number of rows + 1 for the header row
+
+            // Initialize Tabulator table
+            const tableOptions = {
+                layout: "fitColumns",
+                data: jsonData,
+                columns: finalColumns,
+            };
+
+            const table = new Tabulator(tableContainer, tableOptions);
+            container._tabulatorTable = table;
+
+            // Scale rem-based sizing based on the total number of rows
+            scaleRem(totalRowCount);
+        })
+        .catch((error) => console.error("Error fetching JSON file:", error));
+}
