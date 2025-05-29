@@ -108,8 +108,22 @@ const formatFunctions = {
     },
 };
 
-// --- Global Table Definitions ---
-// This will be dynamically loaded
+const questionJsonUrl = "https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/questions.json";
+
+// Load JSON and assign globally
+fetch(questionJsonUrl)
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    window.questionData = data;
+    console.log("Questions loaded:", window.questionData);
+  })
+  .catch(error => {
+    console.error("Failed to load questions.json:", error);
+  });
+
 
 
 // --- Global Assets Loading ---
