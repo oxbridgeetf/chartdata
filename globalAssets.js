@@ -131,7 +131,7 @@ fetch(questionJsonUrl)
   });
 
 
-window.loadQuestion = function(index = 0) {
+/*window.loadQuestion = function(index = 0) {
   const player = GetPlayer();
   const q = window.questionData[index];
   const choices = [q.Choice1, q.Choice2, q.Choice3, q.Choice4, q.Choice5] || [];
@@ -151,7 +151,7 @@ window.loadQuestion = function(index = 0) {
   player.SetVar("CorrectAnswerIndex", correctIndex + 1);
   const feedbackText = `The correct answer is ${correctLetter}: ${correctText}`;
   player.SetVar("incorrect", feedbackText);
-}
+}*/
 
 // --- Global Assets Loading ---
 (function() {
