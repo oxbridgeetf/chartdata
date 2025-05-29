@@ -119,10 +119,17 @@ fetch(questionJsonUrl)
   .then(data => {
     window.questionData = data;
     console.log("Questions loaded:", window.questionData);
+
+    // If any functions are waiting for questions to load
+    if (window.onQuestionsReady && Array.isArray(window.onQuestionsReady)) {
+      window.onQuestionsReady.forEach(fn => fn());
+      window.onQuestionsReady = []; // Clear the queue
+    }
   })
   .catch(error => {
     console.error("Failed to load questions.json:", error);
   });
+
 
 window.loadQuestion = function(index = 0) {
   const player = GetPlayer();
