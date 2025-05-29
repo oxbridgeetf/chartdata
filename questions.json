@@ -1,0 +1,392 @@
+[
+    {
+        "Qnum": "1",
+        "Question": "An ETF has 25,000 shares per creation unit.  The NAV of the ETF is $50 and there are 100 creation units.  What is the total NAV of the ETF?",
+        "Choice1": "$125,000,000",
+        "Choice2": "$2,500,000",
+        "Choice3": "$1,250,000",
+        "Choice4": "$250,000,000",
+        "Choice5": "None of the above",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "2",
+        "Question": "An ETF holds 1,000 shares of ABC Company, which is currently trading at $25.  On March 1st, ABC announces that a 2-for-1 split will take place after the close on March 8th.  Which of the following is true?",
+        "Choice1": "The total NAV of the ETF will be unaffected on March 1st but will rise by $25,000 on March 8th.",
+        "Choice2": "The total NAV of the ETF will rise by $25,000 on March 1st but will be unaffected on March 8th.",
+        "Choice3": "Assuming no market movements, the total NAV of the ETF will rise by $25,000 on the close of March 9th.",
+        "Choice4": "There is no impact to the total NAV of the ETF.",
+        "Choice5": "None of the above",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "3",
+        "Question": "An all-equity index-tracking ETF holds 1,000 shares of ABC Company, which is currently trading at $25, and 1,000 shares of DEF Company, which is currently trading at $50.  On March 1st, ABC announces that it will be acquired in an all-cash deal after the close on March 8th.  Proceeds are expected to be distributed on March 11th.  Which of the following is true?",
+        "Choice1": "The ETF will receive $25,000 on March 11th.",
+        "Choice2": "The ETF will be underallocated on March 9th.",
+        "Choice3": "The PCF on March 9th will have more shares of DEF than it did on March 8th.  ",
+        "Choice4": "A and B",
+        "Choice5": "All of the above",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "4",
+        "Question": "The firm that processes shares of the ETF through the creation and redemption process is called the:",
+        "Choice1": "ETF Distributor",
+        "Choice2": "Transfer Agent",
+        "Choice3": "Authorized Participant",
+        "Choice4": "National Securities Clearing Corporation (NSCC)",
+        "Choice5": "None of the above",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "5",
+        "Question": "The only firm that can create or redeem shares of an ETF is the:",
+        "Choice1": "Authorized Participant",
+        "Choice2": "ETF Agent",
+        "Choice3": "ETF Sponsor",
+        "Choice4": "Transfer Agent",
+        "Choice5": "None of the above",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "6",
+        "Question": "The Authorized Participant can:",
+        "Choice1": "Hold the shares of an ETF upon creation",
+        "Choice2": "Create or redeem shares on behalf of a client",
+        "Choice3": "Create or redeem shares on behalf of the ETF Sponsor",
+        "Choice4": "A and B",
+        "Choice5": "B and C",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "7",
+        "Question": "Which of the following is FALSE:",
+        "Choice1": "The ETF Calculation Agent publishes Intraday Indicative Values (IIVs) during market trading hours",
+        "Choice2": "The ETF Rule (6c-11) mandates that Intraday Indicative Values (IIVs) must be published every 15 seconds.",
+        "Choice3": "The publication of Intraday Indicative Values (IIVs) promotes price efficiency in the secondary market.",
+        "Choice4": "A and B are false",
+        "Choice5": "A, B and C are false",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "8",
+        "Question": "ETF's traded during market hours are priced at:",
+        "Choice1": "The intraday NAV at the time of the trade",
+        "Choice2": "The closing NAV on the date of the trade",
+        "Choice3": "The market price at the time of the trade",
+        "Choice4": "The open price on the day of the trade",
+        "Choice5": "None of the above",
+        "Correct": "C"
+    },
+    {
+        "Qnum": "9",
+        "Question": "What are the advantages of using a holdings-based PCF versus an index-based PCF for an index-based ETF?",
+        "Choice1": "Creations and redemptions are directly proportional to the ETF portfolio",
+        "Choice2": "Holdings-based PCFs will consider tax-loss harvesting trades",
+        "Choice3": "Holdings-based PCFs account for corporate actions while index-based PCFs don't",
+        "Choice4": "A and B",
+        "Choice5": "A, B and C",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "10",
+        "Question": "The ETF portfolio manager is generally a part of which part of the ETF ecosystem?",
+        "Choice1": "Fund Administrator",
+        "Choice2": "Custodian",
+        "Choice3": "Investment Advisor",
+        "Choice4": "Subadvisor",
+        "Choice5": "C and D",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "11",
+        "Question": "The ___________ is a nonprofit self-regulatory organization authorized by Congress which seeks to ensure that the broker-dealer industry operates fairly and honestly.",
+        "Choice1": "Securities and Exchance Commission (SEC)",
+        "Choice2": "Commodity Futures Trading Commission (CFTC)",
+        "Choice3": "Financial Industry Regulatory Authority (FINRA)",
+        "Choice4": "Depository Trust and Clearning Corporation (DTCC)",
+        "Choice5": "National Securities Clearing Corporation (NSCC)",
+        "Correct": "C"
+    },
+    {
+        "Qnum": "12",
+        "Question": "For an index-based ETF, Calculation Day and Rebalance Day refer to:",
+        "Choice1": "When Index Weights are computed and when new weights are reflected in the Index, respectively.",
+        "Choice2": "When  new weights are reflected in the Index and when Index Weights are computed, respectively.",
+        "Choice3": "When Index Weights are computed; Calculation Day and Rebalance Day are the same.",
+        "Choice4": "The last day of the calendar quarter and the first day of the next calendar quarter, respectively.",
+        "Choice5": "None of the above",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "13",
+        "Question": "For the SWA Index ETF, which reflects a basket of securities whose tickers begin with the letter \"A\", which would be the most reasonable Eligible Universe:",
+        "Choice1": "The S&P 500 Index",
+        "Choice2": "The Dow Jones Industrial Average",
+        "Choice3": "The Bloomberg Barclays Aggregate Bond Index",
+        "Choice4": "The Consumer Price Index",
+        "Choice5": "All of the above would be reasonable choices for the Eligible Universe",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "14",
+        "Question": "For an all-equity index that is 100% invested in equities at all times, which of the following dividend policies are acceptable?",
+        "Choice1": "Dividends are held in cash from ex-date until the payment date, and then reinvested in the dividend-paying security.",
+        "Choice2": "Dividends are re-invested across all securities after the close just prior to ex-date",
+        "Choice3": "Dividends are re-invested in the dividend-paying security after the close just prior to ex-date",
+        "Choice4": "A and C",
+        "Choice5": "B and C",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "15",
+        "Question": "Which of the following is TRUE regarding an Index Committee of an Index tracked by an ETF?",
+        "Choice1": "Any changes to the index must be approved by the Index Committee",
+        "Choice2": "Any changes to the index must be approved by the ETF Sponsor",
+        "Choice3": "Any changes to the index must be approved by the Index Calculation Agent",
+        "Choice4": "A and B",
+        "Choice5": "A and C",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "16",
+        "Question": "Which of the following is FALSE:",
+        "Choice1": "The Index Open File and the Index Close File can have different prices for the same securities",
+        "Choice2": "The Index Open File and the Index Close File can have different Index Shares for the same securities",
+        "Choice3": "The Index Open File is produced at the open, while the Index Close File is produced at the close",
+        "Choice4": "The Index Open File and the Index Close File are both typically transmitted after the close on the same day",
+        "Choice5": "The Index Open File and the Index Close File are transmitted to subscribers from the Index Calculation Agent",
+        "Correct": "C"
+    },
+    {
+        "Qnum": "17",
+        "Question": "For a domestic equity index, the Index Shares x Closing Price for a given security is equal to the:",
+        "Choice1": "Index Weight",
+        "Choice2": "Index Value",
+        "Choice3": "Index Level",
+        "Choice4": "Shares Outstanding",
+        "Choice5": "None of the above",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "18",
+        "Question": "True or False: The Index Level in the Index Open File is always the same as the Index Level in the Index Close File",
+        "Choice1": "TRUE",
+        "Choice2": "FALSE",
+        "Choice3": "",
+        "Choice4": "",
+        "Choice5": "",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "19",
+        "Question": "Which of the following Corporate Actions would cause the Index Open File to differ from the Index Close File?",
+        "Choice1": "A stock in the index trades ex-dividend on the open",
+        "Choice2": "A stock in the index splits 2-for-1 after the close",
+        "Choice3": "A stock in the index acquires a stock outside the index after the close",
+        "Choice4": "A stock outside the index acquires a stock inside the index after the close",
+        "Choice5": "None of the above",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "20",
+        "Question": "The sum of the Index Values for all constituents of the Index is equal to:",
+        "Choice1": "The Index Level",
+        "Choice2": "100%",
+        "Choice3": "The Index Share",
+        "Choice4": "The Index Base Level",
+        "Choice5": "None of the above",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "21",
+        "Question": "The Pro Forma Level is intentionally equal to the Index Level",
+        "Choice1": "Every day until rebalance",
+        "Choice2": "The first day the Pro Forma is produced",
+        "Choice3": "Only on the day of the rebalance",
+        "Choice4": "C and D",
+        "Choice5": "Never",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "22",
+        "Question": "Pro Forma Files can be produced as early as:",
+        "Choice1": "The Rebalance Date",
+        "Choice2": "The Calculation Date",
+        "Choice3": "One day prior to the Rebalance Date",
+        "Choice4": "The first day of the calendar quarter",
+        "Choice5": "Two days prior to the Rebalance Date",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "23",
+        "Question": "The SWA Index contains the security AAAA.  After the Calculation Date, but prior to the Rebalance Date, AAAA's ticker changes to BBBB.  Which of the following is true?",
+        "Choice1": "AAAA will continue to appear in the Pro Forma and the Index Files",
+        "Choice2": "AAAA will continue to appear in the Index Files but not in the Pro Forma Files",
+        "Choice3": "AAAA will continue to appear in the Pro Forma Files but not in the Index Files",
+        "Choice4": "AAAA will no longer appear in the Index Files or the Pro Forma Files",
+        "Choice5": "BBBB will begin to appear in the Pro Forma Files",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "",
+        "Question": "An index-tracking ETF Portfolio Manager relies most heavily on which file to reflect the new holdings upon rebalance?",
+        "Choice1": "Pro Forma Open File",
+        "Choice2": "Pro Forma Close File",
+        "Choice3": "Index Open File",
+        "Choice4": "Index Close File",
+        "Choice5": "Corporate Action File",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "25",
+        "Question": "Which of the following Corporate Actions would not require a Portfolio Manager to trade the Portfolio in order to maintain the correct exposure to an underlying index?",
+        "Choice1": "A constituent in the Index is acquired for stock and cash by a company that is also in the index",
+        "Choice2": "A constituent in the index is acquired for stock by a company that is also in the index",
+        "Choice3": "A constituent in the index is acquired for cash by a company outside the index",
+        "Choice4": "A constituent in the index is acquired for stock by a company outside the index",
+        "Choice5": "All require the Portfolio Manager to trade",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "26",
+        "Question": "Which of the following likely results in a cash infusion to an ETF?",
+        "Choice1": "Dividend payment",
+        "Choice2": "All-cash acquisition of a portfolio holding",
+        "Choice3": "Creation with several CIL securities",
+        "Choice4": "Redemption where the value of the redeemed securities exceeds the NAV",
+        "Choice5": "All of the above",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "27",
+        "Question": "Which of the following likely results in a cash depletion to an ETF?",
+        "Choice1": "Securities Lending",
+        "Choice2": "Purchase of securities",
+        "Choice3": "Redemption with several CIL securities",
+        "Choice4": "A and B",
+        "Choice5": "B and C",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "28",
+        "Question": "Which of the following is NOT a drawback of Mutual Funds",
+        "Choice1": "Cost",
+        "Choice2": "Transacting at NAV",
+        "Choice3": "Liquidity",
+        "Choice4": "Tax Efficiency",
+        "Choice5": "All are drawbacks",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "29",
+        "Question": "Which act of Congress created the SEC",
+        "Choice1": "Securities Act of 1933",
+        "Choice2": "Securities Exchange Act of 1934",
+        "Choice3": "Investment Advisers Act of 1940",
+        "Choice4": "Investment Company Act of 1940",
+        "Choice5": "",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "30",
+        "Question": "Exemptive Relief means that",
+        "Choice1": "ETF shareholders are exempt from taxation",
+        "Choice2": "ETF issuers are exempt from the regulations in the Investment Company Act of 1940",
+        "Choice3": "The SEC can grant exceptions to the rules embedded in the Investment Company Act of 1940",
+        "Choice4": "Mutual Funds can trade on exchanges like ETFs",
+        "Choice5": "",
+        "Correct": "C"
+    },
+    {
+        "Qnum": "31",
+        "Question": "Of the four main \"asks\" in ETF Exemptive Relief applications, which is the most important?",
+        "Choice1": "ETFs trading like stock",
+        "Choice2": "AP's creating and redeeming",
+        "Choice3": "Creation units of large numbers of shares",
+        "Choice4": "In-kind transactions",
+        "Choice5": "All of them work together and are critical pieces of the ETF application",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "32",
+        "Question": "If an ETF is trading at a premium to NAV, what will an AP do?",
+        "Choice1": "Buy securities and create in-kind",
+        "Choice2": "Buy securities and redeem in-kind",
+        "Choice3": "Buy ETF shares and create in-kind",
+        "Choice4": "Buy ETF shares and redeem in-kind?",
+        "Choice5": "",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "33",
+        "Question": "If an ETF is trading at a discount to NAV, what will an AP do?",
+        "Choice1": "Buy securities and create in-kind",
+        "Choice2": "Buy securities and redeem in-kind",
+        "Choice3": "Buy ETF shares and create in-kind",
+        "Choice4": "Buy ETF shares and redeem in-kind?",
+        "Choice5": "",
+        "Correct": "D"
+    },
+    {
+        "Qnum": "34",
+        "Question": "Which existing technology primarily allowed for intraday trading of ETFs?",
+        "Choice1": "Established clearing and settlement procedures",
+        "Choice2": "Stock exchanges",
+        "Choice3": "The Investment Company Act of 1940",
+        "Choice4": "Custody and recordkeeping systems",
+        "Choice5": "",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "35",
+        "Question": "Who is responsible for selecting the strategy to be implemented in an ETF?",
+        "Choice1": "Fund Administrator",
+        "Choice2": "Fund Accountant",
+        "Choice3": "Board of Trustees",
+        "Choice4": "Custodian",
+        "Choice5": "Investment Advisor",
+        "Correct": "E"
+    },
+    {
+        "Qnum": "36",
+        "Question": "What does FINRA do?",
+        "Choice1": "Reviews applications for Exemptive Relief as part of the Securities and Exchange Commission",
+        "Choice2": "Enforces the standards embedded in the Investment Advisors Act of 1940",
+        "Choice3": "Enforces fair and honest practices in the broker-dealer industry",
+        "Choice4": "Oversees products that have futures or options exposures",
+        "Choice5": "",
+        "Correct": "C"
+    },
+    {
+        "Qnum": "37",
+        "Question": "True or False: Rule 6c-11 made it no longer necessary to have index calculation agents for index-based ETFs. ",
+        "Choice1": "True",
+        "Choice2": "False",
+        "Choice3": "",
+        "Choice4": "",
+        "Choice5": "",
+        "Correct": "B"
+    },
+    {
+        "Qnum": "38",
+        "Question": "True or False: ETF Distributors can only sell shares to Authorized Participants.",
+        "Choice1": "True",
+        "Choice2": "False",
+        "Choice3": "",
+        "Choice4": "",
+        "Choice5": "",
+        "Correct": "A"
+    },
+    {
+        "Qnum": "39",
+        "Question": "Which of these strategies would be considered active?",
+        "Choice1": "Investing in the S&P 500 stocks that are headquartered in the Northeastern U.S.",
+        "Choice2": "Investing in the 100 lowest P/E stocks in the Nikkei 225",
+        "Choice3": "Equal-weighted positions in the Investment Advisor's \"stocks to watch\" list",
+        "Choice4": "None.  All of these are passive strategies.",
+        "Choice5": "",
+        "Correct": "C"
+    }
+]
