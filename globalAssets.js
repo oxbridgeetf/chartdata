@@ -124,7 +124,27 @@ fetch(questionJsonUrl)
     console.error("Failed to load questions.json:", error);
   });
 
+window.loadQuestion = function(index = 0) {
+  const player = GetPlayer();
+  const q = window.questionData[index];
+  const choices = [q.Choice1, q.Choice2, q.Choice3, q.Choice4, q.Choice5] || [];
+  const letterLabels = ["A", "B", "C", "D", "E"];
+  const correctLetter = q.Correct;
+  const correctIndex = letterLabels.indexOf(correctLetter);
+  
+  const correctText = choices[correctIndex] || "";
+  
+  for (let i = 0; i < 5; i++) {
+    const text = choices[i] || "";
+    player.SetVar(`Answer${i + 1}`, text);
+    player.SetVar(`ShowAns${i + 1}`, text.trim() !== "");
+  }
 
+  player.SetVar("QText", q.Question || "");
+  player.SetVar("CorrectAnswerIndex", correctIndex + 1);
+  const feedbackText = `The correct answer is ${correctLetter}: ${correctText}`;
+  player.SetVar("incorrect", feedbackText);
+}
 
 // --- Global Assets Loading ---
 (function() {
