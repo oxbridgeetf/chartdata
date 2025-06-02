@@ -1,0 +1,202 @@
+[
+  {
+    "QNum": "1.1",
+    "QText": "What does the acronym ETF stand for?",
+    "Choice1": "Exchange-Traded Fund",
+    "Choice2": "Equity Transfer Facility",
+    "Choice3": "Endowment Transfer Fund",
+    "Choice4": "Emerging Trading Framework",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "1.2",
+    "QText": "One major benefit of an ETF is that it can be:",
+    "Choice1": "Purchased only at NAV once a day",
+    "Choice2": "Bought and sold throughout the trading day",
+    "Choice3": "Managed without any fees",
+    "Choice4": "Redeemed exclusively by retail investors",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "1.3",
+    "QText": "How is an ETF similar to a mutual fund?",
+    "Choice1": "Both must track an index",
+    "Choice2": "Both have fixed share prices all day",
+    "Choice3": "Both pool investor assets into a portfolio",
+    "Choice4": "Both can be bought only through a broker-dealer",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "1.4",
+    "QText": "Which of the following is true about ETF share prices during the day?",
+    "Choice1": "They are fixed at NAV until close",
+    "Choice2": "They are set once in the morning",
+    "Choice3": "They are manually reset by fund sponsors",
+    "Choice4": "They fluctuate with supply and demand",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.5",
+    "QText": "In an ETF, what provides liquidity for buying and selling shares?",
+    "Choice1": "The IRS",
+    "Choice2": "The custodian",
+    "Choice3": "The exchange",
+    "Choice4": "The fund accountant",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "1.6",
+    "QText": "What distinguishes an ETF\u2019s market price from its NAV?",
+    "Choice1": "NAV determines how much an investor can buy each day",
+    "Choice2": "The market price is always higher than NAV",
+    "Choice3": "The NAV is only used for tax calculations",
+    "Choice4": "The market price is determined by supply and demand",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.7",
+    "QText": "Who are \u201cAuthorized Participants\u201d in the ETF ecosystem?",
+    "Choice1": "Index providers",
+    "Choice2": "Institutions that create or redeem ETF shares",
+    "Choice3": "Retail traders allowed to trade ETFs",
+    "Choice4": "SEC regulators",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "1.8",
+    "QText": "ETFs are often described as offering:",
+    "Choice1": "Variable pricing set by the fund sponsor",
+    "Choice2": "Guaranteed positive returns",
+    "Choice3": "Overnight settlement and lockup periods",
+    "Choice4": "Intraday liquidity and index-based exposure",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.9",
+    "QText": "Which of the following best explains why ETFs have grown in popularity?",
+    "Choice1": "Active management mandates",
+    "Choice2": "Guaranteed dividends",
+    "Choice3": "Low fees and trading flexibility",
+    "Choice4": "Government subsidies",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "1.10",
+    "QText": "What role does the exchange play in ETF operations?",
+    "Choice1": "It sets fund expense ratios",
+    "Choice2": "It facilitates trading between buyers and sellers",
+    "Choice3": "It calculates the NAV",
+    "Choice4": "It manages the ETF portfolio",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "2.1",
+    "QText": "What type of investment vehicle is an ETF legally structured as?",
+    "Choice1": "REIT",
+    "Choice2": "Hedge fund",
+    "Choice3": "Unit investment trust",
+    "Choice4": "Open-end fund",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.2",
+    "QText": "Which regulatory act governs ETFs?",
+    "Choice1": "Sarbanes-Oxley Act",
+    "Choice2": "Dodd-Frank Act",
+    "Choice3": "Securities Exchange Act of 1934",
+    "Choice4": "Investment Company Act of 1940",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.3",
+    "QText": "What role does the ETF Board of Trustees play?",
+    "Choice1": "Issuing new shares to retail investors",
+    "Choice2": "Setting NAV prices each day",
+    "Choice3": "Oversight and approval of key fund policies",
+    "Choice4": "Day-to-day trading of portfolio assets",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "2.4",
+    "QText": "Which party manages the daily investment decisions of the ETF?",
+    "Choice1": "Custodian",
+    "Choice2": "Auditor",
+    "Choice3": "Transfer Agent",
+    "Choice4": "Investment Advisor",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.5",
+    "QText": "Which of the following is NOT typically a service provider to an ETF?",
+    "Choice1": "Custodian",
+    "Choice2": "Shareholder",
+    "Choice3": "Index provider",
+    "Choice4": "Fund administrator",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "2.6",
+    "QText": "What is one key function of the Custodian?",
+    "Choice1": "Safekeeping of fund assets",
+    "Choice2": "Calculating tracking error",
+    "Choice3": "Selling fund shares to the public",
+    "Choice4": "Filing SEC registration",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "2.7",
+    "QText": "The fund accountant is typically responsible for:",
+    "Choice1": "Issuing redemptions",
+    "Choice2": "Designing the ETF index",
+    "Choice3": "Marketing the ETF to APs",
+    "Choice4": "Calculating NAV",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.8",
+    "QText": "What is the primary role of the transfer agent?",
+    "Choice1": "Creating in-kind baskets",
+    "Choice2": "Recordkeeping and shareholder transactions",
+    "Choice3": "Setting expense ratios",
+    "Choice4": "Arbitraging ETF price discrepancies",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "2.9",
+    "QText": "Who holds fiduciary responsibility for the ETF\u2019s compliance with its stated investment policy?",
+    "Choice1": "Board of Trustees",
+    "Choice2": "Distributor",
+    "Choice3": "SEC",
+    "Choice4": "Market Maker",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "2.10",
+    "QText": "What is one of the legal documents required for launching an ETF?",
+    "Choice1": "Prospectus",
+    "Choice2": "Marketing Disclosure Form",
+    "Choice3": "Statement of Arbitrage Intent",
+    "Choice4": "SEC Rule 606 Filing",
+    "Choice5": "",
+    "Correct": "A"
+  }
+]
