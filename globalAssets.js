@@ -635,6 +635,10 @@ function initDynamicFormattedTable(containerName, dataOrUrl, ColumnNames, Format
     } else {
         console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
     }
+
+    if (!window._tabulatorTables) window._tabulatorTables = {};
+        window._tabulatorTables[containerID] = table;
+
 }
 
 function initDynamicFormattedTableWithRem(containerName, dataOrUrl, ColumnNames, FormatArray, columnHeaders = null, firstColumnWidth = null) {
