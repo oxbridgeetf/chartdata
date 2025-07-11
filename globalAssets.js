@@ -220,7 +220,7 @@ console.log("Up3");
 
 function highlightColumn(table, fieldName, color = 'highlightYellow', duration = null) {
     const colorVal = colorPalette[color] || colorPalette.highlightYellow;
-
+    console.log('highlightColumn called');
     table.getRows().forEach(row => {
         const cell = row.getCell(fieldName);
         if (cell) {
