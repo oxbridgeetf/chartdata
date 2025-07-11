@@ -236,7 +236,7 @@ function highlightColumn(table, fieldName, color = 'highlightYellow', duration =
         }
     });
 }
-function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
+function highlightCellOld(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
 
@@ -296,7 +296,25 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
         }, duration);
     }
 }
+function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
 
+    const cell = row.getCell(fieldName);
+    if (!cell) return;
+
+    const cellEl = cell.getElement();
+    const colorVal = colorPalette[color] || colorPalette.highlightYellow;
+
+    cellEl.style.transition = "box-shadow 0.3s ease";
+    cellEl.style.boxShadow = `inset 0 0 0 1000px ${colorVal}`;
+
+    if (duration) {
+        setTimeout(() => {
+            cellEl.style.boxShadow = "";
+        }, duration);
+    }
+}
 
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
