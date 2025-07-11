@@ -260,10 +260,12 @@ function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', du
     overlay.style.top = "0";
     overlay.style.left = "0";
     overlay.style.right = "0";//`${paddingRight}px`;
-    overlay.style.bottom = "0";//`${paddingBottom}px`;
+    //overlay.style.bottom = "0";//`${paddingBottom}px`;
+    overlay.style.height = '80%';
     overlay.style.backgroundColor = colorVal;
     overlay.style.pointerEvents = "none";
-    overlay.style.zIndex = "0";
+    //overlay.style.zIndex = "0";
+    overlay.style.zIndex = "-1";
     overlay.style.borderRadius = "0px";
 
     // Add opacity and transition for smooth fade in/out
