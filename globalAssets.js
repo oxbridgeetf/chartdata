@@ -316,6 +316,15 @@ console.log("HighlightCellCalled");
     }
 }
 
+function changeCellValue(table, rowIndex, fieldName, newValue) {
+    const row = table.getRows()[rowIndex];
+    if (!row) return;
+
+    const cell = row.getCell(fieldName);
+    if (!cell) return;
+
+    cell.setValue(newValue);
+}
 
 // --- Global Functions to Highlight Rows/Cols/Cells ---
 /*function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
