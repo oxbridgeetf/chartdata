@@ -181,6 +181,7 @@ const colorPalette = {
     highlightBlue: "#ADD8E6",     // Light blue for informational highlights
     highlightPurple: "#D8BFD8",   // Light purple for soft highlights
     highlightOrange: "#FFA500",   // Orange for attention-grabbing highlights
+    LtGreen: 'rgb(183,206,107)',
     Oxford: 'rgb(16,29,62)',
     Cadet: 'rgb(155,184,193)',
     Cinnabar: 'rgb(236, 74, 39)',
