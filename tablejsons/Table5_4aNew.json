@@ -1,4 +1,5 @@
 [
+  { "Col1": "Expected", "Col2": "January 29th" },
   { "Col1": "NAV", "Col2": "$25.38" },
   { "Col1": "Shares in CU", "Col2": "50,000" },
   { "Col1": "NAV per CU", "Col2": "$1,269,168.37" },
