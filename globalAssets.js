@@ -299,7 +299,7 @@ function highlightCellOld(table, rowIndex, fieldName, color = 'highlightYellow',
 function highlightCell(table, rowIndex, fieldName, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
-
+console.log("HighlightCellCalled");
     const cell = row.getCell(fieldName);
     if (!cell) return;
 
