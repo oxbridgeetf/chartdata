@@ -6,7 +6,8 @@
         "Price": 40.44,
         "Unrealized": 1979.98,
         "BFB": 0.59,
-        "Basket": -83.0
+        "Basket": -83.0,
+        "MV": 3356.52
     },
     {
         "Lot": "AAQZ1008",
@@ -15,7 +16,8 @@
         "Price": 40.44,
         "Unrealized": 1443.14,
         "BFB": 0.54,
-        "Basket": -66.0
+        "Basket": -66.0,
+        "MV": 2669.04
     },
     {
         "Lot": "AAQZ1009",
@@ -24,7 +26,8 @@
         "Price": 40.44,
         "Unrealized": 304909.42,
         "BFB": 0.53,
-        "Basket": -11732.0
+        "Basket": -11732.0,
+        "MV": 570015.8
     },
     {
         "Lot": "AAQZ1010",
@@ -33,7 +36,8 @@
         "Price": 40.44,
         "Unrealized": 2637.1,
         "BFB": 0.53,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 4974.12
     },
     {
         "Lot": "AAQZ1006",
@@ -42,7 +46,8 @@
         "Price": 40.44,
         "Unrealized": 50307.49,
         "BFB": 0.49,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 103297.32
     },
     {
         "Lot": "AAQZ1007",
@@ -51,7 +56,8 @@
         "Price": 40.44,
         "Unrealized": 1773.47,
         "BFB": 0.49,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 3639.6
     },
     {
         "Lot": "AAQZ1001",
@@ -60,7 +66,8 @@
         "Price": 40.44,
         "Unrealized": 135093.1,
         "BFB": 0.45,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 302925.24
     },
     {
         "Lot": "AAQZ1012",
@@ -69,7 +76,8 @@
         "Price": 40.44,
         "Unrealized": 926.56,
         "BFB": 0.42,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 2224.2
     },
     {
         "Lot": "ACGN1005",
@@ -78,7 +86,8 @@
         "Price": 56.91,
         "Unrealized": 779.98,
         "BFB": 0.42,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 1878.03
     },
     {
         "Lot": "ACBU1001",
@@ -87,7 +96,8 @@
         "Price": 102.93,
         "Unrealized": 248090.33,
         "BFB": 0.4,
-        "Basket": -1208.0
+        "Basket": -1208.0,
+        "MV": 617598.93
     },
     {
         "Lot": "AAXX1004",
@@ -96,7 +106,8 @@
         "Price": 41.27,
         "Unrealized": 5881.52,
         "BFB": 0.34,
-        "Basket": -418.0
+        "Basket": -418.0,
+        "MV": 17250.86
     },
     {
         "Lot": "ACBU1014",
@@ -105,7 +116,8 @@
         "Price": 102.93,
         "Unrealized": 488.33,
         "BFB": 0.34,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 1441.02
     },
     {
         "Lot": "AAXX1002",
@@ -114,7 +126,8 @@
         "Price": 41.27,
         "Unrealized": 146.25,
         "BFB": 0.32,
-        "Basket": -11.0
+        "Basket": -11.0,
+        "MV": 454.0
     },
     {
         "Lot": "AAXX1003",
@@ -123,7 +136,8 @@
         "Price": 41.27,
         "Unrealized": 547.8,
         "BFB": 0.32,
-        "Basket": -42.0
+        "Basket": -42.0,
+        "MV": 1733.34
     },
     {
         "Lot": "AAQZ1013",
@@ -132,7 +146,8 @@
         "Price": 40.44,
         "Unrealized": 710.85,
         "BFB": 0.31,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 2264.64
     },
     {
         "Lot": "ACGN1002",
@@ -141,7 +156,8 @@
         "Price": 56.91,
         "Unrealized": 692.13,
         "BFB": 0.3,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 2276.4
     },
     {
         "Lot": "AAXX1001",
@@ -150,7 +166,8 @@
         "Price": 41.27,
         "Unrealized": 158970.17,
         "BFB": 0.29,
-        "Basket": -1608.0
+        "Basket": -1608.0,
+        "MV": 550547.53
     },
     {
         "Lot": "ACGN1001",
@@ -159,6 +176,7 @@
         "Price": 56.91,
         "Unrealized": 155355.24,
         "BFB": 0.28,
-        "Basket": 0.0
+        "Basket": 0.0,
+        "MV": 553799.85
     }
 ]
