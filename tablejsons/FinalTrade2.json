@@ -1,0 +1,101 @@
+[
+    {
+        "Ticker": "AABD",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 5339.0,
+        "Redeem": 0.0,
+        "TotalTrade": 5339.0,
+        "Target": 5339.0
+    },
+    {
+        "Ticker": "AAQZ",
+        "Held": 24612.0,
+        "Create": 3080.0,
+        "Market": 0.0,
+        "Redeem": -11881.0,
+        "TotalTrade": -8801.0,
+        "Target": 15811.0
+    },
+    {
+        "Ticker": "AAXX",
+        "Held": 13952.0,
+        "Create": 1746.0,
+        "Market": -13619.0,
+        "Redeem": -2079.0,
+        "TotalTrade": -13952.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "ACBU",
+        "Held": 6596.0,
+        "Create": 825.0,
+        "Market": 0.0,
+        "Redeem": -1208.0,
+        "TotalTrade": -383.0,
+        "Target": 6213.0
+    },
+    {
+        "Ticker": "ACGN",
+        "Held": 9910.0,
+        "Create": 1240.0,
+        "Market": 87.0,
+        "Redeem": 0.0,
+        "TotalTrade": 1327.0,
+        "Target": 11237.0
+    },
+    {
+        "Ticker": "ACOP",
+        "Held": 5168.0,
+        "Create": 646.0,
+        "Market": 560.0,
+        "Redeem": 0.0,
+        "TotalTrade": 1206.0,
+        "Target": 6374.0
+    },
+    {
+        "Ticker": "ADPQ",
+        "Held": 7639.0,
+        "Create": 956.0,
+        "Market": -8595.0,
+        "Redeem": 0.0,
+        "TotalTrade": -7639.0,
+        "Target": 0.0
+    },
+    {
+        "Ticker": "ADXK",
+        "Held": 20093.0,
+        "Create": 2514.0,
+        "Market": 0.0,
+        "Redeem": -4889.0,
+        "TotalTrade": -2375.0,
+        "Target": 17718.0
+    },
+    {
+        "Ticker": "ADZI",
+        "Held": 20418.0,
+        "Create": 2555.0,
+        "Market": 0.0,
+        "Redeem": -4437.0,
+        "TotalTrade": -1882.0,
+        "Target": 18536.0
+    },
+    {
+        "Ticker": "AFDA",
+        "Held": 0.0,
+        "Create": 0.0,
+        "Market": 7153.0,
+        "Redeem": 0.0,
+        "TotalTrade": 7153.0,
+        "Target": 7153.0
+    },
+    {
+        "Ticker": "...",
+        "Held": null,
+        "Create": null,
+        "Market": null,
+        "Redeem": null,
+        "TotalTrade": null,
+        "Target": null
+    }
+]
