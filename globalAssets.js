@@ -190,7 +190,7 @@ const colorPalette = {
     RobinHalf: 'rgb(52,192,206, 0.5)',
     Persian: 'rgb(198,62,48)',
     PersianHalf: 'rgb(198,62,48, 0.5)',
-    Columbia: 'rgb(2203,216,221)',
+    Columbia: 'rgb(203,216,221)',
     Alabaster: 'rgb(229,230,217)',
     Tea: 'rgb(221,232,185)',
     TeaHalf: 'rgb(221,232,185, 0.5)'
