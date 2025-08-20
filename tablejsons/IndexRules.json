@@ -21,7 +21,7 @@
     },
     {
         "Col1": "",
-        "Col2": "This means weights will float"
+        "Col2": "(This means weights will float)"
     },
     {
         "Col1": "Timing",
@@ -65,3 +65,4 @@
     }
 
 ]
+
