@@ -12,16 +12,24 @@
         "Col2": "Equal-Weighting as of close of the Calculation Day"
     },
     {
+        "Col1": "",
+        "Col2": "Index constituent weights will be converted to share counts"
+    },
+    {
+        "Col1": "",
+        "Col2": "Share counts will remain constant into Rebalance Day unless Corporate Action"
+    },
+    {
+        "Col1": "",
+        "Col2": "This means weights will float"
+    },
+    {
         "Col1": "Timing",
         "Col2": "Index Base Date: December 31st of Year 0"
     },
     {
         "Col1": "",
         "Col2": "Index Inception Date: December 31st of Year 0"
-    },
-    {
-        "Col1": "",
-        "Col2": "No index levels will be published on index holidays"
     },
     {
         "Col1": "",
@@ -33,15 +41,7 @@
     },
     {
         "Col1": "",
-        "Col2": "(Index constituent weights will be converted to share counts)"
-    },
-    {
-        "Col1": "",
-        "Col2": "Share counts will remain constant into Rebalance Day unless Corporate Action"
-    },
-    {
-        "Col1": "",
-        "Col2": "(This means weights will float)"
+        "Col2": "No index levels will be published on index holidays"
     },
     {
         "Col1": "Corporate Actions",
@@ -63,4 +63,5 @@
         "Col1": "Sources",
         "Col2": "Oxbridge ETF Academy"
     }
+
 ]
