@@ -1183,7 +1183,6 @@ function initDynamicFormattedTableWithFontSize(
             headerSort: false,
         };
 
-        // Support both legacy single-number width and new array of widths
         if (typeof firstColumnWidth === "number" && idx === 0) {
             columnDef.width = firstColumnWidth;
         } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
@@ -1195,11 +1194,11 @@ function initDynamicFormattedTableWithFontSize(
 
     console.log("Final Columns with Calculated Widths:", finalColumns);
 
-    // Create style tag for Tabulator, force font size
+    // Create style tag for Tabulator, force font size everywhere (rows + headers)
     const style = document.createElement("style");
     style.textContent = `
         [data-acc-text='${containerName}'] .tabulator {
-            font-size: ${fontSizePx}px !important; /* Force font size */
+            font-size: ${fontSizePx}px !important;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-row {
@@ -1208,11 +1207,11 @@ function initDynamicFormattedTableWithFontSize(
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-cell {
-            font-size: inherit;
+            font-size: ${fontSizePx}px !important;
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-header .tabulator-col {
-            font-size: inherit;
+            font-size: ${fontSizePx}px !important; /* force header font size */
         }
 
         [data-acc-text='${containerName}'] .tabulator .tabulator-header {
