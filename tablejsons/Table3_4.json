@@ -16,11 +16,11 @@
         "Col2": 100.9317
     },
     {
-        "Col1": "Alpha",
-        "Col2": 0.0008
+        "Col1": "Index Level w/o Dividends",
+        "Col2": 100.8504
     },
     {
-        "Col1": "Multiplier",
+        "Col1": "Ratio - Multiplier",
         "Col2": 1.0008
     },
     {
@@ -32,3 +32,4 @@
         "Col2": 0.0604
     }
 ]
+
