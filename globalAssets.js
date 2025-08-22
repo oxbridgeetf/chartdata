@@ -1135,3 +1135,121 @@ function initRemTable(...args) {
         })
         .catch((error) => console.error("Error fetching JSON file:", error));
 }
+
+function initDynamicFormattedTableWithFontSize(
+    containerName,
+    dataOrUrl,
+    ColumnNames,
+    FormatArray,
+    columnHeaders = null,
+    firstColumnWidth = null,
+    fontSizePx = 12 // new parameter: force a specific font size
+) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`Container with accessibility name '${containerName}' not found.`);
+        return;
+    }
+
+    if (container._tabulatorTable) {
+        container._tabulatorTable.destroy();
+        container._tabulatorTable = null;
+    }
+
+    container.innerHTML = "";
+
+    // Ensure ColumnNames and FormatArray are arrays of equal length
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Create a container div for Tabulator
+    const tableContainer = document.createElement("div");
+    tableContainer.style.width = "100%";
+    tableContainer.style.height = "100%";
+    container.appendChild(tableContainer);
+
+    // Dynamically create column definitions
+    let finalColumns = ColumnNames.map((colName, idx) => {
+        const formatType = FormatArray[idx];
+        const formatterFn = formatFunctions[formatType] || formatFunctions.Text;
+
+        const columnDef = {
+            title: columnHeaders ? columnHeaders[idx] : colName,
+            field: colName,
+            formatter: formatterFn,
+            headerSort: false,
+        };
+
+        // Support both legacy single-number width and new array of widths
+        if (typeof firstColumnWidth === "number" && idx === 0) {
+            columnDef.width = firstColumnWidth;
+        } else if (Array.isArray(firstColumnWidth) && firstColumnWidth[idx] !== undefined) {
+            columnDef.width = firstColumnWidth[idx];
+        }
+
+        return columnDef;
+    });
+
+    console.log("Final Columns with Calculated Widths:", finalColumns);
+
+    // Create style tag for Tabulator, force font size
+    const style = document.createElement("style");
+    style.textContent = `
+        [data-acc-text='${containerName}'] .tabulator {
+            font-size: ${fontSizePx}px !important; /* Force font size */
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-row {
+            height: auto;
+            border-top: 2px solid #aaa;
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-cell {
+            font-size: inherit;
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header .tabulator-col {
+            font-size: inherit;
+        }
+
+        [data-acc-text='${containerName}'] .tabulator .tabulator-header {
+            border-bottom: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Process dataOrUrl
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        fetch(dataOrUrl)
+            .then((response) => response.json())
+            .then((jsonData) => {
+                console.log("Raw JSON Data:", jsonData);
+
+                const tableOptions = {
+                    layout: "fitColumns",
+                    data: jsonData,
+                    columns: finalColumns,
+                };
+
+                const table = new Tabulator(tableContainer, tableOptions);
+                container._tabulatorTable = table;
+            })
+            .catch((error) => console.error("Error fetching JSON file:", error));
+    } else if (Array.isArray(dataOrUrl)) {
+        console.log("Raw DataOrUrl Array:", dataOrUrl);
+
+        const tableOptions = {
+            layout: "fitColumns",
+            data: dataOrUrl,
+            columns: finalColumns,
+        };
+
+        const table = new Tabulator(tableContainer, tableOptions);
+        container._tabulatorTable = table;
+    } else {
+        console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
+    }
+}
