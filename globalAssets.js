@@ -1255,13 +1255,14 @@ function initDynamicFormattedTableWithFontSize(
 
 
 /* ========================================================================
-   Storyline Replay Hardening – V3 (debounced, Chart-aware dedupe)
-   Paste at END of globalAssets.js (replaces any prior observer shim)
+   Storyline Replay Hardening – Chart.js plugin + Tabulator dedupe (no proxies)
+   Paste at END of globalAssets.js. Assumes Chart.js v4.5.0.
    ======================================================================== */
-(function storylineReplayObserversV3(){
-  if (window.__SL_REPLAY_OBS_PATCHED_V3__) return;
-  window.__SL_REPLAY_OBS_PATCHED_V3__ = true;
+(function storylineReplayHarden(){
+  if (window.__SL_FINAL_SHIM__) return;
+  window.__SL_FINAL_SHIM__ = true;
 
+  // ---------- helpers ----------
   function injectCssOnce(id, cssText) {
     if (document.getElementById(id)) return;
     const style = document.createElement('style');
@@ -1269,24 +1270,20 @@ function initDynamicFormattedTableWithFontSize(
     style.textContent = cssText;
     document.head.appendChild(style);
   }
-
   injectCssOnce('slife-css', `
     .slife-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
     .slife-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
   `);
   injectCssOnce('slife-tab-css', `.tabulator{height:100% !important;}`);
 
-  // Find the nearest Storyline "shape" host (by accessibility name)
   function findShapeContainer(el){
     let cur = el;
-    for (let i = 0; i < 10 && cur; i++){
-      if (cur.nodeType === 1 && cur.hasAttribute?.('data-acc-text')) return cur;
+    for (let i=0; i<10 && cur; i++){
+      if (cur.nodeType===1 && cur.hasAttribute?.('data-acc-text')) return cur;
       cur = cur.parentElement;
     }
-    return el.parentElement || null; // fallback
+    return el.parentElement || null;
   }
-
-  // helpers
   function destroyChartOnCanvas(canvas){
     try {
       const inst = window.Chart?.getChart?.(canvas);
@@ -1312,132 +1309,85 @@ function initDynamicFormattedTableWithFontSize(
     } catch(e){}
   }
 
-  // Debounce map per container so we don't act too early
-  const debounceMap = new Map();
-  function scheduleDedupe(container, delay=120){ // small delay lets Chart bind
-    if (!container) return;
-    if (debounceMap.has(container)) clearTimeout(debounceMap.get(container));
-    const t = setTimeout(() => {
-      debounceMap.delete(container);
-      dedupeCanvasesFor(container);
-    }, delay);
-    debounceMap.set(container, t);
-  }
-
-  // Get all canvases inside a container in DOM order (oldest -> newest)
-  function listCanvases(container){
-    return Array.from(container.querySelectorAll('canvas'));
-  }
-
-  // Keep exactly ONE canvas per container—prefer the newest that has a Chart instance
-  function dedupeCanvasesFor(container){
-    const all = listCanvases(container);
-    if (all.length <= 1) { if (all[0]) ensureWrap(all[0]); return; }
-
-    // Prefer the newest canvas that already has a Chart instance
-    let keep = null;
-    for (let i = all.length - 1; i >= 0; i--){
-      const c = all[i];
-      const inst = window.Chart?.getChart?.(c);
-      if (inst) { keep = c; break; }
-    }
-    // If none yet have an instance, keep the newest node (and try again soon)
-    if (!keep) {
-      keep = all[all.length - 1];
-      // schedule a second pass shortly in case Chart binds after our first pass
-      scheduleDedupe(container, 200);
-    }
-
-    // Remove every other canvas
-    for (const c of all) {
-      if (c === keep) continue;
-      destroyChartOnCanvas(c);
-      removeCanvasAndWrapper(c);
-    }
-    ensureWrap(keep);
-  }
-
-  // Observe DOM additions; dedupe per shape container (nearest [data-acc-text])
-  const canvasObserver = new MutationObserver(muts => {
-    for (const m of muts) {
-      if (m.type !== 'childList') continue;
-      for (const node of m.addedNodes) {
-        if (!(node instanceof Element)) continue;
-
-        if (node.tagName === 'CANVAS') {
-          scheduleDedupe(findShapeContainer(node));
-        }
-
-        const canvases = node.querySelectorAll?.('canvas');
-        if (canvases?.length) {
-          const containers = new Set();
-          canvases.forEach(c => containers.add(findShapeContainer(c)));
-          containers.forEach(cont => scheduleDedupe(cont));
-        }
-      }
-    }
-  });
-  try { canvasObserver.observe(document.documentElement || document.body, { childList: true, subtree: true }); } catch(e){}
-
-  // Safer Chart.js defaults (no constructor patching)
+  // ---------- Chart.js: register a plugin that enforces one chart per shape ----------
   (function waitForChart(attempts){
     if (window.Chart?.version) {
       try {
+        // Safer defaults for Storyline
         Chart.defaults.maintainAspectRatio = false;
         if (Chart.defaults.animation && typeof Chart.defaults.animation === 'object') {
           Chart.defaults.animation.duration = 400;
         }
-        // Optional: Chart.defaults.devicePixelRatio = 1;
       } catch(e){}
+
+      const StorylineSingleChart = {
+        id: 'storylineSingleChart',
+        beforeInit(chart) {
+          const canvas = chart?.canvas;
+          if (!canvas) return;
+          const container = findShapeContainer(canvas);
+          if (!container) return;
+
+          // Find all canvases inside this shape (any depth), oldest→newest
+          const all = Array.from(container.querySelectorAll('canvas'));
+          // Remove any canvas that is not THIS canvas
+          for (const c of all) {
+            if (c === canvas) continue;
+            destroyChartOnCanvas(c);
+            removeCanvasAndWrapper(c);
+          }
+          // Finally, ensure wrapper around the current canvas
+          ensureWrap(canvas);
+        }
+      };
+
+      try { Chart.register(StorylineSingleChart); } catch(e){}
       return;
     }
     if (attempts <= 0) return;
-    setTimeout(() => waitForChart(attempts - 1), 50);
+    setTimeout(() => waitForChart(attempts - 1), 50); // ~10s max
   })(200);
 
-  // ---------- Tabulator dedupe (debounced similarly) ----------
-  const tabDebounce = new Map();
-  function scheduleTabDedupe(container, delay=120){
-    if (!container) return;
-    if (tabDebounce.has(container)) clearTimeout(tabDebounce.get(container));
-    const t = setTimeout(() => {
-      tabDebounce.delete(container);
-      dedupeTabulatorsFor(container);
-    }, delay);
-    tabDebounce.set(container, t);
-  }
-
-  function destroyTabulatorOn(host){
-    try { host?._tabulator?.destroy?.(); } catch(e){}
-  }
-  function dedupeTabulatorsFor(container){
-    const roots = Array.from(container.querySelectorAll('.tabulator'));
-    if (roots.length <= 1) return;
-    const keep = roots[roots.length - 1]; // newest
-    for (const r of roots) {
-      if (r === keep) continue;
-      destroyTabulatorOn(r.parentElement);
-      try { r.remove(); } catch(e){}
+  // ---------- Tabulator: minimal dedupe (keep newest root per shape) ----------
+  (function tabulatorDedupe(){
+    // small, debounced observer only for .tabulator roots
+    const debounce = new Map();
+    function schedule(container, fn, delay=120){
+      if (!container) return;
+      if (debounce.has(container)) clearTimeout(debounce.get(container));
+      const t = setTimeout(() => { debounce.delete(container); fn(container); }, delay);
+      debounce.set(container, t);
     }
-  }
-
-  const tabObserver = new MutationObserver(muts => {
-    for (const m of muts) {
-      if (m.type !== 'childList') continue;
-      for (const node of m.addedNodes) {
-        if (!(node instanceof Element)) continue;
-
-        if (node.classList?.contains('tabulator')) {
-          scheduleTabDedupe(findShapeContainer(node));
-        }
-        const roots = node.querySelectorAll?.('.tabulator');
-        if (roots?.length) {
-          const containers = new Set();
-          roots.forEach(r => containers.add(findShapeContainer(r)));
-          containers.forEach(cont => scheduleTabDedupe(cont));
-        }
+    function dedupeTabulators(container){
+      const roots = Array.from(container.querySelectorAll('.tabulator'));
+      if (roots.length <= 1) return;
+      const keep = roots[roots.length - 1]; // newest
+      for (const r of roots) {
+        if (r === keep) continue;
+        try { r.parentElement?._tabulator?.destroy?.(); } catch(e){}
+        try { r.remove(); } catch(e){}
       }
     }
-  });
-  try { tabObserver.observe(document.documentElement || document.body, { childList: true, subtree: true }); } catch(e){}
+    const obs = new MutationObserver(muts => {
+      for (const m of muts) {
+        if (m.type !== 'childList') continue;
+        for (const node of m.addedNodes) {
+          if (!(node instanceof Element)) continue;
+
+          if (node.classList?.contains('tabulator')) {
+            const cont = findShapeContainer(node);
+            schedule(cont, dedupeTabulators);
+          }
+          const roots = node.querySelectorAll?.('.tabulator');
+          if (roots?.length) {
+            const containers = new Set();
+            roots.forEach(r => containers.add(findShapeContainer(r)));
+            containers.forEach(cont => schedule(cont, dedupeTabulators));
+          }
+        }
+      }
+    });
+    try { obs.observe(document.documentElement || document.body, { childList: true, subtree: true }); } catch(e){}
+  })();
+
 })();
