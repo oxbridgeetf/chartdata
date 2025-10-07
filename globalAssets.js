@@ -1255,10 +1255,14 @@ function initDynamicFormattedTableWithFontSize(
 
 
 /* ========================================================================
-   Storyline Replay Hardening – Chart.js v4 + Tabulator (singleton host)
+   Storyline Replay Hardening – Chart.js v4 + Tabulator (no __proto__ hacks)
    Paste this block at the END of globalAssets.js. No slide changes needed.
    ======================================================================== */
 (function storylineReplayHardening(){
+  // Idempotent guards (handle double-loads of globalAssets.js)
+  if (window.__SL_REPLAY_PATCHED__) { return; }
+  window.__SL_REPLAY_PATCHED__ = true;
+
   // --- tiny helper: add CSS once
   function injectCssOnce(id, cssText) {
     if (document.getElementById(id)) return;
@@ -1277,7 +1281,7 @@ function initDynamicFormattedTableWithFontSize(
     .tabulator{height:100% !important;}
   `);
 
-  // --- remove any prior canvases/wrappers in the same container (singleton behavior)
+  // --- robust purge: keep one chart host per container (but allow multiple containers)
   function purgeOldChartNodesFor(container, keepNode){
     if (!container) return;
     const kids = Array.from(container.children);
@@ -1286,6 +1290,29 @@ function initDynamicFormattedTableWithFontSize(
       // Remove older Chart hosts (our wrapper) or stray canvases left by prior runs
       if (k.classList && k.classList.contains('slife-wrap')) { try { k.remove(); } catch(e){} }
       else if (k.tagName === 'CANVAS') { try { k.remove(); } catch(e){} }
+    }
+  }
+
+  // --- safe: copy static props (no proto rewiring)
+  function copyStaticProps(from, to) {
+    for (const key of Object.getOwnPropertyNames(from)) {
+      if (key === 'prototype' || key === 'length' || key === 'name') continue;
+      try {
+        const desc = Object.getOwnPropertyDescriptor(from, key);
+        // don’t overwrite our guard flags
+        if (!Object.prototype.hasOwnProperty.call(to, key)) {
+          Object.defineProperty(to, key, desc);
+        }
+      } catch(e){}
+    }
+    // also copy symbol properties
+    for (const sym of Object.getOwnPropertySymbols(from)) {
+      try {
+        const desc = Object.getOwnPropertyDescriptor(from, sym);
+        if (!Object.prototype.hasOwnProperty.call(to, sym)) {
+          Object.defineProperty(to, sym, desc);
+        }
+      } catch(e){}
     }
   }
 
@@ -1307,32 +1334,30 @@ function initDynamicFormattedTableWithFontSize(
         // C.defaults.devicePixelRatio = 1;
       } catch(e){}
 
-      // Wrap constructor so:
-      // 1) any existing chart bound to the same canvas is destroyed
-      // 2) any old canvases/wrappers in the same host container are removed
+      // Proxy constructor: destroy existing chart on same canvas and purge stale nodes
       const ChartProxy = new Proxy(C, {
-        construct(target, args) {
+        construct(target, args, newTarget) {
           const ctxOrCanvas = args[0];
           const canvas = ctxOrCanvas && (ctxOrCanvas.canvas || ctxOrCanvas);
 
-          // If slide code is reusing the same canvas, destroy the old chart first
+          // If reusing canvas, destroy old chart first
           try {
             const existing = typeof target.getChart === 'function' ? target.getChart(canvas) : null;
             if (existing && typeof existing.destroy === 'function') existing.destroy();
           } catch(e){}
 
-          // Build the new Chart instance
-          const instance = new target(...args);
+          // Create the new Chart instance
+          const instance = Reflect.construct(target, args, newTarget);
 
-          // Ensure a stable wrapper & purge any prior chart hosts in the same container
+          // Ensure wrapper & purge older siblings in same container
           try {
             let cnv = instance.canvas;
             if (cnv) {
               let parent = cnv.parentElement;
 
-              // If not wrapped yet, wrap it
+              // Wrap once
               if (parent && !parent.classList.contains('slife-wrap')) {
-                const container = parent; // the Storyline shape content holder
+                const container = parent; // Storyline shape content holder
                 const wrap = document.createElement('div');
                 wrap.className = 'slife-wrap';
                 container.replaceChild(wrap, cnv);
@@ -1340,10 +1365,8 @@ function initDynamicFormattedTableWithFontSize(
                 parent = wrap;
               }
 
-              // Now parent is the slife-wrap; container is its parentElement
+              // Purge other old wrappers/canvases in the same container
               const container = parent ? parent.parentElement : null;
-
-              // Purge any older wrappers/canvases in this same container (keep the current wrapper)
               purgeOldChartNodesFor(container, parent);
             }
           } catch(e){}
@@ -1352,8 +1375,10 @@ function initDynamicFormattedTableWithFontSize(
         }
       });
 
-      // Preserve static members
-      Object.setPrototypeOf(ChartProxy, C);
+      // copy static props instead of touching __proto__
+      copyStaticProps(C, ChartProxy);
+
+      // Replace global Chart with our safe proxy
       window.Chart = ChartProxy;
       window.__storylineChartPatched__ = true;
       return;
@@ -1371,7 +1396,7 @@ function initDynamicFormattedTableWithFontSize(
       const T = window.Tabulator;
 
       const TabProxy = new Proxy(T, {
-        construct(target, args) {
+        construct(target, args, newTarget) {
           let host = args[0];
 
           // Resolve selector strings to an element
@@ -1388,11 +1413,11 @@ function initDynamicFormattedTableWithFontSize(
             }
           } catch(e){}
 
-          return new target(...args);
+          return Reflect.construct(target, args, newTarget);
         }
       });
 
-      Object.setPrototypeOf(TabProxy, T); // keep static props/methods intact
+      copyStaticProps(T, TabProxy);
       window.Tabulator = TabProxy;
       window.__storylineTabPatched__ = true;
       return;
