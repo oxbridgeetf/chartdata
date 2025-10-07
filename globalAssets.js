@@ -1255,7 +1255,7 @@ function initDynamicFormattedTableWithFontSize(
 
 
 /* ========================================================================
-   Storyline Replay Hardening – Chart.js v4 + Tabulator (drop-in)
+   Storyline Replay Hardening – Chart.js v4 + Tabulator (singleton host)
    Paste this block at the END of globalAssets.js. No slide changes needed.
    ======================================================================== */
 (function storylineReplayHardening(){
@@ -1268,15 +1268,26 @@ function initDynamicFormattedTableWithFontSize(
     document.head.appendChild(style);
   }
 
-  // --- canvas/table sizing that behaves well in Storyline containers
+  // canvas/table sizing that behaves well in Storyline containers
   injectCssOnce('slife-css', `
     .slife-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
     .slife-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
   `);
   injectCssOnce('slife-tab-css', `
-    /* Let Tabulator happily fill the host Storyline shape if you haven't set a fixed height */
     .tabulator{height:100% !important;}
   `);
+
+  // --- remove any prior canvases/wrappers in the same container (singleton behavior)
+  function purgeOldChartNodesFor(container, keepNode){
+    if (!container) return;
+    const kids = Array.from(container.children);
+    for (const k of kids) {
+      if (k === keepNode) continue;
+      // Remove older Chart hosts (our wrapper) or stray canvases left by prior runs
+      if (k.classList && k.classList.contains('slife-wrap')) { try { k.remove(); } catch(e){} }
+      else if (k.tagName === 'CANVAS') { try { k.remove(); } catch(e){} }
+    }
+  }
 
   /* ---------------------------
      Chart.js v4 replay shim
@@ -1292,31 +1303,48 @@ function initDynamicFormattedTableWithFontSize(
         if (C.defaults.animation && typeof C.defaults.animation === 'object') {
           C.defaults.animation.duration = 400;
         }
-        // If scaling looks blurry in your player, you can optionally use:
+        // Optional if scaling looks blurry:
         // C.defaults.devicePixelRatio = 1;
       } catch(e){}
 
-      // Wrap constructor so any existing chart on same canvas is destroyed first
+      // Wrap constructor so:
+      // 1) any existing chart bound to the same canvas is destroyed
+      // 2) any old canvases/wrappers in the same host container are removed
       const ChartProxy = new Proxy(C, {
         construct(target, args) {
           const ctxOrCanvas = args[0];
           const canvas = ctxOrCanvas && (ctxOrCanvas.canvas || ctxOrCanvas);
+
+          // If slide code is reusing the same canvas, destroy the old chart first
           try {
             const existing = typeof target.getChart === 'function' ? target.getChart(canvas) : null;
             if (existing && typeof existing.destroy === 'function') existing.destroy();
           } catch(e){}
 
+          // Build the new Chart instance
           const instance = new target(...args);
 
-          // Ensure a stable wrapper exists for reliable sizing (idempotent)
+          // Ensure a stable wrapper & purge any prior chart hosts in the same container
           try {
-            const cnv = instance.canvas;
-            if (cnv && cnv.parentElement && !cnv.parentElement.classList.contains('slife-wrap')) {
-              const p = cnv.parentElement;
-              const wrap = document.createElement('div');
-              wrap.className = 'slife-wrap';
-              p.replaceChild(wrap, cnv);
-              wrap.appendChild(cnv);
+            let cnv = instance.canvas;
+            if (cnv) {
+              let parent = cnv.parentElement;
+
+              // If not wrapped yet, wrap it
+              if (parent && !parent.classList.contains('slife-wrap')) {
+                const container = parent; // the Storyline shape content holder
+                const wrap = document.createElement('div');
+                wrap.className = 'slife-wrap';
+                container.replaceChild(wrap, cnv);
+                wrap.appendChild(cnv);
+                parent = wrap;
+              }
+
+              // Now parent is the slife-wrap; container is its parentElement
+              const container = parent ? parent.parentElement : null;
+
+              // Purge any older wrappers/canvases in this same container (keep the current wrapper)
+              purgeOldChartNodesFor(container, parent);
             }
           } catch(e){}
 
@@ -1346,24 +1374,19 @@ function initDynamicFormattedTableWithFontSize(
         construct(target, args) {
           let host = args[0];
 
-          // Tabulator allows a selector string; resolve it to an element
+          // Resolve selector strings to an element
           if (typeof host === 'string') {
             const el = document.querySelector(host);
             if (el) { host = el; args[0] = el; }
           }
 
           try {
-            // If a table already exists on this element, destroy it first
+            // If a table already exists on this element, destroy it before rebuilding
             if (host && host._tabulator && typeof host._tabulator.destroy === 'function') {
               host._tabulator.destroy();
-              // Clear leftover HTML to avoid duplicated headers/bodies on replay
               if (host.innerHTML) host.innerHTML = '';
             }
           } catch(e){}
-
-          // Optional default behavior: if no explicit height is given anywhere,
-          // you can force the host to fill available space:
-          // try { if (host && !host.style.height) host.style.height = '100%'; } catch(e){}
 
           return new target(...args);
         }
