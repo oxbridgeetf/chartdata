@@ -1255,12 +1255,12 @@ function initDynamicFormattedTableWithFontSize(
 
 
 /* ========================================================================
-   Storyline Replay Hardening – v2 (container = nearest [data-acc-text])
-   Paste at END of globalAssets.js (replaces prior observer shim)
+   Storyline Replay Hardening – V3 (debounced, Chart-aware dedupe)
+   Paste at END of globalAssets.js (replaces any prior observer shim)
    ======================================================================== */
-(function storylineReplayObserversV2(){
-  if (window.__SL_REPLAY_OBS_PATCHED_V2__) return;
-  window.__SL_REPLAY_OBS_PATCHED_V2__ = true;
+(function storylineReplayObserversV3(){
+  if (window.__SL_REPLAY_OBS_PATCHED_V3__) return;
+  window.__SL_REPLAY_OBS_PATCHED_V3__ = true;
 
   function injectCssOnce(id, cssText) {
     if (document.getElementById(id)) return;
@@ -1279,31 +1279,27 @@ function initDynamicFormattedTableWithFontSize(
   // Find the nearest Storyline "shape" host (by accessibility name)
   function findShapeContainer(el){
     let cur = el;
-    for (let i = 0; i < 8 && cur; i++){         // walk up a few levels max
-      if (cur.nodeType === 1 && cur.hasAttribute && cur.hasAttribute('data-acc-text')) return cur;
+    for (let i = 0; i < 10 && cur; i++){
+      if (cur.nodeType === 1 && cur.hasAttribute?.('data-acc-text')) return cur;
       cur = cur.parentElement;
     }
-    return el.parentElement || null;            // fallback
+    return el.parentElement || null; // fallback
   }
 
+  // helpers
   function destroyChartOnCanvas(canvas){
     try {
-      if (window.Chart?.getChart) {
-        const inst = Chart.getChart(canvas);
-        if (inst?.destroy) inst.destroy();
-      }
+      const inst = window.Chart?.getChart?.(canvas);
+      if (inst?.destroy) inst.destroy();
     } catch(e){}
   }
-
   function removeCanvasAndWrapper(canvas){
-    if (!canvas) return;
     try {
       const p = canvas.parentElement;
       if (p?.classList?.contains('slife-wrap')) p.remove();
       else canvas.remove();
     } catch(e){}
   }
-
   function ensureWrap(canvas){
     try {
       const p = canvas.parentElement;
@@ -1316,41 +1312,67 @@ function initDynamicFormattedTableWithFontSize(
     } catch(e){}
   }
 
-  // Keep exactly ONE canvas per [data-acc-text] container (the newest)
-  function dedupeCanvasesFor(container){
+  // Debounce map per container so we don't act too early
+  const debounceMap = new Map();
+  function scheduleDedupe(container, delay=120){ // small delay lets Chart bind
     if (!container) return;
-    const list = Array.from(container.querySelectorAll('canvas')); // ANY depth inside container
-    if (list.length <= 1) return;
-
-    // DOM order: older first, newest last → keep the last
-    const newest = list[list.length - 1];
-    for (let i = 0; i < list.length - 1; i++){
-      destroyChartOnCanvas(list[i]);
-      removeCanvasAndWrapper(list[i]);
-    }
-    ensureWrap(newest);
+    if (debounceMap.has(container)) clearTimeout(debounceMap.get(container));
+    const t = setTimeout(() => {
+      debounceMap.delete(container);
+      dedupeCanvasesFor(container);
+    }, delay);
+    debounceMap.set(container, t);
   }
 
-  // Observe additions and dedupe by shape container
+  // Get all canvases inside a container in DOM order (oldest -> newest)
+  function listCanvases(container){
+    return Array.from(container.querySelectorAll('canvas'));
+  }
+
+  // Keep exactly ONE canvas per container—prefer the newest that has a Chart instance
+  function dedupeCanvasesFor(container){
+    const all = listCanvases(container);
+    if (all.length <= 1) { if (all[0]) ensureWrap(all[0]); return; }
+
+    // Prefer the newest canvas that already has a Chart instance
+    let keep = null;
+    for (let i = all.length - 1; i >= 0; i--){
+      const c = all[i];
+      const inst = window.Chart?.getChart?.(c);
+      if (inst) { keep = c; break; }
+    }
+    // If none yet have an instance, keep the newest node (and try again soon)
+    if (!keep) {
+      keep = all[all.length - 1];
+      // schedule a second pass shortly in case Chart binds after our first pass
+      scheduleDedupe(container, 200);
+    }
+
+    // Remove every other canvas
+    for (const c of all) {
+      if (c === keep) continue;
+      destroyChartOnCanvas(c);
+      removeCanvasAndWrapper(c);
+    }
+    ensureWrap(keep);
+  }
+
+  // Observe DOM additions; dedupe per shape container (nearest [data-acc-text])
   const canvasObserver = new MutationObserver(muts => {
     for (const m of muts) {
       if (m.type !== 'childList') continue;
       for (const node of m.addedNodes) {
         if (!(node instanceof Element)) continue;
 
-        // direct canvas
         if (node.tagName === 'CANVAS') {
-          const cont = findShapeContainer(node);
-          setTimeout(() => dedupeCanvasesFor(cont), 0);
+          scheduleDedupe(findShapeContainer(node));
         }
 
-        // canvases in subtree
-        const canvases = node.querySelectorAll ? node.querySelectorAll('canvas') : [];
-        if (canvases.length) {
-          // dedupe per container to avoid cross-removal
+        const canvases = node.querySelectorAll?.('canvas');
+        if (canvases?.length) {
           const containers = new Set();
           canvases.forEach(c => containers.add(findShapeContainer(c)));
-          setTimeout(() => containers.forEach(cont => dedupeCanvasesFor(cont)), 0);
+          containers.forEach(cont => scheduleDedupe(cont));
         }
       }
     }
@@ -1373,22 +1395,30 @@ function initDynamicFormattedTableWithFontSize(
     setTimeout(() => waitForChart(attempts - 1), 50);
   })(200);
 
-  // ---------- Tabulator dedupe ----------
-  function destroyTabulatorOn(host){
-    try { if (host?._tabulator?.destroy) host._tabulator.destroy(); } catch(e){}
+  // ---------- Tabulator dedupe (debounced similarly) ----------
+  const tabDebounce = new Map();
+  function scheduleTabDedupe(container, delay=120){
+    if (!container) return;
+    if (tabDebounce.has(container)) clearTimeout(tabDebounce.get(container));
+    const t = setTimeout(() => {
+      tabDebounce.delete(container);
+      dedupeTabulatorsFor(container);
+    }, delay);
+    tabDebounce.set(container, t);
   }
 
+  function destroyTabulatorOn(host){
+    try { host?._tabulator?.destroy?.(); } catch(e){}
+  }
   function dedupeTabulatorsFor(container){
-    if (!container) return;
-    const roots = Array.from(container.querySelectorAll(':scope .tabulator')); // any depth inside container
+    const roots = Array.from(container.querySelectorAll('.tabulator'));
     if (roots.length <= 1) return;
-    const newest = roots[roots.length - 1];
-    for (let i = 0; i < roots.length - 1; i++){
-      const root = roots[i];
-      destroyTabulatorOn(root.parentElement);
-      try { root.remove(); } catch(e){}
+    const keep = roots[roots.length - 1]; // newest
+    for (const r of roots) {
+      if (r === keep) continue;
+      destroyTabulatorOn(r.parentElement);
+      try { r.remove(); } catch(e){}
     }
-    // no extra wrapper needed for Tabulator
   }
 
   const tabObserver = new MutationObserver(muts => {
@@ -1398,15 +1428,13 @@ function initDynamicFormattedTableWithFontSize(
         if (!(node instanceof Element)) continue;
 
         if (node.classList?.contains('tabulator')) {
-          const cont = findShapeContainer(node);
-          setTimeout(() => dedupeTabulatorsFor(cont), 0);
+          scheduleTabDedupe(findShapeContainer(node));
         }
-
-        const roots = node.querySelectorAll ? node.querySelectorAll('.tabulator') : [];
-        if (roots.length) {
+        const roots = node.querySelectorAll?.('.tabulator');
+        if (roots?.length) {
           const containers = new Set();
           roots.forEach(r => containers.add(findShapeContainer(r)));
-          setTimeout(() => containers.forEach(cont => dedupeTabulatorsFor(cont)), 0);
+          containers.forEach(cont => scheduleTabDedupe(cont));
         }
       }
     }
