@@ -1252,3 +1252,129 @@ function initDynamicFormattedTableWithFontSize(
         console.error("Invalid dataOrUrl parameter. Must be a JSON array or a URL to a .json file.");
     }
 }
+
+
+/* ========================================================================
+   Storyline Replay Hardening – Chart.js v4 + Tabulator (drop-in)
+   Paste this block at the END of globalAssets.js. No slide changes needed.
+   ======================================================================== */
+(function storylineReplayHardening(){
+  // --- tiny helper: add CSS once
+  function injectCssOnce(id, cssText) {
+    if (document.getElementById(id)) return;
+    const style = document.createElement('style');
+    style.id = id;
+    style.textContent = cssText;
+    document.head.appendChild(style);
+  }
+
+  // --- canvas/table sizing that behaves well in Storyline containers
+  injectCssOnce('slife-css', `
+    .slife-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
+    .slife-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
+  `);
+  injectCssOnce('slife-tab-css', `
+    /* Let Tabulator happily fill the host Storyline shape if you haven't set a fixed height */
+    .tabulator{height:100% !important;}
+  `);
+
+  /* ---------------------------
+     Chart.js v4 replay shim
+     --------------------------- */
+  (function waitForChart(attempts){
+    if (window.__storylineChartPatched__) return; // already patched this load
+    if (window.Chart && window.Chart.version) {
+      const C = window.Chart;
+
+      // Safer defaults for Storyline
+      try {
+        C.defaults.maintainAspectRatio = false;
+        if (C.defaults.animation && typeof C.defaults.animation === 'object') {
+          C.defaults.animation.duration = 400;
+        }
+        // If scaling looks blurry in your player, you can optionally use:
+        // C.defaults.devicePixelRatio = 1;
+      } catch(e){}
+
+      // Wrap constructor so any existing chart on same canvas is destroyed first
+      const ChartProxy = new Proxy(C, {
+        construct(target, args) {
+          const ctxOrCanvas = args[0];
+          const canvas = ctxOrCanvas && (ctxOrCanvas.canvas || ctxOrCanvas);
+          try {
+            const existing = typeof target.getChart === 'function' ? target.getChart(canvas) : null;
+            if (existing && typeof existing.destroy === 'function') existing.destroy();
+          } catch(e){}
+
+          const instance = new target(...args);
+
+          // Ensure a stable wrapper exists for reliable sizing (idempotent)
+          try {
+            const cnv = instance.canvas;
+            if (cnv && cnv.parentElement && !cnv.parentElement.classList.contains('slife-wrap')) {
+              const p = cnv.parentElement;
+              const wrap = document.createElement('div');
+              wrap.className = 'slife-wrap';
+              p.replaceChild(wrap, cnv);
+              wrap.appendChild(cnv);
+            }
+          } catch(e){}
+
+          return instance;
+        }
+      });
+
+      // Preserve static members
+      Object.setPrototypeOf(ChartProxy, C);
+      window.Chart = ChartProxy;
+      window.__storylineChartPatched__ = true;
+      return;
+    }
+    if (attempts <= 0) return; // give up silently if Chart never loads
+    setTimeout(() => waitForChart(attempts - 1), 50); // retry ~10s
+  })(200);
+
+  /* ---------------------------
+     Tabulator replay shim
+     --------------------------- */
+  (function waitForTabulator(attempts){
+    if (window.__storylineTabPatched__) return; // already patched
+    if (window.Tabulator) {
+      const T = window.Tabulator;
+
+      const TabProxy = new Proxy(T, {
+        construct(target, args) {
+          let host = args[0];
+
+          // Tabulator allows a selector string; resolve it to an element
+          if (typeof host === 'string') {
+            const el = document.querySelector(host);
+            if (el) { host = el; args[0] = el; }
+          }
+
+          try {
+            // If a table already exists on this element, destroy it first
+            if (host && host._tabulator && typeof host._tabulator.destroy === 'function') {
+              host._tabulator.destroy();
+              // Clear leftover HTML to avoid duplicated headers/bodies on replay
+              if (host.innerHTML) host.innerHTML = '';
+            }
+          } catch(e){}
+
+          // Optional default behavior: if no explicit height is given anywhere,
+          // you can force the host to fill available space:
+          // try { if (host && !host.style.height) host.style.height = '100%'; } catch(e){}
+
+          return new target(...args);
+        }
+      });
+
+      Object.setPrototypeOf(TabProxy, T); // keep static props/methods intact
+      window.Tabulator = TabProxy;
+      window.__storylineTabPatched__ = true;
+      return;
+    }
+    if (attempts <= 0) return;
+    setTimeout(() => waitForTabulator(attempts - 1), 50); // retry ~10s
+  })(200);
+})();
