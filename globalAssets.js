@@ -1255,15 +1255,13 @@ function initDynamicFormattedTableWithFontSize(
 
 
 /* ========================================================================
-   Storyline Replay Hardening – Chart.js v4 + Tabulator (Observer-based)
-   No proxies, no constructor wrapping. Safe for Storyline runtimes.
-   Paste this block at the END of globalAssets.js.
+   Storyline Replay Hardening – v2 (container = nearest [data-acc-text])
+   Paste at END of globalAssets.js (replaces prior observer shim)
    ======================================================================== */
-(function storylineReplayObservers(){
-  if (window.__SL_REPLAY_OBS_PATCHED__) return;
-  window.__SL_REPLAY_OBS_PATCHED__ = true;
+(function storylineReplayObserversV2(){
+  if (window.__SL_REPLAY_OBS_PATCHED_V2__) return;
+  window.__SL_REPLAY_OBS_PATCHED_V2__ = true;
 
-  // --- helper: add CSS once
   function injectCssOnce(id, cssText) {
     if (document.getElementById(id)) return;
     const style = document.createElement('style');
@@ -1272,71 +1270,40 @@ function initDynamicFormattedTableWithFontSize(
     document.head.appendChild(style);
   }
 
-  // Make canvases/tables behave inside Storyline shapes
   injectCssOnce('slife-css', `
     .slife-wrap{position:relative;width:100%;height:100%;overflow:hidden;}
     .slife-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important;}
   `);
-  injectCssOnce('slife-tab-css', `
-    .tabulator{height:100% !important;}
-  `);
+  injectCssOnce('slife-tab-css', `.tabulator{height:100% !important;}`);
 
-  // --- util: is something a canvas host "container"?
-  // We define the container as either:
-  //  - the Storyline shape content element that directly contains canvases OR
-  //  - a .slife-wrap wrapper's parent element (the shape), if present
-  function getCanvasContainerFor(canvas){
-    if (!canvas) return null;
-    const p = canvas.parentElement;
-    if (!p) return null;
-    return p.classList && p.classList.contains('slife-wrap') ? p.parentElement : p;
-  }
-
-  // --- util: return an array of all canvases that "belong" to a container
-  function canvasesInContainer(container){
-    if (!container) return [];
-    // canvases can be direct children, or inside .slife-wrap direct children
-    const direct = Array.from(container.children).filter(n => n.tagName === 'CANVAS');
-    const wrapped = Array.from(container.children)
-      .filter(n => n.classList && n.classList.contains('slife-wrap'))
-      .map(w => w.querySelector('canvas'))
-      .filter(Boolean);
-    // Keep DOM order (older first, newer last)
-    const ordered = [];
-    for (const n of container.children) {
-      if (n.tagName === 'CANVAS') ordered.push(n);
-      else if (n.classList && n.classList.contains('slife-wrap')) {
-        const c = n.querySelector('canvas'); if (c) ordered.push(c);
-      }
+  // Find the nearest Storyline "shape" host (by accessibility name)
+  function findShapeContainer(el){
+    let cur = el;
+    for (let i = 0; i < 8 && cur; i++){         // walk up a few levels max
+      if (cur.nodeType === 1 && cur.hasAttribute && cur.hasAttribute('data-acc-text')) return cur;
+      cur = cur.parentElement;
     }
-    // Fallback if we somehow missed ordering
-    return ordered.length ? ordered : direct.concat(wrapped);
+    return el.parentElement || null;            // fallback
   }
 
-  // --- util: destroy Chart instance on a canvas, if any
   function destroyChartOnCanvas(canvas){
     try {
-      if (window.Chart && typeof Chart.getChart === 'function') {
+      if (window.Chart?.getChart) {
         const inst = Chart.getChart(canvas);
-        if (inst && typeof inst.destroy === 'function') inst.destroy();
+        if (inst?.destroy) inst.destroy();
       }
     } catch(e){}
   }
 
-  // --- util: remove a canvas (and wrapper if present)
   function removeCanvasAndWrapper(canvas){
     if (!canvas) return;
     try {
       const p = canvas.parentElement;
-      if (p && p.classList && p.classList.contains('slife-wrap')) {
-        p.remove();
-      } else {
-        canvas.remove();
-      }
+      if (p?.classList?.contains('slife-wrap')) p.remove();
+      else canvas.remove();
     } catch(e){}
   }
 
-  // --- ensure a ".slife-wrap" around a canvas (idempotent)
   function ensureWrap(canvas){
     try {
       const p = canvas.parentElement;
@@ -1349,123 +1316,100 @@ function initDynamicFormattedTableWithFontSize(
     } catch(e){}
   }
 
-  // --- dedupe canvases: keep newest canvas, remove older canvases in same container
-  function dedupeCanvasesNear(canvas){
-    const container = getCanvasContainerFor(canvas);
+  // Keep exactly ONE canvas per [data-acc-text] container (the newest)
+  function dedupeCanvasesFor(container){
     if (!container) return;
-    const cvs = canvasesInContainer(container);
-    if (cvs.length <= 1) return;
+    const list = Array.from(container.querySelectorAll('canvas')); // ANY depth inside container
+    if (list.length <= 1) return;
 
-    // Keep the last (newest) canvas; remove others (older first)
-    const toRemove = cvs.slice(0, cvs.length - 1);
-    for (const oldC of toRemove) {
-      destroyChartOnCanvas(oldC);
-      removeCanvasAndWrapper(oldC);
+    // DOM order: older first, newest last → keep the last
+    const newest = list[list.length - 1];
+    for (let i = 0; i < list.length - 1; i++){
+      destroyChartOnCanvas(list[i]);
+      removeCanvasAndWrapper(list[i]);
     }
-
-    // Ensure the remaining canvas is wrapped for stable sizing
-    const newest = cvs[cvs.length - 1];
     ensureWrap(newest);
   }
 
-  // --- Observe the document for new canvases and dedupe automatically
-  // This catches replays where your slide appends a fresh canvas each time.
-  const canvasObserver = new MutationObserver(mutations => {
-    for (const m of mutations) {
+  // Observe additions and dedupe by shape container
+  const canvasObserver = new MutationObserver(muts => {
+    for (const m of muts) {
       if (m.type !== 'childList') continue;
-
-      // Check added nodes directly
       for (const node of m.addedNodes) {
         if (!(node instanceof Element)) continue;
 
-        // If a canvas was added
+        // direct canvas
         if (node.tagName === 'CANVAS') {
-          // Wait a tick to let Chart bind if it's going to
-          setTimeout(() => {
-            dedupeCanvasesNear(node);
-          }, 0);
+          const cont = findShapeContainer(node);
+          setTimeout(() => dedupeCanvasesFor(cont), 0);
         }
 
-        // Or if a subtree added contains canvases
+        // canvases in subtree
         const canvases = node.querySelectorAll ? node.querySelectorAll('canvas') : [];
         if (canvases.length) {
-          setTimeout(() => {
-            canvases.forEach(c => dedupeCanvasesNear(c));
-          }, 0);
+          // dedupe per container to avoid cross-removal
+          const containers = new Set();
+          canvases.forEach(c => containers.add(findShapeContainer(c)));
+          setTimeout(() => containers.forEach(cont => dedupeCanvasesFor(cont)), 0);
         }
       }
     }
   });
-
-  // Start observing the whole document
   try { canvasObserver.observe(document.documentElement || document.body, { childList: true, subtree: true }); } catch(e){}
 
-  // --- Once Chart.js is present, set safer defaults (no constructor patching)
+  // Safer Chart.js defaults (no constructor patching)
   (function waitForChart(attempts){
-    if (window.Chart && window.Chart.version) {
+    if (window.Chart?.version) {
       try {
         Chart.defaults.maintainAspectRatio = false;
         if (Chart.defaults.animation && typeof Chart.defaults.animation === 'object') {
           Chart.defaults.animation.duration = 400;
         }
-        // Optional: if player scaling looks blurry, you can uncomment:
-        // Chart.defaults.devicePixelRatio = 1;
+        // Optional: Chart.defaults.devicePixelRatio = 1;
       } catch(e){}
       return;
     }
     if (attempts <= 0) return;
-    setTimeout(() => waitForChart(attempts - 1), 50); // ~10s max
+    setTimeout(() => waitForChart(attempts - 1), 50);
   })(200);
 
-  // -------------------------
-  // Tabulator dedupe observer
-  // -------------------------
+  // ---------- Tabulator dedupe ----------
   function destroyTabulatorOn(host){
-    try {
-      if (host && host._tabulator && typeof host._tabulator.destroy === 'function') {
-        host._tabulator.destroy();
-      }
-    } catch(e){}
+    try { if (host?._tabulator?.destroy) host._tabulator.destroy(); } catch(e){}
   }
 
-  function dedupeTabulatorsNear(host){
-    if (!host) return;
-    // Strategy: if the host already contains a Tabulator root (.tabulator), keep the NEWEST one.
-    const roots = Array.from(host.querySelectorAll(':scope > .tabulator')); // direct children only
+  function dedupeTabulatorsFor(container){
+    if (!container) return;
+    const roots = Array.from(container.querySelectorAll(':scope .tabulator')); // any depth inside container
     if (roots.length <= 1) return;
-
-    const toRemove = roots.slice(0, roots.length - 1);
-    for (const r of toRemove) {
-      // Destroy via the host ref if available (Tabulator attaches to host)
-      destroyTabulatorOn(host);
-      try { r.remove(); } catch(e){}
+    const newest = roots[roots.length - 1];
+    for (let i = 0; i < roots.length - 1; i++){
+      const root = roots[i];
+      destroyTabulatorOn(root.parentElement);
+      try { root.remove(); } catch(e){}
     }
+    // no extra wrapper needed for Tabulator
   }
 
-  const tabObserver = new MutationObserver(mutations => {
-    for (const m of mutations) {
+  const tabObserver = new MutationObserver(muts => {
+    for (const m of muts) {
       if (m.type !== 'childList') continue;
-
       for (const node of m.addedNodes) {
         if (!(node instanceof Element)) continue;
 
-        // If a Tabulator root was added directly
-        if (node.classList && node.classList.contains('tabulator')) {
-          const host = node.parentElement;
-          setTimeout(() => { dedupeTabulatorsNear(host); }, 0);
+        if (node.classList?.contains('tabulator')) {
+          const cont = findShapeContainer(node);
+          setTimeout(() => dedupeTabulatorsFor(cont), 0);
         }
 
-        // Or if subtree contains Tabulator roots
         const roots = node.querySelectorAll ? node.querySelectorAll('.tabulator') : [];
         if (roots.length) {
-          roots.forEach(root => {
-            const host = root.parentElement;
-            setTimeout(() => { dedupeTabulatorsNear(host); }, 0);
-          });
+          const containers = new Set();
+          roots.forEach(r => containers.add(findShapeContainer(r)));
+          setTimeout(() => containers.forEach(cont => dedupeTabulatorsFor(cont)), 0);
         }
       }
     }
   });
   try { tabObserver.observe(document.documentElement || document.body, { childList: true, subtree: true }); } catch(e){}
-
 })();
