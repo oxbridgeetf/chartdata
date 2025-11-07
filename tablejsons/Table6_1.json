@@ -16,15 +16,16 @@
         "Col2": "$25.00"
     },
     {
-        "Col1": "Underlying Index",
-        "Col2": "SWA Index"
-    },
-    {
         "Col1": "Fee",
         "Col2": "50bps"
+    },
+    {
+        "Col1": "Underlying Index",
+        "Col2": "SWA Index"
     },
     {
         "Col1": "PCF Construction",
         "Col2": "Index-Based"
     }
 ]
+
