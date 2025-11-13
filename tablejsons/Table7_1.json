@@ -1,18 +1,20 @@
 [
-  {"Date": "Jan 11th", "NAV": 24.87, "IndexLevel": 99.25, "NAVReturn": "", "IndexReturn": "", "Difference": ""},
-  {"Date": "Jan 12th", "NAV": 25.0, "IndexLevel": 99.78, "NAVReturn": 0.00529, "IndexReturn": 0.00531, "Difference": 0.00002},
-  {"Date": "Jan 13th", "NAV": 25.29, "IndexLevel": 100.93, "NAVReturn": 0.01156, "IndexReturn": 0.01159, "Difference": 0.00003},
-  {"Date": "Jan 14th", "NAV": 25.09, "IndexLevel": 100.16, "NAVReturn": -0.00766, "IndexReturn": -0.00765, "Difference": 0.00001},
-  {"Date": "Jan 15th", "NAV": 24.99, "IndexLevel": 99.73, "NAVReturn": -0.00426, "IndexReturn": -0.00424, "Difference": 0.00001},
-  {"Date": "Jan 19th", "NAV": 25.32, "IndexLevel": 101.07, "NAVReturn": 0.01338, "IndexReturn": 0.01343, "Difference": 0.00006},
-  {"Date": "Jan 20th", "NAV": 25.3, "IndexLevel": 100.98, "NAVReturn": -0.00096, "IndexReturn": -0.00094, "Difference": 0.00001},
-  {"Date": "Jan 21st", "NAV": 25.3, "IndexLevel": 101.0, "NAVReturn": 0.00024, "IndexReturn": 0.00025, "Difference": 0.00001},
-  {"Date": "Jan 22nd", "NAV": 25.33, "IndexLevel": 101.11, "NAVReturn": 0.00104, "IndexReturn": 0.00105, "Difference": 0.00001},
-  {"Date": "Jan 25th", "NAV": 25.32, "IndexLevel": 101.08, "NAVReturn": -0.00038, "IndexReturn": -0.00034, "Difference": 0.00004},
-  {"Date": "Jan 26th", "NAV": 25.28, "IndexLevel": 100.93, "NAVReturn": -0.0015, "IndexReturn": -0.00149, "Difference": 0.00001},
-  {"Date": "Jan 27th", "NAV": 25.39, "IndexLevel": 101.35, "NAVReturn": 0.00418, "IndexReturn": 0.0042, "Difference": 0.00002},
-  {"Date": "Jan 28th", "NAV": 25.34, "IndexLevel": 101.17, "NAVReturn": -0.00175, "IndexReturn": -0.00174, "Difference": 0.00001},
-  {"Date": "Jan 29th", "NAV": 25.38, "IndexLevel": 101.34, "NAVReturn": 0.00159, "IndexReturn": 0.0016, "Difference": 0.00002},
-  {"Date": "Total Return", "NAV": "2.075%", "IndexLevel": "2.104%", "NAVReturn": " ", "IndexReturn": "Annualized TE", "Difference": "0.021%"},
-  {"Date": "Underperformance", "NAV": " ", "IndexLevel": "0.028%", "NAVReturn": " ", "IndexReturn": "Zero-Mean TE", "Difference": "0.041%"}
+  {"Col1": "Jan 11th", "Col2": 24.87, "Col3": 99.25, "Col4": "", "Col5": "", "Col6": ""},
+  {"Col1": "Jan 12th", "Col2": 25.0, "Col3": 99.78, "Col4": 0.00529, "Col5": 0.00531, "Col6": 0.00002},
+  {"Col1": "Jan 13th", "Col2": 25.29, "Col3": 100.93, "Col4": 0.01156, "Col5": 0.01159, "Col6": 0.00003},
+  {"Col1": "Jan 14th", "Col2": 25.09, "Col3": 100.16, "Col4": -0.00766, "Col5": -0.00765, "Col6": 0.00001},
+  {"Col1": "Jan 15th", "Col2": 24.99, "Col3": 99.73, "Col4": -0.00426, "Col5": -0.00424, "Col6": 0.00001},
+  {"Col1": "Jan 19th", "Col2": 25.32, "Col3": 101.07, "Col4": 0.01338, "Col5": 0.01343, "Col6": 0.00006},
+  {"Col1": "Jan 20th", "Col2": 25.3, "Col3": 100.98, "Col4": -0.00096, "Col5": -0.00094, "Col6": 0.00001},
+  {"Col1": "Jan 21st", "Col2": 25.3, "Col3": 101.0, "Col4": 0.00024, "Col5": 0.00025, "Col6": 0.00001},
+  {"Col1": "Jan 22nd", "Col2": 25.33, "Col3": 101.11, "Col4": 0.00104, "Col5": 0.00105, "Col6": 0.00001},
+  {"Col1": "Jan 25th", "Col2": 25.32, "Col3": 101.08, "Col4": -0.00038, "Col5": -0.00034, "Col6": 0.00004},
+  {"Col1": "Jan 26th", "Col2": 25.28, "Col3": 100.93, "Col4": -0.0015, "Col5": -0.00149, "Col6": 0.00001},
+  {"Col1": "Jan 27th", "Col2": 25.39, "Col3": 101.35, "Col4": 0.00418, "Col5": 0.0042, "Col6": 0.00002},
+  {"Col1": "Jan 28th", "Col2": 25.34, "Col3": 101.17, "Col4": -0.00175, "Col5": -0.00174, "Col6": 0.00001},
+  {"Col1": "Jan 29th", "Col2": 25.38, "Col3": 101.34, "Col4": 0.00159, "Col5": 0.0016, "Col6": 0.00002},
+  {"Col1": "Total Return", "Col2": "2.075%", "Col3": "2.104%", "Col4": " ", "Col5": "Annualized TE", "Col6": "0.021%"},
+  {"Col1": "Underperformance", "Col2": " ", "Col3": "0.028%", "Col4": " ", "Col5": "Zero-Mean TE", "Col6": "0.041%"}
 ]
+
+
