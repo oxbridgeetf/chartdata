@@ -1,5 +1,9 @@
 [
   {
+    "Col1": "Commission per Share",
+    "Col2": "$0.01/share"
+  },
+  {
     "Col1": "Share Price",
     "Col2": "$100/share"
   },
@@ -10,10 +14,6 @@
   {
     "Col1": "Trade Value",
     "Col2": "$1,000,000"
-  },
-  {
-    "Col1": "Commission per Share",
-    "Col2": "$0.01/share"
   },
   {
     "Col1": "Total Commission",
