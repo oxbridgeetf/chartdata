@@ -63,88 +63,11 @@
     "ChangeWeight": -0.0003
   },
   {
-    "Ticker": "AFOJ",
-    "IS": 0.2373,
-    "IndexTrade": -0.02636,
-    "ClosingPrice": 20.92,
-    "ChangeWeight": -0.0057
-  },
-  {
-    "Ticker": "AGFZ",
-    "IS": 0.1114,
-    "IndexTrade": 0.01591,
-    "ClosingPrice": 47.2,
-    "ChangeWeight": 0.0077
-  },
-  {
-    "Ticker": "AHBP",
-    "IS": 0.0669,
-    "IndexTrade": -0.00978,
-    "ClosingPrice": 70.16,
-    "ChangeWeight": -0.007
-  },
-  {
-    "Ticker": "AHGG",
-    "IS": 0.0907,
-    "IndexTrade": 0.00484,
-    "ClosingPrice": 57.94,
-    "ChangeWeight": 0.0029
-  },
-  {
-    "Ticker": "AHJQ",
-    "IS": 0.0727,
-    "IndexTrade": -0.00083,
-    "ClosingPrice": 69.32,
-    "ChangeWeight": -0.0006
-  },
-  {
-    "Ticker": "AIAD",
-    "IS": 0.1764,
-    "IndexTrade": 0.00763,
-    "ClosingPrice": 27.65,
-    "ChangeWeight": 0.0022
-  },
-  {
-    "Ticker": "AKEK",
-    "IS": 0.0509,
-    "IndexTrade": 0.05091,
-    "ClosingPrice": 95.35,
-    "ChangeWeight": 0.0498
-  },
-  {
-    "Ticker": "AKMW",
-    "IS": 0.0,
-    "IndexTrade": -0.08655,
-    "ClosingPrice": 31.11,
-    "ChangeWeight": -0.0276
-  },
-  {
-    "Ticker": "AKRY",
-    "IS": 0.0679,
-    "IndexTrade": 0.01486,
-    "ClosingPrice": 72.47,
-    "ChangeWeight": 0.0111
-  },
-  {
-    "Ticker": "AKXI",
-    "IS": 0.2994,
-    "IndexTrade": 0.03153,
-    "ClosingPrice": 15.89,
-    "ChangeWeight": 0.0051
-  },
-  {
-    "Ticker": "AKZO",
-    "IS": 0.0642,
-    "IndexTrade": -0.00954,
-    "ClosingPrice": 74.32,
-    "ChangeWeight": -0.0073
-  },
-  {
-    "Ticker": "ALTO",
-    "IS": 0.0484,
-    "IndexTrade": -0.01331,
-    "ClosingPrice": 103.41,
-    "ChangeWeight": -0.0141
+    "Ticker": "...",
+    "IS": "...",
+    "IndexTrade": "...",
+    "ClosingPrice": "...",
+    "ChangeWeight": "..."
   },
   {
     "Ticker": "AMGP",
@@ -152,5 +75,13 @@
     "IndexTrade": 0.01044,
     "ClosingPrice": 12.09,
     "ChangeWeight": 0.0013
+  },
+  {
+    "Ticker": "One-Way",
+    "IS": "",
+    "IndexTrade": "",
+    "ClosingPrice": "",
+    "ChangeWeight": "14%"
   }
 ]
+
