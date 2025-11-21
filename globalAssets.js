@@ -1376,3 +1376,27 @@ function initDynamicFormattedTableWithFontSize(
     setTimeout(() => waitForChart(attempts - 1), 50);
   })(200);
 })();
+
+
+(function (global) {
+  function getTableFromShape(rectId) {
+    const container = document.querySelector(`[data-acc-text='${rectId}']`);
+    return container ? container._tabulatorTable : null;
+  }
+
+  // Update a single cell by row index
+  function updateCellByIndex(rectId, rowIndex, columnField, newValue) {
+    const table = getTableFromShape(rectId);
+    if (!table) return;
+
+    const rows = table.getRows();
+    const row = rows[rowIndex];
+    if (row) {
+      row.update({ [columnField]: newValue });
+    }
+  }
+
+  // Expose globally
+  global.updateCellByIndex = updateCellByIndex;
+})(window);
+
