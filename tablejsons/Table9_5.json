@@ -4,6 +4,10 @@
         "Col2": "14"
     },
     {
+        "Col1": "Basis Date for ACOP1001",
+        "Col2": "January 11th"
+    },
+    {
         "Col1": "Cost Basis for Existing Shares in ACOP1001",
         "Col2": "$91.6644"
     },
@@ -49,4 +53,5 @@
         "Col2": "January 11th"
     }
 ]
+
 
