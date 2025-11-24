@@ -1,5 +1,9 @@
 [
     {
+        "Col1": "Shares to Buy on Apr 15th",
+        "Col2": "14"
+    },
+    {
         "Col1": "Cost Basis for Existing Shares in ACOP1001",
         "Col2": "$91.6644"
     },
@@ -7,10 +11,7 @@
         "Col1": "Number of Existing Shares in ACOP1001",
         "Col2": "5,330"
     },
-    {
-        "Col1": "Shares to Buy on Apr 15th",
-        "Col2": "14"
-    },
+    
     {
         "Col1": "Purchase Price on Apr 15th",
         "Col2": "$84.9401"
@@ -20,12 +21,12 @@
         "Col2": "147"
     },
     {
-        "Col1": "Proportion of Shares Sold",
-        "Col2": "9.5%"
-    },
-    {
         "Col1": "Losses on Shares Sold on Apr 8th",
         "Col2": "$(901.08)"
+    },
+    {
+        "Col1": "Proportion of Shares Sold",
+        "Col2": "9.5%"
     },
     {
         "Col1": "Losses to Revert Back to Basis",
@@ -36,11 +37,16 @@
         "Col2": "5,344"
     },
     {
+        "Col1": "Basis for New Shares",
+        "Col2": "$91.07"
+    },
+    {
         "Col1": "New Basis for ACOP1001",
         "Col2": "$91.6628"
     },
     {
-        "Col1": "New Basis without Wash Sale (Weighted Average Basis)",
-        "Col2": "$91.6468"
+        "Col1": "Basis Date",
+        "Col2": "January 11th"
     }
 ]
+
