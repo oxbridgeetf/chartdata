@@ -46,5 +46,54 @@
         "SubPrice": 0.0,
         "AnnDate": "April 26th",
         "PercCash": 0.5
+    },
+    {
+        "Ticker": "...",
+        "ExDate": "...",
+        "Type": "...",
+        "Acquiror": "...",
+        "AcqType": "...",
+        "Ratio": "...",
+        "Cash": "...",
+        "SubPrice": "...",
+        "AnnDate": "...",
+        "PercCash": "..."
+    },
+    {
+        "Ticker": "...",
+        "ExDate": "...",
+        "Type": "...",
+        "Acquiror": "...",
+        "AcqType": "...",
+        "Ratio": "...",
+        "Cash": "...",
+        "SubPrice": "...",
+        "AnnDate": "...",
+        "PercCash": "..."
+    },
+    {
+        "Ticker": "...",
+        "ExDate": "...",
+        "Type": "...",
+        "Acquiror": "...",
+        "AcqType": "...",
+        "Ratio": "...",
+        "Cash": "...",
+        "SubPrice": "...",
+        "AnnDate": "...",
+        "PercCash": "..."
+    },
+    {
+        "Ticker": "...",
+        "ExDate": "...",
+        "Type": "...",
+        "Acquiror": "...",
+        "AcqType": "...",
+        "Ratio": "...",
+        "Cash": "...",
+        "SubPrice": "...",
+        "AnnDate": "...",
+        "PercCash": "..."
     }
+
 ]
