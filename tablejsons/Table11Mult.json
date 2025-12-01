@@ -7,7 +7,7 @@
         "AcqType": "NA",
         "Ratio": 2.0,
         "Cash": 0.0,
-        "SubPrice": 0.0,
+        "SubPrice": "NA",
         "AnnDate": "March 24th",
         "PercCash": 0.0
     },
@@ -19,7 +19,7 @@
         "AcqType": "NA",
         "Ratio": 3.0,
         "Cash": 0.0,
-        "SubPrice": 0.0,
+        "SubPrice": "NA",
         "AnnDate": "April 13th",
         "PercCash": 0.0
     },
@@ -43,7 +43,7 @@
         "AcqType": "Stock",
         "Ratio": 1.27,
         "Cash": 24.53,
-        "SubPrice": 0.0,
+        "SubPrice": "NA",
         "AnnDate": "April 26th",
         "PercCash": 0.5
     },
@@ -97,3 +97,4 @@
     }
 
 ]
+
