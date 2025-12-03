@@ -12,11 +12,12 @@
         "Col2": "Cash + Stock"
     },
     {
-        "Col1": "Cash Terms Per Share",
-        "Col2": "$24.53"
-    },
-    {
         "Col1": "Stock Terms (Acquiror Shares per Target Share)",
         "Col2": 1.2728
+    },
+    {
+        "Col1": "Cash Terms Per Share",
+        "Col2": "$24.53"
     }
+
 ]
