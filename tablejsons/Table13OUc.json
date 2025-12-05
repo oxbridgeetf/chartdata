@@ -1,0 +1,156 @@
+[
+    {
+        "ID": "CASH",
+        "Ticker": "CASH",
+        "Port Weight": 0.00021373,
+        "Index Weight": 0,
+        "O/U": 0.00021373
+    },
+    {
+        "ID": "Accrued",
+        "Ticker": "Accrued",
+        "Port Weight": 0.00069827,
+        "Index Weight": 0,
+        "O/U": 0.00069827
+    },
+    {
+        "ID": "US1001",
+        "Ticker": "AABA",
+        "Port Weight": 0.045217,
+        "Index Weight": 0.045226,
+        "O/U": -0.000009
+    },
+    {
+        "ID": "US1003",
+        "Ticker": "AAQZ",
+        "Port Weight": 0.050424,
+        "Index Weight": 0.050474,
+        "O/U": -0.000050
+    },
+    {
+        "ID": "US1005",
+        "Ticker": "AAXX",
+        "Port Weight": 0.04662,
+        "Index Weight": 0.046642,
+        "O/U": -0.000022
+    },
+    {
+        "ID": "US1009",
+        "Ticker": "ACBU",
+        "Port Weight": 0.055037,
+        "Index Weight": 0.055118,
+        "O/U": -0.000081
+    },
+    {
+        "ID": "US1010",
+        "Ticker": "ACGN",
+        "Port Weight": 0.048786,
+        "Index Weight": 0.048821,
+        "O/U": -0.000035
+    },
+    {
+        "ID": "US1012",
+        "Ticker": "ACOP",
+        "Port Weight": 0.046411,
+        "Index Weight": 0.046432,
+        "O/U": -0.000021
+    },
+    {
+        "ID": "US1018",
+        "Ticker": "ADXK",
+        "Port Weight": 0.052735,
+        "Index Weight": 0.052802,
+        "O/U": -0.000067
+    },
+    {
+        "ID": "US1019",
+        "Ticker": "ADZI",
+        "Port Weight": 0.047203,
+        "Index Weight": 0.047229,
+        "O/U": -0.000026
+    },
+    {
+        "ID": "US1024",
+        "Ticker": "AFOJ",
+        "Port Weight": 0.050921,
+        "Index Weight": 0.050974,
+        "O/U": -0.000053
+    },
+    {
+        "ID": "US1026",
+        "Ticker": "AGFZ",
+        "Port Weight": 0.053918,
+        "Index Weight": 0.053995,
+        "O/U": -0.000077
+    },
+    {
+        "ID": "US1028",
+        "Ticker": "AHBP",
+        "Port Weight": 0.04817,
+        "Index Weight": 0.048204,
+        "O/U": -0.000034
+    },
+    {
+        "ID": "US1029",
+        "Ticker": "AHGG",
+        "Port Weight": 0.053848,
+        "Index Weight": 0.053919,
+        "O/U": -0.000071
+    },
+    {
+        "ID": "US1030",
+        "Ticker": "AHJQ",
+        "Port Weight": 0.051646,
+        "Index Weight": 0.051703,
+        "O/U": -0.000057
+    },
+    {
+        "ID": "US1033",
+        "Ticker": "AIAD",
+        "Port Weight": 0.050014,
+        "Index Weight": 0.05006,
+        "O/U": -0.000046
+    },
+    {
+        "ID": "US1038",
+        "Ticker": "AKEK",
+        "Port Weight": 0.049779,
+        "Index Weight": 0.049823,
+        "O/U": -0.000044
+    },
+    {
+        "ID": "US1042",
+        "Ticker": "AKRY",
+        "Port Weight": 0.05044,
+        "Index Weight": 0.050491,
+        "O/U": -0.000051
+    },
+    {
+        "ID": "US1045",
+        "Ticker": "AKXI",
+        "Port Weight": 0.048805,
+        "Index Weight": 0.048841,
+        "O/U": -0.000036
+    },
+    {
+        "ID": "US1046",
+        "Ticker": "AKZO",
+        "Port Weight": 0.048903,
+        "Index Weight": 0.048944,
+        "O/U": -0.000041
+    },
+    {
+        "ID": "US1049",
+        "Ticker": "ALTO",
+        "Port Weight": 0.051361,
+        "Index Weight": 0.051414,
+        "O/U": -0.000053
+    },
+    {
+        "ID": "US1050",
+        "Ticker": "AMGP",
+        "Port Weight": 0.04885,
+        "Index Weight": 0.048887,
+        "O/U": -0.000037
+    }
+]
