@@ -1,30 +1,30 @@
 [
     {
-        "Units": 0,
-        "Change in Unrealized": 2481300,
-        "Change in Realized": 695570,
-        "Unrealized": 5658700,
-        "Realized": 99210
+        "Col1": "0",
+        "Col2": "$2,481,300",
+        "Col3": "$695,570",
+        "Col4": "$5,658,700",
+        "Col5": "$99,210"
     },
     {
-        "Units": 1,
-        "Change in Unrealized": 2172200,
-        "Change in Realized": 362370,
-        "Unrealized": 5349600,
-        "Realized": -233990
+        "Col1": "1",
+        "Col2": "$2,172,200",
+        "Col3": "$362,370",
+        "Col4": "$5,349,600",
+        "Col5": "-$233,990"
     },
     {
-        "Units": 2,
-        "Change in Unrealized": 1817300,
-        "Change in Realized": 218910,
-        "Unrealized": 4994700,
-        "Realized": -377460
+        "Col1": "2",
+        "Col2": "$1,817,300",
+        "Col3": "$218,910",
+        "Col4": "$4,994,700",
+        "Col5": "-$377,460"
     },
     {
-        "Units": 3,
-        "Change in Unrealized": 1489000,
-        "Change in Realized": 106920,
-        "Unrealized": 4666400,
-        "Realized": -489450
+        "Col1": "3",
+        "Col2": "$1,489,000",
+        "Col3": "$106,920",
+        "Col4": "$4,666,400",
+        "Col5": "-$489,450"
     }
 ]
