@@ -201,6 +201,66 @@ const colorPalette = {
 // Export the color palette so it's available globally
 window.colorPalette = colorPalette;
 
+// --- SVG Inject Helper for Storyline Shapes ---
+function insertSvgIntoShape(shapeName, svgUrl) {
+    // Find the Storyline shape by its accessibility name
+    const targetShape = document.querySelector(
+        `[data-acc-text='${shapeName}']`
+    );
+
+    if (!targetShape) {
+        console.warn(`insertSvgIntoShape: Shape '${shapeName}' not found.`);
+        return;
+    }
+
+    // If this shape previously hosted a Tabulator table, destroy it cleanly
+    if (targetShape._tabulatorTable && typeof targetShape._tabulatorTable.destroy === "function") {
+        try {
+            targetShape._tabulatorTable.destroy();
+        } catch (e) {
+            console.warn("insertSvgIntoShape: error destroying Tabulator table:", e);
+        }
+        targetShape._tabulatorTable = null;
+    }
+
+    // If there are any Chart.js canvases inside this shape, clean them up
+    const canvases = targetShape.querySelectorAll("canvas");
+    canvases.forEach((canvas) => {
+        try {
+            const inst = window.Chart?.getChart?.(canvas);
+            if (inst && typeof inst.destroy === "function") {
+                inst.destroy();
+            }
+        } catch (e) {
+            console.warn("insertSvgIntoShape: error destroying Chart instance:", e);
+        }
+        canvas.remove();
+    });
+
+    // Clear anything else inside the shape
+    while (targetShape.firstChild) {
+        targetShape.removeChild(targetShape.firstChild);
+    }
+
+    // Create an <img> element that fills the shape and displays the SVG
+    const img = document.createElement("img");
+    img.src = svgUrl;
+    img.alt = ""; // decorative; you can set a meaningful alt if needed
+
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.display = "block";
+    img.style.objectFit = "contain";   // keep aspect ratio, no distortion
+    img.style.margin = "0";
+    img.style.padding = "0";
+    img.style.border = "none";
+
+    targetShape.appendChild(img);
+}
+
+
+
+
 function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
     if (!row) return;
