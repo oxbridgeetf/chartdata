@@ -1,0 +1,33 @@
+<svg width="500" height="200" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    .header {
+      font-family: "Montserrat", sans-serif;
+      font-size: 21.328px;
+      font-weight: 700;
+      fill: rgb(255,255,255);
+      dominant-baseline: middle;
+    }
+    .cell {
+      font-family: "Montserrat", sans-serif;
+      font-size: 21.328px;
+      font-weight: 400;
+      fill: rgb(255,255,255);
+      dominant-baseline: middle;
+    }
+  </style>
+
+<line x1="0" y1="40" x2="500" y2="40" stroke="rgb(198,62,48)" stroke-width="5.332"/>
+<text x="5" y="55.995999999999995" class="header" text-anchor="start">Col1</text>
+<text x="495.0" y="55.995999999999995" class="header" text-anchor="end">Col2 </text>
+<line x1="0" y1="71.99199999999999" x2="500" y2="71.99199999999999" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="103.99733333333333" x2="500" y2="103.99733333333333" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="136.00266666666667" x2="500" y2="136.00266666666667" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="168.008" x2="500" y2="168.008" stroke="rgb(198,62,48)" stroke-width="1.333"/>
+<text x="5" y="87.99466666666666" class="cell" text-anchor="start">Index</text>
+<text x="495.0" y="87.99466666666666" class="cell" text-anchor="end">SWA Index</text>
+<text x="5" y="120.0" class="cell" text-anchor="start">Date</text>
+<text x="495.0" y="120.0" class="cell" text-anchor="end">January 11th</text>
+<text x="5" y="152.00533333333334" class="cell" text-anchor="start">Index Level</text>
+<text x="495.0" y="152.00533333333334" class="cell" text-anchor="end">99.24844</text>
+</svg>

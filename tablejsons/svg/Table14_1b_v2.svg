@@ -1,0 +1,65 @@
+<svg width="1680" height="200" viewBox="0 0 1680 200" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    .header {
+      font-family: "Montserrat", sans-serif;
+      font-size: 21.328px;
+      font-weight: 700;
+      fill: rgb(255,255,255);
+      dominant-baseline: middle;
+    }
+    .cell {
+      font-family: "Montserrat", sans-serif;
+      font-size: 21.328px;
+      font-weight: 400;
+      fill: rgb(255,255,255);
+      dominant-baseline: middle;
+    }
+  </style>
+
+<line x1="0" y1="40" x2="1680" y2="40" stroke="rgb(198,62,48)" stroke-width="5.332"/>
+<text x="5" y="55.995999999999995" class="header" text-anchor="start">ID</text>
+<text x="173.0" y="55.995999999999995" class="header" text-anchor="start">Ticker</text>
+<text x="341.0" y="55.995999999999995" class="header" text-anchor="start">Country</text>
+<text x="509.0" y="55.995999999999995" class="header" text-anchor="start">LocalPrice</text>
+<text x="677.0" y="55.995999999999995" class="header" text-anchor="start">Currency</text>
+<text x="845.0" y="55.995999999999995" class="header" text-anchor="start">FX</text>
+<text x="1013.0" y="55.995999999999995" class="header" text-anchor="start">BasePrice</text>
+<text x="1181.0" y="55.995999999999995" class="header" text-anchor="start">Weight</text>
+<text x="1349.0" y="55.995999999999995" class="header" text-anchor="start">IndexShare</text>
+<text x="1517.0" y="55.995999999999995" class="header" text-anchor="start">IndexValue</text>
+<line x1="0" y1="71.99199999999999" x2="1680" y2="71.99199999999999" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="103.99733333333333" x2="1680" y2="103.99733333333333" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="136.00266666666667" x2="1680" y2="136.00266666666667" stroke="rgb(155,184,193)" stroke-width="1.333"/>
+<line x1="0" y1="168.008" x2="1680" y2="168.008" stroke="rgb(198,62,48)" stroke-width="1.333"/>
+<text x="5" y="87.99466666666666" class="cell" text-anchor="start">US1001</text>
+<text x="173.0" y="87.99466666666666" class="cell" text-anchor="start">AABA</text>
+<text x="341.0" y="87.99466666666666" class="cell" text-anchor="start">US</text>
+<text x="509.0" y="87.99466666666666" class="cell" text-anchor="start">81.6302</text>
+<text x="677.0" y="87.99466666666666" class="cell" text-anchor="start">USD</text>
+<text x="845.0" y="87.99466666666666" class="cell" text-anchor="start">1.0</text>
+<text x="1013.0" y="87.99466666666666" class="cell" text-anchor="start">81.6302</text>
+<text x="1181.0" y="87.99466666666666" class="cell" text-anchor="start">0.049521</text>
+<text x="1349.0" y="87.99466666666666" class="cell" text-anchor="start">0.0602</text>
+<text x="1517.0" y="87.99466666666666" class="cell" text-anchor="start">4.9149</text>
+<text x="5" y="120.0" class="cell" text-anchor="start">US1003</text>
+<text x="173.0" y="120.0" class="cell" text-anchor="start">AAQZ</text>
+<text x="341.0" y="120.0" class="cell" text-anchor="start">JP</text>
+<text x="509.0" y="120.0" class="cell" text-anchor="start">7706.6515</text>
+<text x="677.0" y="120.0" class="cell" text-anchor="start">JPY</text>
+<text x="845.0" y="120.0" class="cell" text-anchor="start">114.5</text>
+<text x="1013.0" y="120.0" class="cell" text-anchor="start">67.307</text>
+<text x="1181.0" y="120.0" class="cell" text-anchor="start">0.047127</text>
+<text x="1349.0" y="120.0" class="cell" text-anchor="start">0.0695</text>
+<text x="1517.0" y="120.0" class="cell" text-anchor="start">4.6772</text>
+<text x="5" y="152.00533333333334" class="cell" text-anchor="start">US1004</text>
+<text x="173.0" y="152.00533333333334" class="cell" text-anchor="start">AAWL</text>
+<text x="341.0" y="152.00533333333334" class="cell" text-anchor="start">CA</text>
+<text x="509.0" y="152.00533333333334" class="cell" text-anchor="start">76.2036583</text>
+<text x="677.0" y="152.00533333333334" class="cell" text-anchor="start">CAD</text>
+<text x="845.0" y="152.00533333333334" class="cell" text-anchor="start">1.3115</text>
+<text x="1013.0" y="152.00533333333334" class="cell" text-anchor="start">58.1042</text>
+<text x="1181.0" y="152.00533333333334" class="cell" text-anchor="start">0.047784</text>
+<text x="1349.0" y="152.00533333333334" class="cell" text-anchor="start">0.0816</text>
+<text x="1517.0" y="152.00533333333334" class="cell" text-anchor="start">4.7425</text>
+</svg>
