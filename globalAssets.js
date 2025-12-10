@@ -1918,7 +1918,7 @@ function initDynamicFormattedTableWithFontSize(
       try {
         Chart.defaults.maintainAspectRatio = false;
         if (Chart.defaults.animation && typeof Chart.defaults.animation === 'object') {
-          Chart.defaults.animation.duration = 400;
+          Chart.defaults.animation.duration = 1200;
         }
         // If you ever see blurriness under player scaling, you can also set:
         // Chart.defaults.devicePixelRatio = 1;
