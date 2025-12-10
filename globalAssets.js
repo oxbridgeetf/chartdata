@@ -450,6 +450,28 @@ function destroyChartsAndTables() {
     console.log("All charts and all Tabulator tables destroyed.");
 }
 
+// --- Load Chartjs inside of globalAssets
+function loadChartJS(callback) {
+    const existing = document.querySelector("script[data-chartjs]");
+    if (existing) {
+        if (callback) callback();
+        return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/chart.js";  // or your preferred URL
+    script.dataset.chartjs = "true";
+    script.onload = () => {
+        console.log("Chart.js loaded globally.");
+        if (callback) callback();
+    };
+    script.onerror = () => console.error("Failed to load Chart.js");
+    document.head.appendChild(script);
+}
+
+
+
+
 // --- Global loadAssets Function ---
 function loadAssets(callback) {
     // Load Montserrat font
@@ -467,11 +489,17 @@ function loadAssets(callback) {
     // Load Tabulator JS
     const tabulatorScript = document.createElement('script');
     tabulatorScript.src = "https://unpkg.com/tabulator-tables@5.3.4/dist/js/tabulator.min.js";
-    tabulatorScript.onload = function() {
+    tabulatorScript.onload = function () {
         console.log("Tabulator loaded.");
-        if (typeof callback === "function") {
-            callback();
-        }
+
+        // NOW load Chart.js
+        loadChartJS(function () {
+            console.log("Chart.js ready.");
+
+            if (typeof callback === "function") {
+                callback();
+            }
+        });
     };
     document.body.appendChild(tabulatorScript);
 }
