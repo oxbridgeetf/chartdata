@@ -531,6 +531,499 @@ function loadData(url, containerName, columns, col2FormatArray = null) {
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
 
+// SVG Functionality
+/**
+ * initSvgTableWithFormat
+ * Render an SVG table into a Storyline shape using ColumnNames + FormatArray + formatFunctions.
+ *
+ * @param {string} containerName   Storyline accessibility name (e.g. "rect1")
+ * @param {string|Array<Object>} dataOrUrl  URL to .json or in-memory array of row objects
+ * @param {Array<string>} ColumnNames   field names to use for columns (e.g. ["Col1","Col2"])
+ * @param {Array<string>} FormatArray   format types per column (e.g. ["Text","Dollar2","Perc2"])
+ * @param {Array<string>} [hdrs]        optional headers (default: ColumnNames)
+ * @param {number} [fontSizePt=14]      optional font size in pt
+ * @param {Array<string>} [justify]     optional alignment codes per column: ["L","C","R",...]
+ * @param {boolean} [bgOxford=false]    optional Oxford Blue background
+ */
+function initSvgTableWithFormat(
+    containerName,
+    dataOrUrl,
+    ColumnNames,
+    FormatArray,
+    hdrs,
+    fontSizePt,
+    justify,
+    bgOxford
+) {
+    const selector = `[data-acc-text='${containerName}']`;
+    const container = document.querySelector(selector);
+    if (!container) {
+        console.error(`initSvgTableWithFormat: container '${containerName}' not found.`);
+        return;
+    }
+
+    // Kill any Tabulator in that shape only
+    if (container._tabulatorTable) {
+        try { container._tabulatorTable.destroy(); } catch (e) {}
+        container._tabulatorTable = null;
+    }
+    container.innerHTML = "";
+
+    // Basic validation
+    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
+        console.error("initSvgTableWithFormat: ColumnNames and FormatArray must be arrays of the same length.");
+        return;
+    }
+
+    // Defaults
+    const numCols = ColumnNames.length;
+
+    if (typeof fontSizePt !== "number" || isNaN(fontSizePt) || fontSizePt <= 0) {
+        fontSizePt = 14; // default font size
+    }
+
+    let justifyVector;
+    if (Array.isArray(justify) && justify.length === numCols) {
+        justifyVector = justify.map(j => String(j || "L").toUpperCase());
+    } else {
+        justifyVector = new Array(numCols).fill("L");
+    }
+
+    bgOxford = !!bgOxford; // ensure boolean
+
+    const headers = Array.isArray(hdrs) && hdrs.length === numCols
+        ? hdrs.slice()
+        : ColumnNames.slice();
+
+    // Helper: pt -> px
+    const ptToPx = (pt) => pt * (96 / 72); // ≈1.333
+
+    // Main render once we have the data
+    function renderSvgTable(dataArray) {
+        if (!Array.isArray(dataArray) || dataArray.length === 0) {
+            console.warn("initSvgTableWithFormat: empty or invalid data.");
+            return;
+        }
+
+        let fontSizePx = ptToPx(fontSizePt);
+
+        // Use container size (fall back if Storyline doesn't give us one)
+        const svgWidth  = container.clientWidth  || 800;
+        const svgHeight = container.clientHeight || 400;
+
+        const numRows = dataArray.length;
+
+        // Row height based on font size; header row same height
+        const lineFactor = 1.5;
+        let rowHeight = fontSizePx * lineFactor;
+        let headerRowHeight = rowHeight;
+
+        const totalNeededHeight = headerRowHeight + numRows * rowHeight;
+
+        // If rows + header don't fit vertically, shrink to fit
+        if (totalNeededHeight > svgHeight && numRows > 0) {
+            const maxRowHeight = svgHeight / (1 + numRows);
+            rowHeight = maxRowHeight;
+            headerRowHeight = maxRowHeight;
+            fontSizePx = maxRowHeight / lineFactor;
+        }
+
+        const marginLeft = 0;
+        const marginRight = 0;
+        const tableWidth = svgWidth - marginLeft - marginRight;
+
+        // Top rule at y=0
+        const topRuleY = 0;
+        const headerCenterY = topRuleY + headerRowHeight / 2;
+        const headerDividerY = topRuleY + headerRowHeight;
+
+        // Equal column widths (can be extended later for custom widths)
+        const colWidth = tableWidth / numCols;
+        const colStartX = [];
+        const colEndX = [];
+        let currentX = marginLeft;
+        for (let i = 0; i < numCols; i++) {
+            colStartX.push(currentX);
+            colEndX.push(currentX + colWidth);
+            currentX += colWidth;
+        }
+
+        const innerPad = 8;
+
+        function getTextPosition(colIndex, alignCode) {
+            const start = colStartX[colIndex];
+            const end = colEndX[colIndex];
+            const center = (start + end) / 2;
+            const code = (alignCode || "L").toUpperCase();
+            if (code === "C") {
+                return { x: center, anchor: "middle" };
+            } else if (code === "R") {
+                return { x: end - innerPad, anchor: "end" };
+            }
+            return { x: start + innerPad, anchor: "start" };
+        }
+
+        function escapeXml(value) {
+            const s = String(value ?? "");
+            return s
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&apos;");
+        }
+
+        // Use your existing palette
+        const COLORS = {
+            persian:   window.colorPalette?.Persian || "rgb(198,62,48)",
+            cadet:     window.colorPalette?.Cadet   || "rgb(155,184,193)",
+            white:     "rgb(255,255,255)",
+            oxford:    window.colorPalette?.Oxford  || "rgb(16,29,62)"
+        };
+
+        const topRuleStrokeWidthPx = ptToPx(4); // 4pt
+        const rowDividerStrokeWidthPx = ptToPx(1); // 1pt
+
+        // --- BUILD SVG ---
+        let svgParts = [];
+
+        // --- BUILD SVG ROOT WITH METADATA FOR HIGHLIGHTING ---
+
+
+        svgParts.push(
+          `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
+          `xmlns="http://www.w3.org/2000/svg" ` +
+          `data-rows="${numRows}" ` +
+          `data-cols="${numCols}" ` +
+          `data-header-divider-y="${headerDividerY}" ` +
+          `data-row-height="${rowHeight}" ` +
+          `data-margin-left="${marginLeft}" ` +
+          `data-margin-right="${marginRight}" ` +
+          `data-col-start-x="${colStartX.join(',')}" ` +
+          `data-col-end-x="${colEndX.join(',')}">`
+        );
+
+
+        // Optional Oxford Blue background
+        if (bgOxford) {
+            svgParts.push(
+                `<rect x="0" y="0" width="${svgWidth}" height="${svgHeight}" fill="${COLORS.oxford}" />`
+            );
+        }
+
+        // Text styles
+        svgParts.push(`
+  <style>
+    .svg-header-text {
+      font-family: "Montserrat", sans-serif;
+      font-size: ${fontSizePx}px;
+      font-weight: 700;
+      fill: ${COLORS.white};
+      dominant-baseline: middle;
+    }
+    .svg-cell-text {
+      font-family: "Montserrat", sans-serif;
+      font-size: ${fontSizePx}px;
+      font-weight: 400;
+      fill: ${COLORS.white};
+      dominant-baseline: middle;
+    }
+  </style>
+`);
+
+        // Top Persian Red rule
+        svgParts.push(
+            `<line x1="${marginLeft}" y1="${topRuleY}" x2="${svgWidth - marginRight}" y2="${topRuleY}" ` +
+            `stroke="${COLORS.persian}" stroke-width="${topRuleStrokeWidthPx}" />`
+        );
+
+        // Header text
+        headers.forEach((hdr, colIndex) => {
+            const alignCode = justifyVector[colIndex] || "L";
+            const pos = getTextPosition(colIndex, alignCode);
+            svgParts.push(
+                `<text x="${pos.x}" y="${headerCenterY}" class="svg-header-text" ` +
+                `text-anchor="${pos.anchor}">${escapeXml(hdr)}</text>`
+            );
+        });
+
+        // Header bottom divider (Cadet)
+        svgParts.push(
+            `<line x1="${marginLeft}" y1="${headerDividerY}" ` +
+            `x2="${svgWidth - marginRight}" y2="${headerDividerY}" ` +
+            `stroke="${COLORS.cadet}" stroke-width="${rowDividerStrokeWidthPx}" />`
+        );
+
+        // Row dividers (Cadet between rows, Persian under last row)
+        for (let i = 1; i <= numRows; i++) {
+            const y = headerDividerY + rowHeight * i;
+            const isLast = i === numRows;
+            const color = isLast ? COLORS.persian : COLORS.cadet;
+            svgParts.push(
+                `<line x1="${marginLeft}" y1="${y}" ` +
+                `x2="${svgWidth - marginRight}" y2="${y}" ` +
+                `stroke="${color}" stroke-width="${rowDividerStrokeWidthPx}" />`
+            );
+        }
+
+        // Data rows (apply formatFunctions via FormatArray)
+        dataArray.forEach((rowObj, rowIndex) => {
+            const centerY = headerDividerY + rowHeight * (rowIndex + 0.5);
+
+            ColumnNames.forEach((fieldName, colIndex) => {
+                const rawVal = rowObj[fieldName];
+
+                // Apply format function if present, otherwise Text
+                const fmtKey = FormatArray[colIndex] || "Text";
+                const fmtFn =
+                    (window.formatFunctions && window.formatFunctions[fmtKey]) ||
+                    (window.formatFunctions && window.formatFunctions.Text) ||
+                    (v => v);
+
+                let formattedVal;
+                try {
+                    formattedVal = fmtFn(rawVal);
+                } catch (e) {
+                    console.warn(
+                        `initSvgTableWithFormat: formatting error in column '${fieldName}' with format '${fmtKey}':`,
+                        e
+                    );
+                    formattedVal = rawVal;
+                }
+
+                const textVal = formattedVal == null ? "" : formattedVal;
+                const alignCode = justifyVector[colIndex] || "L";
+                const pos = getTextPosition(colIndex, alignCode);
+
+                svgParts.push(
+                    `<text x="${pos.x}" y="${centerY}" class="svg-cell-text" ` +
+                    `text-anchor="${pos.anchor}">${escapeXml(textVal)}</text>`
+                );
+            });
+        });
+
+        svgParts.push(`</svg>`);
+
+        const svgMarkup = svgParts.join("\n");
+        container.innerHTML = svgMarkup;
+    }
+
+    // --- LOAD DATA ---
+    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
+        fetch(dataOrUrl)
+            .then(resp => {
+                if (!resp.ok) {
+                    throw new Error(`Failed to fetch ${dataOrUrl}: ${resp.status} ${resp.statusText}`);
+                }
+                return resp.json();
+            })
+            .then(jsonData => renderSvgTable(jsonData))
+            .catch(err => console.error("initSvgTableWithFormat: error fetching JSON:", err));
+    } else if (Array.isArray(dataOrUrl)) {
+        renderSvgTable(dataOrUrl);
+    } else {
+        console.error("initSvgTableWithFormat: dataOrUrl must be a JSON URL or an array of objects.");
+    }
+}
+
+/**
+ * SVGhighlight
+ * Drop a translucent overlay on top of an SVG table rendered by initSvgTableWithFormat,
+ * with fade-in and optional fade-out.
+ *
+ * @param {string} containerName  Storyline acc name, e.g. "rect1"
+ * @param {string} kind           "Row", "Col"/"Column", or "Cell"
+ * @param {number|Array} target   Row index, col index, or [rowIndex, colIndex] (0-based)
+ * @param {string} colorKey       key from colorPalette, e.g. "RobinHalf", "TeaHalf"
+ * @param {number} [durationMs]   optional; if set, overlay fades out and is removed after this many ms
+ */
+function SVGhighlight(containerName, kind, target, colorKey, durationMs) {
+    const name = String(containerName);
+
+    const container = document.querySelector(`[data-acc-text='${name}']`);
+    if (!container) {
+        console.error(`SVGhighlight: container '${name}' not found.`);
+        return;
+    }
+
+    const svg = container.querySelector("svg");
+    if (!svg) {
+        console.error(`SVGhighlight: no <svg> found inside container '${name}'.`);
+        return;
+    }
+
+    // Read layout metadata from <svg>
+    const rows = parseInt(svg.getAttribute("data-rows") || "0", 10);
+    const cols = parseInt(svg.getAttribute("data-cols") || "0", 10);
+    const headerDividerY = parseFloat(svg.getAttribute("data-header-divider-y") || "0");
+    const rowHeight = parseFloat(svg.getAttribute("data-row-height") || "0");
+    const marginLeft = parseFloat(svg.getAttribute("data-margin-left") || "0");
+    const marginRight = parseFloat(svg.getAttribute("data-margin-right") || "0");
+
+    let svgWidth = parseFloat(svg.getAttribute("width") || "0");
+    let svgHeight = parseFloat(svg.getAttribute("height") || "0");
+    if ((!svgWidth || !svgHeight) && svg.viewBox && svg.viewBox.baseVal) {
+        svgWidth = svg.viewBox.baseVal.width;
+        svgHeight = svg.viewBox.baseVal.height;
+    }
+
+    const colStartX = (svg.getAttribute("data-col-start-x") || "")
+        .split(",")
+        .filter(s => s !== "")
+        .map(parseFloat);
+    const colEndX = (svg.getAttribute("data-col-end-x") || "")
+        .split(",")
+        .filter(s => s !== "")
+        .map(parseFloat);
+
+    if (!rows || !cols || !rowHeight || colStartX.length !== cols || colEndX.length !== cols) {
+        console.error("SVGhighlight: missing or invalid layout metadata on <svg>.");
+        return;
+    }
+
+    // Resolve highlight color
+    const palette = window.colorPalette || {};
+    const colorVal = palette[colorKey] || palette.TeaHalf || "rgba(221,232,185,0.5)";
+
+    const k = String(kind || "").toLowerCase();
+
+    let rowIndex = null;
+    let colIndex = null;
+
+    if (k === "row") {
+        rowIndex = Number(target);
+        if (!(rowIndex >= 0 && rowIndex < rows)) {
+            console.error("SVGhighlight: row index out of range:", rowIndex);
+            return;
+        }
+    } else if (k === "col" || k === "column") {
+        colIndex = Number(target);
+        if (!(colIndex >= 0 && colIndex < cols)) {
+            console.error("SVGhighlight: column index out of range:", colIndex);
+            return;
+        }
+    } else if (k === "cell") {
+        if (Array.isArray(target) && target.length === 2) {
+            rowIndex = Number(target[0]);
+            colIndex = Number(target[1]);
+        } else {
+            console.error("SVGhighlight: for 'Cell', target must be [rowIndex, colIndex].");
+            return;
+        }
+        if (!(rowIndex >= 0 && rowIndex < rows && colIndex >= 0 && colIndex < cols)) {
+            console.error("SVGhighlight: cell indices out of range:", target);
+            return;
+        }
+    } else {
+        console.error("SVGhighlight: kind must be 'Row', 'Col', or 'Cell'.");
+        return;
+    }
+
+    // Compute overlay geometry
+    let x, y, width, height;
+
+    if (k === "row") {
+        const rowTop = headerDividerY + rowHeight * rowIndex;
+        x = marginLeft;
+        y = rowTop;
+        width = svgWidth - marginLeft - marginRight;
+        height = rowHeight;
+    } else if (k === "col" || k === "column") {
+        x = colStartX[colIndex];
+        y = headerDividerY;
+        width = colEndX[colIndex] - colStartX[colIndex];
+        height = rowHeight * rows;
+    } else { // cell
+        const rowTop = headerDividerY + rowHeight * rowIndex;
+        x = colStartX[colIndex];
+        y = rowTop;
+        width = colEndX[colIndex] - colStartX[colIndex];
+        height = rowHeight;
+    }
+
+    const svgns = "http://www.w3.org/2000/svg";
+    const overlay = document.createElementNS(svgns, "rect");
+    overlay.setAttribute("x", String(x));
+    overlay.setAttribute("y", String(y));
+    overlay.setAttribute("width", String(width));
+    overlay.setAttribute("height", String(height));
+    overlay.setAttribute("fill", colorVal);
+    overlay.setAttribute("fill-opacity", "1"); // we’ll control visible alpha via CSS opacity
+    overlay.setAttribute("data-svg-highlight", "1");
+    overlay.style.pointerEvents = "none";
+
+    // Fade settings
+    const fadeDurationMs = 400; // fade-in / fade-out duration
+    overlay.style.opacity = "0";
+    overlay.style.transition = `opacity ${fadeDurationMs}ms ease`;
+
+    svg.appendChild(overlay);
+
+    // Fade-in (next animation frame)
+    requestAnimationFrame(() => {
+        overlay.style.opacity = "1";
+    });
+
+    // Optional fade-out and removal
+    if (typeof durationMs === "number" && durationMs > 0) {
+        const visibleTime = durationMs;
+
+        setTimeout(() => {
+            // start fade-out
+            overlay.style.opacity = "0";
+
+            // remove after fade-out completes
+            setTimeout(() => {
+                if (overlay.parentNode) {
+                    overlay.parentNode.removeChild(overlay);
+                }
+            }, fadeDurationMs);
+        }, visibleTime);
+    }
+}
+
+/**
+ * SVGclearHighlights
+ * Remove all SVGhighlight overlays from a given Storyline shape.
+ *
+ * @param {string} containerName  Storyline acc name, e.g. "rect1"
+ */
+function SVGclearHighlights(containerName) {
+    const name = String(containerName);
+
+    const container = document.querySelector(`[data-acc-text='${name}']`);
+    if (!container) {
+        console.error(`SVGclearHighlights: container '${name}' not found.`);
+        return;
+    }
+
+    const svg = container.querySelector("svg");
+    if (!svg) {
+        console.warn(`SVGclearHighlights: no <svg> found inside container '${name}'.`);
+        return;
+    }
+
+    const overlays = svg.querySelectorAll("rect[data-svg-highlight='1']");
+    overlays.forEach(node => {
+        if (node && node.parentNode) {
+            node.parentNode.removeChild(node);
+        }
+    });
+}
+
+
+
+// End SVG Functionality
+
+
+
+
+
+
+
+
+
+
 
 // --- Global initFormattedTable Function ---
 function initFormattedTable(containerName, tableType, dataOrUrl, col2FormatArray = null, columnHeaders = null) {
