@@ -580,7 +580,7 @@ function initSvgTableWithFormat(
   FormatArray,
   headers = null,
   fontSizePt = 14,
-  justifyVec = null,
+  justify = null,
   bgOxford = false
 ) {
   const selector = `[data-acc-text='${containerName}']`;
@@ -593,196 +593,206 @@ function initSvgTableWithFormat(
   // Clear anything previously in the container
   container.innerHTML = "";
 
-  // Helper: points to pixels
-  const ptsToPx = (pts) => pts * (96 / 72); // ~1.3333
+  // Basic validation
+  if (!Array.isArray(ColumnNames) || ColumnNames.length === 0) {
+    console.error("ColumnNames must be a non-empty array.");
+    return;
+  }
 
-  // Fetch JSON data
+  const numCols = ColumnNames.length;
+
+  // Normalize font size (pt → px)
+  const requestedFontSizePt = fontSizePt || 14;
+  const ptToPx = 1.333; // approx
+  let fontSizePx = requestedFontSizePt * ptToPx;
+
+  // Justification: normalize to ["L","C","R"] array
+  let justArray;
+  if (Array.isArray(justify) && justify.length === numCols) {
+    justArray = justify.map(j => {
+      const code = String(j || "L").toUpperCase();
+      return (code === "C" || code === "R") ? code : "L";
+    });
+  } else {
+    justArray = Array(numCols).fill("L");
+  }
+
+  // Helper to format values using your existing formatFunctions
+  function formatValue(value, fmtName) {
+    const fn = formatFunctions[fmtName] || formatFunctions.Text;
+    try {
+      return fn(value);
+    } catch (e) {
+      console.warn("Format function failed:", fmtName, e);
+      return value != null ? String(value) : "";
+    }
+  }
+
+  // Helper: escape XML
+  function esc(str) {
+    const s = String(str == null ? "" : str);
+    return s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;");
+  }
+
   fetch(dataOrUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data from ${dataOrUrl}: ${response.statusText}`);
+    .then(resp => {
+      if (!resp.ok) {
+        throw new Error(`Failed to fetch ${dataOrUrl}: ${resp.status} ${resp.statusText}`);
       }
-      return response.json();
+      return resp.json();
     })
-    .then((data) => {
+    .then(data => {
       if (!Array.isArray(data) || data.length === 0) {
-        console.error("initSvgTableWithFormat: JSON data is empty or invalid.");
+        console.error("No data rows in JSON.");
         return;
       }
 
       const numRows = data.length;
 
-      // Determine columns
-      const colKeys = Array.isArray(ColumnNames) && ColumnNames.length > 0
-        ? ColumnNames
-        : Object.keys(data[0]);
+      // Use container’s size (fallback if Storyline hasn’t measured yet)
+      const svgWidth = container.clientWidth || 800;
+      const svgHeight = container.clientHeight || 400;
 
-      const numCols = colKeys.length;
+      // --- COLORS ---
+      const COLORS = {
+        persian_red: "rgb(198,62,48)",
+        cadet: "rgb(155,184,193)",
+        white: "rgb(255,255,255)",
+        oxford: "rgb(16,29,62)"
+      };
 
-      // Headers
-      const headerLabels =
-        Array.isArray(headers) && headers.length === numCols
-          ? headers
-          : colKeys;
+      // --- Create a measuring canvas for text widths ---
+      const measureCanvas = document.createElement("canvas");
+      const measureCtx = measureCanvas.getContext("2d");
 
-      // Justification (L/C/R per column)
-      let just = [];
-      if (Array.isArray(justifyVec) && justifyVec.length === numCols) {
-        just = justifyVec.map(j => {
-          const code = (j || "L").toUpperCase();
-          return (code === "L" || code === "C" || code === "R") ? code : "L";
-        });
-      } else {
-        just = new Array(numCols).fill("L");
+      function measureColumns(fontPx) {
+        measureCtx.font = `${fontPx}px "Montserrat", sans-serif`;
+        const colWidths = new Array(numCols).fill(0);
+
+        // Headers first
+        const headerLabels =
+          Array.isArray(headers) && headers.length === numCols
+            ? headers
+            : ColumnNames;
+
+        for (let c = 0; c < numCols; c++) {
+          const w = measureCtx.measureText(String(headerLabels[c] ?? "")).width;
+          if (w > colWidths[c]) colWidths[c] = w;
+        }
+
+        // Data values
+        for (let r = 0; r < numRows; r++) {
+          const rowObj = data[r];
+          for (let c = 0; c < numCols; c++) {
+            const key = ColumnNames[c];
+            const fmt = FormatArray[c] || "Text";
+            const raw = rowObj ? rowObj[key] : "";
+            const val = (raw === null || raw === undefined) ? "" : raw;
+            const txt = formatValue(val, fmt);
+            if (!txt) continue;
+            const w = measureCtx.measureText(String(txt)).width;
+            if (w > colWidths[c]) colWidths[c] = w;
+          }
+        }
+
+        // No inner horizontal padding per your latest request
+        const totalContentWidth = colWidths.reduce((a, b) => a + b, 0);
+        return { colWidths, totalContentWidth };
       }
 
-      // SVG size from container or fallback
-      const rect = container.getBoundingClientRect();
-      const svgWidth = rect.width > 0 ? rect.width : 800;
-      const svgHeight = rect.height > 0 ? rect.height : 500;
+      // --- Step 1: horizontal fit (may shrink font) ---
+      const marginLeft = 0;
+      const marginRight = 0;
+      const tableWidth = svgWidth - marginLeft - marginRight;
 
-      // Layout calculations: row height vs. font size
-      let fontSizePx = ptsToPx(fontSizePt);
-      const lineFactor = 1.5; // row height ≈ 1.5 × font size
+      let { colWidths: colContentWidths, totalContentWidth } = measureColumns(fontSizePx);
 
+      if (totalContentWidth > 0 && totalContentWidth > tableWidth) {
+        const hScale = tableWidth / totalContentWidth;
+        fontSizePx *= hScale;
+        console.log(
+          `initSvgTableWithFormat: horizontal shrink font → ${fontSizePx.toFixed(
+            2
+          )}px so text fits width`
+        );
+        ({ colWidths: colContentWidths, totalContentWidth } =
+          measureColumns(fontSizePx));
+      }
+
+      // --- Step 2: vertical fit (may shrink font + row height) ---
+      const lineFactor = 1.5; // row height in terms of font size
       let rowHeight = fontSizePx * lineFactor;
       let headerRowHeight = rowHeight;
 
-      const totalNeededHeight = headerRowHeight + numRows * rowHeight;
+      let totalNeededHeight = headerRowHeight + numRows * rowHeight;
 
       if (totalNeededHeight > svgHeight && numRows > 0) {
-        // Compute max row height that fits header + all data rows
-        const maxRowHeight = svgHeight / (1 + numRows);
-        rowHeight = maxRowHeight;
-        headerRowHeight = maxRowHeight;
-        // Adjust font size so it fits nicely within this row height
-        fontSizePx = maxRowHeight / lineFactor;
+        const vScale = svgHeight / totalNeededHeight;
+        fontSizePx *= vScale;
+        rowHeight *= vScale;
+        headerRowHeight *= vScale;
+        console.log(
+          `initSvgTableWithFormat: vertical shrink font → ${fontSizePx.toFixed(
+            2
+          )}px so ${numRows} rows + header fit height`
+        );
+
+        // Re-measure columns at final font size
+        ({ colWidths: colContentWidths, totalContentWidth } =
+          measureColumns(fontSizePx));
       }
 
-      const marginLeft = 0;
-      const marginRight = 0;
-      const tableWidth = svgWidth; // span entire width
+      // --- Final column widths: scale content widths to fill tableWidth exactly ---
+      let colWidthScaled = colContentWidths.slice();
+      const sumFinal = colWidthScaled.reduce((a, b) => a + b, 0) || 1;
+      const finalScale = tableWidth / sumFinal;
+      colWidthScaled = colWidthScaled.map(w => w * finalScale);
+
+      // Compute column start/end X positions
+      const colStartX = [];
+      const colEndX = [];
+      let curX = marginLeft;
+      for (let c = 0; c < numCols; c++) {
+        colStartX.push(curX);
+        const nextX = curX + colWidthScaled[c];
+        colEndX.push(nextX);
+        curX = nextX;
+      }
 
       const topRuleY = 0;
-
       const headerBandHeight = headerRowHeight;
       const headerCenterY = topRuleY + headerBandHeight / 2;
       const headerDividerY = topRuleY + headerBandHeight;
 
-      // Vertical offset to visually center text between lines
-      const verticalOffset = fontSizePx * 0.12;
-
-      // No inner left/right padding: text flush to column bounds
-      const innerPad = 0;
-
-      function escapeXml(value) {
-        const s = String(value ?? "");
-        return s
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&apos;");
-      }
-
-      // Colors (use global palette if available, else fallbacks)
-      const palette = window.colorPalette || {};
-      const COLORS = {
-        persian: palette.Persian || "rgb(198,62,48)",
-        cadet: palette.Cadet || "rgb(155,184,193)",
-        white: "rgb(255,255,255)",
-        oxford: palette.Oxford || "rgb(16,29,62)"
-      };
-
-      // Helper: format value using your existing formatFunctions if possible
-      function formatCellValue(rawVal, fmtType) {
-        if (rawVal === null || rawVal === undefined || rawVal === "") return "";
-        if (!fmtType || !window.formatFunctions || typeof window.formatFunctions[fmtType] !== "function") {
-          return String(rawVal);
-        }
-        try {
-          return String(window.formatFunctions[fmtType](rawVal));
-        } catch (e) {
-          console.warn("Error formatting value", rawVal, "with", fmtType, e);
-          return String(rawVal);
-        }
-      }
-
-      // ---------------------------------------
-      //  Measure each column's text to get widths
-      // ---------------------------------------
-      const measureCanvas = document.createElement("canvas");
-      const ctx = measureCanvas.getContext("2d");
-      ctx.font = `${fontSizePx}px "Montserrat", sans-serif`;
-
-      const colTextWidths = [];
-
-      for (let colIndex = 0; colIndex < numCols; colIndex++) {
-        const key = colKeys[colIndex];
-        const fmtType = Array.isArray(FormatArray) ? FormatArray[colIndex] : null;
-
-        // Width of header
-        const headerText = String(headerLabels[colIndex] ?? "");
-        let maxWidth = ctx.measureText(headerText).width;
-
-        // Width of all data cells in this column
-        for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-          const rowData = data[rowIndex];
-          const rawVal = rowData[key];
-          const formatted = formatCellValue(rawVal, fmtType);
-          const w = ctx.measureText(String(formatted)).width;
-          if (w > maxWidth) maxWidth = w;
-        }
-
-        // Add a small padding factor so text isn't right on the line
-        const padded = maxWidth + fontSizePx * 0.4; // tweak if needed
-        colTextWidths.push(padded);
-      }
-
-      // Scale these widths so they fill the available tableWidth
-      let totalTextWidth = colTextWidths.reduce((sum, w) => sum + w, 0);
-      let colWidthsScaled = [];
-      if (totalTextWidth > 0) {
-        const scale = tableWidth / totalTextWidth;
-        colWidthsScaled = colTextWidths.map(w => w * scale);
-      } else {
-        // Fallback: equal widths
-        const equal = tableWidth / numCols;
-        colWidthsScaled = new Array(numCols).fill(equal);
-      }
-
-      // Derive column start/end positions
-      const colStartX = [];
-      const colEndX = [];
-      let currentX = marginLeft;
-      for (let i = 0; i < numCols; i++) {
-        colStartX.push(currentX);
-        const nextX = currentX + colWidthsScaled[i];
-        colEndX.push(nextX);
-        currentX = nextX;
-      }
-
-      function getTextPosition(colIndex, align) {
+      // Utility: text position per column & alignment (no extra padding)
+      function getTextPosition(colIndex, alignCode) {
         const start = colStartX[colIndex];
         const end = colEndX[colIndex];
         const center = (start + end) / 2;
-
-        if (align === "C") {
-          return { x: center, anchor: "middle" };
-        } else if (align === "R") {
-          return { x: end - innerPad, anchor: "end" };
+        let x, anchor;
+        if (alignCode === "C") {
+          x = center;
+          anchor = "middle";
+        } else if (alignCode === "R") {
+          x = end;
+          anchor = "end";
         } else {
-          return { x: start + innerPad, anchor: "start" };
+          x = start;
+          anchor = "start";
         }
+        return { x, anchor };
       }
 
-      // --- BUILD SVG ---
-      let svgParts = [];
+      const svgParts = [];
 
-      // Add layout metadata on the <svg> so SVGhighlight can read it later
+      // --- SVG root with metadata for SVGhighlight ---
       svgParts.push(
-          `<svg width="100%" height="100%" ` +
-          `viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
+        `<svg width="100%" height="100%" viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
           `xmlns="http://www.w3.org/2000/svg" ` +
           `data-rows="${numRows}" ` +
           `data-cols="${numCols}" ` +
@@ -790,10 +800,9 @@ function initSvgTableWithFormat(
           `data-row-height="${rowHeight}" ` +
           `data-margin-left="${marginLeft}" ` +
           `data-margin-right="${marginRight}" ` +
-          `data-col-start-x="${colStartX.join(',')}" ` +
-          `data-col-end-x="${colEndX.join(',')}">`
-        );
-
+          `data-col-start-x="${colStartX.join(",")}" ` +
+          `data-col-end-x="${colEndX.join(",")}">`
+      );
 
       // Optional Oxford Blue background
       if (bgOxford) {
@@ -803,95 +812,98 @@ function initSvgTableWithFormat(
       }
 
       // Styles
-      svgParts.push(`
-  <style>
-    .header {
-      font-family: "Montserrat", sans-serif;
-      font-size: ${fontSizePx}px;
-      font-weight: 700;
-      fill: ${COLORS.white};
-      dominant-baseline: middle;
-    }
-    .cell {
-      font-family: "Montserrat", sans-serif;
-      font-size: ${fontSizePx}px;
-      font-weight: 400;
-      fill: ${COLORS.white};
-      dominant-baseline: middle;
-    }
-  </style>
-`);
-
-      // Top Persian Red rule (slightly thicker than row lines)
-      const topStrokeWidth = ptsToPx(2);      // 2pt top rule
-      const rowStrokeWidth = ptsToPx(1);      // 1pt row dividers
-
       svgParts.push(
-        `<line x1="${marginLeft}" y1="${topRuleY}" ` +
-        `x2="${svgWidth - marginRight}" y2="${topRuleY}" ` +
-        `stroke="${COLORS.persian}" stroke-width="${topStrokeWidth}" />`
+        `<style>
+          .tbl-header {
+            font-family: "Montserrat", sans-serif;
+            font-size: ${fontSizePx}px;
+            font-weight: 700;
+            fill: ${COLORS.white};
+            dominant-baseline: middle;
+          }
+          .tbl-cell {
+            font-family: "Montserrat", sans-serif;
+            font-size: ${fontSizePx}px;
+            font-weight: 400;
+            fill: ${COLORS.white};
+            dominant-baseline: middle;
+          }
+        </style>`
       );
 
-      // Headers
-      for (let i = 0; i < numCols; i++) {
-        const label = headerLabels[i];
-        const align = just[i];
-        const { x, anchor } = getTextPosition(i, align);
+      // Top Persian line (slightly thicker than row lines)
+      const bottomStrokePx = 1.0;
+      const topStrokePx = 1.5;
+      svgParts.push(
+        `<line x1="${marginLeft}" y1="${topRuleY}" x2="${svgWidth - marginRight}" y2="${topRuleY}" ` +
+          `stroke="${COLORS.persian_red}" stroke-width="${topStrokePx}" />`
+      );
+
+      // Header labels
+      const headerLabels =
+        Array.isArray(headers) && headers.length === numCols
+          ? headers
+          : ColumnNames;
+
+      for (let col = 0; col < numCols; col++) {
+        const label = headerLabels[col];
+        const { x, anchor } = getTextPosition(col, justArray[col]);
         svgParts.push(
-          `<text x="${x}" y="${headerCenterY + verticalOffset}" ` +
-          `class="header" text-anchor="${anchor}">${escapeXml(label)}</text>`
+          `<text x="${x}" y="${headerCenterY}" class="tbl-header" text-anchor="${anchor}">` +
+            `${esc(label)}</text>`
         );
       }
 
       // Header bottom divider (Cadet)
       svgParts.push(
         `<line x1="${marginLeft}" y1="${headerDividerY}" ` +
-        `x2="${svgWidth - marginRight}" y2="${headerDividerY}" ` +
-        `stroke="${COLORS.cadet}" stroke-width="${rowStrokeWidth}" />`
+          `x2="${svgWidth - marginRight}" y2="${headerDividerY}" ` +
+          `stroke="${COLORS.cadet}" stroke-width="${bottomStrokePx}" />`
       );
 
-      // Row dividers: Cadet for all but last; last row bottom is Persian
+      // Row dividers (Cadet, except last = Persian)
       for (let i = 1; i <= numRows; i++) {
         const y = headerDividerY + rowHeight * i;
-        const isLast = (i === numRows);
-        const color = isLast ? COLORS.persian : COLORS.cadet;
+        const isLast = i === numRows;
+        const color = isLast ? COLORS.persian_red : COLORS.cadet;
         svgParts.push(
           `<line x1="${marginLeft}" y1="${y}" ` +
-          `x2="${svgWidth - marginRight}" y2="${y}" ` +
-          `stroke="${color}" stroke-width="${rowStrokeWidth}" />`
+            `x2="${svgWidth - marginRight}" y2="${y}" ` +
+            `stroke="${color}" stroke-width="${bottomStrokePx}" />`
         );
       }
 
-      // Data rows
-      for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-        const rowData = data[rowIndex];
-        const centerY = headerDividerY + rowHeight * (rowIndex + 0.5);
+      // Data cells
+      for (let r = 0; r < numRows; r++) {
+        const rowObj = data[r];
+        const centerY = headerDividerY + rowHeight * (r + 0.5);
 
-        for (let colIndex = 0; colIndex < numCols; colIndex++) {
-          const key = colKeys[colIndex];
-          const fmtType = Array.isArray(FormatArray) ? FormatArray[colIndex] : null;
-          const rawVal = rowData[key];
-          const textVal = formatCellValue(rawVal, fmtType);
-          const align = just[colIndex];
+        for (let c = 0; c < numCols; c++) {
+          const key = ColumnNames[c];
+          const fmt = FormatArray[c] || "Text";
+          const raw = rowObj ? rowObj[key] : "";
+          const val = (raw === null || raw === undefined) ? "" : raw;
+          const textValue = formatValue(val, fmt);
 
-          const { x, anchor } = getTextPosition(colIndex, align);
+          if (textValue === "") continue;
 
+          const { x, anchor } = getTextPosition(c, justArray[c]);
           svgParts.push(
-            `<text x="${x}" y="${centerY + verticalOffset}" ` +
-            `class="cell" text-anchor="${anchor}">${escapeXml(textVal)}</text>`
+            `<text x="${x}" y="${centerY}" class="tbl-cell" text-anchor="${anchor}">` +
+              `${esc(textValue)}</text>`
           );
         }
       }
 
       svgParts.push(`</svg>`);
 
-      // Inject SVG into container
-      container.innerHTML = svgParts.join("");
+      container.innerHTML = svgParts.join("\n");
     })
-    .catch((err) => {
-      console.error("initSvgTableWithFormat error:", err);
+    .catch(err => {
+      console.error("initSvgTableWithFormat failed:", err);
     });
 }
+
 
 /**
  * SVGhighlight
