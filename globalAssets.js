@@ -781,18 +781,19 @@ function initSvgTableWithFormat(
 
       // Add layout metadata on the <svg> so SVGhighlight can read it later
       svgParts.push(
-        `<svg width="${svgWidth}" height="${svgHeight}" ` +
-        `viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
-        `xmlns="http://www.w3.org/2000/svg" ` +
-        `data-rows="${numRows}" ` +
-        `data-cols="${numCols}" ` +
-        `data-header-divider-y="${headerDividerY}" ` +
-        `data-row-height="${rowHeight}" ` +
-        `data-margin-left="${marginLeft}" ` +
-        `data-margin-right="${marginRight}" ` +
-        `data-col-start-x="${colStartX.join(',')}" ` +
-        `data-col-end-x="${colEndX.join(',')}">`
-      );
+          `<svg width="100%" height="100%" ` +
+          `viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
+          `xmlns="http://www.w3.org/2000/svg" ` +
+          `data-rows="${numRows}" ` +
+          `data-cols="${numCols}" ` +
+          `data-header-divider-y="${headerDividerY}" ` +
+          `data-row-height="${rowHeight}" ` +
+          `data-margin-left="${marginLeft}" ` +
+          `data-margin-right="${marginRight}" ` +
+          `data-col-start-x="${colStartX.join(',')}" ` +
+          `data-col-end-x="${colEndX.join(',')}">`
+        );
+
 
       // Optional Oxford Blue background
       if (bgOxford) {
