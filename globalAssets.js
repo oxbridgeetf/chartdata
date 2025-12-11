@@ -641,7 +641,7 @@ function initSvgTableWithFormat(
       const svgWidth = rect.width > 0 ? rect.width : 800;
       const svgHeight = rect.height > 0 ? rect.height : 500;
 
-      // Layout calculations
+      // Layout calculations: row height vs. font size
       let fontSizePx = ptsToPx(fontSizePt);
       const lineFactor = 1.5; // row height ≈ 1.5 × font size
 
@@ -669,36 +669,11 @@ function initSvgTableWithFormat(
       const headerCenterY = topRuleY + headerBandHeight / 2;
       const headerDividerY = topRuleY + headerBandHeight;
 
-      // Column widths are equal across full width
-      const colWidth = tableWidth / numCols;
-      const colStartX = [];
-      const colEndX = [];
-      let currentX = marginLeft;
-      for (let i = 0; i < numCols; i++) {
-        colStartX.push(currentX);
-        colEndX.push(currentX + colWidth);
-        currentX += colWidth;
-      }
-
       // Vertical offset to visually center text between lines
       const verticalOffset = fontSizePx * 0.12;
 
-      // IMPORTANT: remove inner padding so text sits flush with column bounds
-      const innerPad = 0; // was 5 before; now 0 for no left/right padding
-
-      function getTextPosition(colIndex, align) {
-        const start = colStartX[colIndex];
-        const end = colEndX[colIndex];
-        const center = (start + end) / 2;
-
-        if (align === "C") {
-          return { x: center, anchor: "middle" };
-        } else if (align === "R") {
-          return { x: end - innerPad, anchor: "end" };
-        } else {
-          return { x: start + innerPad, anchor: "start" };
-        }
-      }
+      // No inner left/right padding: text flush to column bounds
+      const innerPad = 0;
 
       function escapeXml(value) {
         const s = String(value ?? "");
@@ -718,6 +693,88 @@ function initSvgTableWithFormat(
         white: "rgb(255,255,255)",
         oxford: palette.Oxford || "rgb(16,29,62)"
       };
+
+      // Helper: format value using your existing formatFunctions if possible
+      function formatCellValue(rawVal, fmtType) {
+        if (rawVal === null || rawVal === undefined || rawVal === "") return "";
+        if (!fmtType || !window.formatFunctions || typeof window.formatFunctions[fmtType] !== "function") {
+          return String(rawVal);
+        }
+        try {
+          return String(window.formatFunctions[fmtType](rawVal));
+        } catch (e) {
+          console.warn("Error formatting value", rawVal, "with", fmtType, e);
+          return String(rawVal);
+        }
+      }
+
+      // ---------------------------------------
+      //  Measure each column's text to get widths
+      // ---------------------------------------
+      const measureCanvas = document.createElement("canvas");
+      const ctx = measureCanvas.getContext("2d");
+      ctx.font = `${fontSizePx}px "Montserrat", sans-serif`;
+
+      const colTextWidths = [];
+
+      for (let colIndex = 0; colIndex < numCols; colIndex++) {
+        const key = colKeys[colIndex];
+        const fmtType = Array.isArray(FormatArray) ? FormatArray[colIndex] : null;
+
+        // Width of header
+        const headerText = String(headerLabels[colIndex] ?? "");
+        let maxWidth = ctx.measureText(headerText).width;
+
+        // Width of all data cells in this column
+        for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
+          const rowData = data[rowIndex];
+          const rawVal = rowData[key];
+          const formatted = formatCellValue(rawVal, fmtType);
+          const w = ctx.measureText(String(formatted)).width;
+          if (w > maxWidth) maxWidth = w;
+        }
+
+        // Add a small padding factor so text isn't right on the line
+        const padded = maxWidth + fontSizePx * 0.4; // tweak if needed
+        colTextWidths.push(padded);
+      }
+
+      // Scale these widths so they fill the available tableWidth
+      let totalTextWidth = colTextWidths.reduce((sum, w) => sum + w, 0);
+      let colWidthsScaled = [];
+      if (totalTextWidth > 0) {
+        const scale = tableWidth / totalTextWidth;
+        colWidthsScaled = colTextWidths.map(w => w * scale);
+      } else {
+        // Fallback: equal widths
+        const equal = tableWidth / numCols;
+        colWidthsScaled = new Array(numCols).fill(equal);
+      }
+
+      // Derive column start/end positions
+      const colStartX = [];
+      const colEndX = [];
+      let currentX = marginLeft;
+      for (let i = 0; i < numCols; i++) {
+        colStartX.push(currentX);
+        const nextX = currentX + colWidthsScaled[i];
+        colEndX.push(nextX);
+        currentX = nextX;
+      }
+
+      function getTextPosition(colIndex, align) {
+        const start = colStartX[colIndex];
+        const end = colEndX[colIndex];
+        const center = (start + end) / 2;
+
+        if (align === "C") {
+          return { x: center, anchor: "middle" };
+        } else if (align === "R") {
+          return { x: end - innerPad, anchor: "end" };
+        } else {
+          return { x: start + innerPad, anchor: "start" };
+        }
+      }
 
       // --- BUILD SVG ---
       let svgParts = [];
@@ -765,9 +822,8 @@ function initSvgTableWithFormat(
 `);
 
       // Top Persian Red rule (slightly thicker than row lines)
-      // Was 4pt; now 2pt to reduce thickness
-      const topStrokeWidth = ptsToPx(2);      // top rule
-      const rowStrokeWidth = ptsToPx(1);      // row dividers
+      const topStrokeWidth = ptsToPx(2);      // 2pt top rule
+      const rowStrokeWidth = ptsToPx(1);      // 1pt row dividers
 
       svgParts.push(
         `<line x1="${marginLeft}" y1="${topRuleY}" ` +
@@ -803,20 +859,6 @@ function initSvgTableWithFormat(
           `x2="${svgWidth - marginRight}" y2="${y}" ` +
           `stroke="${color}" stroke-width="${rowStrokeWidth}" />`
         );
-      }
-
-      // Helper: format value using your existing formatFunctions if possible
-      function formatCellValue(rawVal, fmtType) {
-        if (rawVal === null || rawVal === undefined || rawVal === "") return "";
-        if (!fmtType || !window.formatFunctions || typeof window.formatFunctions[fmtType] !== "function") {
-          return String(rawVal);
-        }
-        try {
-          return String(window.formatFunctions[fmtType](rawVal));
-        } catch (e) {
-          console.warn("Error formatting value", rawVal, "with", fmtType, e);
-          return String(rawVal);
-        }
       }
 
       // Data rows
