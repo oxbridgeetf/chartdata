@@ -709,7 +709,7 @@ function initSvgTableWithFormat(
             oxford:    window.colorPalette?.Oxford  || "rgb(16,29,62)"
         };
 
-        const topRuleStrokeWidthPx = ptToPx(4); // 4pt
+        const topRuleStrokeWidthPx = ptToPx(2); // 4pt
         const rowDividerStrokeWidthPx = ptToPx(1); // 1pt
 
         // --- BUILD SVG ---
