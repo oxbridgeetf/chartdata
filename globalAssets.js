@@ -574,182 +574,187 @@ function loadData(url, containerName, columns, col2FormatArray = null) {
  * @param {boolean} [bgOxford=false]    optional Oxford Blue background
  */
 function initSvgTableWithFormat(
-    containerName,
-    dataOrUrl,
-    ColumnNames,
-    FormatArray,
-    hdrs,
-    fontSizePt,
-    justify,
-    bgOxford
+  containerName,
+  dataOrUrl,
+  ColumnNames,
+  FormatArray,
+  headers = null,
+  fontSizePt = 14,
+  justifyVec = null,
+  bgOxford = false
 ) {
-    const selector = `[data-acc-text='${containerName}']`;
-    const container = document.querySelector(selector);
-    if (!container) {
-        console.error(`initSvgTableWithFormat: container '${containerName}' not found.`);
+  const selector = `[data-acc-text='${containerName}']`;
+  const container = document.querySelector(selector);
+  if (!container) {
+    console.error(`Container with accessibility name '${containerName}' not found.`);
+    return;
+  }
+
+  // Clear anything previously in the container
+  container.innerHTML = "";
+
+  // Helper: points to pixels
+  const ptsToPx = (pts) => pts * (96 / 72); // ~1.3333
+
+  // Fetch JSON data
+  fetch(dataOrUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data from ${dataOrUrl}: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (!Array.isArray(data) || data.length === 0) {
+        console.error("initSvgTableWithFormat: JSON data is empty or invalid.");
         return;
-    }
+      }
 
-    // Kill any Tabulator in that shape only
-    if (container._tabulatorTable) {
-        try { container._tabulatorTable.destroy(); } catch (e) {}
-        container._tabulatorTable = null;
-    }
-    container.innerHTML = "";
+      const numRows = data.length;
 
-    // Basic validation
-    if (!Array.isArray(ColumnNames) || !Array.isArray(FormatArray) || ColumnNames.length !== FormatArray.length) {
-        console.error("initSvgTableWithFormat: ColumnNames and FormatArray must be arrays of the same length.");
-        return;
-    }
+      // Determine columns
+      const colKeys = Array.isArray(ColumnNames) && ColumnNames.length > 0
+        ? ColumnNames
+        : Object.keys(data[0]);
 
-    // Defaults
-    const numCols = ColumnNames.length;
+      const numCols = colKeys.length;
 
-    if (typeof fontSizePt !== "number" || isNaN(fontSizePt) || fontSizePt <= 0) {
-        fontSizePt = 14; // default font size
-    }
+      // Headers
+      const headerLabels =
+        Array.isArray(headers) && headers.length === numCols
+          ? headers
+          : colKeys;
 
-    let justifyVector;
-    if (Array.isArray(justify) && justify.length === numCols) {
-        justifyVector = justify.map(j => String(j || "L").toUpperCase());
-    } else {
-        justifyVector = new Array(numCols).fill("L");
-    }
+      // Justification (L/C/R per column)
+      let just = [];
+      if (Array.isArray(justifyVec) && justifyVec.length === numCols) {
+        just = justifyVec.map(j => {
+          const code = (j || "L").toUpperCase();
+          return (code === "L" || code === "C" || code === "R") ? code : "L";
+        });
+      } else {
+        just = new Array(numCols).fill("L");
+      }
 
-    bgOxford = !!bgOxford; // ensure boolean
+      // SVG size from container or fallback
+      const rect = container.getBoundingClientRect();
+      const svgWidth = rect.width > 0 ? rect.width : 800;
+      const svgHeight = rect.height > 0 ? rect.height : 500;
 
-    const headers = Array.isArray(hdrs) && hdrs.length === numCols
-        ? hdrs.slice()
-        : ColumnNames.slice();
+      // Layout calculations
+      let fontSizePx = ptsToPx(fontSizePt);
+      const lineFactor = 1.5; // row height ≈ 1.5 × font size
 
-    // Helper: pt -> px
-    const ptToPx = (pt) => pt * (96 / 72); // ≈1.333
+      let rowHeight = fontSizePx * lineFactor;
+      let headerRowHeight = rowHeight;
 
-    // Main render once we have the data
-    function renderSvgTable(dataArray) {
-        if (!Array.isArray(dataArray) || dataArray.length === 0) {
-            console.warn("initSvgTableWithFormat: empty or invalid data.");
-            return;
+      const totalNeededHeight = headerRowHeight + numRows * rowHeight;
+
+      if (totalNeededHeight > svgHeight && numRows > 0) {
+        // Compute max row height that fits header + all data rows
+        const maxRowHeight = svgHeight / (1 + numRows);
+        rowHeight = maxRowHeight;
+        headerRowHeight = maxRowHeight;
+        // Adjust font size so it fits nicely within this row height
+        fontSizePx = maxRowHeight / lineFactor;
+      }
+
+      const marginLeft = 0;
+      const marginRight = 0;
+      const tableWidth = svgWidth; // span entire width
+
+      const topRuleY = 0;
+
+      const headerBandHeight = headerRowHeight;
+      const headerCenterY = topRuleY + headerBandHeight / 2;
+      const headerDividerY = topRuleY + headerBandHeight;
+
+      // Column widths are equal across full width
+      const colWidth = tableWidth / numCols;
+      const colStartX = [];
+      const colEndX = [];
+      let currentX = marginLeft;
+      for (let i = 0; i < numCols; i++) {
+        colStartX.push(currentX);
+        colEndX.push(currentX + colWidth);
+        currentX += colWidth;
+      }
+
+      // Vertical offset to visually center text between lines
+      const verticalOffset = fontSizePx * 0.12;
+
+      // IMPORTANT: remove inner padding so text sits flush with column bounds
+      const innerPad = 0; // was 5 before; now 0 for no left/right padding
+
+      function getTextPosition(colIndex, align) {
+        const start = colStartX[colIndex];
+        const end = colEndX[colIndex];
+        const center = (start + end) / 2;
+
+        if (align === "C") {
+          return { x: center, anchor: "middle" };
+        } else if (align === "R") {
+          return { x: end - innerPad, anchor: "end" };
+        } else {
+          return { x: start + innerPad, anchor: "start" };
         }
+      }
 
-        let fontSizePx = ptToPx(fontSizePt);
+      function escapeXml(value) {
+        const s = String(value ?? "");
+        return s
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&apos;");
+      }
 
-        // Use container size (fall back if Storyline doesn't give us one)
-        const svgWidth  = container.clientWidth  || 800;
-        const svgHeight = container.clientHeight || 400;
+      // Colors (use global palette if available, else fallbacks)
+      const palette = window.colorPalette || {};
+      const COLORS = {
+        persian: palette.Persian || "rgb(198,62,48)",
+        cadet: palette.Cadet || "rgb(155,184,193)",
+        white: "rgb(255,255,255)",
+        oxford: palette.Oxford || "rgb(16,29,62)"
+      };
 
-        const numRows = dataArray.length;
+      // --- BUILD SVG ---
+      let svgParts = [];
 
-        // Row height based on font size; header row same height
-        const lineFactor = 1.5;
-        let rowHeight = fontSizePx * lineFactor;
-        let headerRowHeight = rowHeight;
+      // Add layout metadata on the <svg> so SVGhighlight can read it later
+      svgParts.push(
+        `<svg width="${svgWidth}" height="${svgHeight}" ` +
+        `viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
+        `xmlns="http://www.w3.org/2000/svg" ` +
+        `data-rows="${numRows}" ` +
+        `data-cols="${numCols}" ` +
+        `data-header-divider-y="${headerDividerY}" ` +
+        `data-row-height="${rowHeight}" ` +
+        `data-margin-left="${marginLeft}" ` +
+        `data-margin-right="${marginRight}" ` +
+        `data-col-start-x="${colStartX.join(',')}" ` +
+        `data-col-end-x="${colEndX.join(',')}">`
+      );
 
-        const totalNeededHeight = headerRowHeight + numRows * rowHeight;
-
-        // If rows + header don't fit vertically, shrink to fit
-        if (totalNeededHeight > svgHeight && numRows > 0) {
-            const maxRowHeight = svgHeight / (1 + numRows);
-            rowHeight = maxRowHeight;
-            headerRowHeight = maxRowHeight;
-            fontSizePx = maxRowHeight / lineFactor;
-        }
-
-        const marginLeft = 0;
-        const marginRight = 0;
-        const tableWidth = svgWidth - marginLeft - marginRight;
-
-        // Top rule at y=0
-        const topRuleY = 0;
-        const headerCenterY = topRuleY + headerRowHeight / 2;
-        const headerDividerY = topRuleY + headerRowHeight;
-
-        // Equal column widths (can be extended later for custom widths)
-        const colWidth = tableWidth / numCols;
-        const colStartX = [];
-        const colEndX = [];
-        let currentX = marginLeft;
-        for (let i = 0; i < numCols; i++) {
-            colStartX.push(currentX);
-            colEndX.push(currentX + colWidth);
-            currentX += colWidth;
-        }
-
-        const innerPad = 8;
-
-        function getTextPosition(colIndex, alignCode) {
-            const start = colStartX[colIndex];
-            const end = colEndX[colIndex];
-            const center = (start + end) / 2;
-            const code = (alignCode || "L").toUpperCase();
-            if (code === "C") {
-                return { x: center, anchor: "middle" };
-            } else if (code === "R") {
-                return { x: end - innerPad, anchor: "end" };
-            }
-            return { x: start + innerPad, anchor: "start" };
-        }
-
-        function escapeXml(value) {
-            const s = String(value ?? "");
-            return s
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&apos;");
-        }
-
-        // Use your existing palette
-        const COLORS = {
-            persian:   window.colorPalette?.Persian || "rgb(198,62,48)",
-            cadet:     window.colorPalette?.Cadet   || "rgb(155,184,193)",
-            white:     "rgb(255,255,255)",
-            oxford:    window.colorPalette?.Oxford  || "rgb(16,29,62)"
-        };
-
-        const topRuleStrokeWidthPx = ptToPx(2); // 4pt
-        const rowDividerStrokeWidthPx = ptToPx(1); // 1pt
-
-        // --- BUILD SVG ---
-        let svgParts = [];
-
-        // --- BUILD SVG ROOT WITH METADATA FOR HIGHLIGHTING ---
-
-
+      // Optional Oxford Blue background
+      if (bgOxford) {
         svgParts.push(
-          `<svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
-          `xmlns="http://www.w3.org/2000/svg" ` +
-          `data-rows="${numRows}" ` +
-          `data-cols="${numCols}" ` +
-          `data-header-divider-y="${headerDividerY}" ` +
-          `data-row-height="${rowHeight}" ` +
-          `data-margin-left="${marginLeft}" ` +
-          `data-margin-right="${marginRight}" ` +
-          `data-col-start-x="${colStartX.join(',')}" ` +
-          `data-col-end-x="${colEndX.join(',')}">`
+          `<rect x="0" y="0" width="${svgWidth}" height="${svgHeight}" fill="${COLORS.oxford}" />`
         );
+      }
 
-
-        // Optional Oxford Blue background
-        if (bgOxford) {
-            svgParts.push(
-                `<rect x="0" y="0" width="${svgWidth}" height="${svgHeight}" fill="${COLORS.oxford}" />`
-            );
-        }
-
-        // Text styles
-        svgParts.push(`
+      // Styles
+      svgParts.push(`
   <style>
-    .svg-header-text {
+    .header {
       font-family: "Montserrat", sans-serif;
       font-size: ${fontSizePx}px;
       font-weight: 700;
       fill: ${COLORS.white};
       dominant-baseline: middle;
     }
-    .svg-cell-text {
+    .cell {
       font-family: "Montserrat", sans-serif;
       font-size: ${fontSizePx}px;
       font-weight: 400;
@@ -759,99 +764,90 @@ function initSvgTableWithFormat(
   </style>
 `);
 
-        // Top Persian Red rule
+      // Top Persian Red rule (slightly thicker than row lines)
+      // Was 4pt; now 2pt to reduce thickness
+      const topStrokeWidth = ptsToPx(2);      // top rule
+      const rowStrokeWidth = ptsToPx(1);      // row dividers
+
+      svgParts.push(
+        `<line x1="${marginLeft}" y1="${topRuleY}" ` +
+        `x2="${svgWidth - marginRight}" y2="${topRuleY}" ` +
+        `stroke="${COLORS.persian}" stroke-width="${topStrokeWidth}" />`
+      );
+
+      // Headers
+      for (let i = 0; i < numCols; i++) {
+        const label = headerLabels[i];
+        const align = just[i];
+        const { x, anchor } = getTextPosition(i, align);
         svgParts.push(
-            `<line x1="${marginLeft}" y1="${topRuleY}" x2="${svgWidth - marginRight}" y2="${topRuleY}" ` +
-            `stroke="${COLORS.persian}" stroke-width="${topRuleStrokeWidthPx}" />`
+          `<text x="${x}" y="${headerCenterY + verticalOffset}" ` +
+          `class="header" text-anchor="${anchor}">${escapeXml(label)}</text>`
         );
+      }
 
-        // Header text
-        headers.forEach((hdr, colIndex) => {
-            const alignCode = justifyVector[colIndex] || "L";
-            const pos = getTextPosition(colIndex, alignCode);
-            svgParts.push(
-                `<text x="${pos.x}" y="${headerCenterY}" class="svg-header-text" ` +
-                `text-anchor="${pos.anchor}">${escapeXml(hdr)}</text>`
-            );
-        });
+      // Header bottom divider (Cadet)
+      svgParts.push(
+        `<line x1="${marginLeft}" y1="${headerDividerY}" ` +
+        `x2="${svgWidth - marginRight}" y2="${headerDividerY}" ` +
+        `stroke="${COLORS.cadet}" stroke-width="${rowStrokeWidth}" />`
+      );
 
-        // Header bottom divider (Cadet)
+      // Row dividers: Cadet for all but last; last row bottom is Persian
+      for (let i = 1; i <= numRows; i++) {
+        const y = headerDividerY + rowHeight * i;
+        const isLast = (i === numRows);
+        const color = isLast ? COLORS.persian : COLORS.cadet;
         svgParts.push(
-            `<line x1="${marginLeft}" y1="${headerDividerY}" ` +
-            `x2="${svgWidth - marginRight}" y2="${headerDividerY}" ` +
-            `stroke="${COLORS.cadet}" stroke-width="${rowDividerStrokeWidthPx}" />`
+          `<line x1="${marginLeft}" y1="${y}" ` +
+          `x2="${svgWidth - marginRight}" y2="${y}" ` +
+          `stroke="${color}" stroke-width="${rowStrokeWidth}" />`
         );
+      }
 
-        // Row dividers (Cadet between rows, Persian under last row)
-        for (let i = 1; i <= numRows; i++) {
-            const y = headerDividerY + rowHeight * i;
-            const isLast = i === numRows;
-            const color = isLast ? COLORS.persian : COLORS.cadet;
-            svgParts.push(
-                `<line x1="${marginLeft}" y1="${y}" ` +
-                `x2="${svgWidth - marginRight}" y2="${y}" ` +
-                `stroke="${color}" stroke-width="${rowDividerStrokeWidthPx}" />`
-            );
+      // Helper: format value using your existing formatFunctions if possible
+      function formatCellValue(rawVal, fmtType) {
+        if (rawVal === null || rawVal === undefined || rawVal === "") return "";
+        if (!fmtType || !window.formatFunctions || typeof window.formatFunctions[fmtType] !== "function") {
+          return String(rawVal);
         }
+        try {
+          return String(window.formatFunctions[fmtType](rawVal));
+        } catch (e) {
+          console.warn("Error formatting value", rawVal, "with", fmtType, e);
+          return String(rawVal);
+        }
+      }
 
-        // Data rows (apply formatFunctions via FormatArray)
-        dataArray.forEach((rowObj, rowIndex) => {
-            const centerY = headerDividerY + rowHeight * (rowIndex + 0.5);
+      // Data rows
+      for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
+        const rowData = data[rowIndex];
+        const centerY = headerDividerY + rowHeight * (rowIndex + 0.5);
 
-            ColumnNames.forEach((fieldName, colIndex) => {
-                const rawVal = rowObj[fieldName];
+        for (let colIndex = 0; colIndex < numCols; colIndex++) {
+          const key = colKeys[colIndex];
+          const fmtType = Array.isArray(FormatArray) ? FormatArray[colIndex] : null;
+          const rawVal = rowData[key];
+          const textVal = formatCellValue(rawVal, fmtType);
+          const align = just[colIndex];
 
-                // Apply format function if present, otherwise Text
-                const fmtKey = FormatArray[colIndex] || "Text";
-                const fmtFn =
-                    (window.formatFunctions && window.formatFunctions[fmtKey]) ||
-                    (window.formatFunctions && window.formatFunctions.Text) ||
-                    (v => v);
+          const { x, anchor } = getTextPosition(colIndex, align);
 
-                let formattedVal;
-                try {
-                    formattedVal = fmtFn(rawVal);
-                } catch (e) {
-                    console.warn(
-                        `initSvgTableWithFormat: formatting error in column '${fieldName}' with format '${fmtKey}':`,
-                        e
-                    );
-                    formattedVal = rawVal;
-                }
+          svgParts.push(
+            `<text x="${x}" y="${centerY + verticalOffset}" ` +
+            `class="cell" text-anchor="${anchor}">${escapeXml(textVal)}</text>`
+          );
+        }
+      }
 
-                const textVal = formattedVal == null ? "" : formattedVal;
-                const alignCode = justifyVector[colIndex] || "L";
-                const pos = getTextPosition(colIndex, alignCode);
+      svgParts.push(`</svg>`);
 
-                svgParts.push(
-                    `<text x="${pos.x}" y="${centerY}" class="svg-cell-text" ` +
-                    `text-anchor="${pos.anchor}">${escapeXml(textVal)}</text>`
-                );
-            });
-        });
-
-        svgParts.push(`</svg>`);
-
-        const svgMarkup = svgParts.join("\n");
-        container.innerHTML = svgMarkup;
-    }
-
-    // --- LOAD DATA ---
-    if (typeof dataOrUrl === "string" && dataOrUrl.endsWith(".json")) {
-        fetch(dataOrUrl)
-            .then(resp => {
-                if (!resp.ok) {
-                    throw new Error(`Failed to fetch ${dataOrUrl}: ${resp.status} ${resp.statusText}`);
-                }
-                return resp.json();
-            })
-            .then(jsonData => renderSvgTable(jsonData))
-            .catch(err => console.error("initSvgTableWithFormat: error fetching JSON:", err));
-    } else if (Array.isArray(dataOrUrl)) {
-        renderSvgTable(dataOrUrl);
-    } else {
-        console.error("initSvgTableWithFormat: dataOrUrl must be a JSON URL or an array of objects.");
-    }
+      // Inject SVG into container
+      container.innerHTML = svgParts.join("");
+    })
+    .catch((err) => {
+      console.error("initSvgTableWithFormat error:", err);
+    });
 }
 
 /**
