@@ -1003,9 +1003,9 @@ function SVGhighlight(containerName, kind, target, colorKey, durationMs) {
 
     if (k === "row") {
         const rowTop = headerDividerY + rowHeight * rowIndex;
-        x = marginLeft;
+        x = colStartX[0];
         y = rowTop;
-        width = svgWidth - marginLeft - marginRight;
+        width = colEndX[cols - 1] - colStartX[0];
         height = rowHeight;
     } else if (k === "col" || k === "column") {
         x = colStartX[colIndex];
