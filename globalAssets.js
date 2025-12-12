@@ -768,7 +768,7 @@ function initSvgTableWithFormat(
       const headerBandHeight = headerRowHeight;
       const headerCenterY = topRuleY + headerBandHeight / 2;
       const headerDividerY = topRuleY + headerBandHeight;
-
+      console.log("final fontSizePx:", fontSizePx, "rowHeight:", rowHeight, "svg:", svgWidth, svgHeight);
       // Utility: text position per column & alignment (no extra padding)
       function getTextPosition(colIndex, alignCode) {
         const start = colStartX[colIndex];
@@ -903,7 +903,7 @@ function initSvgTableWithFormat(
       console.error("initSvgTableWithFormat failed:", err);
     });
 
-    console.log("final fontSizePx:", fontSizePx, "rowHeight:", rowHeight, "svg:", svgWidth, svgHeight);
+    
 
 }
 
