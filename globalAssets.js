@@ -655,8 +655,11 @@ function initSvgTableWithFormat(
       const numRows = data.length;
 
       // Use container’s size (fallback if Storyline hasn’t measured yet)
-      const svgWidth = container.clientWidth || 800;
-      const svgHeight = container.clientHeight || 400;
+      //const svgWidth = container.clientWidth || 800;
+      //const svgHeight = container.clientHeight || 400;
+      const rect = container.getBoundingClientRect();
+      const svgWidth  = Math.round(rect.width)  || 800;
+      const svgHeight = Math.round(rect.height) || 400;
 
       // --- COLORS ---
       const COLORS = {
