@@ -902,6 +902,9 @@ function initSvgTableWithFormat(
     .catch(err => {
       console.error("initSvgTableWithFormat failed:", err);
     });
+
+    console.log("final fontSizePx:", fontSizePx, "rowHeight:", rowHeight, "svg:", svgWidth, svgHeight);
+
 }
 
 
