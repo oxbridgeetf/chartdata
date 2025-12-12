@@ -1891,6 +1891,7 @@ function initDynamicFormattedTableWithFontSize(
    Paste at END of globalAssets.js. No slide changes needed.
    ======================================================================= */
 (function SL_ReplayFix(){
+  if (window.__DISABLE_SL_REPLAYFIX__) return;
   if (window.__SL_REPLAY_FIX_PATCHED__) return;
   window.__SL_REPLAY_FIX_PATCHED__ = true;
 
