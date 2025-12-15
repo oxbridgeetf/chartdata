@@ -184,6 +184,7 @@ const colorPalette = {
     LtGreen: 'rgb(183,206,107)',
     Oxford: 'rgb(16,29,62)',
     Cadet: 'rgb(155,184,193)',
+    CadetHalf: 'rgb(155,184,193,0.5)',
     Cinnabar: 'rgb(236, 74, 39)',
     CinnabarHalf: 'rgb(236, 74, 39, 0.5)',
     Robin: 'rgb(52,192,206)',
