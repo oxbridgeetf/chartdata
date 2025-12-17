@@ -2,49 +2,49 @@
     {
         "Col1": "Trade Date",
         "Col2": "February 1st",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Actual CIL",
         "Col4": "$0.00"
     },
     {
         "Col1": "Settlement",
         "Col2": "T+2",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Actual Cash",
         "Col4": "$2,182.46"
     },
     {
         "Col1": "Creation Unit",
         "Col2": "50,000",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Base Market Value",
         "Col4": "$1,266,234.84"
     },
     {
         "Col1": "NAV",
         "Col2": "$25.38",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Basket Shares",
         "Col4": "31,067"
     },
     {
         "Col1": "NAV Per CU",
         "Col2": "$1,269,168.37",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Estimated CIL",
         "Col4": "$0.00"
     },
     {
         "Col1": "Shares O/S",
         "Col2": "400,000",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Estimated Cash",
         "Col4": "$2,933.53"
     },
     {
         "Col1": "Total Net Assets",
         "Col2": "$10,153,346.95",
-        "Col5": " ",
+        "Col5": "  ",
         "Col3": "Estimated Dividend",
         "Col4": "$707.10"
     }
