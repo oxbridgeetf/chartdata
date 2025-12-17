@@ -388,6 +388,29 @@ function changeCellValue(table, rowIndex, fieldName, newValue) {
     cell.setValue(newValue);
 }
 
+window.updateTableCell = function(containerName, rowIndex, colIndex, newValue) {
+    const container = document.querySelector(`[data-acc-text="${containerName}"]`);
+    if (!container) {
+        console.error("Container not found:", containerName);
+        return;
+    }
+    
+    const svg = container.querySelector('svg');
+    if (!svg) {
+        console.error("SVG not found in container");
+        return;
+    }
+    
+    const textElements = svg.querySelectorAll('text');
+    const cellIndex = (rowIndex * 7) + colIndex;
+    
+    if (textElements[cellIndex]) {
+        textElements[cellIndex].textContent = newValue;
+        console.log(`Updated cell [${rowIndex}, ${colIndex}] to: ${newValue}`);
+    } else {
+        console.error("Cell not found at index:", cellIndex);
+    }
+};
 // --- Global Functions to Highlight Rows/Cols/Cells ---
 /*function highlightRow(table, rowIndex, color = 'highlightYellow', duration = null) {
     const row = table.getRows()[rowIndex];
