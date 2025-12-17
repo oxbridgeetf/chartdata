@@ -1118,7 +1118,7 @@ function SVGclearHighlights(containerName) {
     });
 }
 
-function SVGclearRowHighlight(containerName, rowIndex) {
+function SVGclearRowHighlight(containerName, rowNumber) {
     const name = String(containerName);
     const container = document.querySelector(`[data-acc-text='${name}']`);
     if (!container) {
@@ -1131,33 +1131,29 @@ function SVGclearRowHighlight(containerName, rowIndex) {
         return;
     }
     
+    // Convert to zero-indexed
+    const rowIndex = rowNumber - 1;
+    
     // Find all highlight overlays
-    const overlays = svg.querySelectorAll("rect[data-svg-highlight='1']");
+    const overlays = Array.from(svg.querySelectorAll("rect[data-svg-highlight='1']"));
     
-    // Get the y-position of the row we want to clear
-    // Assuming each row has text elements, find the y-position of text in that row
-    const textElements = Array.from(svg.querySelectorAll("text"));
-    const rowTexts = textElements.filter((text, index) => {
-        return Math.floor(index / 7) === rowIndex; // 7 columns per row
-    });
-    
-    if (rowTexts.length === 0) {
-        console.warn(`No text found for row ${rowIndex}`);
+    if (overlays.length === 0) {
+        console.warn(`No highlights found`);
         return;
     }
     
-    // Get approximate y-position of this row
-    const rowY = parseFloat(rowTexts[0].getAttribute('y'));
-    
-    // Remove overlays that match this row's y-position (with tolerance)
-    overlays.forEach(overlay => {
-        const overlayY = parseFloat(overlay.getAttribute('y'));
-        if (Math.abs(overlayY - rowY) < 20) { // tolerance for matching
-            if (overlay && overlay.parentNode) {
-                overlay.parentNode.removeChild(overlay);
-            }
-        }
+    // Sort overlays by y-position to match them to rows
+    overlays.sort((a, b) => {
+        return parseFloat(a.getAttribute('y')) - parseFloat(b.getAttribute('y'));
     });
+    
+    // Remove the overlay at the specified row index
+    if (overlays[rowIndex]) {
+        console.log(`Removing highlight from row ${rowNumber} (index ${rowIndex})`);
+        overlays[rowIndex].parentNode.removeChild(overlays[rowIndex]);
+    } else {
+        console.warn(`No highlight found at row ${rowNumber} (index ${rowIndex})`);
+    }
 }
 
 
