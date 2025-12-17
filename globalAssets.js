@@ -1118,6 +1118,47 @@ function SVGclearHighlights(containerName) {
     });
 }
 
+function SVGclearRowHighlight(containerName, rowIndex) {
+    const name = String(containerName);
+    const container = document.querySelector(`[data-acc-text='${name}']`);
+    if (!container) {
+        console.error(`SVGclearRowHighlight: container '${name}' not found.`);
+        return;
+    }
+    const svg = container.querySelector("svg");
+    if (!svg) {
+        console.warn(`SVGclearRowHighlight: no <svg> found inside container '${name}'.`);
+        return;
+    }
+    
+    // Find all highlight overlays
+    const overlays = svg.querySelectorAll("rect[data-svg-highlight='1']");
+    
+    // Get the y-position of the row we want to clear
+    // Assuming each row has text elements, find the y-position of text in that row
+    const textElements = Array.from(svg.querySelectorAll("text"));
+    const rowTexts = textElements.filter((text, index) => {
+        return Math.floor(index / 7) === rowIndex; // 7 columns per row
+    });
+    
+    if (rowTexts.length === 0) {
+        console.warn(`No text found for row ${rowIndex}`);
+        return;
+    }
+    
+    // Get approximate y-position of this row
+    const rowY = parseFloat(rowTexts[0].getAttribute('y'));
+    
+    // Remove overlays that match this row's y-position (with tolerance)
+    overlays.forEach(overlay => {
+        const overlayY = parseFloat(overlay.getAttribute('y'));
+        if (Math.abs(overlayY - rowY) < 20) { // tolerance for matching
+            if (overlay && overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+            }
+        }
+    });
+}
 
 
 // End SVG Functionality
