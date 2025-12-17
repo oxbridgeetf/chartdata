@@ -1,7 +1,7 @@
 [
     {
         "Col1": "Launch Date:",
-        "Col2": "1/11/2021"
+        "Col2": "January 11th"
     },
     {
         "Col1": "Number of Units:",
@@ -28,4 +28,5 @@
         "Col2": "Index-Based"
     }
 ]
+
 
