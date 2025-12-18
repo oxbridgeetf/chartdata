@@ -8,8 +8,8 @@
         "FX": 1,
         "BasePrice": 19.2925,
         "Weight": 0.100803,
-        "Index Shares": 0.497721913,
-        "Index Value": 9.6023
+        "IndexShares": 0.497721913,
+        "IndexValue": 9.6023
     },
     {
         "ID": "US1005",
@@ -20,8 +20,8 @@
         "FX": 1,
         "BasePrice": 27.7861,
         "Weight": 0.044711,
-        "Index Shares": 0.15328,
-        "Index Value": 4.2591
+        "IndexShares": 0.15328,
+        "IndexValue": 4.2591
     },
     {
         "ID": "US1009",
@@ -32,8 +32,8 @@
         "FX": 1,
         "BasePrice": 79.02,
         "Weight": 0.049985,
-        "Index Shares": 0.060256,
-        "Index Value": 4.7615
+        "IndexShares": 0.060256,
+        "IndexValue": 4.7615
     },
     {
         "ID": "US1010",
@@ -44,8 +44,8 @@
         "FX": 1,
         "BasePrice": 40.6983,
         "Weight": 0.05274,
-        "Index Shares": 0.12344,
-        "Index Value": 5.0239
+        "IndexShares": 0.12344,
+        "IndexValue": 5.0239
     },
     {
         "ID": "US1012",
@@ -56,8 +56,8 @@
         "FX": 1,
         "BasePrice": 80.1747,
         "Weight": 0.044601,
-        "Index Shares": 0.052992,
-        "Index Value": 4.2486
+        "IndexShares": 0.052992,
+        "IndexValue": 4.2486
     },
     {
         "ID": "US1018",
@@ -68,8 +68,8 @@
         "FX": 1,
         "BasePrice": 24.8433,
         "Weight": 0.053372,
-        "Index Shares": 0.20465,
-        "Index Value": 5.0842
+        "IndexShares": 0.20465,
+        "IndexValue": 5.0842
     },
     {
         "ID": "US1019",
@@ -80,8 +80,8 @@
         "FX": 1,
         "BasePrice": 32.1987,
         "Weight": 0.051942,
-        "Index Shares": 0.15367,
-        "Index Value": 4.9479
+        "IndexShares": 0.15367,
+        "IndexValue": 4.9479
     },
     {
         "ID": "US1024",
@@ -92,8 +92,8 @@
         "FX": 1,
         "BasePrice": 18.4897,
         "Weight": 0.063863,
-        "Index Shares": 0.32902,
-        "Index Value": 6.0834
+        "IndexShares": 0.32902,
+        "IndexValue": 6.0834
     },
     {
         "ID": "US1026",
@@ -104,8 +104,8 @@
         "FX": 1,
         "BasePrice": 38.9873,
         "Weight": 0.045164,
-        "Index Shares": 0.11035,
-        "Index Value": 4.3023
+        "IndexShares": 0.11035,
+        "IndexValue": 4.3023
     },
     {
         "ID": "US1028",
@@ -116,8 +116,8 @@
         "FX": 1,
         "BasePrice": 72.697,
         "Weight": 0.050581,
-        "Index Shares": 0.066278,
-        "Index Value": 4.8182
+        "IndexShares": 0.066278,
+        "IndexValue": 4.8182
     },
     {
         "ID": "US1029",
@@ -128,8 +128,8 @@
         "FX": 1,
         "BasePrice": 56.4445,
         "Weight": 0.053191,
-        "Index Shares": 0.089767,
-        "Index Value": 5.0669
+        "IndexShares": 0.089767,
+        "IndexValue": 5.0669
     },
     {
         "ID": "US1030",
@@ -140,8 +140,8 @@
         "FX": 1,
         "BasePrice": 68.4228,
         "Weight": 0.051677,
-        "Index Shares": 0.071944,
-        "Index Value": 4.9226
+        "IndexShares": 0.071944,
+        "IndexValue": 4.9226
     },
     {
         "ID": "US1033",
@@ -152,8 +152,8 @@
         "FX": 1,
         "BasePrice": 25.3402,
         "Weight": 0.046465,
-        "Index Shares": 0.17467,
-        "Index Value": 4.4262
+        "IndexShares": 0.17467,
+        "IndexValue": 4.4262
     },
     {
         "ID": "US1038",
@@ -164,8 +164,8 @@
         "FX": 1,
         "BasePrice": 91.8064,
         "Weight": 0.04858,
-        "Index Shares": 0.050407,
-        "Index Value": 4.6276
+        "IndexShares": 0.050407,
+        "IndexValue": 4.6276
     },
     {
         "ID": "US1042",
@@ -176,8 +176,8 @@
         "FX": 1,
         "BasePrice": 62.4886,
         "Weight": 0.04409,
-        "Index Shares": 0.067212,
-        "Index Value": 4.2
+        "IndexShares": 0.067212,
+        "IndexValue": 4.2
     },
     {
         "ID": "US1045",
@@ -188,8 +188,8 @@
         "FX": 1,
         "BasePrice": 14.4855,
         "Weight": 0.045085,
-        "Index Shares": 0.29648,
-        "Index Value": 4.2947
+        "IndexShares": 0.29648,
+        "IndexValue": 4.2947
     },
     {
         "ID": "US1046",
@@ -200,8 +200,8 @@
         "FX": 1,
         "BasePrice": 80.5474,
         "Weight": 0.053719,
-        "Index Shares": 0.063531,
-        "Index Value": 5.1172
+        "IndexShares": 0.063531,
+        "IndexValue": 5.1172
     },
     {
         "ID": "US1049",
@@ -212,8 +212,8 @@
         "FX": 1,
         "BasePrice": 94.0912,
         "Weight": 0.047374,
-        "Index Shares": 0.047962,
-        "Index Value": 4.5128
+        "IndexShares": 0.047962,
+        "IndexValue": 4.5128
     },
     {
         "ID": "US1050",
@@ -224,7 +224,7 @@
         "FX": 1,
         "BasePrice": 12.7104,
         "Weight": 0.052057,
-        "Index Shares": 0.39014,
-        "Index Value": 4.9589
+        "IndexShares": 0.39014,
+        "IndexValue": 4.9589
     }
 ]
