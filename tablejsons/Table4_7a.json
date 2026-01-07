@@ -9,11 +9,11 @@
     },
     {
         "Col1": "Date",
-        "Col2": "4/8/2021",
+        "Col2": "April 8th",
         "Col3": "Date",
-        "Col4": "4/8/2021",
+        "Col4": "April 8th",
         "Col5": "Date",
-        "Col6": "4/8/2021"
+        "Col6": "April 8th"
     },
     {
         "Col1": "Index Level",
@@ -23,4 +23,5 @@
         "Col5": "Index Level",
         "Col6": 97.4188
     }
+
 ]
