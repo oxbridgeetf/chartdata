@@ -45,7 +45,7 @@
     },
     {
         "Col1": "Corporate Actions",
-        "Col2": "Acquisition will result in the removal of that name from the index on the close"
+        "Col2": "Acquisition by non-constituent will result in the removal of that name from the index on the close"
     },
     {
         "Col1": "",
@@ -65,4 +65,5 @@
     }
 
 ]
+
 
