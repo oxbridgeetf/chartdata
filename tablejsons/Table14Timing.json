@@ -16,20 +16,20 @@
         "Col2": "February 12th"
     },
     {
+        "Col1": "Payment Date",
+        "Col2": "February 19th"
+    },
+    {
         "Col1": "Exchange Rate at Ex-Date",
         "Col2": "1.30"
     },
     {
-        "Col1": "Shares ",
-        "Col2": "8,000"
+        "Col1": "Shares",
+        "Col2": "1,000"
     },
     {
         "Col1": "Expected USD",
-        "Col2": "$10,400"
-    },
-    {
-        "Col1": "Payment Date",
-        "Col2": "February 19th"
+        "Col2": "$1,300"
     },
     {
         "Col1": "Exchange Rate on Payment Date",
@@ -37,7 +37,8 @@
     },
     {
         "Col1": "Cash Received in USD",
-        "Col2": "$9,600"
+        "Col2": "$1,200"
     }
 ]
+
 
