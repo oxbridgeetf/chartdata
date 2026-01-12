@@ -8,10 +8,6 @@
         "Col2": "Canada"
     },
     {
-        "Col1": "Shares",
-        "Col2": "8,000"
-    },
-    {
         "Col1": "Dividend",
         "Col2": "1 CAD/Share"
     },
@@ -24,15 +20,20 @@
         "Col2": "0.75 CAD/Share"
     },
     {
+        "Col1": "Shares",
+        "Col2": "8,000"
+    },
+    {
         "Col1": "Total Received",
         "Col2": "6,000 CAD"
     },
     {
-        "Col1": "If Index Withholding",
+        "Col1": "Index Withholding",
         "Col2": "75% of Dividend"
     },
     {
-        "Col1": "If No Index Withholding",
+        "Col1": "No Index Withholding",
         "Col2": "Index Receives 100% of Dividend"
     }
 ]
+
