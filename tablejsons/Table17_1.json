@@ -2,87 +2,88 @@
     {
         "Ticker": "TQQQ",
         "Name": "ProShares Ultrapro QQQ",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "SH",
         "Name": "ProShares Short S&P 500",
-        "Leverage": "-1"
+        "Leverage": "-1X"
     },
     {
         "Ticker": "QLD",
         "Name": "ProShares Ultra QQQ",
-        "Leverage": "2"
+        "Leverage": "2X"
     },
     {
         "Ticker": "SSO",
         "Name": "ProShares Ultra S&P 500",
-        "Leverage": "2"
+        "Leverage": "2X"
     },
     {
         "Ticker": "TECL",
         "Name": "Direxion Daily Tech Bull 3X",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "UCO",
         "Name": "ProShares Ultra Bloomberg Crude Oil",
-        "Leverage": "2"
+        "Leverage": "2X"
     },
     {
         "Ticker": "FAS",
         "Name": "Direxion Daily Financials Bull 3X",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "SPXL",
         "Name": "Direxion Dly S&P 500 Bull 3X",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "SOXL",
         "Name": "Direxion Daily Semiconductors Bull 3X",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "UPRO",
         "Name": "ProShares Ultrapro S&P 500",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "SDS",
         "Name": "ProShares Ultrashort S&P 500",
-        "Leverage": "-2"
+        "Leverage": "-2X"
     },
     {
         "Ticker": "TNA",
         "Name": "Direxion Daily Small Cap Bull 3X",
-        "Leverage": "3"
+        "Leverage": "3X"
     },
     {
         "Ticker": "NUGT",
         "Name": "Direxion Daily Gold Miners I",
-        "Leverage": "2"
+        "Leverage": "2X"
     },
     {
         "Ticker": "SPXU",
         "Name": "ProShares Ultrapro Short S&P 500",
-        "Leverage": "-3"
+        "Leverage": "-3X"
     },
     {
         "Ticker": "SQQQ",
         "Name": "ProShares Ultrapro Short QQQ",
-        "Leverage": "-3"
+        "Leverage": "-3X"
     },
     {
         "Ticker": "UVXY",
         "Name": "ProShares Ultra VIX ST Futures",
-        "Leverage": "1.5"
+        "Leverage": "1.5X"
     },
     {
         "Ticker": "SVXY",
         "Name": "ProShares Short VIX ST Futures",
-        "Leverage": "-0.5"
+        "Leverage": "-0.5X"
     }
 
 ]
+
