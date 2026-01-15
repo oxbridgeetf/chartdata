@@ -10,5 +10,15 @@
     {
         "Col1": "Correlations",
         "Col2": "High"
+    },
+    {
+        "Col1": "Expected IV",
+        "Col2": "$98.00"
+    },
+    {
+        "Col1": "IV Due to Stale Price",
+        "Col2": "$98.08"
     }
+    
 ]
+
