@@ -1,5 +1,6 @@
 // --- Global Formatting Functions ---
-const formatFunctions = {
+//const formatFunctions = {
+window.formatFunctions = window.formatFunctions || {
     Dollar2: (input) => {
         const value = typeof input === "object" && input.getValue ? input.getValue() : input; // Handle Tabulator cell or raw value
         if (typeof value === "string") {
@@ -107,6 +108,7 @@ const formatFunctions = {
         }
     },
 };
+const formatFunctions = window.formatFunctions;
 
 const questionJsonUrl = "https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/questions.json";
 
