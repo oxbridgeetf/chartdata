@@ -16,7 +16,7 @@
     "Choice2": "It reduces returns by allocating assets to non-performing cash instead of index constituents",
     "Choice3": "It boosts dividend yields",
     "Choice4": "It narrows the bid-ask spread",
-    "Choice5": "",
+    "Choice5": "All of the above",
     "Correct": "B"
   },
   {
@@ -1899,4 +1899,5 @@
     "Choice5": "",
     "Correct": "C"
   }
+
 ]
