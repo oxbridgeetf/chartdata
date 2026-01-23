@@ -1,0 +1,1902 @@
+[
+  {
+    "QNum": "10.1",
+    "QText": "What is the main objective of cash management in an index-tracking ETF?",
+    "Choice1": "To hold large reserves for leverage",
+    "Choice2": "To align the portfolio as closely as possible with the index while minimizing idle cash",
+    "Choice3": "To maintain daily capital gains distributions",
+    "Choice4": "To increase portfolio turnover",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "10.2",
+    "QText": "How does cash drag impact ETF performance?",
+    "Choice1": "It increases liquidity for APs",
+    "Choice2": "It reduces returns by allocating assets to non-performing cash instead of index constituents",
+    "Choice3": "It boosts dividend yields",
+    "Choice4": "It narrows the bid-ask spread",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "10.3",
+    "QText": "When is a cash-in-lieu (CIL) substitution most appropriate?",
+    "Choice1": "When launching a fixed NAV ETF",
+    "Choice2": "When shareholder voting occurs",
+    "Choice3": "When an ETF is unable to deliver a specific security during redemption",
+    "Choice4": "When tracking error exceeds 50 bps",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "10.4",
+    "QText": "What does a \u201ccash-mapping\u201d model help a portfolio manager accomplish?",
+    "Choice1": "Track shareholder identity",
+    "Choice2": "Publish portfolio turnover",
+    "Choice3": "Determine fair value NAV",
+    "Choice4": "Forecast cash movements to maintain minimal balances without shortfalls",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "10.5",
+    "QText": "Why are even small uninvested cash balances considered a performance risk in passive ETFs?",
+    "Choice1": "Because they alter the ETF\u2019s fiscal year",
+    "Choice2": "Because they breach SEC liquidity rules",
+    "Choice3": "Because they eliminate in-kind redemption rights",
+    "Choice4": "Because they create tracking error relative to the index",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "10.6",
+    "QText": "Which of the following is a legitimate use for a modest cash buffer in an ETF?",
+    "Choice1": "Generating lending income",
+    "Choice2": "Fund short selling programs",
+    "Choice3": "Timing the NAV reset",
+    "Choice4": "Handling administrative fees or micro redemptions",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "10.7",
+    "QText": "How might excessive redemption activity disrupt cash management?",
+    "Choice1": "It can deplete cash reserves and force security sales",
+    "Choice2": "It causes cash inflows",
+    "Choice3": "It improves tracking performance",
+    "Choice4": "It reduces bid-ask spread",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "10.8",
+    "QText": "Which operational department typically monitors daily ETF cash balances and forecasts?",
+    "Choice1": "Index licensing authority",
+    "Choice2": "Fund accounting or operations team",
+    "Choice3": "Legal compliance group",
+    "Choice4": "Retail advisory desk",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "10.9",
+    "QText": "Which ETF activity is most likely to create sudden cash inflow?",
+    "Choice1": "Shareholder redemptions",
+    "Choice2": "NAV restatement",
+    "Choice3": "Receipt of dividends",
+    "Choice4": "Change in index provider",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "10.10",
+    "QText": "What should a PM do when expecting significant cash outflows?",
+    "Choice1": "Pre-trade or raise liquidity to ensure fund obligations can be met",
+    "Choice2": "Close the ETF to APs",
+    "Choice3": "Delay filing the prospectus",
+    "Choice4": "Adjust the fiscal year-end",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "11.1",
+    "QText": "What is the role of an ETF portfolio manager when a holding is subject to a tender offer?",
+    "Choice1": "Redeem all shares in cash",
+    "Choice2": "Transfer voting rights to APs",
+    "Choice3": "Determine participation based on index methodology and operational feasibility",
+    "Choice4": "Automatically sell all shares at market",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "11.2",
+    "QText": "How do cash-and-stock mergers create tracking error risk?",
+    "Choice1": "Because corporate actions don\u2019t apply to ETFs",
+    "Choice2": "Because only the stock portion is index-eligible; the cash creates drift",
+    "Choice3": "Because they are exempt from 1940 Act",
+    "Choice4": "Because the fund must liquidate its cash positions daily",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "11.3",
+    "QText": "Why is coordination with the index provider necessary during corporate events?",
+    "Choice1": "To ensure fund holdings align with index treatment and avoid tracking error",
+    "Choice2": "To determine dividend reinvestment rate",
+    "Choice3": "To set the expense ratio",
+    "Choice4": "To enable NAV smoothing",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "11.4",
+    "QText": "Which action requires the PM to assess whether cash received should remain in the portfolio or be reinvested?",
+    "Choice1": "Rights issue",
+    "Choice2": "Reverse merger",
+    "Choice3": "Partial cash proceeds from mergers",
+    "Choice4": "Stock split",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "11.5",
+    "QText": "How are rights offerings generally treated in index-tracking ETFs?",
+    "Choice1": "They are always exercised",
+    "Choice2": "They may be excluded from the index, leading to tracking error if exercised",
+    "Choice3": "They are converted to options",
+    "Choice4": "They are ignored for compliance purposes",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "11.6",
+    "QText": "In a corporate action involving a halt, what operational step must be taken?",
+    "Choice1": "Automatically sell halted security",
+    "Choice2": "Redeem in cash",
+    "Choice3": "Rebalance the entire portfolio",
+    "Choice4": "Monitor NAV calculations and freeze valuation if needed",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "11.7",
+    "QText": "Which department typically provides tax and accounting guidance during complex corporate events?",
+    "Choice1": "Shareholder services",
+    "Choice2": "Fund accounting and tax team",
+    "Choice3": "Legal affairs",
+    "Choice4": "Sales and distribution",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "11.8",
+    "QText": "What is the potential impact of a spin-off on an ETF?",
+    "Choice1": "NAV is halved",
+    "Choice2": "The fund must liquidate",
+    "Choice3": "A new security enters the portfolio and may or may not be index-eligible",
+    "Choice4": "The ETF pays a capital gain",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "11.9",
+    "QText": "Why might an ETF choose not to participate in a voluntary tender offer?",
+    "Choice1": "Because the SEC prohibits it",
+    "Choice2": "Because the index does not account for the tender, and participation could create tracking error",
+    "Choice3": "Because the AP requests it",
+    "Choice4": "Because it changes the ETF\u2019s listing",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "11.10",
+    "QText": "When do ETFs typically process the accounting of a corporate action?",
+    "Choice1": "At NAV lock period",
+    "Choice2": "On fiscal year-end",
+    "Choice3": "On ex-date or effective date depending on the action",
+    "Choice4": "After quarterly filings",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "12.1",
+    "QText": "Under Rule 6c-11, what must an ETF have in place before utilizing custom baskets?",
+    "Choice1": "Formal shareholder approval for each creation",
+    "Choice2": "A written set of basket policies and procedures that govern compliance and fairness",
+    "Choice3": "Pre-clearance from the SEC on every custom trade",
+    "Choice4": "A designated futures contract",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "12.2",
+    "QText": "What is the primary operational benefit of using custom baskets for redemptions?",
+    "Choice1": "To eliminate all capital gains",
+    "Choice2": "To ensure same-day NAV accuracy",
+    "Choice3": "To boost yield relative to NAV",
+    "Choice4": "To offload tax-sensitive or illiquid positions in a way that reduces costs to the fund",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "12.3",
+    "QText": "Why might a portfolio manager reject a proposed custom basket from an AP?",
+    "Choice1": "Because it removes the NAV lock",
+    "Choice2": "Because it does not comply with the fund\u2019s basket policies or creates risks for the remaining shareholders",
+    "Choice3": "Because it activates the swing factor",
+    "Choice4": "Because it exceeds Rule 144A exposure",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "12.4",
+    "QText": "What is a key compliance safeguard around custom basket usage?",
+    "Choice1": "Elimination of primary market access",
+    "Choice2": "Posting the full creation unit in real time",
+    "Choice3": "Periodic internal review and external disclosure of basket activity",
+    "Choice4": "Mandatory board pre-approval of every transaction",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "12.5",
+    "QText": "How might a custom basket help with tax efficiency?",
+    "Choice1": "By allowing the manager to remove low-basis or high-gain securities through in-kind redemptions",
+    "Choice2": "By bypassing IRS filing",
+    "Choice3": "By resetting shareholder NAV",
+    "Choice4": "By reallocating expense ratios",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "12.6",
+    "QText": "What distinguishes a custom basket from a standard basket?",
+    "Choice1": "It has an equal weighting mandate",
+    "Choice2": "It requires FINRA override",
+    "Choice3": "It is limited to large-cap holdings only",
+    "Choice4": "It deviates from the pro-rata composition and reflects manager or AP input",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "12.7",
+    "QText": "What does Rule 6c-11 require regarding transparency for ETFs using custom baskets?",
+    "Choice1": "Publication in the SEC\u2019s EDGAR system",
+    "Choice2": "Public posting of basket policies and historical basket activity",
+    "Choice3": "Daily mailing of performance reports",
+    "Choice4": "Issuance of pre-trade alerts to shareholders",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "12.8",
+    "QText": "In what way can custom baskets support index tracking?",
+    "Choice1": "By removing the need to trade underlying securities",
+    "Choice2": "By enabling more precise alignment when standard baskets would cause performance drift",
+    "Choice3": "By redistributing capital gains",
+    "Choice4": "By anchoring the NAV to previous close",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "12.9",
+    "QText": "What operational team is typically responsible for validating basket compliance?",
+    "Choice1": "Shareholder services unit",
+    "Choice2": "Fund operations or compliance team working with PM and legal",
+    "Choice3": "Auditor and proxy team",
+    "Choice4": "Retail distribution and advisory",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "12.10",
+    "QText": "When might custom baskets present regulatory risk?",
+    "Choice1": "When published through index vendors",
+    "Choice2": "When inconsistently applied or insufficiently documented in the fund\u2019s internal controls",
+    "Choice3": "When submitted by retail clients",
+    "Choice4": "When derived from secondary market activity",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "13.1",
+    "QText": "How does portfolio rebalancing differ from index rebalancing in ETF operations?",
+    "Choice1": "It adjusts ETF expense ratios",
+    "Choice2": "It eliminates need for tracking error",
+    "Choice3": "Portfolio rebalancing considers liquidity, tax, and cost, not just index weight changes",
+    "Choice4": "It is done quarterly by the SEC",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "13.2",
+    "QText": "Why might a portfolio manager choose to trade ahead of the official index rebalance?",
+    "Choice1": "To meet FINRA deadlines",
+    "Choice2": "To rebalance NAV",
+    "Choice3": "To reduce market impact and avoid liquidity crunches",
+    "Choice4": "To record creation units",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "13.3",
+    "QText": "What is one of the compliance considerations when rebalancing?",
+    "Choice1": "Avoiding wash sales and ensuring fair treatment across shareholders",
+    "Choice2": "Reissuing proxy forms",
+    "Choice3": "Matching custody declarations",
+    "Choice4": "Posting board minutes",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "13.4",
+    "QText": "What role do corporate actions play in portfolio rebalancing?",
+    "Choice1": "They allow swing pricing",
+    "Choice2": "They may override or delay rebalancing decisions due to pending events",
+    "Choice3": "They dictate fee structures",
+    "Choice4": "They eliminate redemptions",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "13.5",
+    "QText": "Why is liquidity important in executing a rebalance?",
+    "Choice1": "To ensure trades can be executed without excessive price movement",
+    "Choice2": "To qualify for EDGAR posting",
+    "Choice3": "To comply with 6c-11 tax filing",
+    "Choice4": "To close the ETF to APs",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "13.6",
+    "QText": "What kind of analytics help optimize a rebalance plan?",
+    "Choice1": "Pre-trade cost and risk simulations",
+    "Choice2": "Monthly NAV reports",
+    "Choice3": "Index turnover history",
+    "Choice4": "SEC fair valuation tools",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "13.7",
+    "QText": "How can a rebalance affect tax outcomes for the ETF?",
+    "Choice1": "Recording wash sales eliminates tracking error",
+    "Choice2": "Buying futures increases turnover",
+    "Choice3": "Selling low-basis shares may create realized gains",
+    "Choice4": "Receiving dividends lowers gains",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "13.8",
+    "QText": "What internal review typically occurs before a rebalance is approved?",
+    "Choice1": "FINRA schedule match",
+    "Choice2": "Board of trustees vote",
+    "Choice3": "AP proposal review",
+    "Choice4": "Cross-functional review by PM, compliance, and trading desks",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "13.9",
+    "QText": "What is one way to reduce the cost impact of a rebalance?",
+    "Choice1": "Delaying NAV reports",
+    "Choice2": "Adjusting fiscal year-end",
+    "Choice3": "Use of algorithms or block trades to minimize market footprint",
+    "Choice4": "Halting creations",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "13.10",
+    "QText": "What timing risk exists during index rebalances?",
+    "Choice1": "Large trades across ETFs may crowd liquidity and widen spreads",
+    "Choice2": "SEC audits may delay filings",
+    "Choice3": "NAV resets can cause reverse splits",
+    "Choice4": "Volatility swaps increase",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "14.6",
+    "QText": "In managing an international ETF, what does the FX rate in index files represent?",
+    "Choice1": "The spot rate for credit default swaps",
+    "Choice2": "The conversion rate between the local and base currency",
+    "Choice3": "The central bank intervention rate",
+    "Choice4": "The real yield of an international bond",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "14.7",
+    "QText": "What risk can arise from local lot-size rules in certain foreign markets?",
+    "Choice1": "Tax arbitrage risk",
+    "Choice2": "Exposure to foreign central bank policy",
+    "Choice3": "Tracking error due to inability to fine-tune portfolio weights",
+    "Choice4": "Increased duration risk",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "14.8",
+    "QText": "Why must a PM pay close attention to the currency in which each international security is priced?",
+    "Choice1": "To comply with Dodd-Frank",
+    "Choice2": "To correctly value the security in the base currency of the ETF",
+    "Choice3": "To determine the appropriate time to rebalance",
+    "Choice4": "To avoid capital controls",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "14.9",
+    "QText": "True or False: ETFs that include securities from multiple countries can always treat all trades like domestic trades.",
+    "Choice1": "False",
+    "Choice2": "True",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "14.10",
+    "QText": "When reviewing Table 14.1 in the chapter, what distinction is made for international securities in the file?",
+    "Choice1": "Only their P/E ratios are shown",
+    "Choice2": "Prices are shown in both local and base currencies",
+    "Choice3": "They are excluded from U.S. trading rules",
+    "Choice4": "Each must be held in an ADR format",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "15.1",
+    "QText": "What does the Information Ratio (IR) measure in an actively-managed ETF context?",
+    "Choice1": "The daily creation size",
+    "Choice2": "The NAV divided by fund expenses",
+    "Choice3": "The portfolio\u2019s excess return divided by its tracking error",
+    "Choice4": "The ETF\u2019s turnover ratio",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "15.2",
+    "QText": "Which SEC rule allowed streamlined approval of actively-managed ETFs?",
+    "Choice1": "Rule 6c-11",
+    "Choice2": "Rule 1940-B",
+    "Choice3": "Form N-CEN",
+    "Choice4": "Rule 10b-5",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "15.3",
+    "QText": "How do proxy baskets benefit actively-managed ETF sponsors?",
+    "Choice1": "They shield full portfolio holdings from public disclosure while enabling AP transactions",
+    "Choice2": "They provide fixed NAVs",
+    "Choice3": "They standardize distribution timing",
+    "Choice4": "They eliminate need for a prospectus",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "15.4",
+    "QText": "Why do actively-managed ETFs sometimes use custom baskets?",
+    "Choice1": "To meet retail shareholder demand",
+    "Choice2": "To signal future trades",
+    "Choice3": "To bypass index methodology",
+    "Choice4": "To fine-tune portfolio exposures and tax positioning while supporting liquidity",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "15.5",
+    "QText": "What constraint do managers face when using non-transparent ETF models?",
+    "Choice1": "They must publish daily tax rates",
+    "Choice2": "They must ensure that the proxy basket closely tracks the actual portfolio\u2019s behavior",
+    "Choice3": "They cannot use derivative instruments",
+    "Choice4": "They are exempt from 6c-11",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "15.6",
+    "QText": "What\u2019s one way that active ETF PMs attempt to add value beyond index replication?",
+    "Choice1": "Following passive peers",
+    "Choice2": "Delaying NAV releases",
+    "Choice3": "Switching benchmarks",
+    "Choice4": "Security selection and tactical positioning based on market insights",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "15.7",
+    "QText": "What does \u2018active share\u2019 measure in a portfolio?",
+    "Choice1": "The fund\u2019s leverage usage",
+    "Choice2": "The daily volume traded",
+    "Choice3": "The degree of difference between the ETF and its benchmark holdings",
+    "Choice4": "The tracking basket\u2019s composition",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "15.8",
+    "QText": "What is a common challenge for APs working with non-transparent active ETFs?",
+    "Choice1": "They must use ADRs",
+    "Choice2": "They can\u2019t use exchange auctions",
+    "Choice3": "Lack of full portfolio visibility can increase hedging uncertainty",
+    "Choice4": "They are barred from submitting baskets",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "15.9",
+    "QText": "Why is trading cost analysis more critical in active ETFs?",
+    "Choice1": "Because active ETFs avoid proxy voting",
+    "Choice2": "Because turnover may be higher and decisions are manager-driven, impacting net return",
+    "Choice3": "Because NAV is published weekly",
+    "Choice4": "Because board approval is needed",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "15.10",
+    "QText": "Which firm pioneered the \u2018Shielded Alpha\u2019 proxy basket model?",
+    "Choice1": "Morningstar",
+    "Choice2": "BlackRock",
+    "Choice3": "Blue Tractor",
+    "Choice4": "State Street",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "16.1",
+    "QText": "What role does convexity play in evaluating bond price behavior?",
+    "Choice1": "It prices callable bonds",
+    "Choice2": "It eliminates coupon risk",
+    "Choice3": "It estimates dividend reinvestment",
+    "Choice4": "It measures how much the duration of a bond changes as interest rates change",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "16.2",
+    "QText": "What is the yield to worst (YTW) used for in fixed income ETFs?",
+    "Choice1": "To reflect total return in NAV",
+    "Choice2": "To calculate coupon averages",
+    "Choice3": "To show the lowest potential return if the bond is called before maturity",
+    "Choice4": "To track market volatility",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "16.3",
+    "QText": "Why might a PM use cash-in-lieu (CIL) instead of in-kind delivery?",
+    "Choice1": "To issue capital gains",
+    "Choice2": "To avoid delivering illiquid or low-availability securities in a basket",
+    "Choice3": "To reduce NAV tracking error",
+    "Choice4": "To convert to equity holdings",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "16.4",
+    "QText": "What is duration a measure of in a bond portfolio?",
+    "Choice1": "Bid-ask spread",
+    "Choice2": "Risk of credit downgrade",
+    "Choice3": "Market capitalization",
+    "Choice4": "Interest rate sensitivity or weighted average time to receive cash flows",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "16.5",
+    "QText": "Why is DV01 relevant in fixed income ETF management?",
+    "Choice1": "It matches board voting rights",
+    "Choice2": "It quantifies risk by measuring value change from a 1bp move in yield",
+    "Choice3": "It adjusts coupon dates",
+    "Choice4": "It triggers tax events",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "16.6",
+    "QText": "How does portfolio sampling support fixed income ETF construction?",
+    "Choice1": "It allows a PM to replicate index behavior without holding all securities",
+    "Choice2": "It limits turnover",
+    "Choice3": "It removes tax risk",
+    "Choice4": "It sets benchmark weights",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "16.7",
+    "QText": "How do creation/redemption baskets differ in fixed income vs equity ETFs?",
+    "Choice1": "They always require futures",
+    "Choice2": "They use NAV locks",
+    "Choice3": "Fixed income baskets may include cash and sampled bonds to reflect liquidity",
+    "Choice4": "They are regulated under a different SEC act",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "16.8",
+    "QText": "What is a call schedule in a fixed income security?",
+    "Choice1": "A calendar of fund filings",
+    "Choice2": "A fee disclosure list",
+    "Choice3": "A timetable showing when the issuer can redeem the bond early",
+    "Choice4": "A distribution table",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "16.9",
+    "QText": "How does order netting reduce costs in fixed income creation/redemption?",
+    "Choice1": "By using only cash",
+    "Choice2": "By skipping execution",
+    "Choice3": "By doubling spread size",
+    "Choice4": "By aggregating offsetting trades before executing in the market",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "16.10",
+    "QText": "Why is liquidity more complex in fixed income ETFs?",
+    "Choice1": "Because many bonds trade infrequently and in large sizes",
+    "Choice2": "Because ETFs must pay interest daily",
+    "Choice3": "Because prices are set by NAV",
+    "Choice4": "Because volatility is lower",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "17.1",
+    "QText": "For leveraged ETFs that rebalance daily, the primary portfolio objective is:",
+    "Choice1": "Neutralize beta risk relative to index",
+    "Choice2": "Rebalance to equal-weight allocations",
+    "Choice3": "Maximize alpha generation",
+    "Choice4": "Match 2x or -2x daily index return through end-of-day exposure",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "17.2",
+    "QText": "When the rebalance signal is generated post-close, the PM\u2019s challenge is to:",
+    "Choice1": "Adjust NAVs the next morning",
+    "Choice2": "Execute trades in advance without knowing the exact target",
+    "Choice3": "Reconstruct the pro forma from stale prices",
+    "Choice4": "Use cash buffers",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "17.3",
+    "QText": "Why might an MOC order be insufficient for a leveraged ETF?",
+    "Choice1": "It may result in trading at less optimal prices",
+    "Choice2": "It cannot guarantee mid-day liquidity",
+    "Choice3": "Order sizes can\u2019t be refined with last-minute index moves",
+    "Choice4": "It assumes trade execution without size constraints",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "17.4",
+    "QText": "Which best describes the PM\u2019s risk when trying to \u201chit the close\u201d on rebalance day?",
+    "Choice1": "Capital gains realization",
+    "Choice2": "Overpaying for commissions",
+    "Choice3": "Failed order settlement",
+    "Choice4": "Tracking error if price moves sharply post-order",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "17.5",
+    "QText": "The concept of \u201ctracking error\u201d in leveraged ETFs is compounded because:",
+    "Choice1": "Benchmark reporting occurs quarterly",
+    "Choice2": "PMs must deal with monthly leverage calibration",
+    "Choice3": "Index returns are normalized annually",
+    "Choice4": "Daily leverage resets amplify cumulative effects of error",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "17.6",
+    "QText": "Which of the following most likely increases tracking error in leveraged ETFs?",
+    "Choice1": "Non-dividend-paying assets",
+    "Choice2": "Long holding periods",
+    "Choice3": "High intraday volatility",
+    "Choice4": "Use of fixed-income futures",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "17.7",
+    "QText": "What tool is most useful for minimizing tracking error on rebalance day?",
+    "Choice1": "Intraday NAV calculator",
+    "Choice2": "ETF pro forma file",
+    "Choice3": "Market-on-Close trading algorithms",
+    "Choice4": "Execution cost report",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "17.8",
+    "QText": "In the absence of a lag between Calculation and Rebalance Date, PMs should:",
+    "Choice1": "Avoid trading on rebalance day",
+    "Choice2": "Front-load trades based on prior-day closes",
+    "Choice3": "Submit indicative NAVs early",
+    "Choice4": "Pre-stage positions based on expectations",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "17.9",
+    "QText": "Which portfolio characteristic makes daily rebalancing especially difficult?",
+    "Choice1": "Use of domestic securities",
+    "Choice2": "Narrow bid-ask spreads",
+    "Choice3": "Thin intraday liquidity",
+    "Choice4": "Benchmark transparency",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "17.10",
+    "QText": "Which execution strategy aligns best with leverage exposure matching?",
+    "Choice1": "VWAP orders throughout the day",
+    "Choice2": "Continuous time-weighted average price trades",
+    "Choice3": "Morning trade completion to minimize cost",
+    "Choice4": "MOC execution targeting NAV match",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "18.1",
+    "QText": "What contributed to fixed income ETF discounts to NAV in March 2020?",
+    "Choice1": "Underlying bonds were illiquid or not trading while ETF prices reflected real-time demand",
+    "Choice2": "ETF NAVs were overstated by fund accountants",
+    "Choice3": "Custodians delayed pricing files",
+    "Choice4": "SEC froze index data",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "18.2",
+    "QText": "Why did ETF market makers widen bid-ask spreads during market stress?",
+    "Choice1": "To reflect uncertainty and protect against sudden price swings",
+    "Choice2": "To slow down trading volume",
+    "Choice3": "To reduce competition",
+    "Choice4": "To match index turnover",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "18.3",
+    "QText": "What structural feature allowed ETFs to continue trading while mutual funds halted redemptions?",
+    "Choice1": "Secondary market liquidity via exchanges",
+    "Choice2": "NAV smoothing algorithms",
+    "Choice3": "Overnight settlement windows",
+    "Choice4": "Fair valuation policies",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "18.4",
+    "QText": "Why was ETF price discovery especially valuable during March 2020?",
+    "Choice1": "Stock splits were pending",
+    "Choice2": "Many bond markets lacked transparency or were frozen, but ETFs kept trading",
+    "Choice3": "APs needed early NAV signals",
+    "Choice4": "Futures contracts hit upper limits",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "18.5",
+    "QText": "Which of the following is most likely to cause tracking error during a crisis?",
+    "Choice1": "Delayed SEC audits",
+    "Choice2": "Mismatch between market prices and stale NAV inputs",
+    "Choice3": "Creation unit reversals",
+    "Choice4": "Outflows from mutual funds",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "18.6",
+    "QText": "Which trade behavior did some APs adopt during COVID volatility?",
+    "Choice1": "Moved NAV strikes to Europe",
+    "Choice2": "Shifted holdings to futures",
+    "Choice3": "Paused creation/redemption to avoid market exposure",
+    "Choice4": "Doubled arbitrage activity",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "18.7",
+    "QText": "What example highlighted the effect of liquidity stress in individual names?",
+    "Choice1": "Gold futures traded below spot",
+    "Choice2": "Fidelity halted ETF auctions",
+    "Choice3": "Apple bid/ask spreads were over $1 despite heavy volume",
+    "Choice4": "Tesla NAV exceeded fair value",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "18.8",
+    "QText": "Why might an ETF price appear 'incorrect' during a crisis?",
+    "Choice1": "The ETF price reflects current market values while NAV may lag",
+    "Choice2": "NAV files are republished hourly",
+    "Choice3": "Market makers delay updates",
+    "Choice4": "The ETF changed tax strategy",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "18.9",
+    "QText": "What lesson was learned from oil ETFs trading near negative futures prices?",
+    "Choice1": "NAV must be adjusted manually",
+    "Choice2": "Creation units freeze immediately",
+    "Choice3": "ETFs can trade when underlying futures show extreme dislocation",
+    "Choice4": "ETFs should avoid derivatives",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "18.10",
+    "QText": "Why are ETF structure and liquidity considered stress-tested after March 2020?",
+    "Choice1": "They handled large volume and volatility while maintaining operational integrity",
+    "Choice2": "They published only estimated NAV",
+    "Choice3": "They changed from in-kind to cash delivery",
+    "Choice4": "They removed spreads from reporting",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "19.1",
+    "QText": "Why might full replication be infeasible for some ETFs?",
+    "Choice1": "It inflates duration calculations",
+    "Choice2": "The index contains illiquid or numerous securities that are costly to trade",
+    "Choice3": "SEC rules prohibit replication",
+    "Choice4": "It requires daily NAV adjustment",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.2",
+    "QText": "Which type of ETF is most likely to use a tracking optimization model?",
+    "Choice1": "Single-country equity ETF",
+    "Choice2": "Leveraged ETF",
+    "Choice3": "Fixed income ETF with thousands of bonds",
+    "Choice4": "Thematic ETF",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "19.3",
+    "QText": "What role does a covariance matrix play in sampling?",
+    "Choice1": "Sets NAV pricing rules",
+    "Choice2": "Helps estimate risk relationships among sampled and unsampled securities",
+    "Choice3": "Determines float-adjusted weights",
+    "Choice4": "Aligns benchmark return cycles",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.4",
+    "QText": "How might a PM assess tracking error in a sampled portfolio?",
+    "Choice1": "Using dividend yield alone",
+    "Choice2": "By comparing the ETF\u2019s return to the index over time",
+    "Choice3": "Tracking index licensing costs",
+    "Choice4": "By measuring expense ratio",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.5",
+    "QText": "What does a sampling constraint typically enforce?",
+    "Choice1": "NAV disclosure limits",
+    "Choice2": "ETF share class conversion",
+    "Choice3": "Exposure to specific sectors, liquidity thresholds, or credit limits",
+    "Choice4": "Management fee ceilings",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "19.6",
+    "QText": "Which scenario best illustrates sampling risk?",
+    "Choice1": "Holding more cash than allowed",
+    "Choice2": "Buying futures too early",
+    "Choice3": "Paying more in expense ratios",
+    "Choice4": "Underweighting a volatile security that drives index return",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "19.7",
+    "QText": "Which technique can be used to minimize sampling-induced tracking error?",
+    "Choice1": "Switching to a physical replication model",
+    "Choice2": "Statistical optimization based on risk factors",
+    "Choice3": "Using foreign custody",
+    "Choice4": "Increasing the fund\u2019s AUM",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.8",
+    "QText": "What is one benefit of sampling in large indexes?",
+    "Choice1": "Boosts NAV",
+    "Choice2": "Reduces trading costs and avoids illiquid securities",
+    "Choice3": "Ensures all constituents are held",
+    "Choice4": "Eliminates tracking error",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.9",
+    "QText": "Why might a PM periodically rebalance a sampled ETF?",
+    "Choice1": "To publish monthly newsletters",
+    "Choice2": "To realign portfolio exposures as the index evolves",
+    "Choice3": "To comply with SEC audits",
+    "Choice4": "To lock in capital gains",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "19.10",
+    "QText": "True or False: Sampled portfolios can outperform the index short-term but are unlikely to do so long-term.",
+    "Choice1": "False",
+    "Choice2": "True",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "1.1",
+    "QText": "Which mechanism allows ETF share prices to align closely with NAV throughout the day?",
+    "Choice1": "Fixed intraday NAV resets",
+    "Choice2": "Authorized Participant price bands",
+    "Choice3": "Bid-ask spread controls by market makers",
+    "Choice4": "Primary market arbitrage via creations/redemptions",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.2",
+    "QText": "What distinguishes the ETF structure from mutual funds in terms of trading access?",
+    "Choice1": "ETFs are priced and traded only once per day",
+    "Choice2": "ETFs must be purchased directly from the sponsor",
+    "Choice3": "ETFs cannot be bought in retirement accounts",
+    "Choice4": "ETFs are traded intraday on exchanges",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.3",
+    "QText": "What is the primary benefit of the ETF arbitrage mechanism for investors?",
+    "Choice1": "It allows for price-fixing at the exchange",
+    "Choice2": "It eliminates tracking error",
+    "Choice3": "It provides guaranteed liquidity",
+    "Choice4": "It keeps the market price aligned with NAV",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.4",
+    "QText": "In the ETF ecosystem, what is the role of an Authorized Participant (AP)?",
+    "Choice1": "Calculate and report NAV",
+    "Choice2": "Sponsor and distribute the ETF",
+    "Choice3": "Facilitate creation and redemption of ETF shares",
+    "Choice4": "Set the trading spread each day",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "1.5",
+    "QText": "Which feature of ETFs allows them to offer exposure to diversified portfolios at low cost?",
+    "Choice1": "Index-based replication",
+    "Choice2": "NAV resets throughout the day",
+    "Choice3": "High turnover",
+    "Choice4": "Concentrated active management",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "1.6",
+    "QText": "ETF shares are created and redeemed:",
+    "Choice1": "By fund sponsors at the close",
+    "Choice2": "By the SEC in response to liquidity needs",
+    "Choice3": "In the primary market by Authorized Participants",
+    "Choice4": "Automatically by custodians based on demand",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "1.7",
+    "QText": "Tracking error in ETFs is most often caused by:",
+    "Choice1": "Delayed NAV publication",
+    "Choice2": "Changes in index composition",
+    "Choice3": "Market maker interference",
+    "Choice4": "Intraday arbitrage limitations",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "1.8",
+    "QText": "How does the ETF\u2019s open-ended structure benefit liquidity?",
+    "Choice1": "It allows shares to be created/redeemed as needed",
+    "Choice2": "It fixes the spread throughout the day",
+    "Choice3": "It sets a hard cap on fund size",
+    "Choice4": "It limits redemptions",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "1.9",
+    "QText": "Which of the following statements about ETF NAV is accurate?",
+    "Choice1": "It fluctuates with market prices intraday",
+    "Choice2": "It is calculated at the open and remains fixed",
+    "Choice3": "It is determined by retail demand",
+    "Choice4": "It is an accounting value calculated at the end of the day",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "1.10",
+    "QText": "What structural feature of ETFs enables tax efficiency compared to mutual funds?",
+    "Choice1": "NAV determination methods",
+    "Choice2": "Periodic dividend reinvestment",
+    "Choice3": "Use of exchange-based trading",
+    "Choice4": "In-kind redemptions through APs",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.1",
+    "QText": "Under the Investment Company Act of 1940, what legal form are most ETFs structured as?",
+    "Choice1": "Open-end funds",
+    "Choice2": "Closed-end funds",
+    "Choice3": "Limited partnerships",
+    "Choice4": "Unit investment trusts",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "2.2",
+    "QText": "What is the legal significance of the ETF Trust?",
+    "Choice1": "It holds the portfolio assets and issues shares to the public",
+    "Choice2": "It creates secondary market liquidity",
+    "Choice3": "It executes in-kind redemptions with retail investors",
+    "Choice4": "It calculates the NAV on behalf of the investment advisor",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "2.3",
+    "QText": "The Board of Trustees of an ETF is primarily responsible for:",
+    "Choice1": "Setting daily NAVs and expense ratios",
+    "Choice2": "Publishing the creation basket",
+    "Choice3": "Strategic trading of the portfolio",
+    "Choice4": "Fiduciary oversight and approval of service providers",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.4",
+    "QText": "What distinguishes the Investment Advisor from other ETF service providers?",
+    "Choice1": "It registers fund shares with the SEC",
+    "Choice2": "It acts as custodian for the fund's securities",
+    "Choice3": "It disseminates intraday NAV estimates",
+    "Choice4": "It manages the portfolio and executes investment strategy",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.5",
+    "QText": "Which party is typically responsible for safeguarding the ETF\u2019s assets?",
+    "Choice1": "Distributor",
+    "Choice2": "Custodian",
+    "Choice3": "Investment Advisor",
+    "Choice4": "Transfer Agent",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "2.6",
+    "QText": "In the context of ETF legal structure, what is the fund accountant\u2019s primary task?",
+    "Choice1": "Calculating NAV and fund performance metrics",
+    "Choice2": "Reviewing corporate actions for compliance",
+    "Choice3": "Preparing SEC 19a-1 filings",
+    "Choice4": "Auditing financial statements",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "2.7",
+    "QText": "What is one key function of the Transfer Agent in the ETF operational chain?",
+    "Choice1": "Rebalancing the portfolio",
+    "Choice2": "Disclosing expense ratios",
+    "Choice3": "Issuing fund shares to authorized participants",
+    "Choice4": "Performing shareholder recordkeeping and registration",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "2.8",
+    "QText": "The ETF Distributor is primarily responsible for:",
+    "Choice1": "Maintaining custody of the ETF\u2019s assets",
+    "Choice2": "Marketing the ETF and handling AP share orders",
+    "Choice3": "Filing registration statements with FINRA",
+    "Choice4": "Overseeing daily investment policy execution",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "2.9",
+    "QText": "Which of the following service providers is *not required by law* but commonly involved in index-based ETFs?",
+    "Choice1": "Fund Administrator",
+    "Choice2": "Custodian",
+    "Choice3": "Index Provider",
+    "Choice4": "Auditor",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "2.10",
+    "QText": "Which fund document governs the operations, service providers, and investment policy of an ETF?",
+    "Choice1": "Rule 17a-7 Memo",
+    "Choice2": "Prospectus",
+    "Choice3": "Statement of Additional Information",
+    "Choice4": "Trust Agreement",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "20.1",
+    "QText": "What formal step must an ETF undergo before initiating the closure process?",
+    "Choice1": "Achieve a market cap threshold below $100 million",
+    "Choice2": "File a request for closure with the SEC\u2019s Division of Trading and Markets",
+    "Choice3": "Secure unanimous shareholder consent via proxy",
+    "Choice4": "Obtain approval from the Board of Trustees after a thorough review",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "20.2",
+    "QText": "How are portfolio securities typically managed during an ETF wind-down?",
+    "Choice1": "Sold immediately at last published NAV regardless of liquidity",
+    "Choice2": "Transferred to a mutual fund affiliate",
+    "Choice3": "Liquidated systematically per a communicated schedule, often with in-kind redemptions when feasible",
+    "Choice4": "Converted automatically to shares in a new fund",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "20.3",
+    "QText": "What operational risk arises if a security held by the ETF becomes halted prior to closing?",
+    "Choice1": "Trading on secondary markets is suspended permanently",
+    "Choice2": "The ETF must immediately pay special redemption fees",
+    "Choice3": "The ETF is forced to merge with another fund",
+    "Choice4": "The inability to timely liquidate may delay closure and impact NAV accuracy",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "20.4",
+    "QText": "Why must portfolio managers continue to monitor ETF performance during the closing process?",
+    "Choice1": "To evaluate the management effectiveness and report to stakeholders even if the fund is closing",
+    "Choice2": "To prepare for immediate relaunch under a new ticker",
+    "Choice3": "To renegotiate custodian agreements",
+    "Choice4": "To comply with new SEC transparency rules",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "20.5",
+    "QText": "In the broader context of the ETF industry, how is the closure of a fund best understood?",
+    "Choice1": "As a result of changes to the 1940 Act",
+    "Choice2": "As an indication of fraud or mismanagement",
+    "Choice3": "As a normal lifecycle event reflecting market realities and investor demand shifts",
+    "Choice4": "As a rare regulatory enforcement action",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "3.1",
+    "QText": "What is the purpose of the Index Methodology in ETF management?",
+    "Choice1": "To outline the roles of custodians and APs",
+    "Choice2": "To describe the ETF\u2019s marketing objectives",
+    "Choice3": "To define the rules for security selection, weighting, and rebalancing",
+    "Choice4": "To explain arbitrage procedures",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "3.2",
+    "QText": "Which type of index weighting assigns a company\u2019s weight based on its market value adjusted for available float?",
+    "Choice1": "Equal weighting",
+    "Choice2": "Price weighting",
+    "Choice3": "Fundamental weighting",
+    "Choice4": "Free-float market capitalization weighting",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "3.3",
+    "QText": "On which day is index membership and weight determined using pricing and share data?",
+    "Choice1": "Rebalance Day",
+    "Choice2": "Adjustment Window",
+    "Choice3": "Declaration Date",
+    "Choice4": "Calculation Day",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "3.4",
+    "QText": "What operational risk is posed by an index rulebook without discretion?",
+    "Choice1": "Forced inclusion of untradeable or halted securities",
+    "Choice2": "Inaccurate transfer agent reporting",
+    "Choice3": "Redundant custodian interactions",
+    "Choice4": "Delayed NAV calculation",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "3.5",
+    "QText": "What term refers to the risk that the ETF portfolio does not exactly match the index due to timing or constraints?",
+    "Choice1": "Arbitrage spread",
+    "Choice2": "Liquidity gap",
+    "Choice3": "Tracking error",
+    "Choice4": "Spread leakage",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "3.6",
+    "QText": "Why might a halted security receive a fair value price in index calculations?",
+    "Choice1": "To satisfy SEC requirements",
+    "Choice2": "To maintain calculation integrity despite lack of market data",
+    "Choice3": "To convert into an ETF-eligible proxy",
+    "Choice4": "To delay rebalance activity",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "3.7",
+    "QText": "The Rebalance Day typically occurs after Calculation Day in order to:",
+    "Choice1": "Wait for fund distribution to settle",
+    "Choice2": "Provide transparency to ETF managers and participants",
+    "Choice3": "Confirm final fiscal audit entries",
+    "Choice4": "Allow market makers time to hedge",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "3.8",
+    "QText": "In index operations, the Index Committee may be granted discretion for:",
+    "Choice1": "Lowering fund fees",
+    "Choice2": "Overriding methodology in extraordinary cases",
+    "Choice3": "Executing arbitrage trades",
+    "Choice4": "Creating creation units",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "3.9",
+    "QText": "How are corporate actions such as stock splits reflected in an index?",
+    "Choice1": "They are processed according to predefined index rules",
+    "Choice2": "They are ignored until fiscal year-end",
+    "Choice3": "They are reversed during reconciliation",
+    "Choice4": "They are manually removed from calculations",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "3.10",
+    "QText": "What happens when a new security meets all eligibility criteria between rebalances?",
+    "Choice1": "It is evaluated at the next scheduled review",
+    "Choice2": "It triggers a rulebook amendment",
+    "Choice3": "It must be added to the creation basket",
+    "Choice4": "It is automatically added to the index",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "4.1",
+    "QText": "Why is the timing of the index rebalance important for ETF managers?",
+    "Choice1": "APs adjust expense ratios based on timing",
+    "Choice2": "NAV must be recalculated at noon",
+    "Choice3": "Portfolio managers must align trades precisely with index changes to minimize tracking error",
+    "Choice4": "Distributors reset shares at the rebalance window",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "4.2",
+    "QText": "What is the purpose of the Proforma File in index rebalancing?",
+    "Choice1": "To calculate intraday NAV",
+    "Choice2": "To list all historical performance",
+    "Choice3": "To disclose fund holdings to the public",
+    "Choice4": "To provide managers with advance notice of upcoming index changes",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "4.3",
+    "QText": "Which type of index tends to have higher turnover due to frequent rebalancing?",
+    "Choice1": "Equal-weighted indices",
+    "Choice2": "ESG-screened indices",
+    "Choice3": "Price-weighted indices",
+    "Choice4": "Market-cap-weighted indices",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "4.4",
+    "QText": "What operational risk is associated with high rebalance turnover in ETFs?",
+    "Choice1": "Custodian error in settlement",
+    "Choice2": "NAV mismatch with closing prices",
+    "Choice3": "Delayed board approvals",
+    "Choice4": "Greater market impact and transaction costs",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "4.5",
+    "QText": "What is \u201cindex front-running\u201d?",
+    "Choice1": "Fund accountants skipping NAV updates",
+    "Choice2": "Retail investors submitting after-hours trades",
+    "Choice3": "Index sponsors updating their rulebook early",
+    "Choice4": "Traders anticipating rebalance changes and trading ahead of them",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "4.6",
+    "QText": "How does rebalance frequency affect the portfolio\u2019s operational efficiency?",
+    "Choice1": "More frequent rebalances can increase costs and slippage",
+    "Choice2": "Frequent rebalances reduce market tracking error",
+    "Choice3": "NAVs become smoother",
+    "Choice4": "Infrequent rebalances trigger IRS filings",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "4.7",
+    "QText": "How do large ETFs attempt to mitigate market impact during rebalances?",
+    "Choice1": "By requesting index committee exemption",
+    "Choice2": "By halting AP activity during rebalances",
+    "Choice3": "By trading over multiple days and using volume-weighted averages",
+    "Choice4": "By delaying NAV publication",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "4.8",
+    "QText": "What makes index rebalances predictable and thus vulnerable to anticipatory trading?",
+    "Choice1": "Exchange notification requirements",
+    "Choice2": "Daily NAV reset",
+    "Choice3": "Transparency of index rules and rebalance schedule",
+    "Choice4": "Use of derivatives",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "4.9",
+    "QText": "What does it mean for an index to apply a \u201cbuffer rule\u201d in rebalancing?",
+    "Choice1": "Delaying rebalance by a full quarter",
+    "Choice2": "Using rounded weights",
+    "Choice3": "Preventing small eligibility changes from forcing frequent trades",
+    "Choice4": "Posting NAVs only after market close",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "4.10",
+    "QText": "Rebalancing may affect portfolio construction by introducing:",
+    "Choice1": "Broker-dealer matching of redemption baskets",
+    "Choice2": "Arbitrage profit for the board",
+    "Choice3": "Automatic dividend reinvestment",
+    "Choice4": "Turnover-based slippage and deviation from optimal weights",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.1",
+    "QText": "In an ETF creation, what is the typical role of the Authorized Participant (AP)?",
+    "Choice1": "Manage fund custody",
+    "Choice2": "Deliver a basket of securities to the ETF in exchange for creation units",
+    "Choice3": "Calculate NAV for the fund",
+    "Choice4": "Buy ETF shares on the exchange and hold them",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "5.2",
+    "QText": "Why are creation and redemption transactions usually done in-kind rather than in cash?",
+    "Choice1": "To speed up fund performance reporting",
+    "Choice2": "To meet the SEC's leverage guidelines",
+    "Choice3": "To comply with Regulation T",
+    "Choice4": "To preserve tax efficiency by avoiding capital gains",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.3",
+    "QText": "What is typically included in a creation basket?",
+    "Choice1": "Index rulebooks and calculation schedules",
+    "Choice2": "Regulatory filings for the prior quarter",
+    "Choice3": "AP ownership disclosures",
+    "Choice4": "A list of securities and cash matching the ETF\u2019s portfolio",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.4",
+    "QText": "What enables the ETF market price to stay close to its NAV?",
+    "Choice1": "Price-setting by ETF sponsors",
+    "Choice2": "NAV posting by the exchange",
+    "Choice3": "Fund accounting oversight by custodians",
+    "Choice4": "The arbitrage activity of APs using primary market transactions",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.5",
+    "QText": "Which of the following best describes the function of the primary market?",
+    "Choice1": "NAV dissemination platform",
+    "Choice2": "Regulatory approval channel for index changes",
+    "Choice3": "Mechanism for ETF share creation/redemption by APs",
+    "Choice4": "Retail trading of ETFs",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "5.6",
+    "QText": "When does an ETF sponsor typically reject a creation order?",
+    "Choice1": "If the market is closed",
+    "Choice2": "When a retail investor submits the order",
+    "Choice3": "If the ETF is less than one year old",
+    "Choice4": "When the basket is incomplete or improperly valued",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.7",
+    "QText": "What makes creation/redemption a key ETF structural advantage over mutual funds?",
+    "Choice1": "They allow short selling",
+    "Choice2": "They require lower custody costs",
+    "Choice3": "They occur at the institutional level and do not force capital gains on other investors",
+    "Choice4": "They track daily closing prices",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "5.8",
+    "QText": "In-kind redemptions are particularly useful for:",
+    "Choice1": "Reporting NAV to custodians",
+    "Choice2": "Calculating tracking error",
+    "Choice3": "Minimizing tax consequences by transferring securities instead of cash",
+    "Choice4": "Increasing ETF turnover",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "5.9",
+    "QText": "The actual securities delivered in a creation basket:",
+    "Choice1": "Are set weekly by the SEC",
+    "Choice2": "Are chosen by the distributor at random",
+    "Choice3": "Must match the mutual fund holdings of the same sponsor",
+    "Choice4": "Typically mirror the current ETF portfolio and may include cash for rebalancing",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "5.10",
+    "QText": "Which document is updated daily to reflect what securities APs must deliver to create ETF shares?",
+    "Choice1": "The prospectus supplement",
+    "Choice2": "The published creation basket file",
+    "Choice3": "The shareholder servicing agreement",
+    "Choice4": "The ETF rule filing",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "6.1",
+    "QText": "What is the primary function of the seeding process during an ETF launch?",
+    "Choice1": "To file with the SEC for final approval",
+    "Choice2": "To provide tradable shares and establish initial liquidity",
+    "Choice3": "To set the initial fund fee",
+    "Choice4": "To trigger the creation of NAV documentation",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "6.2",
+    "QText": "What distinguishes a fixed NAV launch from a floating NAV launch?",
+    "Choice1": "The NAV is not calculated",
+    "Choice2": "The ETF skips in-kind creation",
+    "Choice3": "The AP sets the price manually",
+    "Choice4": "The NAV is predetermined and stable at launch",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "6.3",
+    "QText": "Why might an ETF issuer prefer a zero-cash launch?",
+    "Choice1": "It avoids IRS audits",
+    "Choice2": "It simplifies AP compensation",
+    "Choice3": "It eliminates the need for legal review",
+    "Choice4": "It maximizes control over portfolio composition while reducing market impact",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "6.4",
+    "QText": "What operational risk can arise during a floating NAV launch?",
+    "Choice1": "Redundant share creation",
+    "Choice2": "Price discovery uncertainty and potential tracking error",
+    "Choice3": "Excessive bid-ask compression",
+    "Choice4": "Delayed board approval",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "6.5",
+    "QText": "How does a reverse merger facilitate an ETF launch?",
+    "Choice1": "It repurposes an existing legal trust for a new strategy",
+    "Choice2": "It establishes a retail trading desk",
+    "Choice3": "It ensures secondary market liquidity",
+    "Choice4": "It provides seed funding from prior NAV gains",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "6.6",
+    "QText": "In a fixed NAV launch, what role does the AP play in fund seeding?",
+    "Choice1": "The AP files the fund\u2019s SAI",
+    "Choice2": "The AP contributes securities or cash to match the predetermined NAV",
+    "Choice3": "The AP initiates a redemption window",
+    "Choice4": "The AP sets the initial bid-ask spread",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "6.7",
+    "QText": "Which party must coordinate to ensure that the ETF appears on exchange trading systems at launch?",
+    "Choice1": "The listing exchange",
+    "Choice2": "The custodian",
+    "Choice3": "The sponsor\u2019s marketing agent",
+    "Choice4": "The fund accountant",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "6.8",
+    "QText": "Why is operational readiness critical during the ETF launch phase?",
+    "Choice1": "To finalize the fiscal year end",
+    "Choice2": "To collect AUM from retail flows",
+    "Choice3": "To reset NAV for each creation unit",
+    "Choice4": "To avoid trading halts and NAV mismatches",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "6.9",
+    "QText": "What document outlines how an ETF will handle its launch and creation process?",
+    "Choice1": "The float tracking memo",
+    "Choice2": "The shareholder letter",
+    "Choice3": "The prospectus",
+    "Choice4": "The AP marketing report",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "6.10",
+    "QText": "Which ETF launch method introduces greater pricing uncertainty at the start of trading?",
+    "Choice1": "Rule 12b-1 plan launch",
+    "Choice2": "Fixed NAV launch",
+    "Choice3": "Reverse trust merger",
+    "Choice4": "Floating NAV launch",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "7.1",
+    "QText": "What is the most common cause of persistent tracking error in an index-tracking ETF?",
+    "Choice1": "Fund expenses",
+    "Choice2": "Index committee errors",
+    "Choice3": "Mispricing by the exchange",
+    "Choice4": "NAV misreporting",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "7.2",
+    "QText": "How is tracking error typically calculated?",
+    "Choice1": "As the annual expense ratio minus the dividend yield",
+    "Choice2": "As the difference between NAV and market price",
+    "Choice3": "As the standard deviation of the difference in daily returns between the ETF and its index",
+    "Choice4": "As the variance of ETF cash flows",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "7.3",
+    "QText": "How can an ETF reduce tracking error from dividend mismatch?",
+    "Choice1": "By switching to a floating NAV",
+    "Choice2": "By reinvesting dividends on the same timeline as the index",
+    "Choice3": "By altering its benchmark index",
+    "Choice4": "By adjusting its redemption frequency",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "7.4",
+    "QText": "What is one operational cause of tracking error unrelated to portfolio composition?",
+    "Choice1": "Secondary market bid-ask spreads",
+    "Choice2": "Intraday volatility",
+    "Choice3": "Timing of cash flows and fund expenses",
+    "Choice4": "Annual report disclosures",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "7.5",
+    "QText": "What does a tracking error close to zero indicate?",
+    "Choice1": "The NAV is overstated",
+    "Choice2": "The ETF is outperforming the benchmark",
+    "Choice3": "The ETF is trading at a discount",
+    "Choice4": "The ETF is tightly replicating its index",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "7.6",
+    "QText": "How does in-kind creation help minimize tracking error?",
+    "Choice1": "By locking NAV early",
+    "Choice2": "By reducing portfolio turnover and tax impact",
+    "Choice3": "By matching the market spread",
+    "Choice4": "By avoiding redemptions",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "7.7",
+    "QText": "Which fund structure feature helps limit tracking error?",
+    "Choice1": "Active trading by the sponsor",
+    "Choice2": "Transparent index methodology and daily holdings disclosure",
+    "Choice3": "Large bid-ask spreads",
+    "Choice4": "Use of synthetic instruments",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "7.8",
+    "QText": "What is the relationship between tracking error and tracking difference?",
+    "Choice1": "They are both NAV-based accounting terms",
+    "Choice2": "Tracking difference is the average return gap; tracking error is its variability",
+    "Choice3": "Tracking error always equals tracking difference",
+    "Choice4": "Tracking difference is only used in mutual funds",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "7.9",
+    "QText": "How does rebalancing frequency of the index affect tracking error?",
+    "Choice1": "It has no impact",
+    "Choice2": "More frequent rebalances can increase tracking error if not mirrored promptly",
+    "Choice3": "Weekly rebalances eliminate tracking error",
+    "Choice4": "Rebalancing affects only turnover, not tracking error",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "7.10",
+    "QText": "Which portfolio strategy most closely minimizes tracking error?",
+    "Choice1": "Thematic tilting",
+    "Choice2": "Full replication of the index",
+    "Choice3": "Smart beta targeting",
+    "Choice4": "Equal-weight reconstitution",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "8.1",
+    "QText": "What distinguishes explicit from implicit transaction costs in ETF trading?",
+    "Choice1": "Explicit costs are direct and known (e.g., commissions); implicit costs result from market dynamics",
+    "Choice2": "Implicit costs are listed in the prospectus",
+    "Choice3": "Explicit costs occur only in secondary markets",
+    "Choice4": "Explicit costs include index turnover",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "8.2",
+    "QText": "Which of the following is an implicit cost in ETF execution?",
+    "Choice1": "Custodian reconciliation cost",
+    "Choice2": "Brokerage fees",
+    "Choice3": "Licensing expense",
+    "Choice4": "Price movement caused by the fund\u2019s own trade (market impact)",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "8.3",
+    "QText": "What is the potential tradeoff when trying to minimize tracking error?",
+    "Choice1": "Regulatory censure",
+    "Choice2": "Fewer authorized participants",
+    "Choice3": "Increased NAV precision",
+    "Choice4": "Higher transaction costs",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "8.4",
+    "QText": "According to best execution standards under the Advisers Act, what must an ETF manager consider when placing trades?",
+    "Choice1": "Filing status of the SAI",
+    "Choice2": "Price, cost, speed, and likelihood of execution",
+    "Choice3": "Annual turnover",
+    "Choice4": "Fund AUM and board compensation",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "8.5",
+    "QText": "What role does volume-weighted average price (VWAP) play in evaluating ETF execution quality?",
+    "Choice1": "It validates shareholder identity",
+    "Choice2": "It replaces the official NAV",
+    "Choice3": "It determines fund classification",
+    "Choice4": "It benchmarks execution against a time-weighted average of trading prices",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "8.6",
+    "QText": "Why might a portfolio manager delay execution even if an index rebalance has occurred?",
+    "Choice1": "To reduce market impact by avoiding crowded trades",
+    "Choice2": "To trigger in-kind creation",
+    "Choice3": "To avoid SEC pricing guidelines",
+    "Choice4": "To extend NAV reporting deadlines",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "8.7",
+    "QText": "What is the primary execution challenge with small-cap or illiquid stocks in ETF portfolios?",
+    "Choice1": "Elimination of creation baskets",
+    "Choice2": "Disqualification under Rule 6c-11",
+    "Choice3": "Higher market impact and wider bid-ask spreads",
+    "Choice4": "Invalidation of AP status",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "8.8",
+    "QText": "What is a key consideration when balancing tracking error and shareholder benefit?",
+    "Choice1": "Increasing portfolio turnover for liquidity",
+    "Choice2": "Matching fund launch method to index turnover",
+    "Choice3": "Avoiding excessive cost from trading for small index changes",
+    "Choice4": "Pricing fund assets using MOC pricing",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "8.9",
+    "QText": "Which metric helps estimate trading difficulty for a given security?",
+    "Choice1": "Standard deviation of NAV",
+    "Choice2": "Total Return",
+    "Choice3": "Average Daily Volume (ADV)",
+    "Choice4": "S&P factor exposure",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "8.10",
+    "QText": "What kind of trading strategy helps minimize price slippage over time?",
+    "Choice1": "Equal-weighted rotation",
+    "Choice2": "Premium yield stacking",
+    "Choice3": "Algorithmic trading with slicing and pacing",
+    "Choice4": "Market open liquidation",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "9.1",
+    "QText": "What is the primary mechanism ETFs use to minimize taxable capital gains distributions?",
+    "Choice1": "SAI publication rules",
+    "Choice2": "Use of closed-end fund wrappers",
+    "Choice3": "Daily NAV resets",
+    "Choice4": "In-kind redemptions that remove appreciated securities from the portfolio",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "9.2",
+    "QText": "How do Custom In-Kind Baskets (CIBs) enhance tax efficiency?",
+    "Choice1": "By changing the expense ratio",
+    "Choice2": "By enabling the ETF to selectively remove low-basis shares",
+    "Choice3": "By reallocating index weights",
+    "Choice4": "By pausing NAV updates",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "9.3",
+    "QText": "What regulatory body governs wash sale rules for ETFs?",
+    "Choice1": "NYSE",
+    "Choice2": "SEC",
+    "Choice3": "IRS",
+    "Choice4": "FINRA",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "9.4",
+    "QText": "In ETF accounting, what is meant by \u201clot-level detail\u201d?",
+    "Choice1": "Batching redemptions across custodians",
+    "Choice2": "Publishing NAV per shareholder",
+    "Choice3": "Pooling all trades into a single average",
+    "Choice4": "Tracking each trade's cost basis and holding period individually",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "9.5",
+    "QText": "What is the portfolio manager\u2019s role in ETF tax management?",
+    "Choice1": "Eliminate tracking error through NAV smoothing",
+    "Choice2": "Coordinate with fund accountants to execute tax-aware trades",
+    "Choice3": "Prepare IRS Form 1099",
+    "Choice4": "Approve CIK filings",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "9.6",
+    "QText": "Which type of share is most often targeted for removal during in-kind redemptions to minimize tax?",
+    "Choice1": "Illiquid convertible bonds",
+    "Choice2": "Shares held less than 1 day",
+    "Choice3": "Shares with high expense ratios",
+    "Choice4": "Low-cost-basis appreciated shares",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "9.7",
+    "QText": "When is a capital gain distribution likely to occur in an ETF?",
+    "Choice1": "At the time of share creation",
+    "Choice2": "When redemptions or trades force realization of gains the fund cannot offset",
+    "Choice3": "When NAV falls below $10",
+    "Choice4": "When wash sale rules are broken",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "9.8",
+    "QText": "Why are ETFs generally more tax-efficient than mutual funds?",
+    "Choice1": "Because they use cash settlement only",
+    "Choice2": "Because they avoid all IRS filings",
+    "Choice3": "Because their structure enables regular in-kind redemptions that reduce realized gains",
+    "Choice4": "Because they never hold fixed income",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "9.9",
+    "QText": "What determines whether a gain is long-term or short-term?",
+    "Choice1": "ETF\u2019s total NAV",
+    "Choice2": "Price volatility score",
+    "Choice3": "Dividend payment frequency",
+    "Choice4": "Holding period of the asset sold",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "9.10",
+    "QText": "What system typically maintains the ETF\u2019s tax lot data?",
+    "Choice1": "Index calculation engine",
+    "Choice2": "Retail order system",
+    "Choice3": "Custodian recordkeeping platform",
+    "Choice4": "AP\u2019s back office",
+    "Choice5": "",
+    "Correct": "C"
+  }
+]
