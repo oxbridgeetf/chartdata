@@ -1,8 +1,8 @@
 // quiz-loader.js
 // This file should be hosted at: https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/quiz-loader.js
-
 (function() {
-  const JSON_URL = "https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/certification.json";
+  const DEFAULT_JSON_URL = "https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/certification.json";
+  const Q_PREFIX_JSON_URL = "https://raw.githubusercontent.com/oxbridgeetf/chartdata/main/q-questions.json"; // Change to your desired filename
   
   function loadQuestion(qNum) {
     const player = GetPlayer();
@@ -10,15 +10,28 @@
     // Show loading state
     player.SetVar("QText", "Loading question...");
     
-    fetch(JSON_URL + "?t=" + Date.now())
+    // Determine which JSON file to use based on qNum prefix
+    let jsonUrl = DEFAULT_JSON_URL;
+    let lookupQNum = qNum;
+    
+    if (String(qNum).toUpperCase().startsWith('Q')) {
+      jsonUrl = Q_PREFIX_JSON_URL;
+      // Option 1: Keep the Q prefix when looking up (if your JSON has "Q5.2")
+      lookupQNum = qNum;
+      
+      // Option 2: Remove the Q prefix when looking up (if your JSON has "5.2")
+      // lookupQNum = String(qNum).substring(1);
+    }
+    
+    fetch(jsonUrl + "?t=" + Date.now())
       .then(response => response.json())
       .then(data => {
         // Find the question with matching QNum
-        const q = data.find(item => item.QNum === qNum);
+        const q = data.find(item => item.QNum === lookupQNum);
         
         if (!q) {
-          console.error(`Question ${qNum} not found in JSON`);
-          player.SetVar("QText", `Error: Question ${qNum} not found`);
+          console.error(`Question ${lookupQNum} not found in JSON at ${jsonUrl}`);
+          player.SetVar("QText", `Error: Question ${lookupQNum} not found`);
           return;
         }
         
@@ -56,7 +69,7 @@
         const feedbackText = `The correct answer is ${correctLetter}: ${correctText}`;
         player.SetVar("incorrect", feedbackText);
         
-        console.log(`Question ${qNum} loaded successfully`);
+        console.log(`Question ${lookupQNum} loaded successfully from ${jsonUrl}`);
       })
       .catch(error => {
         console.error("Error loading question:", error);
