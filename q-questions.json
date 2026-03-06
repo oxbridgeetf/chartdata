@@ -1,0 +1,852 @@
+[
+  {
+    "QNum": "Q1.1",
+    "QText": "What is a key structural difference between open-end and closed-end mutual funds?",
+    "Choice1": "Open-end funds trade on exchanges throughout the day, while closed-end funds are priced once daily at NAV",
+    "Choice2": "Open-end funds continuously issue and redeem shares at NAV, while closed-end funds have a fixed number of shares that trade on exchanges",
+    "Choice3": "Open-end funds must maintain at least 75% equity allocation, while closed-end funds can hold any asset mix",
+    "Choice4": "Open-end funds charge management fees, while closed-end funds do not charge ongoing fees",
+    "Choice5": "Open-end funds are only available to institutional investors, while closed-end funds are available to retail investors",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q1.2",
+    "QText": "What is a primary benefit of including authorized participants (APs) in ETF exemptive relief applications?",
+    "Choice1": "Authorized participants provide guaranteed returns to ETF shareholders during market downturns",
+    "Choice2": "Authorized participants create and redeem ETF shares in large blocks, helping maintain the ETF's market price close to its net asset value (NAV)",
+    "Choice3": "Authorized participants are required to purchase at least 25% of all ETF shares issued to ensure adequate liquidity",
+    "Choice4": "Authorized participants eliminate the need for the ETF to charge management fees to investors",
+    "Choice5": "Authorized participants serve as the primary regulator overseeing the ETF's compliance with SEC rules",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q1.3",
+    "QText": "Which of the following contributed to the development and growth of the ETF market?",
+    "Choice1": "Congressional acts",
+    "Choice2": "Tax efficiency",
+    "Choice3": "Liquidity",
+    "Choice4": "All of the above",
+    "Choice5": "None of the above",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q1.4",
+    "QText": "Which of the following was not part of 6c-11?",
+    "Choice1": "CIB equalization for active and passive ETFs",
+    "Choice2": "Ease of ETF launch without Exemptive Relief",
+    "Choice3": "Non-taxable trades inside all ETFs",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q2.1",
+    "QText": "ETF infrastructure relied on:",
+    "Choice1": "Stock exchanges",
+    "Choice2": "Stock clearing and settlement",
+    "Choice3": "The Investment Company Act of 1940",
+    "Choice4": "Electronic brokerage accounts",
+    "Choice5": "A, B and C",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q2.2",
+    "QText": "Which member of the ETF ecosystem is primarily responsible for protecting shareholder interests?",
+    "Choice1": "The authorized participants who create and redeem shares",
+    "Choice2": "The market makers who provide liquidity on the exchange",
+    "Choice3": "The board of trustees/directors who oversee the fund on behalf of shareholders",
+    "Choice4": "The custodian who holds the fund's assets",
+    "Choice5": "The lead underwriter who distributes ETF shares to investors",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q2.3",
+    "QText": "Which regulatory body (or bodies) has primary oversight of ETFs?",
+    "Choice1": "The SEC (Securities and Exchange Commission) exclusively",
+    "Choice2": "FINRA (Financial Industry Regulatory Authority) exclusively",
+    "Choice3": "The CFTC (Commodity Futures Trading Commission) exclusively",
+    "Choice4": "The SEC, with additional oversight from FINRA and the exchanges where ETFs trade",
+    "Choice5": "None of the above - ETFs are self-regulated by their boards of trustees",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q2.4",
+    "QText": "What is the primary difference between an index calculation agent and an ETF calculation agent?",
+    "Choice1": "An index calculation agent computes the value of the underlying index, while an ETF calculation agent calculates the ETF's net asset value (NAV)",
+    "Choice2": "An index calculation agent is regulated by the CFTC, while an ETF calculation agent is regulated by FINRA",
+    "Choice3": "An index calculation agent only works with equity indices, while an ETF calculation agent works with all asset classes",
+    "Choice4": "An index calculation agent determines the ETF's market price, while an ETF calculation agent determines the creation/redemption price",
+    "Choice5": "There is no difference - they are the same role with different names",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q2.5",
+    "QText": "Which primary market player is responsible for maintaining records of ETF shareholder ownership and processing share transfers?",
+    "Choice1": "Authorized participants (APs), who create and redeem ETF shares in the primary market",
+    "Choice2": "The transfer agent, who keeps the official registry of shareholders and processes ownership changes",
+    "Choice3": "ETF distributors, who coordinate the marketing and sale of ETF shares to investors",
+    "Choice4": "The NSCC (National Securities Clearing Corporation), which clears and settles ETF trades between brokers",
+    "Choice5": "All of the above share equal responsibility for maintaining shareholder records",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q3.1",
+    "QText": "Which of the following ETF strategies blurs the line between active and passive management?",
+    "Choice1": "An ETF that tracks the S&P 500 Index using full replication",
+    "Choice2": "An ETF that follows a rules-based smart beta strategy weighting stocks by factors like value, momentum, or low volatility",
+    "Choice3": "An ETF that invests in Treasury bonds with a buy-and-hold approach",
+    "Choice4": "An ETF that tracks a broad market-cap weighted international equity index",
+    "Choice5": "An ETF that holds physical gold bullion",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q3.2",
+    "QText": "Which of the elements to an index is most important?",
+    "Choice1": "Weighting",
+    "Choice2": "Selection",
+    "Choice3": "Timing",
+    "Choice4": "Eligible universe",
+    "Choice5": "They're all important and all are required for a robust index methodology",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q3.3",
+    "QText": "What weighting and selection mechanisms are used in the SWA Index?",
+    "Choice1": "Market capitalization",
+    "Choice2": "Ticker",
+    "Choice3": "Industry",
+    "Choice4": "A and B",
+    "Choice5": "A and C",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q3a.1",
+    "QText": "How are index shares and index values related?",
+    "Choice1": "Index values are index shares times weights",
+    "Choice2": "Index values are index shares times price",
+    "Choice3": "Index shares and index values are the same",
+    "Choice4": "None of the above",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q3a.2",
+    "QText": "What would happen if index shares were not adjusted for ex-dividend prices?",
+    "Choice1": "The index opening value would be too low",
+    "Choice2": "The index opening value would be too high",
+    "Choice3": "Nothing: there is no index share adjustment for dividends",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q4.1",
+    "QText": "What would happen if a name in the current index is removed from the eligible universe?",
+    "Choice1": "The name is immediately removed from the index",
+    "Choice2": "Nothing: once the name is eligible it remains in the index",
+    "Choice3": "The name is removed in the next rebalance",
+    "Choice4": "Future rebalances have one fewer constituents",
+    "Choice5": "None of the above",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q4.2",
+    "QText": "On a rebalance day, the index adjustment for a given ticker is the difference in index shares between the index closing file and the pro forma closing file.",
+    "Choice1": "True",
+    "Choice2": "False: The index adjustment for a given ticker is the difference in index shares between the index open file and the pro forma open file",
+    "Choice3": "False: index shares must be adjusted to account for different index levels in the pro forma versus the index",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q5.1",
+    "QText": "Which of these is true?",
+    "Choice1": "APs construct baskets based on files disseminated by NSCC",
+    "Choice2": "APs construct baskets through Transfer Agents",
+    "Choice3": "ETF Distributors' clients are the shareholders of the ETF",
+    "Choice4": "A and B",
+    "Choice5": "A and C",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q5.2",
+    "QText": "Which of these is true?",
+    "Choice1": "Secondary mkt prices must match NAV",
+    "Choice2": "Second market prices can only exceed NAV",
+    "Choice3": "When secondary prices are higher, APs buy ETFs and redeem",
+    "Choice4": "When secondary prices are lower, APs buy ETFs and redeem",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q5.3",
+    "QText": "In a Portfolio Composition File (PCF), what is the difference between actual cash and expected cash components?",
+    "Choice1": "Actual cash is the management fee, while expected cash is the dividend payments to shareholders",
+    "Choice2": "Actual cash represents cash holdings in the ETF portfolio, while expected cash is an estimated cash amount to balance the creation basket when securities can't be divided evenly",
+    "Choice3": "Actual cash is used for redemptions only, while expected cash is used for creations only",
+    "Choice4": "Actual cash is held by the custodian, while expected cash is held by the authorized participant",
+    "Choice5": "There is no difference - both terms refer to the same cash component in the creation/redemption process",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q5.4",
+    "QText": "For PCF construction, what generally makes the most sense for an active ETF?",
+    "Choice1": "Index method",
+    "Choice2": "Replacing the index with a benchmark",
+    "Choice3": "Holdings method",
+    "Choice4": "All cash ",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q6.1",
+    "QText": "What is the \"Catch-22\" problem ETF issuers face when launching a new ETF regarding the Portfolio Composition File (PCF) and NAV?",
+    "Choice1": "The PCF requires disclosure of the NAV per share, but no NAV exists until the first creation occurs and assets are received",
+    "Choice2": "The PCF must be filed with the SEC 90 days before launch, but the NAV can only be calculated 30 days in advance",
+    "Choice3": "The PCF needs approval from authorized participants, but APs won't participate until the NAV is established",
+    "Choice4": "The NAV must be published on the exchange, but exchanges won't list the ETF until the PCF is finalized",
+    "Choice5": "There is no Catch-22 - the transfer agent calculates a preliminary NAV before the first creation",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q6.2",
+    "QText": "Which launch method results in the most cash?",
+    "Choice1": "Fixed NAV",
+    "Choice2": "Floating NAV",
+    "Choice3": "Zero-Cash NAV",
+    "Choice4": "Any of these could potentially yield the most cash",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q6.3",
+    "QText": "What is tested prior to an ETF launch?",
+    "Choice1": "PCF construction",
+    "Choice2": "Cash calculations",
+    "Choice3": "Index file dissemination and/or receipt",
+    "Choice4": "NSCC process",
+    "Choice5": "All of the above",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q7.1",
+    "QText": "Tracking errors are always non-negative.",
+    "Choice1": "True",
+    "Choice2": "True if TE's represent standard deviations",
+    "Choice3": "True if TE's represent performance",
+    "Choice4": "False if TE's represent standard deviations",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q7.2",
+    "QText": "Which sources of TE are under the PM's control?",
+    "Choice1": "Securities lending",
+    "Choice2": "Tax management",
+    "Choice3": "Corporate actions",
+    "Choice4": "Trading halts",
+    "Choice5": "A and B",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q7.3",
+    "QText": "If a portfolio holds the exact composition of an index every day, there can be no tracking error.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q8.1",
+    "QText": "How do commissions and bid-ask spreads impact the total cost of trading ETFs?",
+    "Choice1": "Commissions are paid to the ETF issuer, while bid-ask spreads are paid to the exchange",
+    "Choice2": "Commissions are one-time trading costs paid to the broker, while bid-ask spreads represent the difference between the buying and selling price and are captured by market makers",
+    "Choice3": "Commissions only apply to institutional investors, while bid-ask spreads only apply to retail investors",
+    "Choice4": "Commissions are included in the ETF's expense ratio, while bid-ask spreads are disclosed in the prospectus",
+    "Choice5": "Commissions and bid-ask spreads are the same cost, just measured differently",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q8.2",
+    "QText": "What is a primary risk faced by an index ETF portfolio manager when executing a creation or rebalance trade over multiple days?",
+    "Choice1": "The ETF's expense ratio will increase proportionally with each additional trading day",
+    "Choice2": "Authorized participants will refuse to participate in creations that take longer than one day",
+    "Choice3": "Market movement during the multi-day trading period can cause the ETF to deviate from its target index, creating tracking error",
+    "Choice4": "The SEC requires additional disclosure filings for any trades executed over more than two days",
+    "Choice5": "The fund's NAV calculation must be suspended until all trades are completed",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q8.3",
+    "QText": "What is the difference between turnover and two-way turnover when measuring ETF portfolio activity?",
+    "Choice1": "Turnover applies to equity ETFs, while two-way turnover applies to fixed income ETFs",
+    "Choice2": "Turnover includes creations and redemptions, while two-way turnover excludes them",
+    "Choice3": "Turnover measures only purchases, while two-way turnover measures only sales",
+    "Choice4": "Turnover measures the lesser of purchases or sales divided by average assets, while two-way turnover measures the sum of purchases and sales divided by average assets",
+    "Choice5": "There is no difference - they are the same metric with different names",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q8.4",
+    "QText": "MOC orders guarantee that the portfolio will track the index.",
+    "Choice1": "True",
+    "Choice2": "False, because prices may change from the time the order is placed and the day's close",
+    "Choice3": "False, because changing prices might require changes to declared MOC shares for sale or purchase",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q8.5",
+    "QText": "PM's should always manage transactions to match the index composition on a daily basis.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q9.1",
+    "QText": "What are tax lots in the context of ETF portfolio management?",
+    "Choice1": "The number of shares an investor must purchase to qualify for favorable tax treatment",
+    "Choice2": "Groups of identical securities purchased at different times and prices, each with its own cost basis and acquisition date",
+    "Choice3": "The portion of an ETF's assets allocated to tax-exempt municipal bonds",
+    "Choice4": "Special creation units that authorized participants use exclusively for tax-advantaged accounts",
+    "Choice5": "The annual distribution of capital gains that ETFs pay to shareholders",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q9.2",
+    "QText": "How does an ETF portfolio manager handle cost basis updates when a portfolio holding undergoes a corporate action such as a stock split or merger?",
+    "Choice1": "The cost basis remains completely unchanged regardless of the corporate action type",
+    "Choice2": "The cost basis is automatically reset to current market value on the ex-date of any corporate action",
+    "Choice3": "The cost basis is adjusted proportionally to reflect the stock split, spinoff, or merger terms while maintaining the original total dollar investment and acquisition date for tax purposes",
+    "Choice4": "The portfolio manager must sell the position and repurchase it to establish a new cost basis after any corporate action",
+    "Choice5": "Corporate actions trigger an automatic capital gain distribution equal to the change in basis",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q9.3",
+    "QText": "What is a key difference in tax treatment between mutual fund and ETF creations and redemptions?",
+    "Choice1": "Mutual funds can use in-kind transactions for both creations and redemptions, while ETFs must use cash",
+    "Choice2": "Both mutual funds and ETFs have identical tax treatment for creations and redemptions under current IRS rules",
+    "Choice3": "Mutual funds are exempt from capital gains taxes on all redemptions, while ETFs must pay taxes on every transaction",
+    "Choice4": "ETFs must distribute all capital gains annually, while mutual funds can defer distributions indefinitely",
+    "Choice5": "ETFs deliver securities in-kind during redemptions without triggering capital gains, while mutual funds typically redeem in cash and must recognize gains on appreciated securities sold to meet redemptions",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q9.4",
+    "QText": "What is a wash sale, and what is the wash sale window that triggers the rule?",
+    "Choice1": "A wash sale occurs when an ETF trades below its NAV for 30 consecutive days, triggering a mandatory redemption window",
+    "Choice2": "A wash sale is when authorized participants create and redeem ETF shares on the same day, creating a 61-day settlement window",
+    "Choice3": "A wash sale occurs when a portfolio manager fails to execute trades within the market's wash window at the end of each trading day",
+    "Choice4": "A wash sale is triggered when an ETF's trading volume exceeds 30% of its average daily volume within a 15-day period",
+    "Choice5": "A wash sale occurs when an investor sells a security at a loss and repurchases the same or substantially identical security within 30 days before or after the sale, disallowing the tax loss deduction",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q9.5",
+    "QText": "What is tax-loss harvesting in the context of ETF portfolio management?",
+    "Choice1": "The strategic sale of securities at a loss to offset capital gains, reducing the fund's overall tax liability and potential distributions to shareholders",
+    "Choice2": "A mandatory year-end process where ETFs must distribute all accumulated losses to shareholders",
+    "Choice3": "The practice of authorized participants delivering depreciated securities during creations to lower the ETF's cost basis",
+    "Choice4": "A penalty imposed by the IRS when an ETF fails to meet minimum distribution requirements",
+    "Choice5": "The automatic reinvestment of dividend distributions to harvest compounding returns",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q10.1",
+    "QText": "What challenge do ETF portfolio managers face regarding accrued income when making investment decisions?",
+    "Choice1": "Accrued income must be distributed to shareholders within 24 hours of receipt, limiting reinvestment opportunities",
+    "Choice2": "The IRS prohibits ETFs from recognizing any accrued interest or dividends until cash is actually received",
+    "Choice3": "Accruals are only calculated quarterly, creating a mismatch with daily NAV calculations",
+    "Choice4": "Portfolio managers must decide whether to invest based on accrued but not yet received income (like dividends or interest), creating a risk if they deploy cash before it actually arrives",
+    "Choice5": "Accrued income automatically triggers a tax liability even when the fund hasn't received the cash payment",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q10.2",
+    "QText": "What accounting issue might confuse someone reviewing an ETF portfolio after the fund has declared but not yet paid a distribution?",
+    "Choice1": "Cash appears to be sitting in the portfolio even though it's already been allocated to the upcoming distribution payment, potentially making the portfolio look over-funded or under-invested",
+    "Choice2": "The NAV automatically drops by the distribution amount on the declaration date, creating a tracking error against the index",
+    "Choice3": "Authorized participants are prohibited from creating new shares during the period between declaration and payment dates",
+    "Choice4": "The portfolio holdings must be frozen and cannot be rebalanced until after the distribution is paid",
+    "Choice5": "Accrued dividends from portfolio securities are double-counted in both the cash balance and the individual security positions",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q10.3",
+    "QText": "Why would an ETF portfolio manager publish different baskets for creations versus redemptions?",
+    "Choice1": "The SEC mandates different baskets to prevent market manipulation by authorized participants",
+    "Choice2": "During creations, the PM can request a representative basket of liquid securities, while during redemptions, the PM can deliver specific tax lots to optimize tax efficiency and portfolio management",
+    "Choice3": "Creation baskets must match the index weights exactly, while redemption baskets can deviate by up to 20%",
+    "Choice4": "Different baskets are only permitted for actively managed ETFs, not index ETFs",
+    "Choice5": "Using separate baskets eliminates the need for cash balancing components in the PCF",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q11.1",
+    "QText": "For which kind of corporate action will the Index Closing File and the Index Open File be identical?",
+    "Choice1": "Merger",
+    "Choice2": "Acquisition",
+    "Choice3": "Split",
+    "Choice4": "Rights Offering",
+    "Choice5": "None of the above",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q11.2",
+    "QText": "Which deals require a security sale? ",
+    "Choice1": "Cash + Stock with acquiror in index",
+    "Choice2": "All stock with acquiror in index",
+    "Choice3": "All stock acquiror not in index",
+    "Choice4": "None of the above",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q11.3",
+    "QText": "Why did portfolios impacted by the HDP/CLDR deal underperform?",
+    "Choice1": "They didn't",
+    "Choice2": "Indices assume trades that may not be available to portfolio managers",
+    "Choice3": "Because Cloudera backed out of the deal",
+    "Choice4": "None of the above",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q11.4",
+    "QText": "What makes a rights offering so complicated for ETF portfolio managers?",
+    "Choice1": "Not all rights are renounceable",
+    "Choice2": "Rights require cash to exercise",
+    "Choice3": "Rights must be exercised",
+    "Choice4": "A and B",
+    "Choice5": "A, B and C",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q11.5",
+    "QText": "What is a key portfolio management consideration for ETF portfolio managers when a holding undergoes a stock split or reverse stock split?",
+    "Choice1": "The split changes the number of shares held but not the total value, requiring the PM to update creation basket quantities, trading systems, and lot-size calculations while maintaining proper index weight alignment",
+    "Choice2": "Stock splits automatically trigger mandatory capital gains distributions to all ETF shareholders",
+    "Choice3": "The ETF must suspend trading for at least one full day to allow the split to process through all systems",
+    "Choice4": "Reverse stock splits always result in fractional shares that must be sold for cash-in-lieu, creating taxable events",
+    "Choice5": "The PM is required to file an amended prospectus with the SEC within 48 hours of any split announcement",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q11.6",
+    "QText": "Why would an ETF portfolio manager choose to use cash-in-lieu (CIL) during a corporate action?",
+    "Choice1": "Cash-in-lieu payments reduce the ETF's expense ratio by eliminating custodian fees",
+    "Choice2": "The SEC requires cash-in-lieu for all corporate actions involving foreign securities",
+    "Choice3": "When a corporate action creates fractional shares, rights, or complex securities that cannot be efficiently transferred in-kind, the PM uses CIL to simplify the creation/redemption process and avoid operational complications",
+    "Choice4": "Cash-in-lieu automatically defers all capital gains taxes until the following fiscal year",
+    "Choice5": "Using CIL during corporate actions eliminates tracking error against the benchmark index",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q12.1",
+    "QText": "What is the optimal strategy for disposing of securities with unrealized gains versus unrealized losses?",
+    "Choice1": "Securities with unrealized gains should be sold in the market, while securities with unrealized losses should be redeemed through authorized participants",
+    "Choice2": "Both securities with gains and losses should be sold in the market to maintain equal treatment of all investors",
+    "Choice3": "Securities with unrealized gains should be redeemed through authorized participants (avoiding taxable gains), while securities with unrealized losses should be sold in the market (harvesting tax losses)",
+    "Choice4": "All securities should be redeemed in-kind regardless of gain/loss status to preserve fund liquidity",
+    "Choice5": "Securities with the highest trading volume should always be prioritized for redemption, regardless of tax lot basis",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q12.2",
+    "QText": "In a standard creation followed by a custom redemption scenario, what outcome does the ETF portfolio manager achieve?",
+    "Choice1": "The fund size grows because more shares are created than redeemed",
+    "Choice2": "The fund receives a representative basket of securities and delivers back securities with high unrealized capital gains, effectively refreshing the portfolio's tax position while maintaining constant fund size",
+    "Choice3": "The authorized participant receives cash-in-lieu for all securities to simplify the transaction",
+    "Choice4": "The fund is required to distribute capital gains to all shareholders after the custom redemption",
+    "Choice5": "The portfolio manager must match the redemption basket exactly to the creation basket received",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q12.3",
+    "QText": "Why would an ETF portfolio manager use a custom creation followed by a standard redemption instead of the more typical standard creation followed by custom redemption?",
+    "Choice1": "Custom creations allow the fund to accept cash instead of securities, improving liquidity",
+    "Choice2": "When the fund has net unrealized losses and realized gains for the year, a custom creation allows the PM to sell loss positions in the market (harvesting tax losses) while receiving fresh positions through the creation basket",
+    "Choice3": "Custom creations are required by the SEC whenever a fund undergoes an index rebalance near year-end",
+    "Choice4": "Standard redemptions always result in lower transaction costs than custom redemptions",
+    "Choice5": "This approach allows the fund to distribute capital gains more evenly across all shareholders",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q12.4",
+    "QText": "What is the relationship between SEC Rule 6c-11 and the use of custom in-kind baskets for ETFs?",
+    "Choice1": "Rule 6c-11 prohibits all custom baskets to ensure fair treatment of authorized participants",
+    "Choice2": "Rule 6c-11 requires that all ETFs must use identical baskets for both creations and redemptions",
+    "Choice3": "Rule 6c-11 permits custom baskets for index-based ETFs as long as they comply with the rule's conditions, including that custom baskets are based on objective criteria applied consistently",
+    "Choice4": "Rule 6c-11 only applies to actively managed ETFs and does not address custom basket practices",
+    "Choice5": "Rule 6c-11 mandates that custom baskets can only be used during the last month of the fiscal year for tax purposes",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q13.1",
+    "QText": "Which of the following would be considered material non-public information (MNPI) that an ETF portfolio manager must handle carefully?",
+    "Choice1": "The current published holdings of an ETF as disclosed on the fund's website",
+    "Choice2": "Advance knowledge from an index provider about which stocks will be added or deleted in an upcoming index rebalance before public announcement",
+    "Choice3": "The daily NAV calculation published at 4:00 PM after market close",
+    "Choice4": "Information about an ETF's expense ratio found in the prospectus",
+    "Choice5": "Historical trading volume data for the ETF available on the exchange's website",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q13.2",
+    "QText": "According to the Golden Equation, which transactions are processed first?",
+    "Choice1": "Primary market transactions",
+    "Choice2": "Secondary market transactions",
+    "Choice3": "Both are considered at the same time",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q14.1",
+    "QText": "What are \"base prices\" in an international ETF index closing file, and why are they important to the portfolio manager?",
+    "Choice1": "Base prices are the original purchase prices of securities for tax lot tracking purposes",
+    "Choice2": "Base prices are fair value estimates used when foreign markets are closed during US trading hours",
+    "Choice3": "Base prices are minimum price thresholds that trigger automatic index rebalancing",
+    "Choice4": "Base prices are the local market closing prices of foreign securities converted to the ETF's trading currency (usually USD), providing the currency-adjusted benchmark the PM uses for portfolio valuation and rebalancing decisions",
+    "Choice5": "Base prices are the bid-ask midpoints used to calculate creation unit values",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q14.2",
+    "QText": "What are the implications for an ETF portfolio manager when executing a multi-unit creation with foreign securities that require rounding to standard lot sizes in their local markets?",
+    "Choice1": "The portfolio manager must reject all multi-unit creations to avoid rounding errors",
+    "Choice2": "Each creation unit must be assembled independently in local markets, preventing the PM from benefiting from economies of scale",
+    "Choice3": "Rounding errors compound across multiple units, potentially creating larger discrepancies between the total basket value delivered and the precise NAV of the units created",
+    "Choice4": "Foreign exchanges automatically waive lot size requirements for ETF creation transactions",
+    "Choice5": "The SEC prohibits multi-unit creations for international ETFs to prevent settlement failures",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q14.3",
+    "QText": "Why do foreign securities transactions typically have higher transaction costs compared to domestic US securities for ETF portfolio managers?",
+    "Choice1": "Foreign governments impose mandatory capital gains taxes on all cross-border transactions",
+    "Choice2": "The SEC requires additional filing fees for any trades executed on non-US exchanges",
+    "Choice3": "Foreign markets often have wider bid-ask spreads, higher brokerage commissions, and foreign exchange conversion costs",
+    "Choice4": "Foreign securities can only be traded during US market hours, creating artificial scarcity",
+    "Choice5": "All foreign securities must be purchased through authorized participants, who charge premium fees",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q14.4",
+    "QText": "How do overseas withholding taxes impact an ETF portfolio manager's operations and fund performance?",
+    "Choice1": "Withholding taxes are automatically refunded within 30 days, so they have no long-term impact on the portfolio",
+    "Choice2": "Foreign governments withhold taxes on dividends paid to the ETF, reducing the cash received and creating potential tracking error versus the index, plus requiring tax reclaim processes that may take months or years",
+    "Choice3": "Withholding taxes only apply to bond interest, not equity dividends, so most equity ETF managers are unaffected",
+    "Choice4": "The ETF can pass through all withholding taxes directly to authorized participants during redemptions",
+    "Choice5": "US tax treaties eliminate all foreign withholding taxes for registered investment companies",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q14.5",
+    "QText": "A dividend is declared but has a week before it is paid.  Currency fluctuation could result in: ",
+    "Choice1": "Tracking error",
+    "Choice2": "Losses to the portfolio",
+    "Choice3": "Gains to the portfolio",
+    "Choice4": "A and B",
+    "Choice5": "A, B and C",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q14.6",
+    "QText": "Why do international ETFs typically have earlier cutoff times for creation and redemption orders compared to domestic US ETFs?",
+    "Choice1": "The SEC mandates earlier cutoffs for all funds holding more than 50% foreign securities",
+    "Choice2": "Authorized participants require extra time to process foreign currency conversions",
+    "Choice3": "The ETF portfolio manager needs additional time to communicate orders to foreign markets, account for time zone differences, and execute trades before foreign markets close (which often occurs during or before US market hours)",
+    "Choice4": "Foreign exchanges charge penalty fees for orders submitted after 2:00 PM Eastern Time",
+    "Choice5": "International ETFs must calculate their NAV two hours before US market close to comply with UCITS regulations",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q14.7",
+    "QText": "What is \"assisted trading\" in the context of international ETF portfolio management?",
+    "Choice1": "When authorized participants help the portfolio manager execute large block trades to minimize market impact",
+    "Choice2": "When the index provider assists the ETF in rebalancing by providing advance notice of index changes",
+    "Choice3": "When algorithmic trading systems automatically execute trades based on pre-programmed parameters",
+    "Choice4": "When the ETF portfolio manager must rely on local brokers or custodians to execute trades in foreign markets where the fund does not have direct trading accounts or access",
+    "Choice5": "When the fund's distributor provides liquidity support during periods of market stress",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q14.8",
+    "QText": "What is the impact to an ETF when it does not participate in a rights offering from one of its portfolio holdings?",
+    "Choice1": "The ETF automatically receives cash compensation equal to the value of the unexercised rights",
+    "Choice2": "The ETF's position in that security becomes diluted as other shareholders exercise their rights and new shares are issued, causing the fund's ownership percentage and the position's value to decrease relative to the index",
+    "Choice3": "The company issuing the rights must repurchase the ETF's existing shares at a premium to compensate for non-participation",
+    "Choice4": "The ETF is prohibited from holding the security for 90 days following the rights offering expiration",
+    "Choice5": "Non-participation has no impact because rights offerings are optional corporate actions with no economic consequences",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q15.1",
+    "QText": "How does SEC Rule 6c-11 treat custom in-kind baskets (CIBs) for actively managed ETFs compared to index-based ETFs?",
+    "Choice1": "Rule 6c-11 prohibits actively managed ETFs from using custom baskets due to front-running concerns",
+    "Choice2": "Actively managed ETFs must still obtain individual exemptive relief to use custom baskets, while index ETFs can use them under 6c-11",
+    "Choice3": "Rule 6c-11 allows both actively managed and index-based ETFs that comply with the rule to use custom in-kind baskets",
+    "Choice4": "Actively managed ETFs can only use custom baskets during the final month of the fiscal year for tax purposes",
+    "Choice5": "Rule 6c-11 permits custom baskets for index ETFs but requires actively managed ETFs to publicly disclose all custom basket details in real-time",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q15.2",
+    "QText": "What should an actively managed ETF portfolio manager do if the benchmark index changes its composition?",
+    "Choice1": "Immediately rebalance the portfolio to match the new benchmark composition exactly to minimize tracking error",
+    "Choice2": "File an amendment to the fund's exemptive relief with the SEC within 10 business days",
+    "Choice3": "Evaluate whether the benchmark changes affect the portfolio based on the fund's active investment strategy, but recognize that active managers are not required to track benchmark changes and can maintain positions based on their own investment views",
+    "Choice4": "Automatically sell all securities removed from the benchmark and purchase all securities added to avoid compliance violations",
+    "Choice5": "Suspend creations and redemptions until the portfolio fully reflects the new benchmark composition",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q15.3",
+    "QText": "How should an active PM evaluate a corporate action?",
+    "Choice1": "Do what the benchmark does",
+    "Choice2": "Do nothing and have the portfolio updated according to the deal terms",
+    "Choice3": "Evaluate the deal and decide what to do in according with the IPS",
+    "Choice4": "None of the above",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q15.4",
+    "QText": "What is a risk of an actively managed ETF portfolio manager using benchmark index weights when constructing the Portfolio Composition File (PCF) for creations and redemptions?",
+    "Choice1": "The fund will automatically track the benchmark perfectly, eliminating all active management fees",
+    "Choice2": "The actual portfolio holdings differ from benchmark weights due to active bets, so using benchmark-weighted baskets creates a mismatch that forces the PM to rebalance after each creation/redemption, generating unnecessary trading costs and potential tracking issues",
+    "Choice3": "Authorized participants are required by Rule 6c-11 to reject any PCF that references benchmark data",
+    "Choice4": "Using benchmark weights triggers wash sale violations under IRS regulations",
+    "Choice5": "The fund's expense ratio must be reduced to match passive index fund levels",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q16.1",
+    "QText": "What is the difference between clean and dirty prices in fixed income securities, and why does it matter for ETF portfolio managers?",
+    "Choice1": "Clean price excludes accrued interest while dirty price includes accrued interest; the PM must use dirty prices for accurate portfolio valuation and NAV calculation since the fund owns both the bond and the accrued interest",
+    "Choice2": "Clean prices are adjusted for currency fluctuations while dirty prices are in local currency terms",
+    "Choice3": "Clean prices reflect investment-grade bonds while dirty prices apply only to high-yield or distressed securities",
+    "Choice4": "Clean prices are published by exchanges while dirty prices are internal estimates used only for tax reporting",
+    "Choice5": "Clean prices include all trading fees and commissions while dirty prices represent the base security value only",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q16.2",
+    "QText": "Fixed Income Index Files are more complex because:",
+    "Choice1": "Indices usually hold many more securities",
+    "Choice2": "Issues have many more data fields",
+    "Choice3": "Indices often hold cash so are not fully invested",
+    "Choice4": "All of the above",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q16.3",
+    "QText": "For Fixed Income Index ETFs, replication is generally based on:",
+    "Choice1": "Duration",
+    "Choice2": "Convexity",
+    "Choice3": "Industry",
+    "Choice4": "A and B",
+    "Choice5": "A, B and C",
+    "Correct": "E"
+  },
+  {
+    "QNum": "Q16.4",
+    "QText": "Why can multiple creation/redemption orders on a given day be more complex for a fixed income ETF portfolio manager relative to an equity index ETF?",
+    "Choice1": "Bond settlement cycles are longer than equity settlement cycles, creating timing mismatches",
+    "Choice2": "Fixed income ETFs must report all transactions to the Municipal Securities Rulemaking Board (MSRB) in real-time",
+    "Choice3": "With negotiated custom baskets in fixed income, the PM cannot easily net multiple creation and redemption orders because each basket may contain different specific bonds tailored to individual AP requests, unlike equity index baskets which are standardized",
+    "Choice4": "Bond prices are quoted in thirty-seconds rather than decimals, making arithmetic calculations more difficult",
+    "Choice5": "The SEC limits fixed income ETFs to a maximum of three creation/redemption transactions per day",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q16.5",
+    "QText": "A FI index has a corporate action.  The impact on the ETF tracking that index is:",
+    "Choice1": "Much greater due to concentration",
+    "Choice2": "Mitigated since the portfolio won't hold the issue",
+    "Choice3": "Dependent on the tracking strategy of the PM",
+    "Choice4": "None of the above",
+    "Choice5": "",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q17.1",
+    "QText": "What is a key advantage of using swaps over futures contracts when creating leverage in an ETF?",
+    "Choice1": "Swaps are completely exempt from all SEC regulations and reporting requirements",
+    "Choice2": "Swaps always have lower counterparty risk than futures because they are exchange-traded",
+    "Choice3": "Swaps eliminate all tracking error in leveraged ETFs by perfectly matching the underlying index",
+    "Choice4": "Swaps can be structured so the counterparty handles the daily rebalancing automatically to maintain the target leverage ratio, while futures require the PM to actively buy and sell contracts each day to reset leverage",
+    "Choice5": "The IRS treats all swap gains as long-term capital gains regardless of holding period",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q17.2",
+    "QText": "Daily-resetting inverse exposures are generally achieved with:",
+    "Choice1": "Futures",
+    "Choice2": "Short equity positions",
+    "Choice3": "Swaps",
+    "Choice4": "A and C",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q17.3",
+    "QText": "Why are daily rebalancing transactions larger for leveraged ETFs after significant market moves?",
+    "Choice1": "After large market moves, the fund's exposure has drifted further from the target leverage ratio, requiring proportionally larger trades to reset to the target",
+    "Choice2": "The SEC requires leveraged ETFs to increase their rebalancing activity by 50% following any day with greater than 2% market movement",
+    "Choice3": "Authorized participants submit more creation and redemption orders after volatile days, forcing larger rebalancing trades",
+    "Choice4": "Swap counterparties automatically increase the notional amounts of contracts after large moves to protect against future volatility",
+    "Choice5": "Futures exchanges impose higher margin requirements after big moves, requiring the fund to post more collateral through additional trades",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q17.4",
+    "QText": "Why is \"hitting the close\" particularly important for leveraged and inverse ETFs when executing their daily rebalancing transactions?",
+    "Choice1": "Leveraged ETFs are required by SEC regulations to execute all rebalancing trades in the final 10 minutes of trading",
+    "Choice2": "Swap counterparties only settle payments based on the official 4:00 PM closing prices",
+    "Choice3": "Leveraged and inverse ETFs must reset their exposure based on the official closing NAV, so executing rebalancing trades at closing prices ensures the fund starts the next day with the precise target leverage ratio rather than a ratio based on intraday prices",
+    "Choice4": "Hitting the close eliminates all counterparty risk associated with swap agreements",
+    "Choice5": "The closing auction provides lower transaction costs exclusively for leveraged products",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q17.5",
+    "QText": "PCFs for leveraged and inverse ETFs are more complicated because inverse ETFs require negating the values in the index shares column.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q17.6",
+    "QText": "Turnover tends to be lower for leverage and inverse ETFs because there is generally only one underlying.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q17.7",
+    "QText": "Which of the three C's tend to have more impact for leveraged and inverse ETFs?",
+    "Choice1": "Cash",
+    "Choice2": "Corporate Actions",
+    "Choice3": "Custom In-Kind Baskets (CIBs)",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q17.8",
+    "QText": "What happens if a 2X leveraged ETF tracks an underlying index that goes down by 60%?",
+    "Choice1": "Investor must invest an additional 20% to pay for the loss",
+    "Choice2": "The sponsor is on the hook for a loss of 20%",
+    "Choice3": "Losses for the sponsor and investor are 100% and 0%, respectively",
+    "Choice4": "Losses for the sponsor and investor are 0% and 100%, respectively",
+    "Choice5": "None of the above",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q18.1",
+    "QText": "During a Market Halt:",
+    "Choice1": "Orders can't be cancelled",
+    "Choice2": "All trades for the day are cancelled",
+    "Choice3": "Orders just prior to the halt are repriced based on the opening value after the halt is lifted",
+    "Choice4": "New orders are rejected",
+    "Choice5": "",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q18.2",
+    "QText": "Transaction costs tend to increase during turbulent market events.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q18.3",
+    "QText": "Stale prices result in:",
+    "Choice1": "Larger losses for ETFs",
+    "Choice2": "Increased tracking error",
+    "Choice3": "A and B",
+    "Choice4": "Neither",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q18.4",
+    "QText": "Why is tracking error typically higher for index rebalances during turbulent or volatile markets?",
+    "Choice1": "Index providers delay publishing rebalance announcements during volatile periods, creating uncertainty",
+    "Choice2": "Authorized participants refuse to participate in creations and redemptions when markets are turbulent",
+    "Choice3": "In volatile markets, prices move more significantly between when the PM executes rebalancing trades and the official closing prices, and market impact from large rebalancing orders is magnified when liquidity is reduced and spreads are wider",
+    "Choice4": "The SEC suspends the requirement to track indices during periods of market stress",
+    "Choice5": "Turbulent markets always trigger wash sale violations that increase tracking error",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q18.5",
+    "QText": "Which of the following scenarios would result in a leveraged or inverse ETF losing all of its value?",
+    "Choice1": "The underlying index experiences extreme volatility, moving up and down 10% daily for 30 consecutive days",
+    "Choice2": "The ETF's total expense ratio exceeds 5% annually for three consecutive years",
+    "Choice3": "All authorized participants simultaneously stop creating and redeeming shares, causing the ETF to trade at a steep discount",
+    "Choice4": "For a 3x leveraged long ETF, the underlying index declines by 35% in a single day",
+    "Choice5": "The fund's largest holding becomes worthless due to a bankruptcy filing",
+    "Correct": "D"
+  },
+  {
+    "QNum": "Q19.1",
+    "QText": "The efficient frontier must lie above every point in the potential portfolio.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "A"
+  },
+  {
+    "QNum": "Q19.2",
+    "QText": "Representative sampling must result in suboptimal performance relative to an index.",
+    "Choice1": "True",
+    "Choice2": "False",
+    "Choice3": "",
+    "Choice4": "",
+    "Choice5": "",
+    "Correct": "B"
+  },
+  {
+    "QNum": "Q19.3",
+    "QText": "How frequently should an ETF portfolio manager update representative sampling models for index tracking?",
+    "Choice1": "Once per year during the annual prospectus update",
+    "Choice2": "Only when the index provider announces a methodology change",
+    "Choice3": "As needed to account for changing market conditions, correlations, liquidity profiles, and to prevent model drift that could increase tracking error",
+    "Choice4": "Representative sampling models are static once established and should never be updated to maintain consistency",
+    "Choice5": "Only after tracking error exceeds 1% annually",
+    "Correct": "C"
+  },
+  {
+    "QNum": "Q20.1",
+    "QText": "What is the ETF portfolio manager's primary responsibility when an ETF is being liquidated?",
+    "Choice1": "Immediately sell all portfolio holdings at market prices on the announcement date to generate cash",
+    "Choice2": "Transfer all remaining assets to the fund's benchmark index provider",
+    "Choice3": "Distribute all securities in-kind to remaining shareholders based on their proportional ownership",
+    "Choice4": "Manage an orderly wind-down by carefully liquidating portfolio positions to minimize market impact and transaction costs, while preserving value for remaining shareholders until the final liquidation date",
+    "Choice5": "Halt all trading activity and freeze the portfolio until the SEC approves the final liquidation plan",
+    "Correct": "D"
+  }
+]
