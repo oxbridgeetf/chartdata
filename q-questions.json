@@ -183,7 +183,7 @@
     "QNum": "Q5.3",
     "QText": "In a Portfolio Composition File (PCF), what is the difference between actual cash and expected cash components?",
     "Choice1": "Actual cash is the management fee, while expected cash is the dividend payments to shareholders",
-    "Choice2": "Actual cash represents cash holdings in the ETF portfolio, while expected cash is an estimated cash amount to balance the creation basket when securities can't be divided evenly",
+    "Choice2": "Actual cash reflects cash in yesterday's basket, while expected cash is an estimate of cash in today's basket",
     "Choice3": "Actual cash is used for redemptions only, while expected cash is used for creations only",
     "Choice4": "Actual cash is held by the custodian, while expected cash is held by the authorized participant",
     "Choice5": "There is no difference - both terms refer to the same cash component in the creation/redemption process",
