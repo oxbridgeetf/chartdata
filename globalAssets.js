@@ -394,6 +394,8 @@ function changeCellValue(table, rowIndex, fieldName, newValue) {
 }
 
 window.updateTableCell = function(containerName, rowIndex, colIndex, newValue) {
+    if (typeof __svgTableDeferIfPending === "function" &&
+        __svgTableDeferIfPending(containerName, () => window.updateTableCell(containerName, rowIndex, colIndex, newValue))) return;
     const container = document.querySelector(`[data-acc-text="${containerName}"]`);
     if (!container) {
         console.error("Container not found:", containerName);
@@ -508,6 +510,14 @@ function loadAssets(callback) {
     const fontLink = document.createElement('link');
     fontLink.href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap";
     fontLink.rel = "stylesheet";
+    // Start downloading Montserrat right away (browsers otherwise wait until text uses it),
+    // so tables rarely have to wait for it.
+    fontLink.onload = function () {
+        try {
+            document.fonts.load('400 16px "Montserrat"');
+            document.fonts.load('700 16px "Montserrat"');
+        } catch (e) {}
+    };
     document.head.appendChild(fontLink);
 
     // Load Tabulator CSS
@@ -590,6 +600,12 @@ function loadData(url, containerName, columns, col2FormatArray = null) {
 }
 
 // SVG Functionality
+// Course-wide font multiplier for initSvgTableWithFormat tables.
+// 1 = the font size in the trigger is points on the 1920x1080 slide (like a Storyline text box).
+// 1.75 = close to what learners on a laptop saw before this patch (Oct 2026).
+// Tables still shrink their text if needed to fit their rectangle, at any setting.
+if (typeof window.SVG_TABLE_FONT_SCALE === "undefined") window.SVG_TABLE_FONT_SCALE = 1.75;
+
 /**
  * initSvgTableWithFormat
  * Render an SVG table into a Storyline shape using ColumnNames + FormatArray + formatFunctions.
@@ -623,6 +639,16 @@ function initSvgTableWithFormat(
   // Clear anything previously in the container
   container.innerHTML = "";
 
+  // Mark the table as "being drawn" so highlight calls that arrive early wait for it
+  let markTableDone;
+  const pendingTable = new Promise(res => { markTableDone = res; });
+  container.__svgTablePending = pendingTable;
+  const finishTable = () => {
+    if (container.__svgTablePending === pendingTable) container.__svgTablePending = null;
+    markTableDone();
+  };
+  setTimeout(finishTable, 10000);   // never leave highlights waiting forever
+
   // Basic validation
   if (!Array.isArray(ColumnNames) || ColumnNames.length === 0) {
     console.error("ColumnNames must be a non-empty array.");
@@ -633,7 +659,9 @@ function initSvgTableWithFormat(
   // Normalize font size (pt → px)
   const ptToPx = 1.333; // approx pt→px
   const requestedFontSizePt = (fontSizePt == null ? 14 : Number(fontSizePt));
-  const maxFontSizePx = (isFinite(requestedFontSizePt) ? requestedFontSizePt : 14) * ptToPx;
+  // One course-wide multiplier for every table's font size (see SVG_TABLE_FONT_SCALE above).
+  const fontScale = Number(window.SVG_TABLE_FONT_SCALE) > 0 ? Number(window.SVG_TABLE_FONT_SCALE) : 1;
+  const maxFontSizePx = (isFinite(requestedFontSizePt) ? requestedFontSizePt : 14) * ptToPx * fontScale;
   let fontSizePx = maxFontSizePx; // Start with the requested size
 
   // Justification: normalize to ["L","C","R"] array
@@ -669,19 +697,44 @@ function initSvgTableWithFormat(
       .replace(/'/g, "&apos;");
   }
 
-  // Use reliable Storyline sizing: wait until the shape has a real size
-  function waitForSizeThen(fetchAndRenderFn, tries = 30) {
-    const rect = container.getBoundingClientRect();
-    const w = Math.round(rect.width);
-    const h = Math.round(rect.height);
+  // Size of the shape ON THE SLIDE (e.g. 1680 x 700), not its on-screen size.
+  // Storyline shrinks/enlarges the whole slide to fit the window; offsetWidth/offsetHeight
+  // ignore that scaling, so the table is laid out the same way at every window size.
+  function slideSizeOf(el) {
+    let w = Math.round(el.offsetWidth || 0);
+    let h = Math.round(el.offsetHeight || 0);
+    if (!(w > 10 && h > 10)) {                 // fallback: previous behaviour
+      const rect = el.getBoundingClientRect();
+      w = Math.round(rect.width);
+      h = Math.round(rect.height);
+    }
+    return { w, h };
+  }
 
-    // In Storyline, widths/heights can be 0 for a few frames
+  // Wait until the shape has a real size (Storyline can report 0 for a few frames)
+  function waitForSizeThen(fetchAndRenderFn, tries = 30) {
+    const { w, h } = slideSizeOf(container);
     if ((w > 10 && h > 10) || tries <= 0) {
       fetchAndRenderFn(w || 800, h || 400);
       return;
     }
     requestAnimationFrame(() => waitForSizeThen(fetchAndRenderFn, tries - 1));
   }
+
+  // Is Montserrat (regular and bold) already downloaded? If not, the table is still drawn
+  // straight away (no waiting), but leaves extra room so the text fits once Montserrat arrives.
+  function montserratLoaded() {
+    try {
+      const faces = Array.from(document.fonts || []).filter(f =>
+        String(f.family).replace(/["']/g, "").trim().toLowerCase() === "montserrat" && f.status === "loaded");
+      const has = w => faces.some(f => String(f.weight) === w || String(f.weight) === (w === "400" ? "normal" : "bold") ||
+                                       /\d+\s+\d+/.test(String(f.weight)));   // variable-weight files
+      return has("400") && has("700");
+    } catch (e) { return false; }
+  }
+  // Montserrat is up to ~24% wider than the Arial/Helvetica stand-in browsers use before it loads.
+  const FALLBACK_WIDTH_FACTOR = 1.25;
+
 
   waitForSizeThen((svgWidth, svgHeight) => {
     fetch(dataOrUrl)
@@ -694,6 +747,7 @@ function initSvgTableWithFormat(
       .then(data => {
         if (!Array.isArray(data) || data.length === 0) {
           console.error("No data rows in JSON.");
+          finishTable();
           return;
         }
 
@@ -716,17 +770,27 @@ function initSvgTableWithFormat(
             ? headers
             : ColumnNames;
 
+        const COLUMN_GAP_EM = 0.8;   // minimum gap between columns, in multiples of the font size
+
+        // Measure in Montserrat if it is here; otherwise measure the stand-in font and leave room.
+        const widthFactor = montserratLoaded() ? 1 : FALLBACK_WIDTH_FACTOR;
+        if (widthFactor !== 1) {
+          try { document.fonts.load(`400 16px "Montserrat"`); document.fonts.load(`700 16px "Montserrat"`); } catch (e) {}
+        }
+
         function measureColumns(fontPx) {
           measureCtx.font = `${fontPx}px "Montserrat", sans-serif`;
           const colWidths = new Array(numCols).fill(0);
 
-          // headers
+          // headers (drawn bold, so measured bold)
+          measureCtx.font = `700 ${fontPx}px "Montserrat", sans-serif`;
           for (let c = 0; c < numCols; c++) {
-            const w = measureCtx.measureText(String(headerLabels[c] ?? "")).width;
+            const w = measureCtx.measureText(String(headerLabels[c] ?? "")).width * widthFactor;
             if (w > colWidths[c]) colWidths[c] = w;
           }
 
           // data
+          measureCtx.font = `400 ${fontPx}px "Montserrat", sans-serif`;
           for (let r = 0; r < numRows; r++) {
             const rowObj = data[r];
             for (let c = 0; c < numCols; c++) {
@@ -736,10 +800,13 @@ function initSvgTableWithFormat(
               const val = (raw === null || raw === undefined) ? "" : raw;
               const txt = formatValue(val, fmt);
               if (txt === "") continue;
-              const w = measureCtx.measureText(String(txt)).width;
+              const w = measureCtx.measureText(String(txt)).width * widthFactor;
               if (w > colWidths[c]) colWidths[c] = w;
             }
           }
+
+          // breathing room between columns (scales with the font, so the fit maths still holds)
+          for (let c = 0; c < numCols - 1; c++) colWidths[c] += fontPx * COLUMN_GAP_EM;
 
           const totalContentWidth = colWidths.reduce((a, b) => a + b, 0);
           return { colWidths, totalContentWidth };
@@ -787,6 +854,12 @@ function initSvgTableWithFormat(
         if (sumContent < tableWidth) {
           const finalScale = tableWidth / sumContent;
           colWidthScaled = colWidthScaled.map(w => w * finalScale);
+        } else if (sumContent > tableWidth) {
+          // Safety net: never wider than the shape. Text width is proportional
+          // to font size, so shrinking both by the same factor fits exactly.
+          const squeeze = tableWidth / sumContent;
+          fontSizePx *= squeeze;
+          colWidthScaled = colWidthScaled.map(w => w * squeeze);
         }
 
         // Column start/end
@@ -808,7 +881,8 @@ function initSvgTableWithFormat(
         // Text position per column & alignment (no extra padding)
         function getTextPosition(colIndex, alignCode) {
           const start = colStartX[colIndex];
-          const end = colEndX[colIndex];
+          // keep the column gap clear on the right of every column except the last
+          const end = colEndX[colIndex] - (colIndex < numCols - 1 ? fontSizePx * COLUMN_GAP_EM : 0);
           const center = (start + end) / 2;
           let x, anchor;
           if (alignCode === "C") {
@@ -930,9 +1004,11 @@ function initSvgTableWithFormat(
         svgParts.push(`</svg>`);
 
         container.innerHTML = svgParts.join("\n");
+        finishTable();
       })
       .catch(err => {
         console.error("initSvgTableWithFormat failed:", err);
+        finishTable();
       });
   });
 }
@@ -949,7 +1025,17 @@ function initSvgTableWithFormat(
  * @param {string} colorKey       key from colorPalette, e.g. "RobinHalf", "TeaHalf"
  * @param {number} [durationMs]   optional; if set, overlay fades out and is removed after this many ms
  */
+// If a table in this shape is still being drawn, run fn once it is finished and return true.
+function __svgTableDeferIfPending(containerName, fn) {
+  const c = document.querySelector(`[data-acc-text='${String(containerName)}']`);
+  const p = c && c.__svgTablePending;
+  if (!p) return false;
+  p.then(() => fn());
+  return true;
+}
+
 function SVGhighlight(containerName, kind, target, colorKey, durationMs) {
+    if (__svgTableDeferIfPending(containerName, () => SVGhighlight(containerName, kind, target, colorKey, durationMs))) return;
     const name = String(containerName);
 
     const container = document.querySelector(`[data-acc-text='${name}']`);
@@ -1101,6 +1187,7 @@ function SVGhighlight(containerName, kind, target, colorKey, durationMs) {
  * @param {string} containerName  Storyline acc name, e.g. "rect1"
  */
 function SVGclearHighlights(containerName) {
+    if (__svgTableDeferIfPending(containerName, () => SVGclearHighlights(containerName))) return;
     const name = String(containerName);
 
     const container = document.querySelector(`[data-acc-text='${name}']`);
@@ -1124,6 +1211,7 @@ function SVGclearHighlights(containerName) {
 }
 
 function SVGclearRowHighlight(containerName, rowNumber) {
+    if (__svgTableDeferIfPending(containerName, () => SVGclearRowHighlight(containerName, rowNumber))) return;
     const name = String(containerName);
     const container = document.querySelector(`[data-acc-text='${name}']`);
     if (!container) {
