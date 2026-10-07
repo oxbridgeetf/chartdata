@@ -805,10 +805,9 @@ function initSvgTableWithFormat(
             }
           }
 
-          // breathing room between columns (scales with the font, so the fit maths still holds)
-          for (let c = 0; c < numCols - 1; c++) colWidths[c] += fontPx * COLUMN_GAP_EM;
-
-          const totalContentWidth = colWidths.reduce((a, b) => a + b, 0);
+          // Width needed = text widths + a minimum gap between neighbouring columns
+          // (the gap scales with the font, so the fit maths still holds).
+          const totalContentWidth = colWidths.reduce((a, b) => a + b, 0) + fontPx * COLUMN_GAP_EM * (numCols - 1);
           return { colWidths, totalContentWidth };
         }
 
@@ -845,32 +844,59 @@ function initSvgTableWithFormat(
           ({ colWidths: colContentWidths, totalContentWidth } = measureColumns(fontSizePx));
         }
 
-        // KEY CHANGE: Don't scale columns to fill width if font is already at max
-        // Only scale up columns if we have room and aren't at max font size
-        let colWidthScaled = colContentWidths.slice();
-        const sumContent = colWidthScaled.reduce((a, b) => a + b, 0) || 1;
-        
-        // Only stretch columns to fill width if content is smaller than container
-        if (sumContent < tableWidth) {
-          const finalScale = tableWidth / sumContent;
-          colWidthScaled = colWidthScaled.map(w => w * finalScale);
-        } else if (sumContent > tableWidth) {
+        // --- Column layout ---
+        // Normal case (as before the patch): stretch the columns in proportion to their
+        // text widths to fill the shape, and place text in the whole column.
+        // Tight case: if that would leave neighbouring texts closer than the minimum gap,
+        // keep a gap on the right of each column and place text in the rest.
+        let colW = colContentWidths.slice();
+        let gapPx = fontSizePx * COLUMN_GAP_EM;
+        const sumText = colW.reduce((a, b) => a + b, 0) || 1;
+        let needed = sumText + gapPx * (numCols - 1);
+        if (needed > tableWidth) {
           // Safety net: never wider than the shape. Text width is proportional
-          // to font size, so shrinking both by the same factor fits exactly.
-          const squeeze = tableWidth / sumContent;
+          // to font size, so shrinking everything by the same factor fits exactly.
+          const squeeze = tableWidth / needed;
           fontSizePx *= squeeze;
-          colWidthScaled = colWidthScaled.map(w => w * squeeze);
+          gapPx *= squeeze;
+          colW = colW.map(w => w * squeeze);
+          needed = tableWidth;
         }
 
-        // Column start/end
         const colStartX = [];
         const colEndX = [];
-        let curX = marginLeft;
-        for (let c = 0; c < numCols; c++) {
-          colStartX.push(curX);
-          const nextX = curX + colWidthScaled[c];
-          colEndX.push(nextX);
-          curX = nextX;
+        const colTextEndX = [];   // where text may reach (colEnd, or colEnd minus the gap)
+        function layout(widths, gapAfter) {
+          colStartX.length = colEndX.length = colTextEndX.length = 0;
+          let curX = marginLeft;
+          for (let c = 0; c < numCols; c++) {
+            const g = c < numCols - 1 ? gapAfter : 0;
+            colStartX.push(curX);
+            colTextEndX.push(curX + widths[c]);
+            curX += widths[c] + g;
+            colEndX.push(curX);
+          }
+        }
+        function textSpan(c, w) {             // horizontal extent of text of width w in column c
+          const s0 = colStartX[c], e0 = colTextEndX[c], j = justArray[c];
+          if (j === "R") return [e0 - w, e0];
+          if (j === "C") return [(s0 + e0 - w) / 2, (s0 + e0 + w) / 2];
+          return [s0, s0 + w];
+        }
+
+        // Normal layout first
+        const sumW = colW.reduce((a, b) => a + b, 0) || 1;
+        layout(colW.map(w => w * tableWidth / sumW), 0);
+        let tooTight = false;
+        let prev = -1;                         // compare each column with the previous non-empty one
+        for (let c = 0; c < numCols && !tooTight; c++) {
+          if (!colW[c]) continue;
+          if (prev >= 0 && textSpan(c, colW[c])[0] - textSpan(prev, colW[prev])[1] < gapPx - 0.5) tooTight = true;
+          prev = c;
+        }
+        if (tooTight) {
+          const k = tableWidth / needed;      // >= 1: share any spare room evenly
+          layout(colW.map(w => w * k), gapPx * k);
         }
 
         const topRuleY = 0;
@@ -881,8 +907,7 @@ function initSvgTableWithFormat(
         // Text position per column & alignment (no extra padding)
         function getTextPosition(colIndex, alignCode) {
           const start = colStartX[colIndex];
-          // keep the column gap clear on the right of every column except the last
-          const end = colEndX[colIndex] - (colIndex < numCols - 1 ? fontSizePx * COLUMN_GAP_EM : 0);
+          const end = colTextEndX[colIndex];
           const center = (start + end) / 2;
           let x, anchor;
           if (alignCode === "C") {
