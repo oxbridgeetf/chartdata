@@ -865,20 +865,25 @@ function initSvgTableWithFormat(
 
         const colStartX = [];
         const colEndX = [];
+        const colTextStartX = []; // where text may start (column start, or start plus half a gap)
         const colTextEndX = [];   // where text may reach (colEnd, or colEnd minus the gap)
-        function layout(widths, gapAfter) {
-          colStartX.length = colEndX.length = colTextEndX.length = 0;
+        function layout(widths, gapAfter, split) {
+          // split = true: half the gap on each side of every column (used when every column
+          // is centered, e.g. calendars, so each number sits in the middle of its column)
+          colStartX.length = colEndX.length = colTextStartX.length = colTextEndX.length = 0;
           let curX = marginLeft;
           for (let c = 0; c < numCols; c++) {
-            const g = c < numCols - 1 ? gapAfter : 0;
+            const before = split ? gapAfter / 2 : 0;
+            const after = split ? gapAfter / 2 : (c < numCols - 1 ? gapAfter : 0);
             colStartX.push(curX);
-            colTextEndX.push(curX + widths[c]);
-            curX += widths[c] + g;
+            colTextStartX.push(curX + before);
+            colTextEndX.push(curX + before + widths[c]);
+            curX += before + widths[c] + after;
             colEndX.push(curX);
           }
         }
         function textSpan(c, w) {             // horizontal extent of text of width w in column c
-          const s0 = colStartX[c], e0 = colTextEndX[c], j = justArray[c];
+          const s0 = colTextStartX[c], e0 = colTextEndX[c], j = justArray[c];
           if (j === "R") return [e0 - w, e0];
           if (j === "C") return [(s0 + e0 - w) / 2, (s0 + e0 + w) / 2];
           return [s0, s0 + w];
@@ -886,7 +891,7 @@ function initSvgTableWithFormat(
 
         // Normal layout first
         const sumW = colW.reduce((a, b) => a + b, 0) || 1;
-        layout(colW.map(w => w * tableWidth / sumW), 0);
+        layout(colW.map(w => w * tableWidth / sumW), 0, false);
         let tooTight = false;
         let prev = -1;                         // compare each column with the previous non-empty one
         for (let c = 0; c < numCols && !tooTight; c++) {
@@ -894,9 +899,22 @@ function initSvgTableWithFormat(
           if (prev >= 0 && textSpan(c, colW[c])[0] - textSpan(prev, colW[prev])[1] < gapPx - 0.5) tooTight = true;
           prev = c;
         }
-        if (tooTight) {
+        const allCentered = justArray.every(j => j === "C");
+        if (tooTight && allCentered) {
+          // Every column centered (calendars): equal half-gaps on both sides of each column
+          let neededC = sumText + gapPx * numCols;
+          if (neededC > tableWidth) {
+            const squeeze = tableWidth / neededC;
+            fontSizePx *= squeeze;
+            gapPx *= squeeze;
+            colW = colW.map(w => w * squeeze);
+            neededC = tableWidth;
+          }
+          const k = tableWidth / neededC;
+          layout(colW.map(w => w * k), gapPx * k, true);
+        } else if (tooTight) {
           const k = tableWidth / needed;      // >= 1: share any spare room evenly
-          layout(colW.map(w => w * k), gapPx * k);
+          layout(colW.map(w => w * k), gapPx * k, false);
         }
 
         const topRuleY = 0;
@@ -906,7 +924,7 @@ function initSvgTableWithFormat(
 
         // Text position per column & alignment (no extra padding)
         function getTextPosition(colIndex, alignCode) {
-          const start = colStartX[colIndex];
+          const start = colTextStartX[colIndex];
           const end = colTextEndX[colIndex];
           const center = (start + end) / 2;
           let x, anchor;
@@ -2219,4 +2237,3 @@ function initDynamicFormattedTableWithFontSize(
   // Expose globally
   global.updateCellByIndex = updateCellByIndex;
 })(window);
-
