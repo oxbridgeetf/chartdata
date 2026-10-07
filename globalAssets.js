@@ -925,10 +925,14 @@ function initSvgTableWithFormat(
 
         // --- BUILD SVG ---
         const svgParts = [];
+        // Each table gets its own id so its text-size rules apply to it only
+        // (style rules inside an SVG apply to the whole page).
+        window.__svgTableSeq = (window.__svgTableSeq || 0) + 1;
+        const tableId = "svgtbl-" + window.__svgTableSeq;
 
         // SVG root + metadata for SVGhighlight
         svgParts.push(
-          `<svg width="100%" height="100%" viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
+          `<svg id="${tableId}" width="100%" height="100%" viewBox="0 0 ${svgWidth} ${svgHeight}" ` +
             `xmlns="http://www.w3.org/2000/svg" ` +
             `data-rows="${numRows}" ` +
             `data-cols="${numCols}" ` +
@@ -950,14 +954,14 @@ function initSvgTableWithFormat(
         // Styles
         svgParts.push(
           `<style>
-            .tbl-header {
+            #${tableId} .tbl-header {
               font-family: "Montserrat", sans-serif;
               font-size: ${fontSizePx}px;
               font-weight: 700;
               fill: ${COLORS.white};
               dominant-baseline: middle;
             }
-            .tbl-cell {
+            #${tableId} .tbl-cell {
               font-family: "Montserrat", sans-serif;
               font-size: ${fontSizePx}px;
               font-weight: 400;
