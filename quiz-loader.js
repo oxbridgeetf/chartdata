@@ -56,7 +56,7 @@
         for (let i = 0; i < 5; i++) {
           const text = choices[i] || "";
           const showAns = text.trim() !== "";
-          player.SetVar(`Answer${i + 1}`, text);
+          player.SetVar(`Answer${i + 1}`, showAns ? `${letterLabels[i]}. ${text}` : text); // letter only non-blank choices old line -> //player.SetVar(`Answer${i + 1}`, text);
           player.SetVar(`ShowAns${i + 1}`, showAns);
           console.log(`ShowAns${i + 1} = ${showAns}, Text = "${text}"`);
         }
